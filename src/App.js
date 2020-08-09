@@ -7,6 +7,8 @@ const NAV_HEIGHT = "50px";
 const NAV_COLOR = "";
 const NAV_FONT_COLOR = "";
 const CONTENT_FONT_COLOR = "";
+const MOBILE = "781px";
+const TABLET = "1050px";
 
 
 const MainGrid = styled.div`
@@ -29,6 +31,9 @@ const Header = styled.div`
   width: 100%;
   position: fixed;
   left:0;
+  z-index: 1;
+
+  
 `;
 
 const NavBar = styled.div`
@@ -45,17 +50,47 @@ const NavBar = styled.div`
 
 `;
 
-const NavButton = styled.div`
+const NavButtonContainer = styled.div`
   display: none;
   width: 300px;
   background: #5da;
   text-align: left;
   margin-left: 15px;
 
-  @media (max-width:1050px){
+  @media (max-width:${MOBILE}){
     display: flex;
     order: 1;
     width: 100px;
+  }
+`;
+
+const NavButton = styled.div`
+  background: pink;
+  height: 50px;
+  width: 50px;
+`;
+
+const NavSideMenu = styled.div`
+  display: none;
+  height: 100%;
+  width: 250px;
+  background: rgba(0,0,0,0.75);
+  backdrop-filter: blur(4px);
+  transition: ease 0.3s;
+  flex-direction: column;
+  position: fixed;
+  top: 0;
+  z-index: 0;
+  opacity: 0;
+  margin-left: -250px;
+
+${NavButton}:hover & {
+    opacity: 1;
+    margin-left: -15px;
+  }
+
+  @media (max-width:${MOBILE}){
+    display: flex;
   }
 `;
 
@@ -65,8 +100,8 @@ const Brand = styled.div`
   text-align: left;
   margin-left: 15px;
   order: 1;
-
-  @media (max-width:1050px){
+  
+  @media (max-width:${MOBILE}){
     order: 2;
     margin-left: 0;
     text-align: center;
@@ -80,7 +115,7 @@ const NavLinks = styled.div`
   justify-content: center;
   order: 2;
 
-  @media (max-width:1050px){
+  @media (max-width:${MOBILE}){
     display: none;
   }
 
@@ -88,6 +123,10 @@ const NavLinks = styled.div`
 
 const NavLink = styled.a`
   padding: 0 10px 0 10px;
+
+  &:hover ${NavBar} {
+    background:blue;
+  }
 `;
 
 const NightButton = styled.div`
@@ -97,7 +136,7 @@ const NightButton = styled.div`
   margin-right: 15px;
   order: 3;
 
-  @media (max-width:1050px){
+  @media (max-width:${MOBILE}){
     width: 100px;
   }
 
@@ -129,7 +168,16 @@ function App() {
         <Header>
           <NavBar>
             <Brand>Shiraz Khan</Brand>
-            <NavButton>BUTTON</NavButton>
+            <NavButtonContainer>
+              <NavButton>
+              <NavSideMenu>
+            <NavLink href="/">Articles</NavLink>
+            <NavLink href="/">Tutorials</NavLink>
+            <NavLink href="/">Portfolio</NavLink>
+            <NavLink href="/">Contact</NavLink>
+          </NavSideMenu> 
+              </NavButton>
+            </NavButtonContainer>
             <NavLinks>
               <NavLink href="/">Articles</NavLink>
               <NavLink href="/">Tutorials</NavLink>
@@ -138,6 +186,7 @@ function App() {
             </NavLinks>
             <NightButton>3</NightButton>
           </NavBar>
+
         </Header>
         <PrimaryContent>
           Lorem ipsum dolor sit amet consectetur adipisicing elit. 
