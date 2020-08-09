@@ -55,6 +55,7 @@ const NavButton = styled.div`
   @media (max-width:1050px){
     display: flex;
     order: 1;
+    width: 100px;
   }
 `;
 
@@ -95,6 +96,11 @@ const NightButton = styled.div`
   text-align: right;
   margin-right: 15px;
   order: 3;
+
+  @media (max-width:1050px){
+    width: 100px;
+  }
+
 `;
 
 const PrimaryContent = styled.div`
