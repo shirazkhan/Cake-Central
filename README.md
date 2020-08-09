@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 ## Available Scripts
@@ -66,3 +67,20 @@ This section has moved here: https://facebook.github.io/create-react-app/docs/de
 ### `npm run build` fails to minify
 
 This section has moved here: https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify
+=======
+# amp-react-theme
+A super fast responsive generic theme created with React and NextJS from scratch that is also AMP compliant.
+
+All the components, styling and code is done by scratch with minimalistic javascript for efficient performance.
+
+This is a greate boilerplate theme that will target successful SEO, performance, and user experience.
+
+### Technologies used:
+React JS
+
+Next JS
+
+Styled Components
+
+CSS Grid & Flexbox
+>>>>>>> 8331edc34448922a9a3f9b4c9e928af6f84c1f7e
