@@ -47,7 +47,7 @@ const NavButton = styled.div`
 
 const Brand = styled.div`
   background: #a12;
-  width: 100%;
+  width: 250px;
   text-align: left;
   margin-left: 10px;
 `;
@@ -55,11 +55,17 @@ const Brand = styled.div`
 const NavLinks = styled.div`
   background: #d42;
   width: 100%;
+  display: flex;
+  justify-content: center;
+`;
+
+const NavLink = styled.a`
+  padding: 0 10px 0 10px;
 `;
 
 const NightButton = styled.div`
   background: #7a2;
-  width: 100%;
+  width: 250px;
   text-align: right;
   margin-right: 10px;
 `;
@@ -90,7 +96,12 @@ function App() {
         <Header>
           <NavBar>
             <Brand>Shiraz Khan</Brand>
-            <NavLinks>2</NavLinks>
+            <NavLinks>
+              <NavLink href="/">Articles</NavLink>
+              <NavLink href="/">Tutorials</NavLink>
+              <NavLink href="/">Portfolio</NavLink>
+              <NavLink href="/">Contact</NavLink>
+            </NavLinks>
             <NightButton>3</NightButton>
           </NavBar>
         </Header>
