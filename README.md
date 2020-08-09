@@ -5,7 +5,7 @@ All the components, styling and code is done by scratch with minimalistic javasc
 
 This is a greate boilerplate theme that will target successful SEO, performance, and user experience.
 
-# Technologies used:
+## Technologies used:
 React JS
 
 Next JS
