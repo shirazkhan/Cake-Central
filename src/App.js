@@ -4,6 +4,10 @@ import styled from 'styled-components';
 //CSS Variables
 const WEBSITE_WIDTH = "1080px";
 const NAV_HEIGHT = "50px";
+const NAV_COLOR = "";
+const NAV_FONT_COLOR = "";
+const CONTENT_FONT_COLOR = "";
+
 
 const MainGrid = styled.div`
   display: grid;
@@ -22,7 +26,7 @@ const Header = styled.div`
   grid-area: Header;
   background: #9fa;
   height: ${NAV_HEIGHT};
-  width: 100vw;
+  width: 100%;
   position: fixed;
   left:0;
 `;
@@ -35,21 +39,37 @@ const NavBar = styled.div`
   height: 100%;
   margin: 0 auto;
 
-  @media (max-width:1080px){
+  @media (max-width:${WEBSITE_WIDTH}){
     width: 100%;
   }
 
 `;
 
 const NavButton = styled.div`
+  display: none;
+  width: 300px;
+  background: #5da;
+  text-align: left;
+  margin-left: 15px;
 
+  @media (max-width:1050px){
+    display: flex;
+    order: 1;
+  }
 `;
 
 const Brand = styled.div`
   background: #a12;
-  width: 250px;
+  width: 300px;
   text-align: left;
-  margin-left: 10px;
+  margin-left: 15px;
+  order: 1;
+
+  @media (max-width:1050px){
+    order: 2;
+    margin-left: 0;
+    text-align: center;
+  }
 `;
 
 const NavLinks = styled.div`
@@ -57,6 +77,12 @@ const NavLinks = styled.div`
   width: 100%;
   display: flex;
   justify-content: center;
+  order: 2;
+
+  @media (max-width:1050px){
+    display: none;
+  }
+
 `;
 
 const NavLink = styled.a`
@@ -65,9 +91,10 @@ const NavLink = styled.a`
 
 const NightButton = styled.div`
   background: #7a2;
-  width: 250px;
+  width: 300px;
   text-align: right;
-  margin-right: 10px;
+  margin-right: 15px;
+  order: 3;
 `;
 
 const PrimaryContent = styled.div`
@@ -96,6 +123,7 @@ function App() {
         <Header>
           <NavBar>
             <Brand>Shiraz Khan</Brand>
+            <NavButton>BUTTON</NavButton>
             <NavLinks>
               <NavLink href="/">Articles</NavLink>
               <NavLink href="/">Tutorials</NavLink>
