@@ -1,6 +1,9 @@
 import React from 'react';
 import styled from 'styled-components';
 
+//CSS Variables
+const WEBSITE_WIDTH = "1080px";
+
 const MainGrid = styled.div`
   display: grid;
   grid-template-areas:
@@ -8,18 +11,36 @@ const MainGrid = styled.div`
     "PrimaryContent PrimaryContent SideBar"
     "Footer Footer Footer";
   text-align: center;
-  grid-template-rows: 60px 1fr 120px;
+  grid-template-rows: 50px 1fr 200px;
+  grid-template-columns: repeat(3,calc(${WEBSITE_WIDTH}/3));
+  justify-content: center;
 `;
 
 const Header = styled.div`
   grid-area: Header;
   background: #9fa;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+`;
+
+const NavButton = styled.div`
+
+`;
+
+const Brand = styled.div`
+
+`;
+
+const NightButton = styled.div`
 
 `;
 
 const PrimaryContent = styled.div`
   grid-area: PrimaryContent;
   background: #1aa;
+  min-height: 1000px;
 
 `;
 
@@ -40,11 +61,9 @@ function App() {
     <>
       <MainGrid>
         <Header>
-          Lorem, ipsum dolor sit amet consectetur adipisicing elit. 
-          Nesciunt totam modi quia delectus, 
-          nihil blanditiis illo voluptatibus officiis officia quas incidunt sapiente cumque doloribus qui, 
-          molestias in est et culpa consequuntur ipsa? 
-          Sunt iusto voluptatum ipsam repellendus esse expedita corrupti.
+          <NavButton>1</NavButton>
+          <Brand>2</Brand>
+          <NightButton>3</NightButton>
         </Header>
         <PrimaryContent>
           Lorem ipsum dolor sit amet consectetur adipisicing elit. 
