@@ -32,7 +32,7 @@ const Header = styled.div`
   width: 100%;
   position: fixed;
   left:0;
-  z-index: 1;
+  z-index: 2;
 
   
 `;
@@ -175,31 +175,16 @@ const NavSideMenu = styled.div`
   display: none;
   height: 100%;
   width: ${NAV_MENU_WIDTH}px;
-  background: rgba(0,0,0,0.75);
+  background: rgba(0,0,0,1);
   backdrop-filter: blur(4px);
   transition: ease 0.3s;
   flex-direction: column;
   position: fixed;
   top: 0;
-  z-index: 0;
+  z-index: 10;
   margin-left: -${(NAV_MENU_WIDTH + 15)}px;
   margin-top: ${NAV_HEIGHT};
 
-  &:before {
-    display: none;
-    height: 100%;
-    width: ${NAV_MENU_WIDTH};
-    background: rgba(0,0,0,0.75);
-    backdrop-filter: blur(4px);
-    transition: ease 0.3s;
-    flex-direction: column;
-    position: fixed;
-    top: 0;
-    z-index: 0;
-    opacity: 0;
-    margin-left: -${(NAV_MENU_WIDTH + 15)}px;
-    margin-top: ${NAV_HEIGHT};
-  }
 
   @media (max-width:${MOBILE}){
     display: flex;
@@ -207,13 +192,20 @@ const NavSideMenu = styled.div`
 `;
 
 const NavSideMenuShadow = styled.div`
-  width: calc(100% - ${NAV_MENU_WIDTH}px);
+  width: 100%;
   height: 100%;
-  margin-left: 50px;
-  background: pink;
+  background: rgba(0,0,0,0.4);
   position: fixed;
+  display: flex;
+  visibility: hidden;
   top: 0;
   right: 0;
+  margin-top: ${NAV_HEIGHT};
+  transition: 0s;
+  z-index: -1;
+  opacity: 0;
+  backdrop-filter: blur(4px);
+  transition: visibility 1s, opacity 0.6s;
 `;
 
 // Nav Button Switch
@@ -249,6 +241,13 @@ const NavUI = styled.label`
   ${NavInputUI}:checked ~ ${NavSideMenu} {
     transform: translateX(250px);
   }
+  ${NavInputUI}:checked ~ ${NavSideMenuShadow} {
+    z-index: 9;
+    opacity: 1;
+    visibility: visible;
+    transition: visibility 0s, opacity 0.8s;
+  }
+
   ${NavInputUI}:checked + ${NavSliderUI}:before {
     transform: translateX(20px);
   }
