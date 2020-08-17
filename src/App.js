@@ -171,21 +171,6 @@ const Footer = styled.div`
 
 `;
 
-const Input = styled.input.attrs({ type: 'checkbox' })`
-  opacity: 0;
-  height: 40px;
-  width: 40px;
-  margin-left: -40px;
-  z-index: -1;
-`;
-
-const Label = styled.label`
-  background: pink;
-  height: 50px;
-  width: 50px;
-
-`;
-
 const NavSideMenu = styled.div`
   display: none;
   height: 100%;
@@ -221,6 +206,16 @@ const NavSideMenu = styled.div`
   }
 `;
 
+const NavSideMenuShadow = styled.div`
+  width: calc(100% - ${NAV_MENU_WIDTH}px);
+  height: 100%;
+  margin-left: 50px;
+  background: pink;
+  position: fixed;
+  top: 0;
+  right: 0;
+`;
+
 // Nav Button Switch
 const NavInputUI = styled.input.attrs({ type: "checkbox" })`
   opacity: 0;
@@ -235,7 +230,6 @@ const NavSliderUI = styled.span`
   bottom: 0;
   background-color: #bbcdd9;
   transition: 0.4s;
-  border-radius: 100px;
 
   &:before {
     content: "";
@@ -246,16 +240,12 @@ const NavSliderUI = styled.span`
     bottom: 1px;
     background-color: #fff;
     transition: 0.4s;
-    border-radius: 100%;
   }
 `;
 const NavUI = styled.label`
   position: relative;
-  display: inline-block;
-  width: 42px;
-  height: 22px;
-  margin-bottom: 0;
-  vertical-align: middle;
+  width: 50px;
+  height: 50px;
   ${NavInputUI}:checked ~ ${NavSideMenu} {
     transform: translateX(250px);
   }
@@ -278,6 +268,7 @@ function App() {
                 <NavInputUI />
                 <NavSliderUI />
                 <NavSideMenu></NavSideMenu>
+                <NavSideMenuShadow />
               </NavUI>
             </NavButton>
             <NavLinks>
