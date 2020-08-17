@@ -4,6 +4,7 @@ import styled from 'styled-components';
 //CSS Variables
 const WEBSITE_WIDTH = "1080px";
 const NAV_HEIGHT = "50px";
+const NAV_MENU_WIDTH = 250;
 const NAV_COLOR = "";
 const NAV_FONT_COLOR = "";
 const CONTENT_FONT_COLOR = "";
@@ -107,7 +108,6 @@ const NightButton = styled.div`
 `;
 
 // Night Mode Switch
-
 const SwitchInputUI = styled.input.attrs({ type: "checkbox" })`
   opacity: 0;
 `;
@@ -149,6 +149,7 @@ const SwitchUI = styled.label`
     transform: translateX(20px);
   }
 `;
+/////////////////////
 
 
 const PrimaryContent = styled.div`
@@ -188,7 +189,7 @@ const Label = styled.label`
 const NavSideMenu = styled.div`
   display: none;
   height: 100%;
-  width: 250px;
+  width: ${NAV_MENU_WIDTH}px;
   background: rgba(0,0,0,0.75);
   backdrop-filter: blur(4px);
   transition: ease 0.3s;
@@ -196,31 +197,88 @@ const NavSideMenu = styled.div`
   position: fixed;
   top: 0;
   z-index: 0;
-  opacity: 0;
-  margin-left: -250px;
+  margin-left: -${(NAV_MENU_WIDTH + 15)}px;
   margin-top: ${NAV_HEIGHT};
+
+  &:before {
+    display: none;
+    height: 100%;
+    width: ${NAV_MENU_WIDTH};
+    background: rgba(0,0,0,0.75);
+    backdrop-filter: blur(4px);
+    transition: ease 0.3s;
+    flex-direction: column;
+    position: fixed;
+    top: 0;
+    z-index: 0;
+    opacity: 0;
+    margin-left: -${(NAV_MENU_WIDTH + 15)}px;
+    margin-top: ${NAV_HEIGHT};
+  }
 
   @media (max-width:${MOBILE}){
     display: flex;
   }
 `;
 
+// Nav Button Switch
+const NavInputUI = styled.input.attrs({ type: "checkbox" })`
+  opacity: 0;
+`;
+
+const NavSliderUI = styled.span`
+  position: absolute;
+  cursor: pointer;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: #bbcdd9;
+  transition: 0.4s;
+  border-radius: 100px;
+
+  &:before {
+    content: "";
+    position: absolute;
+    width: 20px;
+    height: 20px;
+    left: 1px;
+    bottom: 1px;
+    background-color: #fff;
+    transition: 0.4s;
+    border-radius: 100%;
+  }
+`;
+const NavUI = styled.label`
+  position: relative;
+  display: inline-block;
+  width: 42px;
+  height: 22px;
+  margin-bottom: 0;
+  vertical-align: middle;
+  ${NavInputUI}:checked ~ ${NavSideMenu} {
+    transform: translateX(250px);
+  }
+  ${NavInputUI}:checked + ${NavSliderUI}:before {
+    transform: translateX(20px);
+  }
+`;
+
+/////////////////////
+
 function App() {
   return (
     <>
       <MainGrid>
         <Header>
-          <NavBar>
+          <NavBar id = "NavBar">
             <Brand>Shiraz Khan</Brand>
             <NavButton>
-              <Label htmlFor = "menuToggle"></Label>
-              <NavSideMenu>
-            <NavLink href="/">Articles</NavLink>
-            <NavLink href="/">Tutorials</NavLink>
-            <NavLink href="/">Portfolio</NavLink>
-            <NavLink href="/">Contact</NavLink>
-          </NavSideMenu>
-              <Input id="menuToggle"></Input>
+              <NavUI>
+                <NavInputUI />
+                <NavSliderUI />
+                <NavSideMenu></NavSideMenu>
+              </NavUI>
             </NavButton>
             <NavLinks>
               <NavLink href="/">Articles</NavLink>
