@@ -50,10 +50,10 @@ const NavBar = styled.div`
 
 `;
 
-const NavButtonContainer = styled.div`
+const NavButton = styled.div`
   display: none;
   width: 300px;
-  background: #5da;
+  background: blue;
   text-align: left;
   margin-left: 15px;
 
@@ -61,36 +61,6 @@ const NavButtonContainer = styled.div`
     display: flex;
     order: 1;
     width: 100px;
-  }
-`;
-
-const NavButton = styled.div`
-  background: pink;
-  height: 50px;
-  width: 50px;
-`;
-
-const NavSideMenu = styled.div`
-  display: none;
-  height: 100%;
-  width: 250px;
-  background: rgba(0,0,0,0.75);
-  backdrop-filter: blur(4px);
-  transition: ease 0.3s;
-  flex-direction: column;
-  position: fixed;
-  top: 0;
-  z-index: 0;
-  opacity: 0;
-  margin-left: -250px;
-
-${NavButton}:hover & {
-    opacity: 1;
-    margin-left: -15px;
-  }
-
-  @media (max-width:${MOBILE}){
-    display: flex;
   }
 `;
 
@@ -123,15 +93,9 @@ const NavLinks = styled.div`
 
 const NavLink = styled.a`
   padding: 0 10px 0 10px;
-
-  &:hover ${NavBar} {
-    background:blue;
-  }
 `;
 
 const NightButton = styled.div`
-  background: #7a2;
-  width: 300px;
   text-align: right;
   margin-right: 15px;
   order: 3;
@@ -141,6 +105,51 @@ const NightButton = styled.div`
   }
 
 `;
+
+// Night Mode Switch
+
+const SwitchInputUI = styled.input.attrs({ type: "checkbox" })`
+  opacity: 0;
+`;
+
+const SwitchSliderUI = styled.span`
+  position: absolute;
+  cursor: pointer;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: #bbcdd9;
+  transition: 0.4s;
+  border-radius: 100px;
+
+  &:before {
+    content: "";
+    position: absolute;
+    width: 20px;
+    height: 20px;
+    left: 1px;
+    bottom: 1px;
+    background-color: #fff;
+    transition: 0.4s;
+    border-radius: 100%;
+  }
+`;
+const SwitchUI = styled.label`
+  position: relative;
+  display: inline-block;
+  width: 42px;
+  height: 22px;
+  margin-bottom: 0;
+  vertical-align: middle;
+  ${SwitchInputUI}:checked + ${SwitchSliderUI} {
+    background-color: black;
+  }
+  ${SwitchInputUI}:checked + ${SwitchSliderUI}:before {
+    transform: translateX(20px);
+  }
+`;
+
 
 const PrimaryContent = styled.div`
   grid-area: PrimaryContent;
@@ -161,6 +170,41 @@ const Footer = styled.div`
 
 `;
 
+const Input = styled.input.attrs({ type: 'checkbox' })`
+  opacity: 0;
+  height: 40px;
+  width: 40px;
+  margin-left: -40px;
+  z-index: -1;
+`;
+
+const Label = styled.label`
+  background: pink;
+  height: 50px;
+  width: 50px;
+
+`;
+
+const NavSideMenu = styled.div`
+  display: none;
+  height: 100%;
+  width: 250px;
+  background: rgba(0,0,0,0.75);
+  backdrop-filter: blur(4px);
+  transition: ease 0.3s;
+  flex-direction: column;
+  position: fixed;
+  top: 0;
+  z-index: 0;
+  opacity: 0;
+  margin-left: -250px;
+  margin-top: ${NAV_HEIGHT};
+
+  @media (max-width:${MOBILE}){
+    display: flex;
+  }
+`;
+
 function App() {
   return (
     <>
@@ -168,25 +212,29 @@ function App() {
         <Header>
           <NavBar>
             <Brand>Shiraz Khan</Brand>
-            <NavButtonContainer>
-              <NavButton>
+            <NavButton>
+              <Label htmlFor = "menuToggle"></Label>
               <NavSideMenu>
             <NavLink href="/">Articles</NavLink>
             <NavLink href="/">Tutorials</NavLink>
             <NavLink href="/">Portfolio</NavLink>
             <NavLink href="/">Contact</NavLink>
-          </NavSideMenu> 
-              </NavButton>
-            </NavButtonContainer>
+          </NavSideMenu>
+              <Input id="menuToggle"></Input>
+            </NavButton>
             <NavLinks>
               <NavLink href="/">Articles</NavLink>
               <NavLink href="/">Tutorials</NavLink>
               <NavLink href="/">Portfolio</NavLink>
               <NavLink href="/">Contact</NavLink>
             </NavLinks>
-            <NightButton>3</NightButton>
+            <NightButton>
+              <SwitchUI>
+                <SwitchInputUI />
+                <SwitchSliderUI />
+              </SwitchUI>
+            </NightButton>
           </NavBar>
-
         </Header>
         <PrimaryContent>
           Lorem ipsum dolor sit amet consectetur adipisicing elit. 
