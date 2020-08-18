@@ -1,9 +1,9 @@
 import React from 'react';
 import styled from 'styled-components';
-import { MainGrid, Header, NavBar, Brand, NavButton, NavUI, NavInputUI,
-         NavSliderUI, NavSideMenu, NavSideMenuShadow, NavLinks, NavLink,
+import { MainGrid, Header, NavBar, Brand, NavButton, NavUILabel, NavInputUI,
+         Hamburger, NavSideMenu, NavSideMenuShadow, NavLinks, NavLink,
          NightButton, SwitchUI, SwitchInputUI, SwitchSliderUI, PrimaryContent,
-         SideBar, Footer } from './styled/App';
+         SideBar, Footer, HamburgerInner } from './styled/App';
 
 function App() {
   return (
@@ -13,12 +13,14 @@ function App() {
           <NavBar id = "NavBar">
             <Brand>Shiraz Khan</Brand>
             <NavButton>
-              <NavUI>
+              <NavUILabel>
                 <NavInputUI />
-                <NavSliderUI />
+                <Hamburger>
+                  <HamburgerInner /> <HamburgerInner /> <HamburgerInner />
+                </Hamburger>
                 <NavSideMenu></NavSideMenu>
                 <NavSideMenuShadow />
-              </NavUI>
+              </NavUILabel>
             </NavButton>
             <NavLinks>
               <NavLink href="/">Articles</NavLink>

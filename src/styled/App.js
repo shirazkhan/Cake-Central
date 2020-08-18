@@ -18,7 +18,7 @@ export const MainGrid = styled.div`
     "PrimaryContent PrimaryContent SideBar"
     "Footer Footer Footer";
   text-align: center;
-  grid-template-rows: ${NAV_HEIGHT} 1fr 200px;
+  grid-template-rows: ${NAV_HEIGHT} auto 200px;
   grid-template-columns: 1fr 1fr 1fr;
   margin: 0 auto;
   max-width: ${WEBSITE_WIDTH};
@@ -53,7 +53,6 @@ export const NavBar = styled.div`
 export const NavButton = styled.div`
   display: none;
   width: 300px;
-  background: blue;
   text-align: left;
   margin-left: 15px;
 
@@ -82,7 +81,7 @@ export const NavLinks = styled.div`
   background: #d42;
   width: 100%;
   display: flex;
-  justify-content: center;
+  justify-content: left;
   order: 2;
 
   @media (max-width:${MOBILE}){
@@ -195,7 +194,7 @@ export const NavSideMenuShadow = styled.div`
   height: 100%;
   background: rgba(0,0,0,0.4);
   position: fixed;
-  display: flex;
+  display: none;
   visibility: hidden;
   top: 0;
   right: 0;
@@ -205,6 +204,30 @@ export const NavSideMenuShadow = styled.div`
   opacity: 0;
   backdrop-filter: blur(4px);
   transition: visibility 1s, opacity 0.6s;
+  
+  @media (max-width:${MOBILE}){
+    display: flex;
+  }
+`;
+
+export const Hamburger = styled.span`
+  width: 50px;
+  height: ${NAV_HEIGHT};
+  position: absolute;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: left;
+  top: 0;
+`;
+
+export const HamburgerInner = styled.span`
+    height: 3px;
+    width: 22px;
+    display: flex;
+    background: black;
+    margin: 2px 0;
+    border-radius: 5px;
 `;
 
 // Nav Button Switch
@@ -212,43 +235,20 @@ export const NavInputUI = styled.input.attrs({ type: "checkbox" })`
   opacity: 0;
 `;
 
-export const NavSliderUI = styled.span`
-  position: absolute;
-  cursor: pointer;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  background-color: #bbcdd9;
-  transition: 0.4s;
-
-  &:before {
-    content: "";
-    position: absolute;
-    width: 20px;
-    height: 20px;
-    left: 1px;
-    bottom: 1px;
-    background-color: #fff;
-    transition: 0.4s;
-  }
-`;
-export const NavUI = styled.label`
+export const NavUILabel = styled.label`
   position: relative;
   width: 50px;
   height: 50px;
+
   ${NavInputUI}:checked ~ ${NavSideMenu} {
     transform: translateX(250px);
   }
+
   ${NavInputUI}:checked ~ ${NavSideMenuShadow} {
     z-index: 9;
     opacity: 1;
     visibility: visible;
     transition: visibility 0s, opacity 0.8s;
-  }
-
-  ${NavInputUI}:checked + ${NavSliderUI}:before {
-    transform: translateX(20px);
   }
 `;
 
