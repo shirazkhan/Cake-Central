@@ -5,15 +5,15 @@ const WEBSITE_WIDTH = "1080px";
 const MOBILE_NAV_HEIGHT = "50px";
 const DESKTOP_NAV_HEIGHT = "60px";
 const FOOTER_HEIGHT = "200px";
-const NAV_MENU_WIDTH = 250;
-const NAV_GAP = "15px";
+const NAV_MENU_WIDTH = "250px";
+const NAV_GAP = "50px";
 const NAV_LINKS_ALIGNMENT = "flex-end";
 const HAMBURGER_COLOR = "black";
 const NAV_COLOR = "rgba(255,255,255,0.80)";
 const NAV_FONT_COLOR = "black";
-const CONTENT_FONT_COLOR = "";
+const CONTENT_FONT_COLOR = "black";
 const MOBILE = "781px";
-const TABLET = "1050px";
+//const TABLET = "1050px";
 
 
 export const MainGrid = styled.div`
@@ -24,7 +24,7 @@ export const MainGrid = styled.div`
     "Footer Footer Footer";
   text-align: center;
   grid-template-rows: ${MOBILE_NAV_HEIGHT} auto ${FOOTER_HEIGHT};
-  grid-template-columns: 1fr 1fr 0.01fr;
+  grid-template-columns: 1fr 1fr 0.75fr;
   margin: 0 auto;
   max-width: ${WEBSITE_WIDTH};
 
@@ -89,6 +89,7 @@ export const NavButton = styled.div`
     display: flex;
     order: 1;
     width: 100px;
+    margin-left: 15px;
   }
 `;
 
@@ -102,6 +103,7 @@ export const Brand = styled.div`
     order: 2;
     margin-left: 0;
     text-align: center;
+    margin-left: 15px;
   }
 `;
 
@@ -129,6 +131,7 @@ export const NightButton = styled.div`
 
   @media (max-width:${MOBILE}){
     width: 100px;
+    margin-right: 15px;
   }
 
 `;
@@ -180,9 +183,9 @@ export const SwitchUI = styled.label`
 
 export const PrimaryContent = styled.div`
   grid-area: PrimaryContent;
-  border-left: 3px solid gray;
   min-height: 1000px;
   padding: 30px 15px;
+  color: ${CONTENT_FONT_COLOR};
 
 `;
 
@@ -201,7 +204,7 @@ export const Footer = styled.div`
 export const NavSideMenu = styled.div`
   display: none;
   height: 100%;
-  width: ${NAV_MENU_WIDTH}px;
+  width: ${NAV_MENU_WIDTH};
   background: rgba(0,0,0,1);
   backdrop-filter: blur(4px);
   transition: ease 0.3s;
@@ -209,7 +212,7 @@ export const NavSideMenu = styled.div`
   position: fixed;
   top: 0;
   z-index: 10;
-  margin-left: -${(NAV_MENU_WIDTH + 15)}px;
+  margin-left: calc(-${NAV_MENU_WIDTH} - 15px);
   margin-top: ${MOBILE_NAV_HEIGHT};
 
 

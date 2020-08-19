@@ -1,5 +1,4 @@
 import React from 'react';
-import styled from 'styled-components';
 import { MainGrid, Header, NavBar, Brand, NavButton, NavUILabel, NavInputUI,
          Hamburger, NavSideMenu, NavSideMenuShadow, NavLinks, NavLink,
          NightButton, SwitchUI, SwitchInputUI, SwitchSliderUI, PrimaryContent,
