@@ -38,11 +38,7 @@ function App() {
           </NavBar>
         </Header>
         <PrimaryContent>
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. 
-          Dolorum voluptatibus illo, cumque delectus molestias ipsum, rerum aliquam harum architecto
-          rem doloremquid commodi obcaecati temporibus recusandae! 
-          Dolorem in officia eius nisi fugiat libero nam perspiciatis iure, 
-          molestiae eveniet consectetur expedita?
+          <TestPrimaryContent />
         </PrimaryContent>
         <SideBar>
           Lorem ipsum, dolor sit amet consectetur adipisicing elit. 

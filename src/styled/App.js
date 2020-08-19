@@ -22,7 +22,7 @@ export const MainGrid = styled.div`
     "Footer Footer Footer";
   text-align: center;
   grid-template-rows: ${NAV_HEIGHT} auto ${FOOTER_HEIGHT};
-  grid-template-columns: 1fr 1fr 1fr;
+  grid-template-columns: 1fr 1fr 0.75fr;
   margin: 0 auto;
   max-width: ${WEBSITE_WIDTH};
 
