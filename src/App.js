@@ -10,13 +10,13 @@ function App() {
     <>
       <MainGrid>
         <Header>
-          <NavBar id = "NavBar">
-            <Brand>Shiraz Khan</Brand>
+          <NavBar>
+            <Brand><h2>Shiraz Khan</h2></Brand>
             <NavButton>
               <NavUILabel>
                 <NavInputUI />
                 <Hamburger>
-                  <HamburgerInner /> <HamburgerInner /> <HamburgerInner />
+                  <HamburgerInner /> <HamburgerInner />
                 </Hamburger>
                 <NavSideMenu></NavSideMenu>
                 <NavSideMenuShadow />

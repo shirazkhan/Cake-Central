@@ -4,7 +4,9 @@ import styled from 'styled-components';
 const WEBSITE_WIDTH = "1080px";
 const NAV_HEIGHT = "50px";
 const NAV_MENU_WIDTH = 250;
-const NAV_COLOR = "";
+const NAV_LINKS_ALIGNMENT = "flex-end";
+const HAMBURGER_COLOR = "white";
+const NAV_COLOR = "rgba(0,0,0,0.20)";
 const NAV_FONT_COLOR = "";
 const CONTENT_FONT_COLOR = "";
 const MOBILE = "781px";
@@ -26,14 +28,22 @@ export const MainGrid = styled.div`
 
 export const Header = styled.div`
   grid-area: Header;
-  background: #9fa;
+  background: linear-gradient(270deg, ${NAV_COLOR}, rgba(50,50,50,0.5), ${NAV_COLOR});
+    background-size: 600% 600%;
+    animation: Fader 25s ease infinite;
+  color: white;
   height: ${NAV_HEIGHT};
   width: 100%;
   position: fixed;
   left:0;
   z-index: 2;
-
-  
+  backdrop-filter: blur(8px);
+    
+  @keyframes Fader {
+    0%{background-position:2% 0%}
+    50%{background-position:99% 100%}
+    100%{background-position:2% 0%}
+}
 `;
 
 export const NavBar = styled.div`
@@ -43,6 +53,7 @@ export const NavBar = styled.div`
   width: ${WEBSITE_WIDTH};
   height: 100%;
   margin: 0 auto;
+  box-shadow: 0px 5px 18px -3px rgba(0,0,0,0.75);
 
   @media (max-width:${WEBSITE_WIDTH}){
     width: 100%;
@@ -64,7 +75,6 @@ export const NavButton = styled.div`
 `;
 
 export const Brand = styled.div`
-  background: #a12;
   width: 300px;
   text-align: left;
   margin-left: 15px;
@@ -78,11 +88,11 @@ export const Brand = styled.div`
 `;
 
 export const NavLinks = styled.div`
-  background: #d42;
   width: 100%;
   display: flex;
-  justify-content: left;
+  justify-content: ${NAV_LINKS_ALIGNMENT};
   order: 2;
+  margin-right: 20px;
 
   @media (max-width:${MOBILE}){
     display: none;
@@ -225,7 +235,7 @@ export const HamburgerInner = styled.span`
     height: 3px;
     width: 22px;
     display: flex;
-    background: black;
+    background: ${HAMBURGER_COLOR};
     margin: 2px 0;
     border-radius: 5px;
 `;
