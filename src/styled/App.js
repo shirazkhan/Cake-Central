@@ -2,9 +2,11 @@ import styled from 'styled-components';
 
 //CSS Variables
 const WEBSITE_WIDTH = "1080px";
-const NAV_HEIGHT = "50px";
+const MOBILE_NAV_HEIGHT = "50px";
+const DESKTOP_NAV_HEIGHT = "60px";
 const FOOTER_HEIGHT = "200px";
 const NAV_MENU_WIDTH = 250;
+const NAV_GAP = "15px";
 const NAV_LINKS_ALIGNMENT = "flex-end";
 const HAMBURGER_COLOR = "black";
 const NAV_COLOR = "rgba(255,255,255,0.80)";
@@ -21,8 +23,8 @@ export const MainGrid = styled.div`
     "PrimaryContent PrimaryContent SideBar"
     "Footer Footer Footer";
   text-align: center;
-  grid-template-rows: ${NAV_HEIGHT} auto ${FOOTER_HEIGHT};
-  grid-template-columns: 1fr 1fr 0.75fr;
+  grid-template-rows: ${MOBILE_NAV_HEIGHT} auto ${FOOTER_HEIGHT};
+  grid-template-columns: 1fr 1fr 0.01fr;
   margin: 0 auto;
   max-width: ${WEBSITE_WIDTH};
 
@@ -32,7 +34,7 @@ export const MainGrid = styled.div`
       "PrimaryContent PrimaryContent PrimaryContent"
       "SideBar SideBar SideBar"
       "Footer Footer Footer";
-    grid-template-rows: ${NAV_HEIGHT} auto auto ${FOOTER_HEIGHT};
+    grid-template-rows: ${MOBILE_NAV_HEIGHT} auto auto ${FOOTER_HEIGHT};
   }
 
 `;
@@ -43,7 +45,7 @@ export const Header = styled.div`
     background-size: 600% 600%;
     animation: Fader 25s ease infinite;
   color: ${NAV_FONT_COLOR};
-  height: ${NAV_HEIGHT};
+  height: ${DESKTOP_NAV_HEIGHT};
   width: 100%;
   position: fixed;
   left:0;
@@ -54,6 +56,10 @@ export const Header = styled.div`
     0%{background-position:2% 0%}
     50%{background-position:99% 100%}
     100%{background-position:2% 0%}
+  }
+
+  @media (max-width:${MOBILE}){
+    height: ${MOBILE_NAV_HEIGHT};
   }
   
 `;
@@ -77,7 +83,7 @@ export const NavButton = styled.div`
   display: none;
   width: 300px;
   text-align: left;
-  margin-left: 15px;
+  margin-left: ${NAV_GAP};
 
   @media (max-width:${MOBILE}){
     display: flex;
@@ -89,7 +95,7 @@ export const NavButton = styled.div`
 export const Brand = styled.div`
   width: 300px;
   text-align: left;
-  margin-left: 15px;
+  margin-left: ${NAV_GAP};
   order: 1;
   
   @media (max-width:${MOBILE}){
@@ -104,7 +110,7 @@ export const NavLinks = styled.div`
   display: flex;
   justify-content: ${NAV_LINKS_ALIGNMENT};
   order: 2;
-  margin-right: 20px;
+  margin-right: ${NAV_GAP};
 
   @media (max-width:${MOBILE}){
     display: none;
@@ -118,7 +124,7 @@ export const NavLink = styled.a`
 
 export const NightButton = styled.div`
   text-align: right;
-  margin-right: 15px;
+  margin-right: ${NAV_GAP};
   order: 3;
 
   @media (max-width:${MOBILE}){
@@ -174,7 +180,7 @@ export const SwitchUI = styled.label`
 
 export const PrimaryContent = styled.div`
   grid-area: PrimaryContent;
-  background: #1aa;
+  border-left: 3px solid gray;
   min-height: 1000px;
   padding: 30px 15px;
 
@@ -182,7 +188,6 @@ export const PrimaryContent = styled.div`
 
 export const SideBar = styled.div`
   grid-area: SideBar;
-  background: #4fc;
   padding: 30px 15px;
 
 `;
@@ -205,7 +210,7 @@ export const NavSideMenu = styled.div`
   top: 0;
   z-index: 10;
   margin-left: -${(NAV_MENU_WIDTH + 15)}px;
-  margin-top: ${NAV_HEIGHT};
+  margin-top: ${MOBILE_NAV_HEIGHT};
 
 
   @media (max-width:${MOBILE}){
@@ -222,7 +227,7 @@ export const NavSideMenuShadow = styled.div`
   visibility: hidden;
   top: 0;
   right: 0;
-  margin-top: ${NAV_HEIGHT};
+  margin-top: ${MOBILE_NAV_HEIGHT};
   transition: 0s;
   z-index: -1;
   opacity: 0;
@@ -236,7 +241,7 @@ export const NavSideMenuShadow = styled.div`
 
 export const Hamburger = styled.span`
   width: 50px;
-  height: ${NAV_HEIGHT};
+  height: ${MOBILE_NAV_HEIGHT};
   position: absolute;
   display: flex;
   flex-direction: column;
