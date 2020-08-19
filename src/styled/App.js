@@ -3,11 +3,12 @@ import styled from 'styled-components';
 //CSS Variables
 const WEBSITE_WIDTH = "1080px";
 const NAV_HEIGHT = "50px";
+const FOOTER_HEIGHT = "200px";
 const NAV_MENU_WIDTH = 250;
 const NAV_LINKS_ALIGNMENT = "flex-end";
-const HAMBURGER_COLOR = "white";
-const NAV_COLOR = "rgba(0,0,0,0.20)";
-const NAV_FONT_COLOR = "";
+const HAMBURGER_COLOR = "black";
+const NAV_COLOR = "rgba(255,255,255,0.80)";
+const NAV_FONT_COLOR = "black";
 const CONTENT_FONT_COLOR = "";
 const MOBILE = "781px";
 const TABLET = "1050px";
@@ -20,10 +21,20 @@ export const MainGrid = styled.div`
     "PrimaryContent PrimaryContent SideBar"
     "Footer Footer Footer";
   text-align: center;
-  grid-template-rows: ${NAV_HEIGHT} auto 200px;
+  grid-template-rows: ${NAV_HEIGHT} auto ${FOOTER_HEIGHT};
   grid-template-columns: 1fr 1fr 1fr;
   margin: 0 auto;
   max-width: ${WEBSITE_WIDTH};
+
+  @media (max-width:${MOBILE}){
+    grid-template-areas:
+      "Header Header Header"
+      "PrimaryContent PrimaryContent PrimaryContent"
+      "SideBar SideBar SideBar"
+      "Footer Footer Footer";
+    grid-template-rows: ${NAV_HEIGHT} auto auto ${FOOTER_HEIGHT};
+  }
+
 `;
 
 export const Header = styled.div`
@@ -31,7 +42,7 @@ export const Header = styled.div`
   background: linear-gradient(270deg, ${NAV_COLOR}, rgba(50,50,50,0.5), ${NAV_COLOR});
     background-size: 600% 600%;
     animation: Fader 25s ease infinite;
-  color: white;
+  color: ${NAV_FONT_COLOR};
   height: ${NAV_HEIGHT};
   width: 100%;
   position: fixed;
@@ -43,7 +54,8 @@ export const Header = styled.div`
     0%{background-position:2% 0%}
     50%{background-position:99% 100%}
     100%{background-position:2% 0%}
-}
+  }
+  
 `;
 
 export const NavBar = styled.div`
@@ -164,19 +176,21 @@ export const PrimaryContent = styled.div`
   grid-area: PrimaryContent;
   background: #1aa;
   min-height: 1000px;
+  padding: 30px 15px;
 
 `;
 
 export const SideBar = styled.div`
   grid-area: SideBar;
   background: #4fc;
+  padding: 30px 15px;
 
 `;
 
 export const Footer = styled.div`
   grid-area: Footer;
   background: #f3a;
-
+  padding: 30px 15px;
 `;
 
 export const NavSideMenu = styled.div`
