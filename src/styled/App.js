@@ -51,6 +51,7 @@ export const Header = styled.div`
   left:0;
   z-index: 2;
   backdrop-filter: blur(8px);
+  box-shadow: 0px 5px 18px -3px rgba(0,0,0,0.75);
     
   @keyframes Fader {
     0%{background-position:2% 0%}
@@ -71,7 +72,6 @@ export const NavBar = styled.div`
   width: ${WEBSITE_WIDTH};
   height: 100%;
   margin: 0 auto;
-  box-shadow: 0px 5px 18px -3px rgba(0,0,0,0.75);
 
   @media (max-width:${WEBSITE_WIDTH}){
     width: 100%;
