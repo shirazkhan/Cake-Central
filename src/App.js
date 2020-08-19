@@ -4,6 +4,7 @@ import { MainGrid, Header, NavBar, Brand, NavButton, NavUILabel, NavInputUI,
          Hamburger, NavSideMenu, NavSideMenuShadow, NavLinks, NavLink,
          NightButton, SwitchUI, SwitchInputUI, SwitchSliderUI, PrimaryContent,
          SideBar, Footer, HamburgerInner } from './styled/App';
+import TestPrimaryContent from './TestPrimaryContent';
 
 function App() {
   return (
