@@ -38,13 +38,8 @@ function App() {
         </Header>
         <PrimaryContent>
           <TestPrimaryContent />
+          <TestPrimaryContent />
         </PrimaryContent>
-        <SideBar>
-          Lorem ipsum, dolor sit amet consectetur adipisicing elit. 
-          Inventore mollitia neque eaque error illum, beatae, porro velit ullam harum saepe provident aliquam?
-          Quod rerum deserunt nemo excepturi saepe dignissimos cupiditate qui hic, iste aspernatur explicabo?
-          Illum odit debitis distinctio accusamus.
-        </SideBar>
         <Footer>
           Lorem ipsum dolor, sit amet consectetur adipisicing elit. 
           Illo at, similique delectus blanditiis labore nesciunt est officiis atque, 

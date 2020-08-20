@@ -8,10 +8,14 @@ const FOOTER_HEIGHT = "200px";
 const NAV_MENU_WIDTH = "250px";
 const NAV_GAP = "50px";
 const NAV_LINKS_ALIGNMENT = "flex-end";
+const CONTENT_H_MARGIN = "50px";
+const CONTENT_V_MARGIN = "50px";
 const HAMBURGER_COLOR = "black";
 const NAV_COLOR = "rgba(255,255,255,0.80)";
 const NAV_FONT_COLOR = "black";
 const CONTENT_FONT_COLOR = "black";
+const FOOTER_FONT_COLOR = "white";
+const FOOTER_COLOR = "black";
 const MOBILE = "781px";
 //const TABLET = "1050px";
 
@@ -20,22 +24,13 @@ export const MainGrid = styled.div`
   display: grid;
   grid-template-areas:
     "Header Header Header"
-    "PrimaryContent PrimaryContent SideBar"
+    "PrimaryContent PrimaryContent PrimaryContent"
     "Footer Footer Footer";
   text-align: center;
   grid-template-rows: ${MOBILE_NAV_HEIGHT} auto ${FOOTER_HEIGHT};
-  grid-template-columns: 1fr 1fr 0.75fr;
+  grid-template-columns: 1fr 1fr 1fr;
   margin: 0 auto;
   max-width: ${WEBSITE_WIDTH};
-
-  @media (max-width:${MOBILE}){
-    grid-template-areas:
-      "Header Header Header"
-      "PrimaryContent PrimaryContent PrimaryContent"
-      "SideBar SideBar SideBar"
-      "Footer Footer Footer";
-    grid-template-rows: ${MOBILE_NAV_HEIGHT} auto auto ${FOOTER_HEIGHT};
-  }
 
 `;
 
@@ -184,7 +179,7 @@ export const SwitchUI = styled.label`
 export const PrimaryContent = styled.div`
   grid-area: PrimaryContent;
   min-height: 1000px;
-  padding: 30px 15px;
+  margin: ${CONTENT_V_MARGIN} ${CONTENT_H_MARGIN};
   color: ${CONTENT_FONT_COLOR};
 
 `;
@@ -197,8 +192,9 @@ export const SideBar = styled.div`
 
 export const Footer = styled.div`
   grid-area: Footer;
-  background: #f3a;
+  background: ${FOOTER_COLOR};
   padding: 30px 15px;
+  color: ${FOOTER_FONT_COLOR};
 `;
 
 export const NavSideMenu = styled.div`
