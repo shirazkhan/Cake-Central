@@ -8,7 +8,7 @@ const FOOTER_HEIGHT = "200px";
 const NAV_MENU_WIDTH = "250px";
 const NAV_GAP = "50px";
 const NAV_LINKS_ALIGNMENT = "flex-end";
-const CONTENT_H_MARGIN = "50px";
+const CONTENT_H_MARGIN = "25px";
 const CONTENT_V_MARGIN = "50px";
 const HAMBURGER_COLOR = "black";
 const NAV_COLOR = "rgba(255,255,255,0.80)";
@@ -24,7 +24,7 @@ export const MainGrid = styled.div`
   display: grid;
   grid-template-areas:
     "Header Header Header"
-    "PrimaryContent PrimaryContent PrimaryContent"
+    "Content Content Content"
     "Footer Footer Footer";
   text-align: center;
   grid-template-rows: ${MOBILE_NAV_HEIGHT} auto ${FOOTER_HEIGHT};
@@ -176,11 +176,30 @@ export const SwitchUI = styled.label`
 /////////////////////
 
 
-export const PrimaryContent = styled.div`
-  grid-area: PrimaryContent;
+export const Content = styled.div`
+  grid-area: Content;
+  display: flex;
+  flex-direction: row;
   min-height: 1000px;
   margin: ${CONTENT_V_MARGIN} ${CONTENT_H_MARGIN};
   color: ${CONTENT_FONT_COLOR};
+
+  @media (max-width:${MOBILE}){
+    flex-direction: column;
+  }
+
+`;
+
+export const Primary = styled.div`
+  width: 100%;
+`;
+
+export const Secondary = styled.div`
+  width: 25%;
+
+  @media (max-width:${MOBILE}){
+    width: 100%;
+  }
 
 `;
 

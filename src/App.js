@@ -1,8 +1,8 @@
 import React from 'react';
 import { MainGrid, Header, NavBar, Brand, NavButton, NavUILabel, NavInputUI,
          Hamburger, NavSideMenu, NavSideMenuShadow, NavLinks, NavLink,
-         NightButton, SwitchUI, SwitchInputUI, SwitchSliderUI, PrimaryContent,
-         SideBar, Footer, HamburgerInner } from './styled/App';
+         NightButton, SwitchUI, SwitchInputUI, SwitchSliderUI, Content,
+         Primary, Secondary, Footer, HamburgerInner } from './styled/App';
 import TestPrimaryContent from './TestPrimaryContent';
 
 function App() {
@@ -36,10 +36,14 @@ function App() {
             </NightButton>
           </NavBar>
         </Header>
-        <PrimaryContent>
-          <TestPrimaryContent />
-          <TestPrimaryContent />
-        </PrimaryContent>
+        <Content>
+          <Primary>
+            <TestPrimaryContent />
+          </Primary>
+          <Secondary>
+            <TestPrimaryContent />
+          </Secondary>
+        </Content>
         <Footer>
           Lorem ipsum dolor, sit amet consectetur adipisicing elit. 
           Illo at, similique delectus blanditiis labore nesciunt est officiis atque, 
