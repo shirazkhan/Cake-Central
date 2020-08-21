@@ -9,7 +9,7 @@ const NAV_MENU_WIDTH = "250px";
 const NAV_GAP = "50px";
 const NAV_LINKS_ALIGNMENT = "flex-end";
 const CONTENT_H_MARGIN = "25px";
-const CONTENT_V_MARGIN = "50px";
+const CONTENT_V_MARGIN = "25px";
 const HAMBURGER_COLOR = "black";
 const NAV_COLOR = "rgba(255,255,255,0.80)";
 const NAV_FONT_COLOR = "black";
@@ -150,8 +150,8 @@ export const SwitchSliderUI = styled.span`
   &:before {
     content: "";
     position: absolute;
-    width: 20px;
-    height: 20px;
+    width: 13px;
+    height: 13px;
     left: 1px;
     bottom: 1px;
     background-color: #fff;
@@ -162,15 +162,15 @@ export const SwitchSliderUI = styled.span`
 export const SwitchUI = styled.label`
   position: relative;
   display: inline-block;
-  width: 42px;
-  height: 22px;
+  width: 30px;
+  height: 15px;
   margin-bottom: 0;
   vertical-align: middle;
   ${SwitchInputUI}:checked + ${SwitchSliderUI} {
     background-color: black;
   }
   ${SwitchInputUI}:checked + ${SwitchSliderUI}:before {
-    transform: translateX(20px);
+    transform: translateX(15px);
   }
 `;
 /////////////////////
@@ -200,12 +200,6 @@ export const Secondary = styled.div`
   @media (max-width:${MOBILE}){
     width: 100%;
   }
-
-`;
-
-export const SideBar = styled.div`
-  grid-area: SideBar;
-  padding: 30px 15px;
 
 `;
 
@@ -265,16 +259,27 @@ export const Hamburger = styled.span`
   flex-direction: column;
   justify-content: center;
   align-items: left;
-  top: 0;
+  top: -10px;
 `;
 
-export const HamburgerInner = styled.span`
+export const HamburgerInner1 = styled.span`
     height: 3px;
     width: 22px;
     display: flex;
     background: ${HAMBURGER_COLOR};
     margin: 2px 0;
     border-radius: 5px;
+    transition: 0.3s ease;
+`;
+
+export const HamburgerInner2 = styled.span`
+    height: 3px;
+    width: 22px;
+    display: flex;
+    background: ${HAMBURGER_COLOR};
+    margin: 2px 0;
+    border-radius: 5px;
+    transition: 0.3s ease;
 `;
 
 // Nav Button Switch
@@ -296,6 +301,14 @@ export const NavUILabel = styled.label`
     opacity: 1;
     visibility: visible;
     transition: visibility 0s, opacity 0.8s;
+  }
+  ${NavInputUI}:checked ~ ${HamburgerInner1} {
+    transform: scale(0.9) rotate(-45deg) translate3d(0px, 5px, 0px);
+    margin-left: -5px;
+  }
+  ${NavInputUI}:checked ~ ${HamburgerInner2} {
+    transform: scale(0.9) rotate(45deg) translate3d(0px, -5px, 0px);
+    margin-left: -5px;
   }
 `;
 

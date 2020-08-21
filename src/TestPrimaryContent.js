@@ -1,5 +1,4 @@
 import React from 'react'
-import styled from 'styled-components';
 import {Content, Primary, Secondary} from './styled/App';
 
 export default function TestPrimaryContent() {

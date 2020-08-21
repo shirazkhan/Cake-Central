@@ -1,8 +1,8 @@
 import React from 'react';
 import { MainGrid, Header, NavBar, Brand, NavButton, NavUILabel, NavInputUI,
          Hamburger, NavSideMenu, NavSideMenuShadow, NavLinks, NavLink,
-         NightButton, SwitchUI, SwitchInputUI, SwitchSliderUI, Content,
-         Primary, Secondary, Footer, HamburgerInner } from './styled/App';
+         NightButton, SwitchUI, SwitchInputUI, SwitchSliderUI,
+         Footer, HamburgerInner1, HamburgerInner2 } from './styled/App';
 import TestPrimaryContent from './TestPrimaryContent';
 
 function App() {
@@ -14,12 +14,12 @@ function App() {
             <Brand><h2>Shiraz Khan</h2></Brand>
             <NavButton>
               <NavUILabel>
-                <NavInputUI />
                 <Hamburger>
-                  <HamburgerInner /> <HamburgerInner />
-                </Hamburger>
+                <NavInputUI />
                 <NavSideMenu></NavSideMenu>
                 <NavSideMenuShadow />
+                  <HamburgerInner1 /> <HamburgerInner2 />
+                </Hamburger>
               </NavUILabel>
             </NavButton>
             <NavLinks>
