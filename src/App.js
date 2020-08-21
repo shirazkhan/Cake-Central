@@ -2,7 +2,7 @@ import React from 'react';
 import { MainGrid, Header, NavBar, Brand, NavButton, NavUILabel, NavInputUI,
          Hamburger, NavSideMenu, NavSideMenuShadow, NavLinks, NavLink,
          NightButton, SwitchUI, SwitchInputUI, SwitchSliderUI,
-         Footer, HamburgerInner1, HamburgerInner2 } from './styled/App';
+         Footer, HamburgerInner1, HamburgerInner2, NavMobHMenu, NavFilter } from './styled/App';
 import TestPrimaryContent from './TestPrimaryContent';
 
 function App() {
@@ -15,10 +15,13 @@ function App() {
             <NavButton>
               <NavUILabel>
                 <Hamburger>
-                <NavInputUI />
-                <NavSideMenu></NavSideMenu>
-                <NavSideMenuShadow />
-                  <HamburgerInner1 /> <HamburgerInner2 />
+                  <NavInputUI />
+                  <NavSideMenu></NavSideMenu>
+                  <NavSideMenuShadow />
+                    <HamburgerInner1 /> <HamburgerInner2 />
+                  <NavMobHMenu>
+
+                  </NavMobHMenu>
                 </Hamburger>
               </NavUILabel>
             </NavButton>

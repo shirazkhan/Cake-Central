@@ -210,6 +210,15 @@ export const Footer = styled.div`
   color: ${FOOTER_FONT_COLOR};
 `;
 
+export const NavFilter = styled.div`
+  display: flex;
+  width: 100vw;
+  height: ${MOBILE_NAV_HEIGHT};
+  background: pink;
+  top: 0;
+  left: 0;
+`;
+
 export const NavSideMenu = styled.div`
   display: none;
   height: 100%;
@@ -249,6 +258,23 @@ export const NavSideMenuShadow = styled.div`
   @media (max-width:${MOBILE}){
     display: flex;
   }
+`;
+
+export const NavMobHMenu = styled.div`
+    position: fixed;
+    z-index: 1;
+    visibility: hidden;
+    opacity: 0;
+    display: flex;
+    width: 100vw;
+    height: 35px;
+    top: calc(${MOBILE_NAV_HEIGHT} - 35px);
+    left: 0;
+    background: linear-gradient(270deg, rgba(0,2,2,0.75), rgba(0,0,0,0.9), rgba(2,2,1,0.75));
+    background-size: 600% 600%;
+    animation: Fader 25s ease infinite;
+    box-shadow: 0px -15px 18px -3px rgba(0,0,0,0.75);
+    transition: 0.3s ease;
 `;
 
 export const Hamburger = styled.span`
@@ -309,6 +335,12 @@ export const NavUILabel = styled.label`
   ${NavInputUI}:checked ~ ${HamburgerInner2} {
     transform: scale(0.9) rotate(45deg) translate3d(0px, -5px, 0px);
     margin-left: -5px;
+  }
+  ${NavInputUI}:checked ~ ${NavMobHMenu} {
+    transform: translateY(35px);
+    visibility: visible;
+    z-index: 100;
+    opacity: 1;
   }
 `;
 
