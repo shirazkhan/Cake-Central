@@ -195,7 +195,7 @@ export const Primary = styled.div`
 `;
 
 export const Secondary = styled.div`
-  width: 25%;
+  width: 30%;
 
   @media (max-width:${MOBILE}){
     width: 100%;

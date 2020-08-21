@@ -36,14 +36,7 @@ function App() {
             </NightButton>
           </NavBar>
         </Header>
-        <Content>
-          <Primary>
-            <TestPrimaryContent />
-          </Primary>
-          <Secondary>
-            <TestPrimaryContent />
-          </Secondary>
-        </Content>
+        <TestPrimaryContent />
         <Footer>
           Lorem ipsum dolor, sit amet consectetur adipisicing elit. 
           Illo at, similique delectus blanditiis labore nesciunt est officiis atque, 
