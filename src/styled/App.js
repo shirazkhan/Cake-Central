@@ -81,7 +81,7 @@ export const NavFilter = styled.div`
   position: fixed;
   height: ${MOBILE_NAV_HEIGHT};
   background: ${NAVFILTER_COLOR};
-  top: 0;
+  top: 0px;
   left: 0;
   z-index: 3;
 `;
@@ -129,6 +129,8 @@ export const NavLinks = styled.div`
 
 export const NavLink = styled.a`
   padding: 0 10px 0 10px;
+  color: white;
+  text-decoration: none;
 `;
 
 export const NightButton = styled.div`
@@ -267,6 +269,8 @@ export const NavMobHMenu = styled.div`
     position: fixed;
     z-index: 0;
     display: flex;
+    align-items: center;
+    justify-content: center;
     width: 100vw;
     height: 35px;
     top: 30px;
@@ -278,6 +282,17 @@ export const NavMobHMenu = styled.div`
     transform: scaleY(0.0001);
     color: white;
 `;
+
+export const NavMobHOverflow = styled.div`
+    width: 80%;
+    text-align: center;
+    overflow: scroll;
+    ::-webkit-scrollbar {
+    display: none;
+}
+`;
+
+
 
 export const Hamburger = styled.span`
   width: 50px;
