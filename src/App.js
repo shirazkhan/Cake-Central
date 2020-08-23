@@ -9,6 +9,7 @@ function App() {
   return (
     <>
       <MainGrid>
+        <NavFilter />
         <Header>
           <NavBar>
             <Brand><h2>Shiraz Khan</h2></Brand>
@@ -16,11 +17,9 @@ function App() {
               <NavUILabel>
                 <Hamburger>
                   <NavInputUI />
-                  <NavSideMenu></NavSideMenu>
-                  <NavSideMenuShadow />
-                    <HamburgerInner1 /> <HamburgerInner2 />
+                  <HamburgerInner1 /> <HamburgerInner2 />
                   <NavMobHMenu>
-
+                  Blah Blah
                   </NavMobHMenu>
                 </Hamburger>
               </NavUILabel>
@@ -39,6 +38,7 @@ function App() {
             </NightButton>
           </NavBar>
         </Header>
+        
         <TestPrimaryContent />
         <Footer>
           Lorem ipsum dolor, sit amet consectetur adipisicing elit. 

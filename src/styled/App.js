@@ -10,14 +10,14 @@ const NAV_GAP = "50px";
 const NAV_LINKS_ALIGNMENT = "flex-end";
 const CONTENT_H_MARGIN = "25px";
 const CONTENT_V_MARGIN = "25px";
-const HAMBURGER_COLOR = "black";
-const NAV_COLOR = "rgba(255,255,255,0.80)";
-const NAV_FONT_COLOR = "black";
+const HAMBURGER_COLOR = "white";
+const NAV_FONT_COLOR = "white";
 const CONTENT_FONT_COLOR = "black";
 const FOOTER_FONT_COLOR = "white";
 const FOOTER_COLOR = "black";
 const MOBILE = "781px";
 //const TABLET = "1050px";
+const NAVFILTER_COLOR = "darkviolet";
 
 
 export const MainGrid = styled.div`
@@ -36,15 +36,15 @@ export const MainGrid = styled.div`
 
 export const Header = styled.div`
   grid-area: Header;
-  background: linear-gradient(270deg, ${NAV_COLOR}, rgba(50,50,50,0.5), ${NAV_COLOR});
+  background: linear-gradient(270deg, rgba(10,10,10,0.8), rgba(10,10,10,0.5), rgba(10,10,10,0.8));
     background-size: 600% 600%;
     animation: Fader 25s ease infinite;
   color: ${NAV_FONT_COLOR};
   height: ${DESKTOP_NAV_HEIGHT};
   width: 100%;
   position: fixed;
-  left:0;
-  z-index: 2;
+  left: 0;
+  z-index: 6;
   backdrop-filter: blur(8px);
   box-shadow: 0px 5px 18px -3px rgba(0,0,0,0.75);
     
@@ -67,11 +67,23 @@ export const NavBar = styled.div`
   width: ${WEBSITE_WIDTH};
   height: 100%;
   margin: 0 auto;
+  position: absolute;
+  z-index: 6;
 
   @media (max-width:${WEBSITE_WIDTH}){
     width: 100%;
   }
 
+`;
+
+export const NavFilter = styled.div`
+  width: 100vw;
+  position: fixed;
+  height: ${MOBILE_NAV_HEIGHT};
+  background: ${NAVFILTER_COLOR};
+  top: 0;
+  left: 0;
+  z-index: 3;
 `;
 
 export const NavButton = styled.div`
@@ -210,15 +222,6 @@ export const Footer = styled.div`
   color: ${FOOTER_FONT_COLOR};
 `;
 
-export const NavFilter = styled.div`
-  display: flex;
-  width: 100vw;
-  height: ${MOBILE_NAV_HEIGHT};
-  background: pink;
-  top: 0;
-  left: 0;
-`;
-
 export const NavSideMenu = styled.div`
   display: none;
   height: 100%;
@@ -262,19 +265,18 @@ export const NavSideMenuShadow = styled.div`
 
 export const NavMobHMenu = styled.div`
     position: fixed;
-    z-index: 1;
-    visibility: hidden;
-    opacity: 0;
+    z-index: 0;
     display: flex;
     width: 100vw;
     height: 35px;
-    top: calc(${MOBILE_NAV_HEIGHT} - 35px);
+    top: 30px;
     left: 0;
     background: linear-gradient(270deg, rgba(0,2,2,0.75), rgba(0,0,0,0.9), rgba(2,2,1,0.75));
     background-size: 600% 600%;
     animation: Fader 25s ease infinite;
-    box-shadow: 0px -15px 18px -3px rgba(0,0,0,0.75);
     transition: 0.3s ease;
+    transform: scaleY(0.0001);
+    color: white;
 `;
 
 export const Hamburger = styled.span`
@@ -337,10 +339,7 @@ export const NavUILabel = styled.label`
     margin-left: -5px;
   }
   ${NavInputUI}:checked ~ ${NavMobHMenu} {
-    transform: translateY(35px);
-    visibility: visible;
-    z-index: 100;
-    opacity: 1;
+    transform: translateY(17.5px) scaleY(1);
   }
 `;
 
