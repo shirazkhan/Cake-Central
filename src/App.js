@@ -1,7 +1,7 @@
 import React from 'react';
 import { MainGrid, Header, NavBar, Brand, NavButton, NavUILabel, NavInputUI,
          Hamburger, NavSideMenu, NavSideMenuShadow, NavLinks, NavLink,
-         NightButton, SwitchUI, SwitchInputUI, SwitchSliderUI,
+         NightButton, SwitchUI, SwitchInputUI, SwitchSliderUI, NavMobHFade, NavMobHSpacer,
          Footer, HamburgerInner1, HamburgerInner2, NavMobHMenu, NavMobHOverflow, NavFilter } from './styled/App';
 import TestPrimaryContent from './TestPrimaryContent';
 
@@ -20,6 +20,7 @@ function App() {
                   <HamburgerInner1 /> <HamburgerInner2 />
                   <NavMobHMenu>
                     <NavMobHOverflow>
+                      <NavMobHSpacer></NavMobHSpacer>
                       <NavLink href="/">Articles</NavLink>
                       <NavLink href="/">Tutorials</NavLink>
                       <NavLink href="/">Portfolio</NavLink>
@@ -28,7 +29,9 @@ function App() {
                       <NavLink href="/">Aohfohaif</NavLink>
                       <NavLink href="/">Portfakjfolio</NavLink>
                       <NavLink href="/">DDContact</NavLink>
+                      <NavMobHSpacer></NavMobHSpacer>
                     </NavMobHOverflow>
+                    <NavMobHFade />
                   </NavMobHMenu>
                 </Hamburger>
               </NavUILabel>

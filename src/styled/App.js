@@ -271,28 +271,46 @@ export const NavMobHMenu = styled.div`
     display: flex;
     align-items: center;
     justify-content: center;
-    width: 100vw;
-    height: 35px;
+    width: 100%;
+    height: 40px;
     top: 30px;
     left: 0;
-    background: linear-gradient(270deg, rgba(0,2,2,0.75), rgba(0,0,0,0.9), rgba(2,2,1,0.75));
-    background-size: 600% 600%;
-    animation: Fader 25s ease infinite;
+    background: rgba(0,0,0,0.8);
+    backdrop-filter: blur(8px);
     transition: 0.3s ease;
     transform: scaleY(0.0001);
     color: white;
+    box-shadow: 0px 5px 18px -3px rgba(0,0,0,0.75);
 `;
 
 export const NavMobHOverflow = styled.div`
-    width: 80%;
+    width: 100%;
+    height: 100%;
     text-align: center;
     overflow: scroll;
+    position: absolute;
+    display: flex;
+    justify-content: left;
+    align-items: center;
     ::-webkit-scrollbar {
     display: none;
 }
 `;
 
+export const NavMobHFade = styled.div`
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    right: 0;
+    z-index: 10;
+    background: radial-gradient(circle, rgba(0,0,0,0) 75%, rgba(0,0,0,0.25) 80%, rgba(0,0,0,1) 95%, rgba(0,0,0,1) 100%);
+    pointer-events: none;
+`;
 
+export const NavMobHSpacer = styled.div`
+    height: 100%;
+    padding-right: 30px;
+`;
 
 export const Hamburger = styled.span`
   width: 50px;
