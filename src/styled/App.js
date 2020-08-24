@@ -276,7 +276,6 @@ export const NavMobHMenu = styled.div`
     top: 30px;
     left: 0;
     background: rgba(0,0,0,0.8);
-    backdrop-filter: blur(8px);
     transition: 0.3s ease;
     transform: scaleY(0.0001);
     color: white;
@@ -286,6 +285,7 @@ export const NavMobHMenu = styled.div`
 export const NavMobHOverflow = styled.div`
     width: 100%;
     height: 100%;
+    backdrop-filter: blur(2px);
     text-align: center;
     overflow: scroll;
     position: absolute;
