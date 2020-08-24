@@ -9,7 +9,7 @@ const NAV_MENU_WIDTH = "250px";
 const NAV_GAP = "50px";
 const NAV_LINKS_ALIGNMENT = "flex-end";
 const CONTENT_H_MARGIN = "25px";
-const CONTENT_V_MARGIN = "25px";
+const CONTENT_V_MARGIN = "0px";
 const HAMBURGER_COLOR = "white";
 const NAV_FONT_COLOR = "white";
 const CONTENT_FONT_COLOR = "black";
@@ -204,6 +204,20 @@ export const Content = styled.div`
 
 `;
 
+export const HeroContent = styled.div`
+  grid-area: Content;
+  display: flex;
+  flex-direction: row;
+  min-height: 700px;
+  margin: ${CONTENT_V_MARGIN} ${CONTENT_H_MARGIN};
+  color: ${CONTENT_FONT_COLOR};
+
+  @media (max-width:${MOBILE}){
+    flex-direction: column;
+  }
+
+`;
+
 export const Primary = styled.div`
   width: 100%;
 `;
@@ -285,7 +299,7 @@ export const NavMobHMenu = styled.div`
 export const NavMobHOverflow = styled.div`
     width: 100%;
     height: 100%;
-    backdrop-filter: blur(2px);
+    backdrop-filter: blur(3px);
     text-align: center;
     overflow: scroll;
     position: absolute;
