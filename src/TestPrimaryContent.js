@@ -1,5 +1,5 @@
 import React, {useState,useEffect} from 'react'
-import {HeroContent, Primary, Secondary} from './styled/App';
+import {Content, Primary, Secondary} from './styled/App';
 import {PageHeading} from './styled/Content';
 import axios from 'axios';
 import parse from 'html-react-parser';
@@ -26,16 +26,14 @@ export default function TestPrimaryContent() {
     }, []);
     
     return (
-        <HeroContent>
+        <Content>
           <Primary>
-            <PageHeading>{title}</PageHeading>
-            <p>Our comprehensive guide to CSS flexbox layout. This complete guide explains everything about flexbox, focusing on all the different possible properties for the parent element (the flex container) and the child elements (the flex items). It also includes history, demos, patterns, and a browser support chart.</p>
-            <p>{data.id}</p>
-            <p>{content}</p>
+            <PageHeading>{title === null ? "" : title}</PageHeading>
+                {content === null ? "" : parse(content)}
           </Primary>
-          <Secondary>
+          {/* <Secondary>
             <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Officiis, tempora animi cumque consequatur recusandae doloribus quibusdam iure, incidunt architecto quasi corporis, perferendis ea nemo aliquid autem excepturi ipsa vitae eius deserunt asperiores dicta sed dolore. Dolore architecto nemo id mollitia, temporibus fugiat, adipisci officia debitis ipsum iusto neque? Dolores, laborum?</p>
-          </Secondary>
-        </HeroContent>
+          </Secondary> */}
+        </Content>
     )
 }
