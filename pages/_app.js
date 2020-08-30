@@ -43,8 +43,8 @@ export default function MyApp({ Component, pageProps }) {
                             <NavMobHSpacer></NavMobHSpacer>
                             <Link href="/"><NavLink>Home</NavLink></Link>
                             <Link href="/test"><NavLink>Test</NavLink></Link>
-                            <Link href="/article"><NavLink>Articles</NavLink></Link>
-                            <Link href="/"><NavLink>Contact</NavLink></Link>
+                            <Link href="/articles"><NavLink>Articles</NavLink></Link>
+                            <Link href="/article"><NavLink>Article</NavLink></Link>
                             <NavLink href="/">Blahfafaaff</NavLink>
                             <NavLink href="/">Aohfohaif</NavLink>
                             <NavLink href="/">Portfakjfolio</NavLink>
@@ -59,8 +59,8 @@ export default function MyApp({ Component, pageProps }) {
                 <NavLinks>
                     <Link href="/"><NavLink>Home</NavLink></Link>
                     <Link href="/test"><NavLink>Test</NavLink></Link>
-                    <Link href="/article"><NavLink>Articles</NavLink></Link>
-                    <Link href="/"><NavLink>Contact</NavLink></Link>
+                    <Link href="/articles"><NavLink>Articles</NavLink></Link>
+                    <Link href="/article"><NavLink>Article</NavLink></Link>
                 </NavLinks>
                 <NightButton>
                     <SwitchUI>
