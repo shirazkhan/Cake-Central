@@ -1,12 +1,14 @@
-import React from 'react'
+import React from 'react';
 import Link from 'next/link';
+import {Content, Primary} from '../src/styled/App';
 
-export default function test() {
-
+export default function Index() {
     return (
-        <div>
-            I AM THE TEST PAGE
-            <Link href="/"><a>Go to index</a></Link>
-        </div>
+        <Content>
+            <Primary>
+            <p>I am Test Page</p>
+            <Link href="/"><a>Go to homepage</a></Link>
+            </Primary>
+        </Content>
     )
 }

@@ -1,4 +1,6 @@
 import styled from 'styled-components';
+import Link from 'next/link';
+import React from 'react';
 
 //CSS Variables
 const WEBSITE_WIDTH = "1080px";
@@ -131,7 +133,17 @@ export const NavLink = styled.a`
   padding: 0 10px 0 10px;
   color: white;
   text-decoration: none;
+  cursor: pointer;
 `;
+
+export function Linkk({ href, name }) {
+    // Must add passHref to Link
+    return (
+      <Link href={href} passHref>
+        <NavLink>poop</NavLink>
+      </Link>
+    )
+  }
 
 export const NightButton = styled.div`
   text-align: right;
