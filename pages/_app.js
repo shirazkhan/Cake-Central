@@ -32,7 +32,7 @@ export default function MyApp({ Component, pageProps }) {
             <NavFilter />
             <Header>
                 <NavBar>
-                <Brand><h2>Shiraz Khan</h2></Brand>
+                <Link href="/"><Brand><h2>Shiraz Khan</h2></Brand></Link>
                 <NavButton>
                     <NavUILabel>
                     <Hamburger>

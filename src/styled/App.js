@@ -111,6 +111,7 @@ export const Brand = styled.div`
   text-align: left;
   margin-left: ${NAV_GAP};
   order: 1;
+  cursor: pointer;
   
   @media (max-width:${MOBILE}){
     order: 2;
