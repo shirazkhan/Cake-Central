@@ -14,7 +14,7 @@ export default function Articles({data}) {
             <ul>
                 {data.map(post => {
                     return <li key = {post.id} >
-                                <Link href = {`/article/${post.slug}`} as = {`article/${post.slug}`} ><a>{post.title.rendered}</a></Link>
+                                <Link href = {`/article/[slug]`} as = {`article/${post.slug}`} ><a>{post.title.rendered}</a></Link>
                             </li>
                 })}
             </ul>
