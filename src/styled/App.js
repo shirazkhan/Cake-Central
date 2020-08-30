@@ -238,9 +238,13 @@ export const Primary = styled.div`
 
 export const Secondary = styled.div`
   width: 30%;
+  height: 100%;
+  position: sticky;
+  top: ${DESKTOP_NAV_HEIGHT};
 
   @media (max-width:${MOBILE}){
     width: 100%;
+    top: ${MOBILE_NAV_HEIGHT};
   }
 
 `;
