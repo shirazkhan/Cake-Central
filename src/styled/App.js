@@ -28,7 +28,6 @@ export const MainGrid = styled.div`
     "Header Header Header"
     "Content Content Content"
     "Footer Footer Footer";
-  text-align: center;
   grid-template-rows: ${MOBILE_NAV_HEIGHT} auto ${FOOTER_HEIGHT};
   grid-template-columns: 1fr 1fr 1fr;
   margin: 0 auto;
@@ -69,7 +68,7 @@ export const NavBar = styled.div`
   width: ${WEBSITE_WIDTH};
   height: 100%;
   margin: 0 auto;
-  position: absolute;
+  position: relative;
   z-index: 6;
 
   @media (max-width:${WEBSITE_WIDTH}){
@@ -228,12 +227,17 @@ export const HeroContent = styled.div`
 
 export const Primary = styled.div`
   width: 100%;
+  padding: 0 25px 0 25px;
     img{
         max-width: 100%;
         display: block;
         object-fit: contain;
         margin: 0 auto;
     }
+
+  @media (max-width:${MOBILE}){
+    padding: 0;
+  }
 `;
 
 export const Secondary = styled.div`
@@ -252,7 +256,7 @@ export const Secondary = styled.div`
 export const Footer = styled.div`
   grid-area: Footer;
   background: ${FOOTER_COLOR};
-  padding: 30px 15px;
+  padding: 30px 25px;
   color: ${FOOTER_FONT_COLOR};
 `;
 
