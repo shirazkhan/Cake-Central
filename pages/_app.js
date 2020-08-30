@@ -6,14 +6,14 @@ import { MainGrid, Header, NavBar, Brand, NavButton, NavUILabel, NavInputUI,
          Footer, Content, HamburgerInner1, HamburgerInner2, NavMobHMenu, NavMobHOverflow, NavFilter } from '../src/styled/App';
 import Link from 'next/link';
 
-function MyApp({ Component, pageProps }) {
+export default function MyApp({ Component, pageProps }) {
 
   // Reducer
 
   const initialState = {
     nightMode: false,
     postId: 0,
-    
+    navOpen: false
   };
 
   const reducer = (prevState, action) => {
@@ -85,5 +85,3 @@ function MyApp({ Component, pageProps }) {
         </MainGrid>
     </>
   }
-  
-  export default MyApp
