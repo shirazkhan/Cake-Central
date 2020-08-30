@@ -228,7 +228,6 @@ export const HeroContent = styled.div`
 
 export const Primary = styled.div`
   width: 100%;
-  text-align: left;
     img{
         max-width: 100%;
         display: block;

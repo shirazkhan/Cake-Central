@@ -51,10 +51,16 @@ export async function getStaticProps(context) {
 }
 
 export async function getStaticPaths() {
+
+  const res = await axios(
+    'https://www.bakedbyanintrovert.com/wp-json/wp/v2/posts/?_fields=id,slug,title&per_page=50',
+    );
+    const paths = res.data.map(post => (
+      { params: { slug: post.slug} }
+      )
+    );
   return {
-    paths: [
-      { params: { slug: "dr-pepper-cupcakes" } } // See the "paths" section below
-    ],
-    fallback: false // See the "fallback" section below
+    paths,
+    fallback: false
   };
 }
