@@ -81,11 +81,15 @@ export const NavBar = styled.div`
 export const NavFilter = styled.div`
   width: 100vw;
   position: fixed;
-  height: ${MOBILE_NAV_HEIGHT};
+  height: ${DESKTOP_NAV_HEIGHT};
   background: ${NAVFILTER_COLOR};
   top: 0px;
   left: 0;
   z-index: 3;
+
+  @media (max-width:${MOBILE}){
+    height: ${MOBILE_NAV_HEIGHT};
+  }
 `;
 
 export const NavButton = styled.div`
@@ -135,15 +139,6 @@ export const NavLink = styled.a`
   text-decoration: none;
   cursor: pointer;
 `;
-
-export function Linkk({ href, name }) {
-    // Must add passHref to Link
-    return (
-      <Link href={href} passHref>
-        <NavLink>poop</NavLink>
-      </Link>
-    )
-  }
 
 export const NightButton = styled.div`
   text-align: right;

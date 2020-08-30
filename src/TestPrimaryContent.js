@@ -26,7 +26,7 @@ export default function TestPrimaryContent() {
     }, []);
     
     return (
-        <Content>
+        <>
           <Primary>
             <PageHeading>{title === null ? "" : title}</PageHeading>
                 {content === null ? "" : parse(content)}
@@ -34,6 +34,6 @@ export default function TestPrimaryContent() {
           {/* <Secondary>
             <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Officiis, tempora animi cumque consequatur recusandae doloribus quibusdam iure, incidunt architecto quasi corporis, perferendis ea nemo aliquid autem excepturi ipsa vitae eius deserunt asperiores dicta sed dolore. Dolore architecto nemo id mollitia, temporibus fugiat, adipisci officia debitis ipsum iusto neque? Dolores, laborum?</p>
           </Secondary> */}
-        </Content>
+        </>
     )
 }

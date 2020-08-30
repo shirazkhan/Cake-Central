@@ -3,7 +3,7 @@ import '../src/index.css';
 import { MainGrid, Header, NavBar, Brand, NavButton, NavUILabel, NavInputUI,
          Hamburger, NavSideMenu, NavSideMenuShadow, NavLinks, NavLink,
          NightButton, SwitchUI, SwitchInputUI, SwitchSliderUI, NavMobHFade, NavMobHSpacer,
-         Footer, Linkk, HamburgerInner1, HamburgerInner2, NavMobHMenu, NavMobHOverflow, NavFilter } from '../src/styled/App';
+         Footer, Content, HamburgerInner1, HamburgerInner2, NavMobHMenu, NavMobHOverflow, NavFilter } from '../src/styled/App';
 import Link from 'next/link';
 
 function MyApp({ Component, pageProps }) {
@@ -23,7 +23,7 @@ function MyApp({ Component, pageProps }) {
                             <NavMobHSpacer></NavMobHSpacer>
                             <Link href="/"><NavLink>Home</NavLink></Link>
                             <Link href="/test"><NavLink>Test</NavLink></Link>
-                            <Link href="/"><NavLink>Portfolio</NavLink></Link>
+                            <Link href="/articles"><NavLink>Articles</NavLink></Link>
                             <Link href="/"><NavLink>Contact</NavLink></Link>
                             <NavLink href="/">Blahfafaaff</NavLink>
                             <NavLink href="/">Aohfohaif</NavLink>
@@ -39,7 +39,7 @@ function MyApp({ Component, pageProps }) {
                 <NavLinks>
                     <Link href="/"><NavLink>Home</NavLink></Link>
                     <Link href="/test"><NavLink>Test</NavLink></Link>
-                    <Link href="/"><NavLink>Portfolio</NavLink></Link>
+                    <Link href="/articles"><NavLink>Articles</NavLink></Link>
                     <Link href="/"><NavLink>Contact</NavLink></Link>
                 </NavLinks>
                 <NightButton>
@@ -50,10 +50,11 @@ function MyApp({ Component, pageProps }) {
                 </NightButton>
                 </NavBar>
             </Header>
-
-            {/* Content Goes Here */}
-            <Component {...pageProps} />
-            {/* ///////////////// */}
+            <Content>
+                {/* Content Goes Here */}
+                <Component {...pageProps} />
+                {/* ///////////////// */}
+            </Content>
 
             <Footer>
                 Lorem ipsum dolor, sit amet consectetur adipisicing elit. 
