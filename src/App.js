@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useReducer} from 'react';
 import { MainGrid, Header, NavBar, Brand, NavButton, NavUILabel, NavInputUI,
          Hamburger, NavSideMenu, NavSideMenuShadow, NavLinks, NavLink,
          NightButton, SwitchUI, SwitchInputUI, SwitchSliderUI, NavMobHFade, NavMobHSpacer,
@@ -6,6 +6,27 @@ import { MainGrid, Header, NavBar, Brand, NavButton, NavUILabel, NavInputUI,
 import TestPrimaryContent from './TestPrimaryContent';
 
 function App() {
+
+  // Reducer
+
+  const initialState = {
+    nightMode: false,
+    postId: 0
+  };
+
+  const reducer = (prevState, action) => {
+    switch(action.type){
+      case 'toggleNightMode':
+        return {...prevState, nightMode: !prevState.nightMode};
+    default:
+      throw new Error();
+    }
+  }
+
+  const [globalState,dispatch] = useReducer(reducer,initialState);
+
+  /////////
+
   return (
     <MainGrid>
       <NavFilter />
