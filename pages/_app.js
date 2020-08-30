@@ -23,7 +23,7 @@ function MyApp({ Component, pageProps }) {
                             <NavMobHSpacer></NavMobHSpacer>
                             <Link href="/"><NavLink>Home</NavLink></Link>
                             <Link href="/test"><NavLink>Test</NavLink></Link>
-                            <Link href="/articles"><NavLink>Articles</NavLink></Link>
+                            <Link href="/article"><NavLink>Articles</NavLink></Link>
                             <Link href="/"><NavLink>Contact</NavLink></Link>
                             <NavLink href="/">Blahfafaaff</NavLink>
                             <NavLink href="/">Aohfohaif</NavLink>
@@ -39,7 +39,7 @@ function MyApp({ Component, pageProps }) {
                 <NavLinks>
                     <Link href="/"><NavLink>Home</NavLink></Link>
                     <Link href="/test"><NavLink>Test</NavLink></Link>
-                    <Link href="/articles"><NavLink>Articles</NavLink></Link>
+                    <Link href="/article"><NavLink>Articles</NavLink></Link>
                     <Link href="/"><NavLink>Contact</NavLink></Link>
                 </NavLinks>
                 <NightButton>
