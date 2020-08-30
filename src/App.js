@@ -11,7 +11,8 @@ function App() {
 
   const initialState = {
     nightMode: false,
-    postId: 0
+    postId: 0,
+    
   };
 
   const reducer = (prevState, action) => {

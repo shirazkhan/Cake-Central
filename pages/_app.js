@@ -7,6 +7,26 @@ import { MainGrid, Header, NavBar, Brand, NavButton, NavUILabel, NavInputUI,
 import Link from 'next/link';
 
 function MyApp({ Component, pageProps }) {
+
+  // Reducer
+
+  const initialState = {
+    nightMode: false,
+    postId: 0,
+    
+  };
+
+  const reducer = (prevState, action) => {
+    switch(action.type){
+      case 'toggleNightMode':
+        return {...prevState, nightMode: !prevState.nightMode};
+    default:
+      throw new Error();
+    }
+  }
+
+  const [globalState,dispatch] = useReducer(reducer,initialState);
+
     return <>
         <MainGrid>
             <NavFilter />
