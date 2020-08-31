@@ -1,4 +1,4 @@
-import styled from 'styled-components';
+import styled, { createGlobalStyle } from 'styled-components';
 import Link from 'next/link';
 import React from 'react';
 
@@ -14,13 +14,29 @@ const CONTENT_H_MARGIN = "25px";
 const CONTENT_V_MARGIN = "0px";
 const HAMBURGER_COLOR = "white";
 const NAV_FONT_COLOR = "white";
-const CONTENT_FONT_COLOR = "black";
 const FOOTER_FONT_COLOR = "white";
 const FOOTER_COLOR = "black";
 const MOBILE = "781px";
 //const TABLET = "1050px";
 const NAVFILTER_COLOR = "darkviolet";
 
+export const darkTheme = {
+  background: '#000',
+  fontColor: '#DDD'
+}
+
+export const lightTheme = {
+  background: '#FFF',
+  fontColor: '#000'
+}
+
+export const GlobalStyle = createGlobalStyle`
+  body{
+    background-color: ${props => props.theme.background};
+    color: ${props => props.theme.fontColor};
+  }
+  
+`;
 
 export const MainGrid = styled.div`
   display: grid;
@@ -32,8 +48,14 @@ export const MainGrid = styled.div`
   grid-template-columns: 1fr 1fr 1fr;
   margin: 0 auto;
   max-width: ${WEBSITE_WIDTH};
-
+  background: ${props => props.theme.main}
 `;
+
+MainGrid.defaultProps = {
+  theme: {
+    main: "pink"
+  }
+}
 
 export const Header = styled.div`
   grid-area: Header;
@@ -203,7 +225,6 @@ export const Content = styled.div`
   flex-direction: row;
   min-height: 1000px;
   margin: ${CONTENT_V_MARGIN} ${CONTENT_H_MARGIN};
-  color: ${CONTENT_FONT_COLOR};
 
   @media (max-width:${MOBILE}){
     flex-direction: column;
@@ -217,7 +238,6 @@ export const HeroContent = styled.div`
   flex-direction: row;
   min-height: 700px;
   margin: ${CONTENT_V_MARGIN} ${CONTENT_H_MARGIN};
-  color: ${CONTENT_FONT_COLOR};
 
   @media (max-width:${MOBILE}){
     flex-direction: column;
