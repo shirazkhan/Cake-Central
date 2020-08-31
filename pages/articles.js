@@ -4,12 +4,17 @@ import {PageHeading} from '../src/styled/Content';
 import axios from 'axios';
 import parse from 'html-react-parser';
 import Link from 'next/link';
+import Head from 'next/head';
 
 export default function Articles({data}) {
         
     return (
         <>
-          <Primary>
+            <Head>
+                <title>All Articles | KhanDev </title>
+                <meta name="viewport" content="initial-scale=1.0, width=device-width" />
+            </Head>
+            <Primary>
             <PageHeading>All Articles</PageHeading>
             <ul>
                 {data.map(post => {
@@ -18,7 +23,7 @@ export default function Articles({data}) {
                             </li>
                 })}
             </ul>
-          </Primary>
+            </Primary>
         </>
     )
 }

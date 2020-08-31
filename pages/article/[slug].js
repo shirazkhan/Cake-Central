@@ -3,11 +3,16 @@ import {Primary, Secondary} from '../../src/styled/App';
 import {PageHeading} from '../../src/styled/Content';
 import axios from 'axios';
 import parse from 'html-react-parser';
+import Head from 'next/head';
 
 export default function Article({data,title,content,id}) {
 
   return (
       <>
+        <Head>
+            <title>{`${title} | KhanDev`}</title>
+            <meta name="viewport" content="initial-scale=1.0, width=device-width" />
+        </Head>
         <Primary>
           <PageHeading>{title}</PageHeading>
               {parse(content)}
@@ -57,6 +62,6 @@ export async function getStaticPaths() {
     );
   return {
     paths,
-    fallback: false
+    fallback: true
   };
 }
