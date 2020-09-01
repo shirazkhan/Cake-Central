@@ -4,8 +4,14 @@ import {PageHeading} from '../../src/styled/Content';
 import axios from 'axios';
 import parse from 'html-react-parser';
 import Head from 'next/head';
+import { useRouter } from 'next/router';
 
 export default function Article({data,title,content,id}) {
+
+  const router = useRouter()
+  if (router.isFallback) {
+    return <div>Loading...</div>
+  }
 
   return (
       <>
