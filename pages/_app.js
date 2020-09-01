@@ -5,12 +5,9 @@ import { lightTheme, darkTheme, GlobalStyle, MainGrid, Header, NavBar, Brand, Na
          NightButton, SwitchUI, SwitchInputUI, SwitchSliderUI, NavMobHFade, NavMobHSpacer,
          Footer, Content, HamburgerInner1, HamburgerInner2, NavMobHMenu, NavMobHOverflow, NavFilter } from '../src/styled/App';
 import Link from 'next/link';
-import { ThemeProvider, ThemeContext } from 'styled-components';
+import { ThemeProvider } from 'styled-components';
 
 export default function MyApp({ Component, pageProps }) {
-
-  // Theme Context
-  const themeContext = useContext(ThemeContext);
 
   // Reducer
 

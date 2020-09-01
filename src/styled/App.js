@@ -13,30 +13,12 @@ const NAV_LINKS_ALIGNMENT = "flex-end";
 const CONTENT_H_MARGIN = "25px";
 const CONTENT_V_MARGIN = "0px";
 const HAMBURGER_COLOR = "white";
-const NAV_FONT_COLOR = "white";
+const NAV_FONT_COLOR = "#ff7e6d";
 const FOOTER_FONT_COLOR = "white";
 const FOOTER_COLOR = "black";
 const MOBILE = "781px";
 //const TABLET = "1050px";
-const NAVFILTER_COLOR = "darkviolet";
-
-export const darkTheme = {
-  background: '#000',
-  fontColor: '#DDD'
-}
-
-export const lightTheme = {
-  background: '#FFF',
-  fontColor: '#000'
-}
-
-export const GlobalStyle = createGlobalStyle`
-  body{
-    background-color: ${props => props.theme.background};
-    color: ${props => props.theme.fontColor};
-  }
-  
-`;
+const NAVFILTER_COLOR = "white";
 
 export const MainGrid = styled.div`
   display: grid;
@@ -59,17 +41,17 @@ MainGrid.defaultProps = {
 
 export const Header = styled.div`
   grid-area: Header;
-  background: linear-gradient(270deg, rgba(10,10,10,0.8), rgba(10,10,10,0.5), rgba(10,10,10,0.8));
+  /* background: linear-gradient(270deg, rgba(0,0,0,0.8), rgba(0,0,0,0.5), rgba(0,0,0,0.2), rgba(0,0,0,0.35));
     background-size: 600% 600%;
-    animation: Fader 25s ease infinite;
+    animation: Fader 15s ease infinite; */
   color: ${NAV_FONT_COLOR};
   height: ${DESKTOP_NAV_HEIGHT};
   width: 100%;
   position: fixed;
   left: 0;
   z-index: 6;
-  backdrop-filter: blur(8px);
-  box-shadow: 0px 5px 18px -3px rgba(0,0,0,0.75);
+  backdrop-filter: blur(14px);
+  box-shadow: 0px 0px 14px -6px rgba(0,0,0,0.8);
     
   @keyframes Fader {
     0%{background-position:2% 0%}
@@ -107,6 +89,7 @@ export const NavFilter = styled.div`
   top: 0px;
   left: 0;
   z-index: 3;
+  transition: 1s;
 
   @media (max-width:${MOBILE}){
     height: ${MOBILE_NAV_HEIGHT};
@@ -157,8 +140,9 @@ export const NavLinks = styled.div`
 
 export const NavLink = styled.a`
   padding: 0 10px 0 10px;
-  color: white;
+  color: #ff7e6d;
   text-decoration: none;
+  font-weight: 700;
   cursor: pointer;
 `;
 
@@ -225,6 +209,8 @@ export const Content = styled.div`
   flex-direction: row;
   min-height: 1000px;
   margin: ${CONTENT_V_MARGIN} ${CONTENT_H_MARGIN};
+  font-size: 1.2rem;
+  line-height: 30px;
 
   @media (max-width:${MOBILE}){
     flex-direction: column;
@@ -432,4 +418,51 @@ export const NavUILabel = styled.label`
   }
 `;
 
-/////////////////////
+export const darkTheme = {
+  body_background: '#000',
+  content_color: '#DDD',
+  navfilter_color: 'rgba(50,50,50,0.5)',
+  nav_font_color: 'white',
+  nav_brand_color: 'white'
+}
+
+export const lightTheme = {
+  body_background: '#FFF',
+  content_color: '#000',
+  navfilter_color: 'rgba(250,250,250,0.6)',
+  nav_font_color: 'black',
+  nav_brand_color: 'black'
+}
+
+export const GlobalStyle = createGlobalStyle`
+  body{
+    background-color: ${props => props.theme.body_background};
+    color: ${props => props.theme.content_color};
+    transition: 1.5s;
+  }
+  
+  ${NavFilter}{
+    background-color: ${props => props.theme.navfilter_color};
+  }
+
+  ${NavLink}{
+    color: ${props => props.theme.nav_font_color};
+    @media (max-width:${MOBILE}){
+    font-weight: 300;
+    color: white;
+  }
+  }
+
+  ${Brand}{
+    color: ${props => props.theme.nav_brand_color};
+  }
+
+  ${HamburgerInner1}{
+    background: ${props => props.theme.nav_brand_color};
+  }
+
+  ${HamburgerInner2}{
+    background: ${props => props.theme.nav_font_color};
+  }
+
+`;
