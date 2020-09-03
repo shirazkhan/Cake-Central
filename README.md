@@ -7,7 +7,7 @@ This is a greate boilerplate theme that will target successful SEO, performance,
 
 By incorporating a headless Wordpress installation, this application will grab content via Wordpress REST Api for a SSR (Server Side Rendered) experience.
 
-This project also supports AMP pages thanks for Next JS. The AMP pages will be very similar in design to the normal UI. This creates an even more dynamic experience, super fast performance, and extra SEO points from Google.
+This project also supports AMP pages thanks to Next JS. The AMP pages will be very similar in design to the normal UI. This creates an even more dynamic experience, super fast performance, and extra SEO points from Google.
 
 ### Technologies used:
 React JS
