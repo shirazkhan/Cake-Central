@@ -30,7 +30,7 @@ export default function Articles({data}) {
 
 export async function getStaticProps() {
     const res = await axios(
-    'https://www.bakedbyanintrovert.com/wp-json/wp/v2/posts/?_fields=id,slug,title&per_page=50',
+    'http://localhost:3001/khandev/wp-json/wp/v2/posts/?_fields=id,slug,title&per_page=50',
     );
     const data = res.data;
 

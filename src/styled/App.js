@@ -440,6 +440,74 @@ export const GlobalStyle = createGlobalStyle`
     color: ${props => props.theme.content_color};
     transition: 1.5s;
   }
+
+  // Wordpress Styling
+
+  .has-text-align-left{
+    text-align: left;
+  }
+
+  .has-text-align-center{
+    text-align: center;
+  }
+
+  .has-text-align-right{
+    text-align: right;
+  }
+
+  .uppercase{
+    text-transform: uppercase;
+  }
+
+  .alignfull{
+    width:100%;
+  }
+
+  .wp-block-image{
+    margin-bottom: 1em;
+  }
+
+  .alignfull{
+    margin-top: 5rem;
+    margin-right: auto;
+    margin-bottom: 5rem;
+    margin-left: auto;
+    max-width: 100vw;
+    position: relative;
+    width: 100%;
+  }
+
+  blockquote{
+    border-color: #cd2653;
+    border-style: solid;
+    border-width: 0 0 0 0.2rem;
+    color: inherit;
+    font-size: 1em;
+    margin: 4rem 0;
+    padding: 0.5rem 0 0.5rem 2rem;
+    max-width: 58rem;
+    width: calc(100% - 4rem);
+
+    p {
+      display: block;
+      margin-block-start: 1em;
+      margin-block-end: 1em;
+      margin-inline-start: 0px;
+      margin-inline-end: 0px;
+    }
+
+    cite {
+      display: block;
+      margin: 1rem 0 0 0;
+      color: #6d6d6d;
+      font-size: 1.4rem;
+      font-style: normal;
+      font-weight: 600;
+      line-height: 1.25;
+    }
+  }
+
+  ////////////////////
   
   ${NavFilter}{
     background-color: ${props => props.theme.navfilter_color};

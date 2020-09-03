@@ -40,7 +40,7 @@ export async function getStaticProps( {params} ) {
   const { slug } = params;
 
   const res = await axios(
-  `https://www.bakedbyanintrovert.com/wp-json/wp/v2/posts/?slug=${slug}`,
+  `http://localhost:3001/khandev/wp-json/wp/v2/posts/?slug=${slug}`,
   );
   const data = res.data[0];
   const title = res.data[0].title.rendered;
@@ -60,7 +60,7 @@ export async function getStaticProps( {params} ) {
 export async function getStaticPaths() {
 
   const res = await axios(
-    'https://www.bakedbyanintrovert.com/wp-json/wp/v2/posts/?_fields=id,slug,title&per_page=50',
+    'http://localhost:3001/khandev/wp-json/wp/v2/posts/?_fields=id,slug,title&per_page=50',
     );
     const paths = res.data.map(post => (
       { params: { slug: post.slug} }
