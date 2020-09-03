@@ -12,4 +12,6 @@ Next JS
 
 Styled Components
 
-CSS Grid & Flexbox
+CSS Grid / Flexbox
+
+Wordpress REST Api
