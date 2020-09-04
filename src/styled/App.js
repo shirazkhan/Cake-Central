@@ -442,7 +442,7 @@ export const GlobalStyle = createGlobalStyle`
   }
 
   // Wordpress Styling
-
+/* 
   .has-text-align-left{
     text-align: left;
   }
@@ -505,7 +505,7 @@ export const GlobalStyle = createGlobalStyle`
       font-weight: 600;
       line-height: 1.25;
     }
-  }
+  } */
 
   ////////////////////
   

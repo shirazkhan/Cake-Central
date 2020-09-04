@@ -2,9 +2,9 @@ import React from 'react'
 import {Primary, Secondary} from '../../src/styled/App';
 import {PageHeading} from '../../src/styled/Content';
 import axios from 'axios';
-import parse from 'html-react-parser';
 import Head from 'next/head';
 import { useRouter } from 'next/router';
+import WPContent from '../../WPContent';
 
 export default function Article({data,title,content,id}) {
 
@@ -21,7 +21,7 @@ export default function Article({data,title,content,id}) {
         </Head>
         <Primary>
           <PageHeading>{title}</PageHeading>
-              {parse(content)}
+              <WPContent content = {content} />
         </Primary>
         <Secondary>
           <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Officiis, tempora animi cumque consequatur recusandae doloribus quibusdam iure, incidunt architecto quasi corporis, perferendis ea nemo aliquid autem excepturi ipsa vitae eius deserunt asperiores dicta sed dolore. Dolore architecto nemo id mollitia, temporibus fugiat, adipisci officia debitis ipsum iusto neque? Dolores, laborum?</p>
