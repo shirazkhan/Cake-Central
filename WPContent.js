@@ -23,6 +23,14 @@ export default function WPContent(props) {
                     </Link>
                 )
               }
+
+            if(domNode.name === "script" && domNode.attribs.src.includes("//gist.github.com/")){
+
+                console.log(domNode.attribs.src.replace(".js",""))
+              return (
+                  <Gist url = {domNode.attribs.src.replace(".js","")}></Gist>
+              )
+            }
         },
       });
 
