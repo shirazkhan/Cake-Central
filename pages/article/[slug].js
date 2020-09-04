@@ -8,6 +8,9 @@ import WPContent from '../../WPContent';
 
 export default function Article({data,title,content,id}) {
 
+  // Next JS Fallback
+  // Fetch a new instance of the page. 
+  // If page exists: Cache the page from now on / If page does not exist: Display Error
   const router = useRouter()
   if (router.isFallback) {
     return <div>Loading...</div>
