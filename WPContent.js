@@ -23,10 +23,8 @@ export default function WPContent(props) {
                     </Link>
                 )
               }
-
+            // Convert CoBlock Gist blocks to super-react-gist component
             if(domNode.name === "script" && domNode.attribs.src.includes("//gist.github.com/")){
-
-                console.log(domNode.attribs.src.replace(".js",""))
               return (
                   <Gist url = {domNode.attribs.src.replace(".js","")}></Gist>
               )
