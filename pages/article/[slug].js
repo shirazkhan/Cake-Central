@@ -51,6 +51,7 @@ export async function getStaticProps( {params} ) {
   const id = res.data[0].id;
 
   return {
+    revalidate: 1,
     props: {
       data,
       title,
