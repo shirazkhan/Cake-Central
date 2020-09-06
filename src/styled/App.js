@@ -12,13 +12,13 @@ const NAV_GAP = "50px";
 const NAV_LINKS_ALIGNMENT = "flex-end";
 const CONTENT_H_MARGIN = "25px";
 const CONTENT_V_MARGIN = "0px";
-const HAMBURGER_COLOR = "white";
-const NAV_FONT_COLOR = "#ff7e6d";
+const HAMBURGER_COLOR = "black";
+const NAV_FONT_COLOR = "black";
 const FOOTER_FONT_COLOR = "white";
 const FOOTER_COLOR = "black";
 const MOBILE = "781px";
 //const TABLET = "1050px";
-const NAVFILTER_COLOR = "white";
+const NAVFILTER_COLOR = "rgba(255,255,255,0.5)";
 
 export const MainGrid = styled.div`
   display: grid;
@@ -140,7 +140,7 @@ export const NavLinks = styled.div`
 
 export const NavLink = styled.a`
   padding: 0 10px 0 10px;
-  color: #ff7e6d;
+  color: black;
   text-decoration: none;
   font-weight: 700;
   cursor: pointer;
@@ -423,7 +423,9 @@ export const darkTheme = {
   content_color: '#DDD',
   navfilter_color: 'rgba(50,50,50,0.5)',
   nav_font_color: 'white',
-  nav_brand_color: 'white'
+  nav_brand_color: 'white',
+  gist_background: 'lightgray',
+  gist_meta_background: '#111'
 }
 
 export const lightTheme = {
@@ -431,7 +433,9 @@ export const lightTheme = {
   content_color: '#000',
   navfilter_color: 'rgba(250,250,250,0.6)',
   nav_font_color: 'black',
-  nav_brand_color: 'black'
+  nav_brand_color: 'black',
+  gist_background: 'white',
+  gist_meta_background: 'white'
 }
 
 export const GlobalStyle = createGlobalStyle`
@@ -441,8 +445,54 @@ export const GlobalStyle = createGlobalStyle`
     transition: 1.5s;
   }
 
+  .youtube{
+    position: relative;
+    width: 100%;
+    margin: 0 auto;
+    height: 0;
+    padding-bottom: 56.25%;
+  }
+
+  .wp-block-cp-codepen-gutenberg-embed-block{
+    @media (max-width:${MOBILE}){
+      margin-right: -${CONTENT_H_MARGIN};
+      margin-left: -${CONTENT_H_MARGIN};
+    }
+  }
+
+  .wp-block-coblocks-gist{
+    @media (max-width:${MOBILE}){
+      margin-right: -${CONTENT_H_MARGIN};
+      margin-left: -${CONTENT_H_MARGIN};
+    }
+  }
+
+  .gist .highlight{
+    transition: 2s;
+    border-radius: none!important;
+    color: white!important;
+    background: ${props => props.theme.gist_background}!important;
+  }
+
+  .gist-meta{
+    transition: 2s;
+    background: ${props => props.theme.gist_background}!important;
+  }
+
+  /* .blob-code{
+    @media (max-width:${MOBILE}){
+      font-size:6px!important;
+    }
+  }
+
+  .blob-num {
+    @media (max-width:${MOBILE}){
+      font-size:6px!important;
+    }
+  } */
+
   // Wordpress Styling
-/* 
+
   .has-text-align-left{
     text-align: left;
   }
@@ -505,19 +555,20 @@ export const GlobalStyle = createGlobalStyle`
       font-weight: 600;
       line-height: 1.25;
     }
-  } */
+  }
 
   ////////////////////
-  
+
   ${NavFilter}{
     background-color: ${props => props.theme.navfilter_color};
   }
 
   ${NavLink}{
     color: ${props => props.theme.nav_font_color};
+
     @media (max-width:${MOBILE}){
-    font-weight: 300;
-    color: white;
+      font-weight: 300;
+      color: white;
   }
   }
 
