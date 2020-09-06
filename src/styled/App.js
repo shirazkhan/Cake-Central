@@ -233,7 +233,7 @@ export const HeroContent = styled.div`
 
 export const Primary = styled.div`
   width: 100%;
-  padding: 0 25px 0 25px;
+  padding: 0 50px 0 50px;
     img{
         max-width: 100%;
         display: block;
@@ -445,6 +445,8 @@ export const GlobalStyle = createGlobalStyle`
     transition: 1.5s;
   }
 
+  // Wordpress Styling
+
   .youtube{
     position: relative;
     width: 100%;
@@ -453,14 +455,7 @@ export const GlobalStyle = createGlobalStyle`
     padding-bottom: 56.25%;
   }
 
-  .wp-block-cp-codepen-gutenberg-embed-block{
-    @media (max-width:${MOBILE}){
-      margin-right: -${CONTENT_H_MARGIN};
-      margin-left: -${CONTENT_H_MARGIN};
-    }
-  }
-
-  .wp-block-coblocks-gist{
+  .wp-block-coblocks-gist, .wp-block-cp-codepen-gutenberg-embed-block{
     @media (max-width:${MOBILE}){
       margin-right: -${CONTENT_H_MARGIN};
       margin-left: -${CONTENT_H_MARGIN};
@@ -479,19 +474,15 @@ export const GlobalStyle = createGlobalStyle`
     background: ${props => props.theme.gist_background}!important;
   }
 
-  /* .blob-code{
+  .blob-code, .blob-num {   
     @media (max-width:${MOBILE}){
-      font-size:6px!important;
+      font-size: 8px !important;
+      line-height: 1.25!important;
+    }   
     }
-  }
-
-  .blob-num {
-    @media (max-width:${MOBILE}){
-      font-size:6px!important;
+    .gist-meta {      
+       display: none;
     }
-  } */
-
-  // Wordpress Styling
 
   .has-text-align-left{
     text-align: left;
@@ -516,47 +507,7 @@ export const GlobalStyle = createGlobalStyle`
   .wp-block-image{
     margin-bottom: 1em;
   }
-
-  .alignfull{
-    margin-top: 5rem;
-    margin-right: auto;
-    margin-bottom: 5rem;
-    margin-left: auto;
-    max-width: 100vw;
-    position: relative;
-    width: 100%;
-  }
-
-  blockquote{
-    border-color: #cd2653;
-    border-style: solid;
-    border-width: 0 0 0 0.2rem;
-    color: inherit;
-    font-size: 1em;
-    margin: 4rem 0;
-    padding: 0.5rem 0 0.5rem 2rem;
-    max-width: 58rem;
-    width: calc(100% - 4rem);
-
-    p {
-      display: block;
-      margin-block-start: 1em;
-      margin-block-end: 1em;
-      margin-inline-start: 0px;
-      margin-inline-end: 0px;
-    }
-
-    cite {
-      display: block;
-      margin: 1rem 0 0 0;
-      color: #6d6d6d;
-      font-size: 1.4rem;
-      font-style: normal;
-      font-weight: 600;
-      line-height: 1.25;
-    }
-  }
-
+  
   ////////////////////
 
   ${NavFilter}{
