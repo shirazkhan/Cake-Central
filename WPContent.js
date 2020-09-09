@@ -2,6 +2,7 @@ import React from 'react';
 import parse from 'html-react-parser';
 import Gist from 'super-react-gist';
 import Link from 'next/link';
+import {DOMAIN} from './GlobalVariables';
 
 export default function WPContent(props) {
 
@@ -15,8 +16,8 @@ export default function WPContent(props) {
         replace: domNode => {
 
             // Replace anchor tags that have localhost:3001 to Next JS compatible Link tags
-            if(domNode.name === "a" && domNode.attribs.href.includes("http://localhost:3001/") ) {
-                const slug = domNode.attribs.href.replace("http://localhost:3001/khandev/","");
+            if(domNode.name === "a" && domNode.attribs.href.includes(DOMAIN) ) {
+                const slug = domNode.attribs.href.replace(DOMAIN,"");
                 return (
                     <Link as = {`/article/${slug}`} href = {`[slug]`}>
                         <a>Link</a>

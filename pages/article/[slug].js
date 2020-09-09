@@ -5,6 +5,7 @@ import axios from 'axios';
 import Head from 'next/head';
 import { useRouter } from 'next/router';
 import WPContent from '../../WPContent';
+import {DOMAIN, WEBSITE_NAME} from '../../GlobalVariables';
 
 export default function Article({data,title,content,id}) {
 
@@ -19,7 +20,7 @@ export default function Article({data,title,content,id}) {
   return (
       <>
         <Head>
-            <title>{`${title} | KhanDev`}</title>
+            <title>{`${title} | ${WEBSITE_NAME}`}</title>
             <meta name="viewport" content="initial-scale=1.0, width=device-width" />
         </Head>
         <Primary>
@@ -43,7 +44,7 @@ export async function getStaticProps( {params} ) {
   const { slug } = params;
 
   const res = await axios(
-  `http://localhost:3001/khandev/wp-json/wp/v2/posts/?slug=${slug}`,
+  `${DOMAIN}/wp-json/wp/v2/posts/?slug=${slug}`,
   );
   const data = res.data[0];
   const title = res.data[0].title.rendered;
@@ -64,7 +65,7 @@ export async function getStaticProps( {params} ) {
 export async function getStaticPaths() {
 
   const res = await axios(
-    'http://localhost:3001/khandev/wp-json/wp/v2/posts/?_fields=id,slug,title&per_page=50',
+    `${DOMAIN}/wp-json/wp/v2/posts/?_fields=id,slug,title&per_page=50`,
     );
     const paths = res.data.map(post => (
       { params: { slug: post.slug} }
