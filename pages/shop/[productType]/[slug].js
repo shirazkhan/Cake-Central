@@ -12,7 +12,7 @@ export default function Product({id,title,descriptionHtml,description,productT})
   const router = useRouter()
   const { productType, slug } = router.query;
 
-  return productT === productType.toLowerCase() ? <>
+  return<>
     <Head>
         <title>{`${title} | ${WEBSITE_NAME}`}</title>
         <meta name="viewport" content="initial-scale=1.0, width=device-width" />
@@ -22,15 +22,6 @@ export default function Product({id,title,descriptionHtml,description,productT})
       {description}
           
     </Primary>
-  </> : 
-  <>
-  <Head>
-      <title>{`OOPS! | ${WEBSITE_NAME}`}</title>
-      <meta name="viewport" content="initial-scale=1.0, width=device-width" />
-  </Head>
-  <Primary>
-    <PageHeading>OOPS! We can't find the product you're looking for...</PageHeading>        
-  </Primary>
   </>
 }
 
@@ -40,14 +31,14 @@ export async function getStaticProps({params}) {
   const { data } = await client.query(GET_PRODUCT_BY_HANDLE(slug));
 
   return {
-    props: {
-      id: data.productByHandle.id,
-      title: data.productByHandle.title,
-      descriptionHtml: data.productByHandle.descriptionHtml,
-      description: data.productByHandle.description,
-      productT: data.productByHandle.productType.toLowerCase()
+      props: {
+        id: data.productByHandle.id,
+        title: data.productByHandle.title,
+        descriptionHtml: data.productByHandle.descriptionHtml,
+        description: data.productByHandle.description,
+        productT: data.productByHandle.productType.toLowerCase()
+      }
     }
-  }
 }
 
 export async function getStaticPaths() {
@@ -65,6 +56,6 @@ export async function getStaticPaths() {
 
   return {
     paths,
-    fallback: true
+    fallback: false
   };
 }
