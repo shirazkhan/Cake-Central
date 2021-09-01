@@ -10,37 +10,47 @@ export const GET_SHOP_TITLE = {
   `
 };
 
-export const GET_PRODUCTS = {
-  query: gql`
-    query {
-      shop {
-        products(first: 10) {
-          edges {
-            node {
-              id
-              title
-              images(first: 10) {
-                edges {
-                  node {
-                    src
-                    height
-                    width
-                  }
-                }
+export const GET_PRODUCT_BY_HANDLE = handle => {
+  return {
+    query: gql`
+      query {
+        productByHandle(handle: "${handle}") {
+          id
+          title
+          descriptionHtml
+          description
+          productType
+        }
+      }
+    `
+  }
+};
+
+export const GET_SLUGS_BY_COLLECTION_HANDLE = handle => (
+  {
+    query: gql`
+      {
+        collectionByHandle(handle: "latest-stuff") {
+          products(first: 10) {
+            edges {
+              node {
+                title
+                productType
+                handle
               }
             }
           }
         }
       }
-    }    
-  `
-};
+    `
+  }
+)
 
-export const GET_LATEST_PRODUCTS = {
-  query: gql`
+export const GET_PRODUCTS_BY_COLLECTION_HANDLE = handle =>  {
+  return { query: gql`
   query {
     shop {
-      collectionByHandle(handle: "latest-stuff") {
+      collectionByHandle(handle: "${handle}") {
         title
         products(first: 10) {
           edges {
@@ -54,7 +64,7 @@ export const GET_LATEST_PRODUCTS = {
                   amount
                 }
               }
-              images(first: 10) {
+              images(first: 1) {
                 edges {
                   node {
                     id
@@ -68,5 +78,5 @@ export const GET_LATEST_PRODUCTS = {
       }
     }
   }
-  `
+  ` }
 };

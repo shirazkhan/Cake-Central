@@ -3,7 +3,7 @@ import Link from 'next/link';
 import {Content, Primary} from '../src/styled/App';
 
 import { client } from '../apollo-client';
-import { GET_PAST_LAUNCHES, GET_SHOP_TITLE } from '../GraphQL/Queries';
+import { GET_PAST_LAUNCHES, GET_SHOP_TITLE } from '../graphql/Queries';
 
 export async function getStaticProps() {
 

@@ -6,74 +6,53 @@ import {DOMAIN, WEBSITE_NAME} from '../../../GlobalVariables';
 import { client } from '../../../apollo-client';
 import { gql } from '@apollo/client';
 import parse from 'html-react-parser';
+import { GET_PRODUCT_BY_HANDLE, GET_SLUGS_BY_COLLECTION_HANDLE } from "../../../graphql/Queries";
 
-export default function Product({id,title,descriptionHtml,description}){
+export default function Product({id,title,descriptionHtml,description,productT}){
   const router = useRouter()
   const { productType, slug } = router.query;
 
-  return <>
+  return productT === productType.toLowerCase() ? <>
+    <Head>
+        <title>{`${title} | ${WEBSITE_NAME}`}</title>
+        <meta name="viewport" content="initial-scale=1.0, width=device-width" />
+    </Head>
+    <Primary>
+      <PageHeading>{title}</PageHeading>
+      {description}
+          
+    </Primary>
+  </> : 
+  <>
   <Head>
-      <title>{`${title} | ${WEBSITE_NAME}`}</title>
+      <title>{`OOPS! | ${WEBSITE_NAME}`}</title>
       <meta name="viewport" content="initial-scale=1.0, width=device-width" />
   </Head>
   <Primary>
-    <PageHeading>{title}</PageHeading>
-    {description}
-        
+    <PageHeading>OOPS! We can't find the product you're looking for...</PageHeading>        
   </Primary>
-</>
+  </>
 }
 
 export async function getStaticProps({params}) {
-
   const { productType, slug } = params;
 
-  const GET_PRODUCT = {
-    query: gql`
-      query {
-        productByHandle(handle: "${slug}") {
-          id
-          title
-          descriptionHtml
-          description
-        }
-      }
-    `
-  };
-
-  const { data } = await client.query(GET_PRODUCT);
+  const { data } = await client.query(GET_PRODUCT_BY_HANDLE(slug));
 
   return {
     props: {
       id: data.productByHandle.id,
       title: data.productByHandle.title,
       descriptionHtml: data.productByHandle.descriptionHtml,
-      description: data.productByHandle.description
+      description: data.productByHandle.description,
+      productT: data.productByHandle.productType.toLowerCase()
     }
   }
 }
 
 export async function getStaticPaths() {
-
-  const GET_SLUGS = {
-    query: gql`
-      {
-        collectionByHandle(handle: "latest-stuff") {
-          products(first: 10) {
-            edges {
-              node {
-                title
-                productType
-                handle
-              }
-            }
-          }
-        }
-      }
-    `
-  };
-
-  const { data } = await client.query(GET_SLUGS);
+  
+  const { data } = await client.query(GET_SLUGS_BY_COLLECTION_HANDLE('latest-stuff'));
 
   const paths = data.collectionByHandle.products.edges.map(p => {
     return {
