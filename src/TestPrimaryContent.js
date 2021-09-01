@@ -14,7 +14,7 @@ export default function TestPrimaryContent() {
     useEffect(() => {
     const fetchData = async () => {
         const res = await axios(
-        'https://seo-hacker.com/wp-json/wp/v2/posts/18960',
+        'https://seo-hacker.com/wp-json/wp/v2/posts/111178',
         );
         setData(res.data);
         setTitle(res.data.title.rendered);
