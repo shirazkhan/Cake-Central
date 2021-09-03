@@ -3,14 +3,14 @@ import Link from 'next/link';
 import React from 'react';
 
 //CSS Variables
-const WEBSITE_WIDTH = "1080px";
+const WEBSITE_WIDTH = "1400px";
 const MOBILE_NAV_HEIGHT = "50px";
 const DESKTOP_NAV_HEIGHT = "60px";
 const FOOTER_HEIGHT = "200px";
 const NAV_MENU_WIDTH = "250px";
 const NAV_GAP = "50px";
 const NAV_LINKS_ALIGNMENT = "flex-end";
-const CONTENT_H_MARGIN = "25px";
+const CONTENT_H_MARGIN = "50px";
 const CONTENT_V_MARGIN = "0px";
 const HAMBURGER_COLOR = "black";
 const NAV_FONT_COLOR = "black";
@@ -41,23 +41,17 @@ MainGrid.defaultProps = {
 
 export const Header = styled.div`
   grid-area: Header;
-  /* background: linear-gradient(270deg, rgba(0,0,0,0.8), rgba(0,0,0,0.5), rgba(0,0,0,0.2), rgba(0,0,0,0.35));
-    background-size: 600% 600%;
-    animation: Fader 15s ease infinite; */
   color: ${NAV_FONT_COLOR};
   height: ${DESKTOP_NAV_HEIGHT};
   width: 100%;
   position: fixed;
   left: 0;
   z-index: 6;
+  background: rgba(255,255,255,0.3);
   backdrop-filter: blur(14px);
   box-shadow: 0px 0px 14px -6px rgba(0,0,0,0.8);
-    
-  @keyframes Fader {
-    0%{background-position:2% 0%}
-    50%{background-position:99% 100%}
-    100%{background-position:2% 0%}
-  }
+  display: flex;
+  justify-content: center;
 
   @media (max-width:${MOBILE}){
     height: ${MOBILE_NAV_HEIGHT};
@@ -206,11 +200,14 @@ export const SwitchUI = styled.label`
 export const Content = styled.div`
   grid-area: Content;
   display: flex;
+  justify-content: center;
   flex-direction: row;
   min-height: 1000px;
-  margin: ${CONTENT_V_MARGIN} ${CONTENT_H_MARGIN};
   font-size: 1.2rem;
   line-height: 30px;
+  width: 100vw;
+  position: absolute;
+  left: 0;
 
   @media (max-width:${MOBILE}){
     flex-direction: column;
@@ -219,11 +216,9 @@ export const Content = styled.div`
 `;
 
 export const HeroContent = styled.div`
-  grid-area: Content;
   display: flex;
   flex-direction: row;
-  min-height: 700px;
-  margin: ${CONTENT_V_MARGIN} ${CONTENT_H_MARGIN};
+  width: 100vw;
 
   @media (max-width:${MOBILE}){
     flex-direction: column;
@@ -232,8 +227,9 @@ export const HeroContent = styled.div`
 `;
 
 export const Primary = styled.div`
-  width: 100%;
-  padding: 0 50px 0 50px;
+  max-width: ${WEBSITE_WIDTH};
+  margin: 100px 150px;
+
     img{
         max-width: 100%;
         display: block;
@@ -243,6 +239,7 @@ export const Primary = styled.div`
 
   @media (max-width:${MOBILE}){
     padding: 0;
+    margin: 50px 25px 175px 25px;
   }
 `;
 
@@ -262,8 +259,22 @@ export const Secondary = styled.div`
 export const Footer = styled.div`
   grid-area: Footer;
   background: ${FOOTER_COLOR};
-  padding: 30px 25px;
+  padding: 25px 0;
   color: ${FOOTER_FONT_COLOR};
+  width: 100%;
+  position: fixed;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  left: 0;
+  bottom: 0;
+`;
+
+export const FooterContent = styled.div`
+  border: 2px solid red;
+  width: 90%;
+  max-width: ${WEBSITE_WIDTH};
+
 `;
 
 export const NavSideMenu = styled.div`
@@ -650,4 +661,8 @@ body .gist .highlight-source-css .pl-sc {
     background: ${props => props.theme.nav_font_color};
   }
 
+`;
+
+export const HeroVideo = styled.video`
+  width: 100%;
 `;
