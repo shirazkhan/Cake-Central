@@ -8,8 +8,6 @@ import NavMenu from './NavMenu';
 import CartMenu from './CartMenu';
 
 const Bar = styled.div`
-    grid-area: Header;
-    position: fixed;
     display: flex;
     justify-content: space-between;
     align-items: center;
