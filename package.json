@@ -44,6 +44,7 @@
     ]
   },
   "devDependencies": {
-    "babel-plugin-styled-components": "^1.13.2"
+    "babel-plugin-styled-components": "^1.13.2",
+    "eslint": "^7.32.0"
   }
 }

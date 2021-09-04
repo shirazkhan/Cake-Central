@@ -262,7 +262,7 @@ export const Footer = styled.div`
   padding: 25px 0;
   color: ${FOOTER_FONT_COLOR};
   width: 100%;
-  position: fixed;
+  position: absolute;
   display: flex;
   justify-content: center;
   align-items: center;
