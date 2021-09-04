@@ -20,13 +20,9 @@
     "super-react-gist": "^1.0.4"
   },
   "scripts": {
-    "start": "react-scripts start",
-    "build": "react-scripts build",
-    "test": "react-scripts test",
-    "eject": "react-scripts eject",
     "dev": "next",
-    "nextbuild": "next build",
-    "nextstart": "next start",
+    "build": "next build",
+    "start": "next start",
     "lint": "next lint"
   },
   "eslintConfig": {
