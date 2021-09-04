@@ -26,9 +26,9 @@ export default function MyApp({ Component, pageProps }) {
       case 'TOGGLE_NIGHT_MODE':
         return {...prevState, nightMode: !prevState.nightMode};
       case 'TOGGLE_NAV_MENU':
-        return {... prevState, navMenuOpen: !prevState.navMenuOpen}
+        return {... prevState, cartMenuOpen: false, navMenuOpen: !prevState.navMenuOpen}
       case 'TOGGLE_CART_MENU':
-        return {... prevState, cartMenuOpen: !prevState.cartOpen}
+        return {... prevState, navMenuOpen: false, cartMenuOpen: !prevState.cartMenuOpen}
     default:
       throw new Error();
     }

@@ -1,7 +1,11 @@
 import React, {useContext} from 'react';
+import { motion } from 'framer-motion';
+import Link from 'next/link';
+import Image from 'next/link';
 import styled from 'styled-components';
 import { GlobalStateContext } from '../../pages/_app';
 import NavMenu from './NavMenu';
+import CartMenu from './CartMenu';
 
 const Bar = styled.div`
     grid-area: Header;
@@ -10,8 +14,10 @@ const Bar = styled.div`
     justify-content: space-between;
     align-items: center;
     width: 100%;
+    background: white;
     height: 100%;
     max-width: 1400px;
+    z-index: 1001;
 
 `;
 
@@ -25,7 +31,8 @@ const LogoBox = styled.div`
 `;
 
 const Logo = styled.img`
-    
+    width: 225px;
+    height: 13px;
 `;
 
 const Links = styled.div`
@@ -44,8 +51,9 @@ const LeftButton = styled.div`
     align-items: center;
 `;
 
-const HamBurger = styled.img`
-    width: 50%;
+const HamBurger = styled(motion.img)`
+    width: 25px;
+    height: 25px
 `;
 
 const RightButton = styled.div`
@@ -56,8 +64,9 @@ const RightButton = styled.div`
     align-items: center;
 `;
 
-const Cart = styled.img`
-    width: 50%;
+const Cart = styled(motion.img)`
+    width: 25px;
+    height: 25px;
 `;
 
 export default function NavBar() {
@@ -68,16 +77,19 @@ export default function NavBar() {
     <>
         <Bar>
             <LeftButton onClick = {() => dispatch({type: 'TOGGLE_NAV_MENU'})}>
-                <HamBurger src = '/menu.svg' />
+                <HamBurger animate = {{ rotate: 270 }} transition={{ duration: 0.75 }} src = {globalState.navMenuOpen ? '/menu-cross.svg' : '/menu.svg'} />
             </LeftButton>
             <LogoBox>
-                <Logo src = '/hennacentralcom_brown.svg' />
+                <Link href = '/' passHref>
+                    <Logo src = '/hennacentralcom_brown.svg'></Logo>
+                </Link>
             </LogoBox>
-            <RightButton>
+            <RightButton onClick = {() => dispatch({type: 'TOGGLE_CART_MENU'})}>
                 <Cart src = '/cart-icon.svg' />
             </RightButton>
         </Bar>
-        {<NavMenu />}
+        <NavMenu />
+        <CartMenu />
     </>
     )
 }
