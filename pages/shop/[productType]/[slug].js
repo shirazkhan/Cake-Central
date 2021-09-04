@@ -1,3 +1,4 @@
+import React from 'react';
 import { useRouter } from "next/router";
 import {Primary, Secondary} from '../../../src/styled/App';
 import {PageHeading} from '../../../src/styled/Content';

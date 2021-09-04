@@ -26,7 +26,8 @@
     "eject": "react-scripts eject",
     "dev": "next",
     "nextbuild": "next build",
-    "nextstart": "next start"
+    "nextstart": "next start",
+    "lint": "next lint"
   },
   "eslintConfig": {
     "extends": "react-app"
