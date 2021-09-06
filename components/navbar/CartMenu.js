@@ -9,13 +9,12 @@ const Menu = styled(motion.div)`
     width: 100vw;
     top: calc(-100vh - -50px);
     position: absolute;
-    background: white;
+    background: #8c6900;
     backdrop-filter: blur(10px);
     z-index: 2;
     display: flex;
     flex-direction: column;
     padding-top: 25px;
-    border-top: 3px solid #8c6900;
 `;
 
 const NavLink = styled.div`

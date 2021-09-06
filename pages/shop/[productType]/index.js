@@ -1,9 +1,14 @@
-import React from 'react'
+import React from 'react';
+import { useRouter } from "next/router";
 
 export default function ProductType() {
+
+    const router = useRouter();
+    const { productType} = router.query;
+
     return (
         <h1>
-            This is the Product Type Page
+            {productType} Category:
         </h1>
     )
 }

@@ -7,6 +7,19 @@ import { lightTheme, darkTheme, GlobalStyle, MainGrid, Header, NavBar, Brand, Na
 import Link from 'next/link';
 import { ThemeProvider } from 'styled-components';
 import Navbar from '../components/navbar/Navbar';
+import ProgressBar from "@badrap/bar-of-progress";
+import Router from "next/router";
+
+const progress = new ProgressBar({
+  size: 3,
+  color: "#8c6900",
+  className: "bar-of-progress",
+  delay: 0,
+});
+
+Router.events.on("routeChangeStart", progress.start);
+Router.events.on("routeChangeComplete", progress.finish);
+Router.events.on("routeChangeError", progress.finish);
 
 export const GlobalStateContext = React.createContext();
 
@@ -51,7 +64,7 @@ export default function MyApp({ Component, pageProps }) {
               <Component {...pageProps} />
               {/* ///////////////// */}
           </Content>
-          <Footer>
+          {/* <Footer>
             <FooterContent>
               <div>
                 Lorem ipsum dolor, sit amet consectetur adipisicing elit. 
@@ -60,7 +73,7 @@ export default function MyApp({ Component, pageProps }) {
                 Consectetur a odio cumque rerum dolores adipisci quos voluptatem.
               </div>
             </FooterContent>
-          </Footer>
+          </Footer> */}
         </MainGrid>
       </ThemeProvider>
     </GlobalStateContext.Provider>

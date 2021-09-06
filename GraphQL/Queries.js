@@ -20,6 +20,15 @@ export const GET_PRODUCT_BY_HANDLE = handle => {
           descriptionHtml
           description
           productType
+          images(first: 10) {
+            edges {
+              node {
+                id
+                src
+                altText
+              }
+            }
+          }
         }
       }
     `

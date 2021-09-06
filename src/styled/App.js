@@ -199,15 +199,12 @@ export const SwitchUI = styled.label`
 
 export const Content = styled.div`
   grid-area: Content;
-  display: flex;
-  justify-content: center;
+  display: block;
   flex-direction: row;
   min-height: 1000px;
   font-size: 1.2rem;
   line-height: 30px;
-  width: 100vw;
-  position: absolute;
-  left: 0;
+  width: 100%;
 
   @media (max-width:${MOBILE}){
     flex-direction: column;
@@ -239,7 +236,7 @@ export const Primary = styled.div`
 
   @media (max-width:${MOBILE}){
     padding: 0;
-    margin: 50px 25px 175px 25px;
+    margin: 0;
   }
 `;
 
@@ -262,12 +259,9 @@ export const Footer = styled.div`
   padding: 25px 0;
   color: ${FOOTER_FONT_COLOR};
   width: 100%;
-  position: absolute;
   display: flex;
   justify-content: center;
   align-items: center;
-  left: 0;
-  bottom: 0;
 `;
 
 export const FooterContent = styled.div`
