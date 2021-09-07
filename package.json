@@ -10,7 +10,7 @@
     "@testing-library/user-event": "^7.2.1",
     "@umijs/hooks": "^1.9.3",
     "ahooks": "^2.10.9",
-    "axios": "^0.20.0",
+    "axios": "^0.21.4",
     "framer-motion": "^4.1.17",
     "graphql": "^15.5.2",
     "html-react-parser": "^0.13.0",

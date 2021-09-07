@@ -6,7 +6,7 @@ import Indicator from './indicator';
 import { InView } from 'react-intersection-observer';
 
 const Container = styled.div`
-    width: 100vw;
+    width: 100%;
     height: 100%;
     position: relative;
     white-space: nowrap;
@@ -53,9 +53,9 @@ const renderImages = (images,setImageIdx) => {
     return images.map((img,i) => {
 
             return <>
-                <InView as ='div'  onChange = {() => setImageIdx(i)} threshold = {0.6} initialInView ={false}>
+                <InView onChange = {(inView) => inView ? setImageIdx(i) : null} threshold = {0.5} initialInView ={false}>
                     {({ inView, ref, entry }) => (
-                        <ImageContainer ref = {ref} key = {img.id} idx = {i} active = {inView}>
+                        <ImageContainer entry = {entry} ref = {ref} key = {img.id} idx = {i} active = {inView}>
                             <Image
                                 placeholder = 'blur'
                                 blurDataURL={`data:image/svg+xml;base64,${toBase64(shimmer(700, 475))}`}
@@ -70,7 +70,7 @@ const renderImages = (images,setImageIdx) => {
     )
 }
 
-export default function productImages({images}) {
+export default function ProductImages({images}) {
 
     const [imageIdx, setImageIdx] = useState(0);
 
