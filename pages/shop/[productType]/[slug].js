@@ -10,7 +10,7 @@ import {DOMAIN, WEBSITE_NAME} from '../../../GlobalVariables';
 import { client } from '../../../apollo-client';
 import { gql } from '@apollo/client';
 import parse from 'html-react-parser';
-import { GET_PRODUCT_BY_HANDLE, GET_SLUGS_BY_COLLECTION_HANDLE } from "../../../graphql/queries";
+import { GET_PRODUCT_BY_HANDLE, GET_SLUGS_BY_COLLECTION_HANDLE } from "../../../graphql/queries.js";
 
 export default function Product({id,title,description,productT,images,price}){
 

@@ -2,7 +2,7 @@ import React from 'react';
 import Link from 'next/link';
 import {Content, Primary} from '../src/styled/App';
 import { client } from '../apollo-client';
-import { GET_PRODUCTS_BY_COLLECTION_HANDLE } from '../graphql/queries';
+import { GET_PRODUCTS_BY_COLLECTION_HANDLE } from '../graphql/queries.js';
 
 export async function getStaticProps() {
 
