@@ -2,7 +2,7 @@ import React, {useEffect} from 'react';
 import Link from 'next/link';
 import {Content, Primary} from '../src/styled/App';
 import { client } from '../apollo-client';
-import { GET_PAST_LAUNCHES, GET_SHOP_TITLE, GET_PRODUCT_BY_HANDLE } from '../graphql/Queries';
+import { GET_PAST_LAUNCHES, GET_SHOP_TITLE, GET_PRODUCT_BY_HANDLE } from '../graphql/queries';
 
 export default function Test() {
 
