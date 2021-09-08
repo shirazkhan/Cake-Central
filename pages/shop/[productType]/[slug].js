@@ -2,7 +2,6 @@ import React from 'react';
 import styled from 'styled-components';
 import { useRouter } from "next/router";
 import {Primary, Secondary} from '../../../src/styled/App';
-import {PageHeading} from '../../../src/styled/Content';
 import ProductImages from '../../../components/productCarousel/ProductImages';
 import ProductSpec from '../../../components/ProductSpec';
 import Head from 'next/head';
@@ -12,7 +11,7 @@ import { gql } from '@apollo/client';
 import parse from 'html-react-parser';
 import { GET_PRODUCT_BY_HANDLE, GET_SLUGS_BY_COLLECTION_HANDLE } from "../../../graphql/queries.js";
 
-export default function Product({id,title,description,productT,images,price}){
+export default function Product({id,title,description,productT,images,price,variants}){
 
   const router = useRouter();
   
@@ -28,9 +27,9 @@ export default function Product({id,title,description,productT,images,price}){
         <meta name="viewport" content="initial-scale=1.0, width=device-width" />
     </Head>
     <Primary>
-      <ProductImages images = {images}/>
-      <ProductSpec title = {title} price = {price} />
-      <PageHeading>{title}</PageHeading>
+      <ProductImages images = {images} variants = {variants}/>
+      <ProductSpec title = {title} price = {price} variants = {variants} />
+      <h3>Description</h3>
       {description}
           
     </Primary>
@@ -51,6 +50,14 @@ export async function getStaticProps({params}) {
     }
   })
 
+  const variants = data.productByHandle.variants.edges.map(v => {
+    return {
+      id: v.node.id,
+      title: v.node.title,
+      image: v.node.image.src,
+      handle: v.node.sku
+    }
+  })
   return {
       props: {
         id: data.productByHandle.id,
@@ -58,6 +65,7 @@ export async function getStaticProps({params}) {
         description: data.productByHandle.description,
         price: data.productByHandle.priceRange.minVariantPrice.amount,
         images,
+        variants
       }
     }
 }

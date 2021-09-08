@@ -1,6 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 import { motion } from 'framer-motion';
+import ProductVariant from './ProductVariant';
 
 const Container = styled.div`
     width: 95%;
@@ -48,7 +49,16 @@ const Price = styled.div`
     font-weight: 400;
 `;
 
-export default function ProductSpec({title, price}) {
+const Credit = styled.p`
+    width: 100%;
+    height: 30px;
+    margin: 0;
+    padding: 0;
+    font-size: 0.85rem;
+    font-weight: 400;
+`;
+
+export default function ProductSpec({title, price, variants}) {
     return (
         <>
             <Container>
@@ -62,7 +72,11 @@ export default function ProductSpec({title, price}) {
                 <Price>
                     £{price}
                 </Price>
+                <Credit>
+                    Buy now, pay in 3 instalments with <span>Klarna</span>
+                </Credit>
             </Container>
+            <ProductVariant variants = {variants} />
         </>
     )
 }

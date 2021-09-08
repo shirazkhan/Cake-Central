@@ -34,6 +34,19 @@ export const GET_PRODUCT_BY_HANDLE = handle => {
               amount
             }
           }
+          variants(first: 20) {
+            edges {
+              node {
+                id
+                title
+                image {
+                  src
+                  id
+                }
+                sku
+              }
+            }
+          }
         }
       }
     `

@@ -1,4 +1,4 @@
-import React, {useState, useEffect} from 'react';
+import React, {useState, useRef, useEffect} from 'react';
 import Image from 'next/image';
 import styled from 'styled-components';
 import { motion } from 'framer-motion';
@@ -48,14 +48,16 @@ const toBase64 = (str) =>
     ? Buffer.from(str).toString('base64')
     : window.btoa(str);
 
-const renderImages = (images,setImageIdx) => {
+const renderImages = (images, variants, setImageIdx) => {
 
     return images.map((img,i) => {
 
+        const myRef = useRef();
+
             return <>
-                <InView onChange = {(inView) => inView ? setImageIdx(i) : null} threshold = {0.5} initialInView ={false}>
+                <InView ref = {myRef} onChange = {(inView) => inView ? setImageIdx(i) : null} threshold = {0.5} initialInView ={false}>
                     {({ inView, ref, entry }) => (
-                        <ImageContainer entry = {entry} ref = {ref} key = {img.id} idx = {i} active = {inView}>
+                        <ImageContainer id = {variants[i].handle} entry = {entry} ref = {ref} key = {img.id} idx = {i} active = {inView}>
                             <Image
                                 placeholder = 'blur'
                                 blurDataURL={`data:image/svg+xml;base64,${toBase64(shimmer(700, 475))}`}
@@ -70,14 +72,14 @@ const renderImages = (images,setImageIdx) => {
     )
 }
 
-export default function ProductImages({images}) {
+export default function ProductImages({images, variants}) {
 
     const [imageIdx, setImageIdx] = useState(0);
 
     return (
         <>
             <Container>
-                {renderImages(images,setImageIdx)}
+                {renderImages(images, variants, setImageIdx)}
             </Container>
             <Indicator quantity = {images.length} idx = {imageIdx} />
         </>

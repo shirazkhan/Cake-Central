@@ -1,4 +1,4 @@
-import React, { useReducer } from 'react';
+import React, { useReducer, useEffect } from 'react';
 import '../src/index.css';
 import { lightTheme, darkTheme, GlobalStyle, MainGrid, Header, NavBar, Brand, NavButton, NavUILabel, NavInputUI,
          Hamburger, NavSideMenu, NavSideMenuShadow, NavLinks, NavLink,
@@ -9,6 +9,7 @@ import { ThemeProvider } from 'styled-components';
 import Navbar from '../components/navbar/Navbar';
 import ProgressBar from "@badrap/bar-of-progress";
 import Router from "next/router";
+import '../styles.css'
 
 const progress = new ProgressBar({
   size: 3,
