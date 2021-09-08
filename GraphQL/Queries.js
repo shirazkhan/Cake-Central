@@ -29,6 +29,11 @@ export const GET_PRODUCT_BY_HANDLE = handle => {
               }
             }
           }
+          priceRange {
+            minVariantPrice {
+              amount
+            }
+          }
         }
       }
     `

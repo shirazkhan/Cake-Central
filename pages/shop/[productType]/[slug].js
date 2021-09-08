@@ -3,7 +3,8 @@ import styled from 'styled-components';
 import { useRouter } from "next/router";
 import {Primary, Secondary} from '../../../src/styled/App';
 import {PageHeading} from '../../../src/styled/Content';
-import ProductImages from '../../../components/product-carousel/ProductImages';
+import ProductImages from '../../../components/productCarousel/ProductImages';
+import ProductSpec from '../../../components/ProductSpec';
 import Head from 'next/head';
 import {DOMAIN, WEBSITE_NAME} from '../../../GlobalVariables';
 import { client } from '../../../apollo-client';
@@ -11,7 +12,7 @@ import { gql } from '@apollo/client';
 import parse from 'html-react-parser';
 import { GET_PRODUCT_BY_HANDLE, GET_SLUGS_BY_COLLECTION_HANDLE } from "../../../graphql/Queries";
 
-export default function Product({id,title,description,productT,images,test}){
+export default function Product({id,title,description,productT,images,price}){
 
   const router = useRouter();
   
@@ -28,6 +29,7 @@ export default function Product({id,title,description,productT,images,test}){
     </Head>
     <Primary>
       <ProductImages images = {images}/>
+      <ProductSpec title = {title} price = {price} />
       <PageHeading>{title}</PageHeading>
       {description}
           
@@ -54,7 +56,8 @@ export async function getStaticProps({params}) {
         id: data.productByHandle.id,
         title: data.productByHandle.title,
         description: data.productByHandle.description,
-        images
+        price: data.productByHandle.priceRange.minVariantPrice.amount,
+        images,
       }
     }
 }
