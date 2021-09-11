@@ -4,6 +4,7 @@ import { useRouter } from "next/router";
 import {Primary, Secondary} from '../../../src/styled/App';
 import ProductImages from '../../../components/productCarousel/ProductImages';
 import ProductSpec from '../../../components/ProductSpec';
+import BuyButton from '../../../components/BuyButton';
 import Head from 'next/head';
 import {DOMAIN, WEBSITE_NAME} from '../../../GlobalVariables';
 import { client } from '../../../apollo-client';
@@ -31,7 +32,7 @@ export default function Product({id,title,description,productT,images,price,vari
       <ProductSpec title = {title} price = {price} variants = {variants} />
       <h3>Description</h3>
       {description}
-          
+      <BuyButton />
     </Primary>
   </>
 }

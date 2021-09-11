@@ -1,24 +1,10 @@
 import styled, { createGlobalStyle } from 'styled-components';
 import Link from 'next/link';
 import React from 'react';
-
-//CSS Variables
-const WEBSITE_WIDTH = "1400px";
-const MOBILE_NAV_HEIGHT = "50px";
-const DESKTOP_NAV_HEIGHT = "60px";
-const FOOTER_HEIGHT = "200px";
-const NAV_MENU_WIDTH = "250px";
-const NAV_GAP = "50px";
-const NAV_LINKS_ALIGNMENT = "flex-end";
-const CONTENT_H_MARGIN = "50px";
-const CONTENT_V_MARGIN = "0px";
-const HAMBURGER_COLOR = "black";
-const NAV_FONT_COLOR = "black";
-const FOOTER_FONT_COLOR = "white";
-const FOOTER_COLOR = "black";
-const MOBILE = "781px";
-//const TABLET = "1050px";
-const NAVFILTER_COLOR = "rgba(255,255,255,0.5)";
+import {WEBSITE_WIDTH, MOBILE_NAV_HEIGHT, DESKTOP_NAV_HEIGHT, FOOTER_HEIGHT, NAV_MENU_WIDTH,
+  NAV_GAP, NAV_LINKS_ALIGNMENT, CONTENT_H_MARGIN, CONTENT_V_MARGIN, HAMBURGER_COLOR, NAV_FONT_COLOR,
+  FOOTER_COLOR, FOOTER_FONT_COLOR, MOBILE, TABLET, NAVFILTER_COLOR      
+} from '../../GlobalVariables';
 
 export const MainGrid = styled.div`
   display: grid;
