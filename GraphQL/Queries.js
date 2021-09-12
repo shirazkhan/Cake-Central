@@ -53,6 +53,36 @@ export const GET_PRODUCT_BY_HANDLE = handle => {
   }
 };
 
+export const GET_RECOMMENDED_PRODUCTS_BY_ID = handle => (
+  {
+    query: gql`
+    {
+      productRecommendations(
+        productId: "Z2lkOi8vc2hvcGlmeS9Qcm9kdWN0LzY4Njk5MTE3NjUxODg="
+      ) {
+        id
+        priceRange {
+          minVariantPrice {
+            amount
+          }
+        }
+        title
+        handle
+        images(first: 1) {
+          edges {
+            node {
+              id
+              src
+              altText
+            }
+          }
+        }
+      }
+    }
+    `
+  }
+)
+
 export const GET_SLUGS_BY_COLLECTION_HANDLE = handle => (
   {
     query: gql`

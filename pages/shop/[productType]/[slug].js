@@ -5,14 +5,17 @@ import {Primary, Secondary} from '../../../src/styled/App';
 import ProductImages from '../../../components/productCarousel/ProductImages';
 import ProductSpec from '../../../components/ProductSpec';
 import BuyButton from '../../../components/BuyButton';
+import Quantity from '../../../components/Quantity';
+import RecommendedCarousel from '../../../components/RecommendedCarousel';
 import Head from 'next/head';
 import {DOMAIN, WEBSITE_NAME} from '../../../GlobalVariables';
 import { client } from '../../../apollo-client';
 import { gql } from '@apollo/client';
 import parse from 'html-react-parser';
-import { GET_PRODUCT_BY_HANDLE, GET_SLUGS_BY_COLLECTION_HANDLE } from "../../../graphql/queries.js";
+import { GET_PRODUCT_BY_HANDLE, GET_SLUGS_BY_COLLECTION_HANDLE, GET_RECOMMENDED_PRODUCTS_BY_ID } from "../../../graphql/queries.js";
+import ProductAccordion from '../../../components/ProductAccordion';
 
-export default function Product({id,title,description,productT,images,price,variants}){
+export default function Product({id,title,description,images,price,variants,productRecommendations}){
 
   const router = useRouter();
   
@@ -30,9 +33,11 @@ export default function Product({id,title,description,productT,images,price,vari
     <Primary>
       <ProductImages images = {images} variants = {variants}/>
       <ProductSpec title = {title} price = {price} variants = {variants} />
-      <h3>Description</h3>
-      {description}
       <BuyButton />
+      <ProductAccordion title = 'Description' content = {description} initial = {true} />
+      <ProductAccordion title = 'Details' content = {description} />
+      <ProductAccordion title = 'Delivery & Returns' content = {description} />
+      <RecommendedCarousel products = {productRecommendations} />
     </Primary>
   </>
 }
@@ -59,6 +64,21 @@ export async function getStaticProps({params}) {
       handle: v.node.sku
     }
   })
+
+  const { data:data2 } = await client.query(GET_RECOMMENDED_PRODUCTS_BY_ID(data.productByHandle.id));
+  
+  const productRecommendations = data2.productRecommendations.map(r => {
+    return {
+      id: r.id,
+      price: r.priceRange.minVariantPrice.amount,
+      title: r.title,
+      handle: r.handle,
+      imageSrc: r.images.edges[0].node.src,
+      imageId: r.images.edges[0].node.src,
+      imageAltText: r.images.edges[0].node.altText
+    }
+  })
+
   return {
       props: {
         id: data.productByHandle.id,
@@ -66,7 +86,8 @@ export async function getStaticProps({params}) {
         description: data.productByHandle.description,
         price: data.productByHandle.priceRange.minVariantPrice.amount,
         images,
-        variants
+        variants,
+        productRecommendations
       }
     }
 }

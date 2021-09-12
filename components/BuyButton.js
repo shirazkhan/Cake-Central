@@ -1,16 +1,21 @@
-import React from 'react';
+import React, {useState} from 'react';
 import styled from 'styled-components';
 import {motion} from 'framer-motion';
+import { useInView } from 'react-intersection-observer';
 import { MOBILE } from '../GlobalVariables';
 
 const Container = styled(motion.div)`
-    width: 100%;
+    width: ${props => props.inView ? '80%' : '100%'};
+    border-radius: ${props => props.inView ? '30px' : '0px'};
+    margin: 0 auto;
     height: 60px;
     display: flex;
-    position: fixed;
+    position: ${props => props.inView ? 'relative' : 'fixed'};
     z-index: 1000;
     background: #8c6900;
     bottom: 0;
+    box-shadow: 0px 5px 5px -4px #000000
+
 `;
 
 const Button = styled(motion.button)`
@@ -21,13 +26,22 @@ const Button = styled(motion.button)`
     font-weight: 500;
     color: white;
     background: rgba(0,0,0,0);
-    border: 0;
+    border: none;
+    outline: none;
+`;
+
+const Ref = styled.div`
+    height: 1px;
 `;
 
 export default function BuyButton() {
+
+    const { ref, inView, entry } = useInView();
+
     return (
         <>
-            <Container initial = {{y: 150}} animate={{ y: 0 }} whileTap = {{scale: 1.2}}>
+            <Ref ref = {ref} />
+            <Container inView = {inView} animate={{width: inView ? '80%' : '100%'}} whileTap = {{scale: 1.1}}>
                 <Button>Add to Bag</Button>
             </Container>
         </>

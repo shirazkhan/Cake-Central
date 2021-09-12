@@ -5,7 +5,7 @@ import Image from 'next/image';
 import { useRouter } from 'next/router';
 
 const Container = styled.div`
-
+    margin: 0px 0 20px 0;
 `;
 
 const Title = styled(motion.p)`
