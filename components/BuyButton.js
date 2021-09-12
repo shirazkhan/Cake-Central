@@ -31,7 +31,11 @@ const Button = styled(motion.button)`
 `;
 
 const Ref = styled.div`
-    height: 1px;
+    width: 100%;
+    margin: 0 auto;
+    height: 60px;
+    margin-bottom: 0px;
+    bottom: 0;
 `;
 
 export default function BuyButton() {
@@ -40,10 +44,11 @@ export default function BuyButton() {
 
     return (
         <>
-            <Ref ref = {ref} />
+            <Ref ref = {ref}>
             <Container inView = {inView} animate={{width: inView ? '80%' : '100%'}} whileTap = {{scale: 1.1}}>
                 <Button>Add to Bag</Button>
             </Container>
+            </Ref>
         </>
     )
 }

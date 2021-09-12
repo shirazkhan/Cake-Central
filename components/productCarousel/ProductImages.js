@@ -48,15 +48,13 @@ const toBase64 = (str) =>
     ? Buffer.from(str).toString('base64')
     : window.btoa(str);
 
-const renderImages = (images, variants, setImageIdx) => {
+const renderImages = (images, variants, setImageIdx, myRef) => {
 
     return images.map((img,i) => {
 
-        const myRef = useRef();
-
             return <InView key = {img.id} ref = {myRef} onChange = {(inView) => inView ? setImageIdx(i) : null} threshold = {0.5} initialInView ={false}>
                     {({ inView, ref, entry }) => (
-                        <ImageContainer id = {variants[i].handle} entry = {entry} ref = {ref} idx = {i} active = {inView}>
+                        <ImageContainer id = {variants > 0 ? variants[i].handle : null} entry = {entry} ref = {ref} idx = {i} active = {inView}>
                             <Image
                                 placeholder = 'blur'
                                 blurDataURL={`data:image/svg+xml;base64,${toBase64(shimmer(700, 475))}`}
@@ -73,11 +71,12 @@ const renderImages = (images, variants, setImageIdx) => {
 export default function ProductImages({images, variants}) {
 
     const [imageIdx, setImageIdx] = useState(0);
+    const myRef = useRef();
 
     return (
         <>
             <Container>
-                {renderImages(images, variants, setImageIdx)}
+                {renderImages(images, variants, setImageIdx,myRef)}
             </Container>
             <Indicator quantity = {images.length} idx = {imageIdx} />
         </>

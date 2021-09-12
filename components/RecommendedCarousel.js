@@ -1,11 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
-import { motion } from 'framer-motion';
 import Image from 'next/image';
 import Link from 'next/link'
-import { client } from '../apollo-client';
-import { gql } from '@apollo/client';
-import {GET_RECOMMENDED_PRODUCTS_BY_ID} from "../graphql/queries";
 
 const Container = styled.div`
     margin-top: 25px;
@@ -17,7 +13,7 @@ const Title = styled.h4`
     padding: 0;
 `;
 
-const CardsContainer = styled(motion.div)`
+const CardsContainer = styled.div`
     display: flex;
     justify-content: flex-start;
     align-items: center;
@@ -40,7 +36,7 @@ const CardContainer = styled(Link)`
       flex-direction: column;
 `;
 
-const CardImage = styled(motion.div)`
+const CardImage = styled.div`
     flex: none;
     height: 275px;
     margin: 0 15px;
@@ -84,7 +80,10 @@ const toBase64 = (str) =>
     : window.btoa(str);
 
 const renderProducts = products => products.map((p,i) =>
-    <CardContainer key = {p.imageId + i} href = {`/shop/${p.productType}/${p.handle}`}>
+    <CardContainer
+        key = {p.imageId}
+        href = {`/shop/${p.productType}/${p.handle}`}
+    >
         <a>
         <CardImage>
             <Image

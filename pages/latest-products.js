@@ -32,7 +32,7 @@ export async function getStaticProps() {
 
 const renderProducts = productArr =>
   productArr.map(p => 
-    <Link key = {p.id} href = {`/shop/[productType]/[slug]`} as = {`/shop/${p.productType}/${p.slug}`}>
+    <Link key = {p.id} href = {`/shop/${p.productType}/${p.slug}`} >
         <a>{p.title} - £{p.price}
             <img height = '400px' width = '400px' src = {p.images[0].src}></img>
         </a>
