@@ -54,10 +54,9 @@ const renderImages = (images, variants, setImageIdx) => {
 
         const myRef = useRef();
 
-            return <>
-                <InView ref = {myRef} onChange = {(inView) => inView ? setImageIdx(i) : null} threshold = {0.5} initialInView ={false}>
+            return <InView key = {img.id} ref = {myRef} onChange = {(inView) => inView ? setImageIdx(i) : null} threshold = {0.5} initialInView ={false}>
                     {({ inView, ref, entry }) => (
-                        <ImageContainer id = {variants[i].handle} entry = {entry} ref = {ref} key = {img.id} idx = {i} active = {inView}>
+                        <ImageContainer id = {variants[i].handle} entry = {entry} ref = {ref} idx = {i} active = {inView}>
                             <Image
                                 placeholder = 'blur'
                                 blurDataURL={`data:image/svg+xml;base64,${toBase64(shimmer(700, 475))}`}
@@ -67,7 +66,6 @@ const renderImages = (images, variants, setImageIdx) => {
                         </ImageContainer>
                     )}
                 </InView>
-            </>
         }
     )
 }

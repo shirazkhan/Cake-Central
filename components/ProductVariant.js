@@ -47,10 +47,9 @@ const Selected = styled(motion.div)`
 `;
 
 const renderVariants = (variants,selected,setSelected) =>
-    variants.map(v => {
-        return <>
-        <AnimatePresence>
-            <Variant
+    variants.map((v,i) => {
+        return <AnimatePresence key = {v.id}>
+        <Variant
                 key = {v.id}
                 onClick = {() => handleClick(v.handle, setSelected)}
                 href = {`#${v.handle}`}
@@ -58,11 +57,10 @@ const renderVariants = (variants,selected,setSelected) =>
             >
                 <Image width = '100px' height = '100px' src = {v.image} />
             </Variant>
-                {v.handle === selected && (
-                <Selected animate = {{opacity: 1}} exit = {{ opacity: 0 }} selected = {v.handle === selected ? true : false} />
-                )}
-            </AnimatePresence>
-        </>
+            {v.handle === selected && (
+            <Selected animate = {{opacity: 1}} exit = {{ opacity: 0 }} selected = {v.handle === selected ? true : false} />
+            )}
+        </AnimatePresence>
     })
 
 const handleClick = (handle, setSelected, ref) => {
@@ -86,9 +84,7 @@ export default function ProductVariant({variants}) {
     return (
         <>
             <Container>
-                <AnimatePresence>
-                    <Title key = 'title' animate = {{ opacity: 1}} exit = {{ opacity: 0}}>{variants.find(v => v.handle === selected).title}</Title>
-                </AnimatePresence>
+                <Title key = 'title' animate = {{ opacity: 1}} exit = {{ opacity: 0}}>{variants.find(v => v.handle === selected).title}</Title>
                 <Variants>
                     {renderVariants(variants,selected,setSelected)}
                 </Variants>

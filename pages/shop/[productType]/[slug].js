@@ -73,6 +73,7 @@ export async function getStaticProps({params}) {
       price: r.priceRange.minVariantPrice.amount,
       title: r.title,
       handle: r.handle,
+      productType: r.productType.toLowerCase(),
       imageSrc: r.images.edges[0].node.src,
       imageId: r.images.edges[0].node.src,
       imageAltText: r.images.edges[0].node.altText

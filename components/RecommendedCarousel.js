@@ -2,6 +2,7 @@ import React from 'react';
 import styled from 'styled-components';
 import { motion } from 'framer-motion';
 import Image from 'next/image';
+import Link from 'next/link'
 import { client } from '../apollo-client';
 import { gql } from '@apollo/client';
 import {GET_RECOMMENDED_PRODUCTS_BY_ID} from "../graphql/queries";
@@ -32,7 +33,7 @@ const CardsContainer = styled(motion.div)`
     
 `;
 
-const CardContainer = styled.div`
+const CardContainer = styled(Link)`
       height: 300px
       width: 300px;
       display: flex;
@@ -43,7 +44,6 @@ const CardImage = styled(motion.div)`
     flex: none;
     height: 275px;
     margin: 0 15px;
-    border: 1px solid green;
     width: 275px;
     border-radius: 10px;
     position: relative;
@@ -83,8 +83,9 @@ const toBase64 = (str) =>
     ? Buffer.from(str).toString('base64')
     : window.btoa(str);
 
-const renderProducts = products => products.map(p =>
-    <CardContainer>
+const renderProducts = products => products.map((p,i) =>
+    <CardContainer key = {p.imageId + i} href = {`/shop/${p.productType}/${p.handle}`}>
+        <a>
         <CardImage>
             <Image
                 layout = 'fill'
@@ -97,6 +98,7 @@ const renderProducts = products => products.map(p =>
         </CardImage>
         <CardTitle>{p.title}</CardTitle>
         <CardPrice>£{p.price}</CardPrice>
+        </a>
     </CardContainer>
 )
 

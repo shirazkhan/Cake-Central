@@ -68,6 +68,7 @@ export const GET_RECOMMENDED_PRODUCTS_BY_ID = handle => (
         }
         title
         handle
+        productType
         images(first: 1) {
           edges {
             node {
