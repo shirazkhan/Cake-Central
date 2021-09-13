@@ -68,27 +68,25 @@ const handleClick = (handle, setSelected, ref) => {
     
 }
 
-const extractFragmentHandle = (router, variants) => { // Check if router has href fragment. IF it does, then use this as initial state.
-    const fragment = router.asPath.slice(router.asPath.indexOf('#')+1);
-    if(fragment === router.asPath){
-        return variants[0].handle
-    }
-    return fragment
+const extractFragmentHandle = (router, variants) => { // Check if router has href fragment. If it does, then use this as initial state.
+    const fragment = router.asPath.slice(router.asPath.indexOf('#')+1)
+    return fragment === router.asPath ? variants[0].handle : fragment
 }
+
+const renderTitle = (variants,selected) =>
+    variants.find(v => v.handle === selected)
 
 export default function ProductVariant({variants}) {
     
     const router = useRouter();
     const [selected,setSelected] = useState(extractFragmentHandle(router, variants));
 
-    return (
-        <>
-            <Container>
-                <Title key = 'title' animate = {{ opacity: 1}} exit = {{ opacity: 0}}>{variants.find(v => v.handle === selected).title}</Title>
+    return <Container key = {Math.random()}>
+                <Title animate = {{ opacity: 1}}>
+                    {variants.find(v => v.handle === selected).title}
+                </Title>
                 <Variants>
                     {renderVariants(variants,selected,setSelected)}
                 </Variants>
             </Container>
-        </>
-    )
 }

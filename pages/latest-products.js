@@ -4,6 +4,28 @@ import {Content, Primary} from '../src/styled/App';
 import { client } from '../apollo-client';
 import { GET_PRODUCTS_BY_COLLECTION_HANDLE } from '../graphql/queries.js';
 
+
+const renderProducts = productArr =>
+productArr.map(p => 
+    <Link key = {p.id} href = {`/shop/${p.productType}/${p.slug}`} >
+        <a>{p.title} - £{p.price}
+            <img height = '400px' width = '400px' src = {p.images[0].src}></img>
+        </a>
+    </Link>
+  )
+  
+  export default function Products({products}) {
+      return (
+          <Content>
+            <Primary>
+                <h2>HEADER</h2>
+                {renderProducts(products)}
+                <Link href="/"><a>Go to homepage</a></Link>
+            </Primary>
+        </Content>
+    )
+}
+
 export async function getStaticProps() {
 
     const { data } = await client.query(GET_PRODUCTS_BY_COLLECTION_HANDLE('latest-stuff'));
@@ -29,24 +51,3 @@ export async function getStaticProps() {
       }
     }
   }
-
-const renderProducts = productArr =>
-  productArr.map(p => 
-    <Link key = {p.id} href = {`/shop/${p.productType}/${p.slug}`} >
-        <a>{p.title} - £{p.price}
-            <img height = '400px' width = '400px' src = {p.images[0].src}></img>
-        </a>
-    </Link>
-  )
-
-export default function Products({shopName,products}) {
-    return (
-        <Content>
-            <Primary>
-                <h2>HEADER</h2>
-                {renderProducts(products)}
-                <Link href="/"><a>Go to homepage</a></Link>
-            </Primary>
-        </Content>
-    )
-}

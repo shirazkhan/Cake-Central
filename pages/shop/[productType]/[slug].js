@@ -1,4 +1,4 @@
-import React from 'react';
+import React,{useState} from 'react';
 import styled from 'styled-components';
 import { useRouter } from "next/router";
 import {Primary, Secondary} from '../../../src/styled/App';
@@ -88,8 +88,9 @@ export async function getStaticProps({params}) {
         price: data.productByHandle.priceRange.minVariantPrice.amount,
         images,
         variants,
-        productRecommendations
-      }
+        productRecommendations,
+        key: data.productByHandle.id
+      },
     }
 }
 

@@ -11,6 +11,11 @@ import ProgressBar from "@badrap/bar-of-progress";
 import Router from "next/router";
 import '../styles.css'
 
+const extractFragmentHandle = (router, variants) => { // Check if router has href fragment. If it does, then use this as initial state.
+  const fragment = router.asPath.slice(router.asPath.indexOf('#')+1)
+  return fragment === router.asPath ? variants[0].handle : fragment
+}
+
 const progress = new ProgressBar({
   size: 3,
   color: "#8c6900",
@@ -32,7 +37,8 @@ export default function MyApp({ Component, pageProps }) {
     nightMode: false,
     postId: 0,
     navMenuOpen: false,
-    cartMenuOpen: false
+    cartMenuOpen: false,
+    selectedProductVariant: ''
   };
 
   const reducer = (prevState, action) => {
