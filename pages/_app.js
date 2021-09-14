@@ -30,7 +30,6 @@ Router.events.on("routeChangeError", progress.finish);
 export const GlobalStateContext = React.createContext();
 
 export default function MyApp({ Component, pageProps }) {
-
   // Reducer ////
 
   const initialState = {
