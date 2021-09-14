@@ -1,4 +1,4 @@
-# NextJS + Shopify Starter Kit
+# NextJS + Shopify + Wordpress Starter Kit
 A super fast responsive generic theme created with React and NextJS from scratch.
 
 All the components, styling and code is done from scratch with minimalistic direct DOM manipulation for efficient performance.
