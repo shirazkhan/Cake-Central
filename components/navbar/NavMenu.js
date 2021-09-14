@@ -63,6 +63,11 @@ export default function NavMenu() {
                             </NextLink>
                         </NavLink>
                         <NavLink>
+                            <NextLink href = '/account' as = '/account' passHref>
+                                <Link onClick = {() => dispatch({type: 'TOGGLE_NAV_MENU'})}>Account</Link>
+                            </NextLink>
+                        </NavLink>
+                        <NavLink>
                             <NextLink href = '/latest-products' as = '/latest-products' passHref>
                                 <Link onClick = {() => dispatch({type: 'TOGGLE_NAV_MENU'})}>Latest Products</Link>
                             </NextLink>
