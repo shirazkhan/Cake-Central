@@ -12,10 +12,10 @@ const Bar = styled.div`
     justify-content: space-between;
     align-items: center;
     width: 100%;
-    background: white;
+    background: rgba(255,255,255,0.5);
     height: 100%;
     max-width: 1400px;
-    z-index: 1001;
+    z-index: 2499;
 
 `;
 

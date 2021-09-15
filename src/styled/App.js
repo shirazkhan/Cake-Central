@@ -32,8 +32,8 @@ export const Header = styled.div`
   width: 100%;
   position: fixed;
   left: 0;
-  z-index: 1001;
-  background: rgba(255,255,255,0.3);
+  z-index: 2500;
+  background: white;
   backdrop-filter: blur(14px);
   box-shadow: 0px 0px 14px -6px rgba(0,0,0,0.8);
   display: flex;

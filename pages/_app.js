@@ -10,6 +10,8 @@ import Navbar from '../components/navbar/Navbar';
 import ProgressBar from "@badrap/bar-of-progress";
 import Router from "next/router";
 import '../styles.css'
+import { Provider } from 'next-auth/client';
+import Providers from 'next-auth/client';
 
 const extractFragmentHandle = (router, variants) => { // Check if router has href fragment. If it does, then use this as initial state.
   const fragment = router.asPath.slice(router.asPath.indexOf('#')+1)
@@ -57,7 +59,7 @@ export default function MyApp({ Component, pageProps }) {
 
   ///////////////
 
-  return <>
+  return <Provider>
     <GlobalStateContext.Provider value = {{globalState, dispatch}}>
       <ThemeProvider theme = {globalState.nightMode ? darkTheme : lightTheme}>
         <GlobalStyle />
@@ -83,5 +85,5 @@ export default function MyApp({ Component, pageProps }) {
         </MainGrid>
       </ThemeProvider>
     </GlobalStateContext.Provider>
-    </>
+    </Provider>
   }

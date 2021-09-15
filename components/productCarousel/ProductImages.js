@@ -54,7 +54,7 @@ const renderImages = (images, variants, setImageIdx, myRef) => {
 
             return <InView key = {img.id} ref = {myRef} onChange = {(inView) => inView ? setImageIdx(i) : null} threshold = {0.5} initialInView ={false}>
                     {({ inView, ref, entry }) => (
-                        <ImageContainer id = {variants > 0 ? variants[i].handle : null} entry = {entry} ref = {ref} idx = {i} active = {inView}>
+                        <ImageContainer id = {variants.length <= 1 ? null : variants[i].handle} entry = {entry} ref = {ref} idx = {i} active = {inView}>
                             <Image
                                 placeholder = 'blur'
                                 blurDataURL={`data:image/svg+xml;base64,${toBase64(shimmer(700, 475))}`}
@@ -72,7 +72,7 @@ export default function ProductImages({images, variants}) {
 
     const [imageIdx, setImageIdx] = useState(0);
     const myRef = useRef();
-
+console.log(variants)
     return (
         <>
             <Container>

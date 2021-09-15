@@ -5,16 +5,16 @@ import { motion, AnimatePresence } from "framer-motion"
 import { GlobalStateContext } from '../../pages/_app';
 
 const Menu = styled(motion.div)`
-    height: 100vh;
-    width: 100vw;
-    top: calc(-100vh - -50px);
+    height: calc(100vh - 50px);
+    width: 100%;
+    top: 50px;
     position: absolute;
-    background: #8c6900;
-    backdrop-filter: blur(10px);
-    z-index: 2;
+    background: rgba(255,255,255,1);
+    z-index: 1000;
     display: flex;
     flex-direction: column;
     padding-top: 25px;
+    overflow-y: scroll;
 `;
 
 const NavLink = styled.div`
@@ -40,10 +40,15 @@ export default function CartMenu() {
                 <>
                     <Menu
                         key="navMenu"
-                        animate = {{ y: '100vh' }}
-                        exit={{ y: '-100vh' }}
+                        initial = {{ opacity: 0 }}
+                        animate = {{ opacity: 1 }}
+                        exit={{ opacity: 0 }}
                         transition= {{ duration: 0.75}}
                     >
+                        <h1>HELLO</h1>
+                        <h1>HELLO</h1>
+                        <h1>HELLO</h1>
+                        <h1>HELLO</h1>
                     </Menu>
                 </>
             )}

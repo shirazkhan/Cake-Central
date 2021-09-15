@@ -1,29 +1,16 @@
 import React, {useState, useEffect} from 'react';
 import styled from 'styled-components';
-import { getSession, signIn } from 'next-auth/client';
+import { useSession } from 'next-auth/client';
 
 export default function account() {
 
-    const [loading, setLoading] = useState(true);
+    const [session, loading] = useSession();
+    console.log(session,loading)
 
-    useEffect(() => {
-        const securePage = async() => {
-            const session = await getSession();
-            if(!session){
-                signIn()
-            } else{
-                setLoading(false);
-            }
-        }
-        securePage()
-    },[])
-    
-    if(loading){
-        <h1>Loading...</h1>
-    }
     return (
         <>
-            THIS IS THE ACCOUNTS PAGE
+            <h1 style = {{textAlign: 'center'}}>Account</h1>
+            <h3>Hello</h3>
         </>
     )
 }
