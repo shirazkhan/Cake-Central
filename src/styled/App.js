@@ -16,7 +16,7 @@ export const MainGrid = styled.div`
   grid-template-columns: 1fr 1fr 1fr;
   margin: 0 auto;
   max-width: ${WEBSITE_WIDTH};
-  background: ${props => props.theme.main}
+  background: ${props => props.theme.main};
 `;
 
 MainGrid.defaultProps = {
@@ -31,10 +31,10 @@ export const Header = styled.div`
   height: ${DESKTOP_NAV_HEIGHT};
   width: 100%;
   position: fixed;
+  top: 0;
   left: 0;
   z-index: 2500;
   background: white;
-  backdrop-filter: blur(14px);
   box-shadow: 0px 0px 14px -6px rgba(0,0,0,0.8);
   display: flex;
   justify-content: center;
