@@ -1,4 +1,4 @@
-import React,{useState} from 'react';
+import React, { useState } from 'react';
 import styled from 'styled-components';
 import { useRouter } from "next/router";
 import {Primary, Secondary} from '../../../src/styled/App';
@@ -15,6 +15,11 @@ import parse from 'html-react-parser';
 import { GET_PRODUCT_BY_HANDLE, GET_SLUGS_BY_COLLECTION_HANDLE, GET_RECOMMENDED_PRODUCTS_BY_ID } from "../../../graphql/queries.js";
 import ProductAccordion from '../../../components/ProductAccordion';
 
+const extractFragmentHandle = (router, variants) => { // Check if router has href fragment. If it does, then use this as initial state.
+  const fragment = router.asPath.slice(router.asPath.indexOf('#')+1)
+  return fragment === router.asPath ? variants[0].handle : fragment
+}
+
 export default function Product({id,title,description,images,price,variants,productRecommendations}){
 
   const router = useRouter();
@@ -24,6 +29,8 @@ export default function Product({id,title,description,images,price,variants,prod
   // }
 
   const { productType, slug } = router.query;
+
+  const [selectedVariant, setSelectedVariant] = useState(extractFragmentHandle(router, variants));
   
   return <>
     <Head>
@@ -32,8 +39,8 @@ export default function Product({id,title,description,images,price,variants,prod
     </Head>
     <Primary>
       <ProductImages images = {images} variants = {variants}/>
-      <ProductSpec title = {title} price = {price} variants = {variants} />
-      <BuyButton />
+      <ProductSpec title = {title} price = {price} variants = {variants} selectedVariant = {selectedVariant} setSelectedVariant = {setSelectedVariant}  />
+      <BuyButton variants = {variants} />
       <ProductAccordion title = 'Description' content = {description} initial = {true} />
       <ProductAccordion title = 'Details' content = {description} />
       <ProductAccordion title = 'Delivery & Returns' content = {description} />

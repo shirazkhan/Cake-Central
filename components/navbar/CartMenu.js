@@ -157,9 +157,8 @@ export default function CartMenu() {
             {globalState.cartMenuOpen && (
                 <>
                     <Menu
-                        key="navMenu"
-                        initial = {{ opacity: 0 }}
-                        animate = {{ opacity: 1 }}
+                        initial = {{ opacity: 0, y: -75 }}
+                        animate = {{ opacity: 1, y: 0 }}
                         exit={{ opacity: 0 }}
                     >
                         <Title>Shopping Bag (1)</Title>
@@ -213,7 +212,7 @@ export default function CartMenu() {
                             </SummaryDelivery>
                             <Taxes>Taxes Included</Taxes>
                         </SummaryContainer>
-                        <CheckoutContainer>
+                        <CheckoutContainer transition={{ delay: 1 }}>
                             <CheckoutButton>Pay with Apple Pay</CheckoutButton>
                             <CheckoutButton>Check Out</CheckoutButton>
                         </CheckoutContainer>

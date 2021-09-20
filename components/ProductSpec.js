@@ -58,7 +58,7 @@ const Credit = styled.p`
     font-weight: 400;
 `;
 
-export default function ProductSpec({title, price, variants}) {
+export default function ProductSpec({title, price, variants, selectedVariant, setSelectedVariant}) {
     return (
         <>
             <Container>
@@ -76,7 +76,7 @@ export default function ProductSpec({title, price, variants}) {
                     Buy now, pay in 3 instalments with <span>Klarna</span>
                 </Credit>
             </Container>
-            <ProductVariant variants = {variants} />
+            <ProductVariant variants = {variants} selectedVariant = {selectedVariant} setSelectedVariant = {setSelectedVariant}/>
         </>
     )
 }

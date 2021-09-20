@@ -76,17 +76,16 @@ const extractFragmentHandle = (router, variants) => { // Check if router has hre
 const renderTitle = (variants,selected) =>
     variants.find(v => v.handle === selected)
 
-export default function ProductVariant({variants}) {
+export default function ProductVariant({variants, selectedVariant, setSelectedVariant}) {
     
-    const router = useRouter();
-    const [selected,setSelected] = useState(extractFragmentHandle(router, variants));
-
+    const router = useRouter(); 
+    
     return <Container key = {Math.random()}>
                 <Title animate = {{ opacity: 1}}>
-                    {variants.find(v => v.handle === selected).title}
+                    {variants.find(v => v.handle === selectedVariant).title}
                 </Title>
                 <Variants>
-                    {renderVariants(variants,selected,setSelected)}
+                    {renderVariants(variants,selectedVariant,setSelectedVariant)}
                 </Variants>
             </Container>
 }

@@ -39,7 +39,8 @@ export default function MyApp({ Component, pageProps }) {
     postId: 0,
     navMenuOpen: false,
     cartMenuOpen: false,
-    selectedProductVariant: ''
+    selectedProductVariant: '',
+    cartId: '',
   };
 
   const reducer = (prevState, action) => {
@@ -50,6 +51,8 @@ export default function MyApp({ Component, pageProps }) {
         return {... prevState, cartMenuOpen: false, navMenuOpen: !prevState.navMenuOpen}
       case 'TOGGLE_CART_MENU':
         return {... prevState, navMenuOpen: false, cartMenuOpen: !prevState.cartMenuOpen}
+      case 'CREATE_CART':
+        return {...prevState, cartId: action.value}
     default:
       throw new Error();
     }
