@@ -40,7 +40,7 @@ export default function Product({id,title,description,images,price,variants,prod
     <Primary>
       <ProductImages images = {images} variants = {variants}/>
       <ProductSpec title = {title} price = {price} variants = {variants} selectedVariant = {selectedVariant} setSelectedVariant = {setSelectedVariant}  />
-      <BuyButton variants = {variants} />
+      <BuyButton selectedVariant = {selectedVariant} variants = {variants} />
       <ProductAccordion title = 'Description' content = {description} initial = {true} />
       <ProductAccordion title = 'Details' content = {description} />
       <ProductAccordion title = 'Delivery & Returns' content = {description} />

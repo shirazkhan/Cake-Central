@@ -52,7 +52,7 @@ export default function BuyButton({selectedVariant, variants}) {
     return (
         <>
             <Ref ref = {ref}>
-            <Container inView = {inView} animate={{width: inView ? '80%' : '100%'}} whileTap =w {{scale: 1.1}}>
+            <Container inView = {inView} animate={{width: inView ? '80%' : '100%'}} whileTap = {{scale: 1.1}}>
                 <Button onClick = {() => handleAddToBag(selectedVariant, variants, dispatch)} >Add to Bag</Button>
             </Container>
             </Ref>

@@ -72,7 +72,6 @@ export default function ProductImages({images, variants}) {
 
     const [imageIdx, setImageIdx] = useState(0);
     const myRef = useRef();
-console.log(variants)
     return (
         <>
             <Container>

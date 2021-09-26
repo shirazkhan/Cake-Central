@@ -10,17 +10,20 @@ import Navbar from '../components/navbar/Navbar';
 import ProgressBar from "@badrap/bar-of-progress";
 import Router from "next/router";
 import '../styles.css'
-import { Provider } from 'next-auth/client';
-import Providers from 'next-auth/client';
+import client from '../apollo-client';
+import { ApolloProvider } from '@apollo/client';
+import { CREATE_CART, GET_SLUGS_BY_COLLECTION_HANDLE } from '../graphql/mutations';
+import { useQuery, useMutation, gql } from "@apollo/client";
 
 const extractFragmentHandle = (router, variants) => { // Check if router has href fragment. If it does, then use this as initial state.
   const fragment = router.asPath.slice(router.asPath.indexOf('#')+1)
   return fragment === router.asPath ? variants[0].handle : fragment
 }
 
+// Progress Bar //////////
 const progress = new ProgressBar({
   size: 3,
-  color: "#8c6900",
+  color: "#8c690020",
   className: "bar-of-progress",
   delay: 0,
 });
@@ -29,19 +32,26 @@ Router.events.on("routeChangeStart", progress.start);
 Router.events.on("routeChangeComplete", progress.finish);
 Router.events.on("routeChangeError", progress.finish);
 
+// Create Context //////////
 export const GlobalStateContext = React.createContext();
 
-export default function MyApp({ Component, pageProps }) {
-  // Reducer ////
+// Reducer Config //////////
+const initialState = {
+  nightMode: false,
+  postId: 0,
+  navMenuOpen: false,
+  cartMenuOpen: false,
+  selectedProductVariant: '',
+  cartId: '',
+};
 
-  const initialState = {
-    nightMode: false,
-    postId: 0,
-    navMenuOpen: false,
-    cartMenuOpen: false,
-    selectedProductVariant: '',
-    cartId: '',
-  };
+async function createCart(){
+  // const { data } = await client.mutation(CREATE_CART(action.value));
+  const { data } = await client.query(GET_SLUGS_BY_COLLECTION_HANDLE('latest-stuff'));
+  return data
+}
+
+export default function MyApp({ Component, pageProps }) {
 
   const reducer = (prevState, action) => {
     switch(action.type){
@@ -52,6 +62,7 @@ export default function MyApp({ Component, pageProps }) {
       case 'TOGGLE_CART_MENU':
         return {... prevState, navMenuOpen: false, cartMenuOpen: !prevState.cartMenuOpen}
       case 'CREATE_CART':
+        console.log(getData());
         return {...prevState, cartId: action.value}
     default:
       throw new Error();
@@ -60,9 +71,18 @@ export default function MyApp({ Component, pageProps }) {
 
   const [globalState, dispatch] = useReducer(reducer,initialState);
 
-  ///////////////
+  const CREATE_CARTT = gql`
+    mutation {
+      cartCreate(input: {lines: {merchandiseId: "Z2lkOi8vc2hvcGlmeS9Qcm9kdWN0VmFyaWFudC80MDU3MjE3NDQ2NzI2OA=="}}) {
+        cart {
+          id
+        }
+      }
+    }
+  `;
 
-  return <Provider>
+
+  return <ApolloProvider client={client}>
     <GlobalStateContext.Provider value = {{globalState, dispatch}}>
       <ThemeProvider theme = {globalState.nightMode ? darkTheme : lightTheme}>
         <GlobalStyle />
@@ -88,5 +108,5 @@ export default function MyApp({ Component, pageProps }) {
         </MainGrid>
       </ThemeProvider>
     </GlobalStateContext.Provider>
-    </Provider>
+    </ApolloProvider>
   }
