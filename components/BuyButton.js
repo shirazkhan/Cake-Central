@@ -1,8 +1,9 @@
-import React, {useState} from 'react';
+import React, {useState, useContext} from 'react';
 import styled from 'styled-components';
 import {motion} from 'framer-motion';
 import { useInView } from 'react-intersection-observer';
 import { MOBILE } from '../GlobalVariables';
+import { GlobalStateContext } from '../pages/_app';
 
 const Container = styled(motion.div)`
     width: ${props => props.inView ? '80%' : '100%'};
@@ -38,15 +39,21 @@ const Ref = styled.div`
     bottom: 0;
 `;
 
-export default function BuyButton() {
+const handleAddToBag = (selectedVariant, variants, dispatch) => {
+    dispatch({type: 'CREATE_CART', value: variants.find(v => v.handle === selectedVariant).id})
+  }
+
+export default function BuyButton({selectedVariant, variants}) {
+
+    const { globalState, dispatch } = useContext(GlobalStateContext);
 
     const { ref, inView, entry } = useInView();
 
     return (
         <>
             <Ref ref = {ref}>
-            <Container inView = {inView} animate={{width: inView ? '80%' : '100%'}} whileTap = {{scale: 1.1}}>
-                <Button>Add to Bag</Button>
+            <Container inView = {inView} animate={{width: inView ? '80%' : '100%'}} whileTap =w {{scale: 1.1}}>
+                <Button onClick = {() => handleAddToBag(selectedVariant, variants, dispatch)} >Add to Bag</Button>
             </Container>
             </Ref>
         </>
