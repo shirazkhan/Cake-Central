@@ -102,7 +102,7 @@ const renderProducts = products => products.map((p,i) =>
 )
 
 export default function RecommendedCarousel({title = 'You Might Also Like', id, products}) {
-    return (
+    return products ? (
         <>
             <Container>
                 <Title>{title.toUpperCase()}</Title>
@@ -112,5 +112,5 @@ export default function RecommendedCarousel({title = 'You Might Also Like', id, 
             </Container>
             <Link href = {`/shop/shirts/example-t-shirt`}>Hello</Link>
         </>
-    )
+    ) : ''
 }

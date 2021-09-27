@@ -74,7 +74,7 @@ export async function getStaticProps({params}) {
 
   const { data:data2 } = await client.query(GET_RECOMMENDED_PRODUCTS_BY_ID(data.productByHandle.id));
   
-  const productRecommendations = data2.productRecommendations.map(r => {
+  const productRecommendations = data2.productRecommendations ? data2.productRecommendations.map(r => {
     return {
       id: r.id,
       price: r.priceRange.minVariantPrice.amount,
@@ -85,7 +85,7 @@ export async function getStaticProps({params}) {
       imageId: r.images.edges[0].node.src,
       imageAltText: r.images.edges[0].node.altText
     }
-  })
+  }) : ''
 
   return {
       props: {
