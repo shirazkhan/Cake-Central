@@ -1,4 +1,4 @@
-import React, { useReducer, useEffect } from 'react';
+import React, { useReducer, useEffect} from 'react';
 import '../src/index.css';
 import { lightTheme, darkTheme, GlobalStyle, MainGrid, Header, NavBar, Brand, NavButton, NavUILabel, NavInputUI,
          Hamburger, NavSideMenu, NavSideMenuShadow, NavLinks, NavLink,
@@ -14,6 +14,8 @@ import client from '../apollo-client';
 import { ApolloProvider } from '@apollo/client';
 import { CREATE_CART, GET_SLUGS_BY_COLLECTION_HANDLE } from '../graphql/mutations';
 import { useQuery, useMutation, gql } from "@apollo/client";
+import ClientOnly from '../components/ClientOnly';
+import TestComponent from '../components/TestComponent';
 
 const extractFragmentHandle = (router, variants) => { // Check if router has href fragment. If it does, then use this as initial state.
   const fragment = router.asPath.slice(router.asPath.indexOf('#')+1)
@@ -45,10 +47,11 @@ const initialState = {
   cartId: '',
 };
 
-async function createCart(){
-  // const { data } = await client.mutation(CREATE_CART(action.value));
-  const { data } = await client.query(GET_SLUGS_BY_COLLECTION_HANDLE('latest-stuff'));
-  return data
+async function createCart(variant){
+  const { data } = await client.mutate(CREATE_CART(variant))
+  console.log('creatCart '+ data.cartCreate.cart.id)
+  return data.cartCreate.cart.id
+  
 }
 
 export default function MyApp({ Component, pageProps }) {
@@ -61,8 +64,7 @@ export default function MyApp({ Component, pageProps }) {
         return {... prevState, cartMenuOpen: false, navMenuOpen: !prevState.navMenuOpen}
       case 'TOGGLE_CART_MENU':
         return {... prevState, navMenuOpen: false, cartMenuOpen: !prevState.cartMenuOpen}
-      case 'CREATE_CART':
-        console.log(getData());
+      case 'UPDATE_CART':
         return {...prevState, cartId: action.value}
     default:
       throw new Error();
@@ -70,18 +72,6 @@ export default function MyApp({ Component, pageProps }) {
   }
 
   const [globalState, dispatch] = useReducer(reducer,initialState);
-
-  const CREATE_CARTT = gql`
-    mutation {
-      cartCreate(input: {lines: {merchandiseId: "Z2lkOi8vc2hvcGlmeS9Qcm9kdWN0VmFyaWFudC80MDU3MjE3NDQ2NzI2OA=="}}) {
-        cart {
-          id
-        }
-      }
-    }
-  `;
-
-
   return <ApolloProvider client={client}>
     <GlobalStateContext.Provider value = {{globalState, dispatch}}>
       <ThemeProvider theme = {globalState.nightMode ? darkTheme : lightTheme}>

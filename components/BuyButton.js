@@ -1,9 +1,12 @@
-import React, {useState, useContext} from 'react';
+import React, {useState, useEffect, useContext} from 'react';
 import styled from 'styled-components';
 import {motion} from 'framer-motion';
 import { useInView } from 'react-intersection-observer';
 import { MOBILE } from '../GlobalVariables';
 import { GlobalStateContext } from '../pages/_app';
+import client from '../apollo-client';
+import { CREATE_CART } from '../graphql/mutations';
+import { gql } from "@apollo/client";
 
 const Container = styled(motion.div)`
     width: ${props => props.inView ? '80%' : '100%'};
@@ -39,9 +42,15 @@ const Ref = styled.div`
     bottom: 0;
 `;
 
-const handleAddToBag = (selectedVariant, variants, dispatch) => {
-    dispatch({type: 'CREATE_CART', value: variants.find(v => v.handle === selectedVariant).id})
-  }
+async function handleAddToBag(selectedVariant, variants, dispatch, globalState){
+    if(!globalState.cartId){
+        console.log(variants.find(v => v.handle === selectedVariant).id)
+        let { data } = await client.mutate(CREATE_CART(variants.find(v => v.handle === selectedVariant).id))
+        data = data.cartCreate.cart.id;
+        return dispatch({type: 'UPDATE_CART', value: data})
+    }
+    console.log('Cart Already Created')
+}
 
 export default function BuyButton({selectedVariant, variants}) {
 
@@ -53,7 +62,7 @@ export default function BuyButton({selectedVariant, variants}) {
         <>
             <Ref ref = {ref}>
             <Container inView = {inView} animate={{width: inView ? '80%' : '100%'}} whileTap = {{scale: 1.1}}>
-                <Button onClick = {() => handleAddToBag(selectedVariant, variants, dispatch)} >Add to Bag</Button>
+                <Button onClick = {() => handleAddToBag(selectedVariant, variants, dispatch, globalState)} >Add to Bag</Button>
             </Container>
             </Ref>
         </>

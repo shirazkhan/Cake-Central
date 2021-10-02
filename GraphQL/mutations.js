@@ -1,7 +1,7 @@
 import { gql } from '@apollo/client';
 
 // export const CREATE_CART = id => ({
-//   query: gql`
+//   mutation: gql`
 //     {
 //         cartCreate(input: {lines: {merchandiseId: ""}}) {
 //           cart {
@@ -13,9 +13,9 @@ import { gql } from '@apollo/client';
 // });
 
 export const CREATE_CART = id => ({
-  query: gql`
+  mutation: gql`
     mutation {
-      cartCreate(input: {lines: {merchandiseId: "Z2lkOi8vc2hvcGlmeS9Qcm9kdWN0VmFyaWFudC80MDU3MjE3NDQ2NzI2OA=="}}) {
+      cartCreate(input: {lines: {merchandiseId: "${id}"}}) {
         cart {
           id
         }
@@ -23,23 +23,3 @@ export const CREATE_CART = id => ({
     }
   `
 })
-
-export const GET_SLUGS_BY_COLLECTION_HANDLE = handle => (
-  {
-    query: gql`
-      {
-        collectionByHandle(handle: "latest-stuff") {
-          products(first: 10) {
-            edges {
-              node {
-                title
-                productType
-                handle
-              }
-            }
-          }
-        }
-      }
-    `
-  }
-)
