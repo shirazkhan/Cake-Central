@@ -26,12 +26,12 @@ const Count = styled.div`
     color: black;
 `;
 
-export default function Quantity() {
+export default function Quantity({quantity}) {
     return (
         <>
             <Container>
                 <Button>-</Button>
-                <Count>3</Count>
+                <Count>{quantity}</Count>
                 <Button>+</Button>
             </Container>
         </>

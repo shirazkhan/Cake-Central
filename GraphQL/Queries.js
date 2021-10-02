@@ -138,3 +138,44 @@ export const GET_PRODUCTS_BY_COLLECTION_HANDLE = handle =>  {
   }
   ` }
 };
+
+export const GET_CART = id =>  {
+  return { query: gql`
+  query {
+    cart(id: "${id}") {
+      lines(first: 10) {
+        edges {
+          node {
+            id
+            quantity
+            merchandise {
+              ... on ProductVariant {
+                id
+                sku
+                price
+                title
+                image {
+                  id
+                  src
+                }
+                product {
+                  title
+                }
+              }
+            }
+          }
+        }
+      }
+      estimatedCost {
+        subtotalAmount {
+          amount
+        }
+        totalAmount {
+          amount
+        }
+      }
+      id
+    }
+  }
+ `}
+};

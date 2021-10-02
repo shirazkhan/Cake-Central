@@ -44,15 +44,13 @@ const initialState = {
   navMenuOpen: false,
   cartMenuOpen: false,
   selectedProductVariant: '',
-  cartId: '',
+  cartData: {
+    id: null,
+    lines: [],
+    subtotal: '0.00',
+    total: '0.00'
+  }
 };
-
-async function createCart(variant){
-  const { data } = await client.mutate(CREATE_CART(variant))
-  console.log('creatCart '+ data.cartCreate.cart.id)
-  return data.cartCreate.cart.id
-  
-}
 
 export default function MyApp({ Component, pageProps }) {
 
@@ -65,7 +63,28 @@ export default function MyApp({ Component, pageProps }) {
       case 'TOGGLE_CART_MENU':
         return {... prevState, navMenuOpen: false, cartMenuOpen: !prevState.cartMenuOpen}
       case 'UPDATE_CART':
-        return {...prevState, cartId: action.value}
+        
+        return {
+          ...prevState,
+          cartId: action.value.cartCreate.cart.id,
+          cartData: {
+            id: action.value.cartCreate.cart.id,
+            lines: action.value.cartCreate.cart.lines.edges.map(l => (
+              {
+                productHandle: l.node.merchandise.product.handle,
+                productTitle: l.node.merchandise.product.title,
+                productId: l.node.merchandise.product.id,
+                variantHandle: l.node.merchandise.sku,
+                variantTitle: l.node.merchandise.title,
+                variantId: l.node.merchandise.id,
+                quantity: l.node.quantity,
+                variantImageSrc: l.node.merchandise.image.src,
+                price: l.node.estimatedCost.totalAmount.amount
+              })),
+            subtotal: action.value.cartCreate.cart.estimatedCost.subtotalAmount.amount,
+            total: action.value.cartCreate.cart.estimatedCost.totalAmount.amount
+          }
+        }
     default:
       throw new Error();
     }

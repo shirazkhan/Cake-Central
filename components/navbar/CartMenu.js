@@ -1,9 +1,11 @@
-import React, { useContext } from 'react';
+import React, { useEffect, useContext } from 'react';
 import styled from 'styled-components';
 import NextLink from 'next/link';
 import { motion, AnimatePresence } from "framer-motion"
 import { GlobalStateContext } from '../../pages/_app';
 import Quantity from '../Quantity';
+import client from '../../apollo-client';
+import { GET_CART } from '../../graphql/queries';
 
 const Menu = styled(motion.div)`
     height: 100%;
@@ -148,6 +150,43 @@ const Taxes = styled.div`
     margin: 0 auto;
 `;
 
+const renderProducts = lines => 
+    lines.length > 0 ? lines.map(l => (
+        <ProductContainer>
+            <ProductImageContainer>
+                <ProductImage src = {l.variantImageSrc} ></ProductImage>
+            </ProductImageContainer>
+            <ProductSpecContainer>
+                <ProductSpecDiv>
+                    <div>
+                        <ProductTitle>{l.productTitle}</ProductTitle>
+                        <ProductVariant>{l.variantTitle}</ProductVariant>
+                    </div>
+                    <Quantity quantity = {l.quantity} />
+                </ProductSpecDiv>
+                <ProductSpecDiv>
+                    <ProductPrice>£{l.price}</ProductPrice>
+                    <span style = {{fontSize: '0.9em', textAlign: 'right'}}>Remove</span>
+                </ProductSpecDiv>
+            </ProductSpecContainer>
+        </ProductContainer> ))
+        : <span style = {{marginLeft: '15px'}}>Theres nothing in your basket!</span>
+
+const renderSummary = cartData => (
+    <SummaryContainer>
+        <SummaryTitle>Summary</SummaryTitle>
+        <SummarySubTitle>
+            <span>Subtotal</span>
+            <span>£{cartData.subtotal}</span>
+            </SummarySubTitle>
+        <SummaryDelivery>
+            <span>Delivery</span>
+            <span>£4.99</span>
+        </SummaryDelivery>
+        <Taxes>Taxes Included</Taxes>
+    </SummaryContainer>
+)
+
 export default function CartMenu() {
 
     const {globalState, dispatch} = useContext(GlobalStateContext);
@@ -161,57 +200,9 @@ export default function CartMenu() {
                         animate = {{ opacity: 1, y: 0 }}
                         exit={{ opacity: 0 }}
                     >
-                        <Title>Shopping Bag (1)</Title>
-                        <ProductContainer>
-                            <ProductImageContainer>
-                                <ProductImage src = 'https://images.nike.com/is/image/DotCom/CU3217_010_A_PREM?align=0,1&cropN=0,0,0,0&resMode=sharp&bgc=f5f5f5&wid=150&fmt=jpg'></ProductImage>
-                            </ProductImageContainer>
-                            <ProductSpecContainer>
-                                <ProductSpecDiv>
-                                    <div>
-                                        <ProductTitle>Farah Henna Plate</ProductTitle>
-                                        <ProductVariant>Bridal Red</ProductVariant>
-                                    </div>
-                                    <Quantity>
-
-                                    </Quantity>
-                                </ProductSpecDiv>
-                                <ProductSpecDiv>
-                                    <ProductPrice>£19.99</ProductPrice>
-                                    <span style = {{fontSize: '0.9em', textAlign: 'right'}}>Remove</span>
-                                </ProductSpecDiv>
-                            </ProductSpecContainer>
-                        </ProductContainer>
-                        <ProductContainer>
-                            <ProductImageContainer>
-                                <ProductImage src = 'https://images.nike.com/is/image/DotCom/CU3217_010_A_PREM?align=0,1&cropN=0,0,0,0&resMode=sharp&bgc=f5f5f5&wid=150&fmt=jpg'></ProductImage>
-                            </ProductImageContainer>
-                            <ProductSpecContainer>
-                                <ProductSpecDiv>
-                                    <div>
-                                        <ProductTitle>Farah Henna Plate</ProductTitle>
-                                        <ProductVariant>Bridal Red</ProductVariant>
-                                    </div>
-                                    <Quantity></Quantity>
-                                </ProductSpecDiv>
-                                <ProductSpecDiv>
-                                    <ProductPrice>£19.99</ProductPrice>
-                                    <span style = {{fontSize: '0.9em', textAlign: 'right'}}>Remove</span>
-                                </ProductSpecDiv>
-                            </ProductSpecContainer>
-                        </ProductContainer>
-                        <SummaryContainer>
-                            <SummaryTitle>Summary</SummaryTitle>
-                            <SummarySubTitle>
-                                <span>Subtotal</span>
-                                <span>£19.99</span>
-                                </SummarySubTitle>
-                            <SummaryDelivery>
-                                <span>Delivery</span>
-                                <span>£4.99</span>
-                            </SummaryDelivery>
-                            <Taxes>Taxes Included</Taxes>
-                        </SummaryContainer>
+                        <Title>Shopping Bag ({globalState.cartData.lines.length})</Title>
+                        {renderProducts(globalState.cartData.lines)}
+                        {renderSummary(globalState.cartData)}
                         <CheckoutContainer transition={{ delay: 1 }}>
                             <CheckoutButton>Pay with Apple Pay</CheckoutButton>
                             <CheckoutButton>Check Out</CheckoutButton>
