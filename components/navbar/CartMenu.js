@@ -5,7 +5,7 @@ import { motion, AnimatePresence } from "framer-motion"
 import { GlobalStateContext } from '../../pages/_app';
 import Quantity from '../Quantity';
 import client from '../../apollo-client';
-import { GET_CART } from '../../graphql/queries';
+import { CART_LINES_REMOVE } from '../../graphql/mutations';
 
 const Menu = styled(motion.div)`
     height: 100%;
@@ -150,7 +150,15 @@ const Taxes = styled.div`
     margin: 0 auto;
 `;
 
-const renderProducts = lines => 
+const handleRemoveProduct = async (lineId, cartId, dispatch) => {
+    const { data } = await client.mutate(CART_LINES_REMOVE(cartId, lineId))
+    dispatch({type: 'UPDATE_CART', value: data.cartLinesRemove})
+}
+
+const renderTitle = lines =>
+    <Title>Shopping Bag ({lines.reduce((acc,l) => acc += l.quantity, 0)})</Title>
+
+const renderProducts = (lines, dispatch, cartId) => 
     lines.length > 0 ? lines.map(l => (
         <ProductContainer>
             <ProductImageContainer>
@@ -162,11 +170,11 @@ const renderProducts = lines =>
                         <ProductTitle>{l.productTitle}</ProductTitle>
                         <ProductVariant>{l.variantTitle}</ProductVariant>
                     </div>
-                    <Quantity quantity = {l.quantity} />
+                    <Quantity quantity = {l.quantity} variantId = {l.variantId} lineId = {l.id} />
                 </ProductSpecDiv>
                 <ProductSpecDiv>
                     <ProductPrice>£{l.price}</ProductPrice>
-                    <span style = {{fontSize: '0.9em', textAlign: 'right'}}>Remove</span>
+                    <span onClick = {() => handleRemoveProduct(l.id, cartId, dispatch)} style = {{fontSize: '0.9em', textAlign: 'right'}}>Remove</span>
                 </ProductSpecDiv>
             </ProductSpecContainer>
         </ProductContainer> ))
@@ -200,10 +208,10 @@ export default function CartMenu() {
                         animate = {{ opacity: 1, y: 0 }}
                         exit={{ opacity: 0 }}
                     >
-                        <Title>Shopping Bag ({globalState.cartData.lines.length})</Title>
-                        {renderProducts(globalState.cartData.lines)}
+                        {renderTitle(globalState.cartData.lines)}
+                        {renderProducts(globalState.cartData.lines, dispatch, globalState.cartData.id)}
                         {renderSummary(globalState.cartData)}
-                        <CheckoutContainer transition={{ delay: 1 }}>
+                        <CheckoutContainer transition={{ delay: 3 }}>
                             <CheckoutButton>Pay with Apple Pay</CheckoutButton>
                             <CheckoutButton>Check Out</CheckoutButton>
                         </CheckoutContainer>

@@ -66,11 +66,11 @@ export default function MyApp({ Component, pageProps }) {
         
         return {
           ...prevState,
-          cartId: action.value.cartCreate.cart.id,
           cartData: {
-            id: action.value.cartCreate.cart.id,
-            lines: action.value.cartCreate.cart.lines.edges.map(l => (
+            id: action.value.cart.id,
+            lines: action.value.cart.lines.edges.map(l => (
               {
+                id: l.node.id,
                 productHandle: l.node.merchandise.product.handle,
                 productTitle: l.node.merchandise.product.title,
                 productId: l.node.merchandise.product.id,
@@ -81,8 +81,8 @@ export default function MyApp({ Component, pageProps }) {
                 variantImageSrc: l.node.merchandise.image.src,
                 price: l.node.estimatedCost.totalAmount.amount
               })),
-            subtotal: action.value.cartCreate.cart.estimatedCost.subtotalAmount.amount,
-            total: action.value.cartCreate.cart.estimatedCost.totalAmount.amount
+            subtotal: action.value.cart.estimatedCost.subtotalAmount.amount,
+            total: action.value.cart.estimatedCost.totalAmount.amount
           }
         }
     default:

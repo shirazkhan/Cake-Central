@@ -1,6 +1,9 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import styled from 'styled-components';
 import {motion} from 'framer-motion';
+import { GlobalStateContext } from '../pages/_app';
+import client from '../apollo-client';
+import { CART_LINES_UPDATE } from '../graphql/mutations';
 
 const Container = styled(motion.div)`
     width: 100px;
@@ -26,13 +29,26 @@ const Count = styled.div`
     color: black;
 `;
 
-export default function Quantity({quantity}) {
+const handleAdd = async (quantity, variantId, lineId, globalState, dispatch) => {
+    const { data } = await client.mutate(CART_LINES_UPDATE(globalState.cartData.id, lineId, quantity));
+    dispatch({type: 'UPDATE_CART', value: data.cartLinesUpdate});
+}
+
+const handleRemove = async (quantity, variantId, lineId, globalState, dispatch) => {
+    const { data } = await client.mutate(CART_LINES_UPDATE(globalState.cartData.id, lineId, quantity));
+    dispatch({type: 'UPDATE_CART', value: data.cartLinesUpdate});
+}
+
+export default function Quantity({quantity, variantId, lineId}) {
+
+    const {globalState, dispatch} = useContext(GlobalStateContext);
+
     return (
         <>
             <Container>
-                <Button>-</Button>
+                <Button onClick = {() => handleRemove(quantity - 1, variantId, lineId, globalState, dispatch)}>-</Button>
                 <Count>{quantity}</Count>
-                <Button>+</Button>
+                <Button onClick = {() => handleAdd(quantity + 1, variantId, lineId, globalState, dispatch)}>+</Button>
             </Container>
         </>
     )
