@@ -25,7 +25,7 @@ const extractFragmentHandle = (router, variants) => { // Check if router has hre
 // Progress Bar //////////
 const progress = new ProgressBar({
   size: 3,
-  color: "#8c690020",
+  color: "#8c6900",
   className: "bar-of-progress",
   delay: 0,
 });
@@ -74,6 +74,7 @@ export default function MyApp({ Component, pageProps }) {
                 productHandle: l.node.merchandise.product.handle,
                 productTitle: l.node.merchandise.product.title,
                 productId: l.node.merchandise.product.id,
+                productType: l.node.merchandise.product.productType,
                 variantHandle: l.node.merchandise.sku,
                 variantTitle: l.node.merchandise.title,
                 variantId: l.node.merchandise.id,

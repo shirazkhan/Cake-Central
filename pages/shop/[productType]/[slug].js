@@ -68,7 +68,7 @@ export async function getStaticProps({params}) {
       id: v.node.id,
       title: v.node.title,
       image: v.node.image.src,
-      handle: v.node.sku
+      handle: v.node.sku,
     }
   })
 

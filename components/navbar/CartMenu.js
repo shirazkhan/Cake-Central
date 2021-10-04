@@ -71,7 +71,7 @@ const ProductContainer = styled.div`
     flex-shrink: 0;
 `;
 
-const ProductImageContainer = styled.div`
+const ProductImageContainer = styled(NextLink)`
     height: 125px;
     width: 30%;
     display: flex;
@@ -82,6 +82,10 @@ const ProductImageContainer = styled.div`
 
 const ProductImage = styled.img`
     width: 100%;
+    max-width: 125px;
+    max-height: 125px;
+    object-fit: contain;
+    cursor: pointer;
 `;
 
 const ProductSpecContainer = styled.div`
@@ -100,12 +104,13 @@ const ProductSpecDiv = styled.div`
     height: 100%;
 `;
 
-const ProductTitle = styled.div`
+const ProductTitle = styled.a`
     font-weight: 600;
+    cursor: pointer;
 `;
 
-const ProductVariant = styled.div`
-
+const ProductVariant = styled.a`
+    cursor: pointer;
 `;
 
 const ProductPrice = styled.div`
@@ -161,24 +166,28 @@ const renderTitle = lines =>
 const renderProducts = (lines, dispatch, cartId) => 
     lines.length > 0 ? lines.map(l => (
         <ProductContainer>
-            <ProductImageContainer>
-                <ProductImage src = {l.variantImageSrc} ></ProductImage>
+            <ProductImageContainer href = {`/shop/${l.productType.toLowerCase()}/${l.productHandle}#${l.variantHandle}`}>
+                <ProductImage onClick = {() => dispatch({type: 'TOGGLE_CART_MENU'})} src = {l.variantImageSrc} ></ProductImage>
             </ProductImageContainer>
             <ProductSpecContainer>
                 <ProductSpecDiv>
-                    <div>
-                        <ProductTitle>{l.productTitle}</ProductTitle>
-                        <ProductVariant>{l.variantTitle}</ProductVariant>
+                    <div style = {{display: 'flex', flexDirection: 'column'}} onClick = {() => dispatch({type: 'TOGGLE_CART_MENU'})}>
+                        <NextLink href = {`/shop/${l.productType.toLowerCase()}/${l.productHandle}#${l.variantHandle}`}>
+                            <ProductTitle>{l.productTitle}</ProductTitle>
+                        </NextLink>
+                        <NextLink href = {`/shop/${l.productType.toLowerCase()}/${l.productHandle}#${l.variantHandle}`}>
+                            <ProductVariant>{l.variantTitle}</ProductVariant>
+                        </NextLink>
                     </div>
                     <Quantity quantity = {l.quantity} variantId = {l.variantId} lineId = {l.id} />
                 </ProductSpecDiv>
                 <ProductSpecDiv>
                     <ProductPrice>£{l.price}</ProductPrice>
-                    <span onClick = {() => handleRemoveProduct(l.id, cartId, dispatch)} style = {{fontSize: '0.9em', textAlign: 'right'}}>Remove</span>
+                    <span onClick = {() => handleRemoveProduct(l.id, cartId, dispatch)} style = {{fontSize: '0.9em', textAlign: 'right', cursor: 'pointer'}}>Remove</span>
                 </ProductSpecDiv>
             </ProductSpecContainer>
         </ProductContainer> ))
-        : <span style = {{marginLeft: '15px'}}>Theres nothing in your basket!</span>
+        : <span style = {{marginLeft: '10px'}}>Theres nothing in your basket!</span>
 
 const renderSummary = cartData => (
     <SummaryContainer>

@@ -48,7 +48,6 @@ async function handleAddToBag(selectedVariant, variants, dispatch, globalState){
         dispatch({type: 'TOGGLE_CART_MENU'})
         setTimeout(() => { dispatch({type: 'TOGGLE_CART_MENU'}) }, 2000);
     } else {
-        console.log('Cart Already Created')
         const { data } = await client.mutate(CART_LINES_ADD(globalState.cartData.id,variants.find(v => v.handle === selectedVariant).id));
         dispatch({type: 'UPDATE_CART', value: data.cartLinesAdd})
         dispatch({type: 'TOGGLE_CART_MENU'})

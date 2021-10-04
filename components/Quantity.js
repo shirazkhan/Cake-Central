@@ -46,9 +46,9 @@ export default function Quantity({quantity, variantId, lineId}) {
     return (
         <>
             <Container>
-                <Button onClick = {() => handleRemove(quantity - 1, variantId, lineId, globalState, dispatch)}>-</Button>
+                <Button style = {{cursor: 'pointer'}} onClick = {() => handleRemove(quantity - 1, variantId, lineId, globalState, dispatch)}>-</Button>
                 <Count>{quantity}</Count>
-                <Button onClick = {() => handleAdd(quantity + 1, variantId, lineId, globalState, dispatch)}>+</Button>
+                <Button style = {{cursor: 'pointer'}} onClick = {() => handleAdd(quantity + 1, variantId, lineId, globalState, dispatch)}>+</Button>
             </Container>
         </>
     )

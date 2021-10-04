@@ -27,6 +27,7 @@ export const CREATE_CART = id => ({
                     id
                     title
                     handle
+                    productType
                   }
                   image {
                     src
@@ -78,6 +79,7 @@ export const CART_LINES_ADD = (cartId, variantId) => ({
                     id
                     title
                     handle
+                    productType
                   }
                   image {
                     src
@@ -129,6 +131,7 @@ export const CART_LINES_UPDATE = (cartId, lineId, quantity) => ({
                     id
                     title
                     handle
+                    productType
                   }
                   image {
                     src
@@ -180,6 +183,7 @@ export const CART_LINES_REMOVE = (cartId, lineId) => ({
                     id
                     title
                     handle
+                    productType
                   }
                   image {
                     src
