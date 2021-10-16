@@ -3,6 +3,7 @@ import styled from 'styled-components';
 import { motion, AnimatePresence } from 'framer-motion';
 import Image from 'next/image';
 import { useRouter } from 'next/router';
+import ScrollContainer from 'react-indiana-drag-scroll';
 
 const Container = styled.div`
     margin: 0px 0 20px 0;

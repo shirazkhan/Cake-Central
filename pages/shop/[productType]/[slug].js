@@ -14,6 +14,7 @@ import { gql } from '@apollo/client';
 import parse from 'html-react-parser';
 import { GET_PRODUCT_BY_HANDLE, GET_SLUGS_BY_COLLECTION_HANDLE, GET_RECOMMENDED_PRODUCTS_BY_ID } from "../../../graphql/queries.js";
 import ProductAccordion from '../../../components/ProductAccordion';
+import FavouriteButton from '../../../components/FavouriteButton';
 
 const extractFragmentHandle = (router, variants) => { // Check if router has href fragment. If it does, then use this as initial state.
   const fragment = router.asPath.slice(router.asPath.indexOf('#')+1)
@@ -23,10 +24,6 @@ const extractFragmentHandle = (router, variants) => { // Check if router has hre
 export default function Product({id,title,description,images,price,variants,productRecommendations}){
 
   const router = useRouter();
-  
-  // if (router.isFallback) {
-  //   return <div>Loading...</div>
-  // }
 
   const { productType, slug } = router.query;
 
@@ -41,6 +38,15 @@ export default function Product({id,title,description,images,price,variants,prod
       <ProductImages images = {images} variants = {variants}/>
       <ProductSpec title = {title} price = {price} variants = {variants} selectedVariant = {selectedVariant} setSelectedVariant = {setSelectedVariant}  />
       <BuyButton selectedVariant = {selectedVariant} variants = {variants} />
+      <FavouriteButton
+        variantId = {variants.find(v => v.handle === selectedVariant).id}
+        productTitle = {title}
+        imgSrc = {variants.find(v => v.handle === selectedVariant).image}
+        price = {price}
+        variantHandle = {selectedVariant}
+        variantTitle = {variants.find(v => v.handle === selectedVariant).title}
+        productType = {productType}
+        productHandle = {slug} />
       <ProductAccordion title = 'Description' content = {description} initial = {true} />
       <ProductAccordion title = 'Details' content = {description} />
       <ProductAccordion title = 'Delivery & Returns' content = {description} />
@@ -105,7 +111,6 @@ export async function getStaticPaths() {
   
   const { data } = await client.query(GET_SLUGS_BY_COLLECTION_HANDLE('latest-stuff'));
   
-
   const paths = data.collectionByHandle.products.edges.map(p => {
     return {
       params: {

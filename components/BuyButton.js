@@ -10,7 +10,7 @@ import { CREATE_CART, CART_LINES_ADD } from '../graphql/mutations';
 const Container = styled(motion.div)`
     width: ${props => props.inView ? '80%' : '100%'};
     border-radius: ${props => props.inView ? '30px' : '0px'};
-    margin: 0 auto;
+    margin: 10px auto;
     height: 60px;
     display: flex;
     position: ${props => props.inView ? 'relative' : 'fixed'};
@@ -64,9 +64,9 @@ export default function BuyButton({selectedVariant, variants}) {
     return (
         <>
             <Ref ref = {ref}>
-            <Container inView = {inView} animate={{width: inView ? '80%' : '100%'}} whileTap = {{scale: 1.1}}>
-                <Button onClick = {() => handleAddToBag(selectedVariant, variants, dispatch, globalState)} >Add to Bag</Button>
-            </Container>
+                <Container inView = {inView} animate={{width: inView ? '80%' : '100%'}} whileTap = {{scale: 1.1}}>
+                    <Button onClick = {() => handleAddToBag(selectedVariant, variants, dispatch, globalState)} >Add to Bag</Button>
+                </Container>
             </Ref>
         </>
     )

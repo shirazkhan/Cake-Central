@@ -10,9 +10,10 @@ const Container = styled.div`
     height: 100%;
     position: relative;
     white-space: nowrap;
-    overflow-x: scroll;
+    overflow-x: auto;
     scroll-snap-type: x mandatory;
     scroll-behavior: smooth;
+    -webkit-overflow-scrolling: touch;
     -ms-overflow-style: none;
     scrollbar-width: none;
     &::-webkit-scrollbar {
@@ -57,6 +58,7 @@ const renderImages = (images, variants, setImageIdx, myRef) => {
                         <ImageContainer id = {variants.length <= 1 ? null : variants[i].handle} entry = {entry} ref = {ref} idx = {i} active = {inView}>
                             <Image
                                 placeholder = 'blur'
+                                objectFit = {'cover'}
                                 blurDataURL={`data:image/svg+xml;base64,${toBase64(shimmer(700, 475))}`}
                                 layout = 'fill'
                                 src = {img.src}
@@ -74,7 +76,7 @@ export default function ProductImages({images, variants}) {
     const myRef = useRef();
     return (
         <>
-            <Container>
+            <Container vertical = {false} className = 'scroll-container'>
                 {renderImages(images, variants, setImageIdx,myRef)}
             </Container>
             <Indicator quantity = {images.length} idx = {imageIdx} />

@@ -43,13 +43,15 @@ const initialState = {
   postId: 0,
   navMenuOpen: false,
   cartMenuOpen: false,
+  isWishList: false,
   selectedProductVariant: '',
   cartData: {
     id: null,
     lines: [],
     subtotal: '0.00',
     total: '0.00'
-  }
+  },
+  wishList: []
 };
 
 export default function MyApp({ Component, pageProps }) {
@@ -59,11 +61,16 @@ export default function MyApp({ Component, pageProps }) {
       case 'TOGGLE_NIGHT_MODE':
         return {...prevState, nightMode: !prevState.nightMode};
       case 'TOGGLE_NAV_MENU':
-        return {... prevState, cartMenuOpen: false, navMenuOpen: !prevState.navMenuOpen}
+        return {... prevState, cartMenuOpen: false, navMenuOpen: !prevState.navMenuOpen, isWishList: false};
       case 'TOGGLE_CART_MENU':
-        return {... prevState, navMenuOpen: false, cartMenuOpen: !prevState.cartMenuOpen}
+        return {... prevState, navMenuOpen: false, cartMenuOpen: !prevState.cartMenuOpen, isWishList: false};
+      case 'TOGGLE_WISHLIST':
+        return {... prevState, isWishList: !prevState.isWishList};
+      case 'SET_WISHLIST_TRUE':
+        return {... prevState, isWishList: true};
+      case 'SET_WISHLIST_FALSE':
+        return {... prevState, isWishList: false};
       case 'UPDATE_CART':
-        
         return {
           ...prevState,
           cartData: {
@@ -85,7 +92,35 @@ export default function MyApp({ Component, pageProps }) {
             subtotal: action.value.cart.estimatedCost.subtotalAmount.amount,
             total: action.value.cart.estimatedCost.totalAmount.amount
           }
+        };
+      case 'ADD_TO_WISHLIST':
+        const { variantId, imgSrc, price, productType, productTitle, variantTitle, productHandle, variantHandle } = action.value;
+
+        if(prevState.wishList.find(f => f.variantId === variantId)){
+          return prevState
         }
+        
+        return {
+          ...prevState,
+          wishList: [
+            ...prevState.wishList,
+            {
+              variantId,
+              imgSrc,
+              price,
+              productType,
+              productTitle,
+              variantTitle,
+              productHandle,
+              variantHandle
+            }
+          ]
+        };
+    case 'REMOVE_FROM_WISHLIST':
+      return {
+        ...prevState,
+        wishList: prevState.wishList.filter(f => f.variantId !== action.value.variantId)
+      };
     default:
       throw new Error();
     }

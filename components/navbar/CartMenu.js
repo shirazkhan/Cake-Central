@@ -6,6 +6,10 @@ import { GlobalStateContext } from '../../pages/_app';
 import Quantity from '../Quantity';
 import client from '../../apollo-client';
 import { CART_LINES_REMOVE } from '../../graphql/mutations';
+import WishList from './WishList';
+import Title from './Title';
+import ScrollIntoViewIfNeeded from 'react-scroll-into-view-if-needed';
+import { useInView } from 'react-intersection-observer';
 
 const Menu = styled(motion.div)`
     height: 100%;
@@ -15,13 +19,27 @@ const Menu = styled(motion.div)`
     background: rgba(255,255,255,1);
     z-index: 1000;
     display: flex;
-    justify-content: flex-start;
-    align-items: flex-start;
     flex-direction: column;
-    overflow-y: auto;
+    flex-stretch: 1;
+    flex-wrap: nowrap;
 `;
 
-const NavLink = styled.div`
+const MenuWrapper = styled(motion.div)`
+    height: 100%;
+    width: 100%;
+    position: relative;
+    background: rgba(255,255,255,1);
+    z-index: 1000;
+    display: flex;
+    flex-direction: row;
+    flex-stretch: 1;
+    overflow: auto;
+    scroll-snap-type: x mandatory;
+    white-space: nowrap;
+    flex-wrap: nowrap;
+`;
+
+const NavLink = styled(motion.div)`
     width: 90%;
     height: 50px;
     display: flex;
@@ -34,13 +52,29 @@ const Link = styled.a`
 
 `;
 
-const CheckoutContainer = styled.div`
+const CartContainer = styled(motion.div)`
+    height: 100%;
+    width: 100vw;
+    min-width: 100vw;
+    top: 100px;
+    background: rgba(255,255,255,1);
+    display: flex;
+    justify-content: flex-start;
+    align-items: flex-start;
+    flex-direction: column;
+    overflow: auto;
+    overscroll-behavior: contain;
+    scroll-snap-align: start;
+`;
+
+const CheckoutContainer = styled(motion.div)`
     height: 125px;
     padding: 10px 0 10px 0;
     width: 100%;
     background: #8c6900;
-    position: fixed;
+    position: relative;
     bottom: 0;
+    left: 0;
     z-index: 3000;
     display: flex;
     flex-direction: column;
@@ -48,7 +82,7 @@ const CheckoutContainer = styled.div`
     justify-content: flex-start;
 `;
 
-const CheckoutButton = styled.div`
+const CheckoutButton = styled(motion.div)`
     width: 80%;
     height: 50px;
     background: white;
@@ -58,12 +92,7 @@ const CheckoutButton = styled.div`
     flex-shrink: 0;
 `;
 
-const Title = styled.div`
-    font-weight: 600;
-    padding: 15px;
-`;
-
-const ProductContainer = styled.div`
+const ProductContainer = styled(motion.div)`
     width: 95%;
     display: flex;
     margin: 20px auto;
@@ -208,24 +237,44 @@ export default function CartMenu() {
 
     const {globalState, dispatch} = useContext(GlobalStateContext);
 
+    const { ref, inView } = useInView({threshold: 0.2});
+
+    useEffect(() => {
+        if(inView === false){
+            dispatch({type: 'SET_WISHLIST_TRUE'})
+        }
+    },[inView])
+
     return (
         <AnimatePresence>
-            {globalState.cartMenuOpen && (
-                <>
-                    <Menu
-                        initial = {{ opacity: 0, y: -75 }}
-                        animate = {{ opacity: 1, y: 0 }}
-                        exit={{ opacity: 0 }}
-                    >
-                        {renderTitle(globalState.cartData.lines)}
-                        {renderProducts(globalState.cartData.lines, dispatch, globalState.cartData.id)}
-                        {renderSummary(globalState.cartData)}
-                        <CheckoutContainer transition={{ delay: 3 }}>
-                            <CheckoutButton>Pay with Apple Pay</CheckoutButton>
-                            <CheckoutButton>Check Out</CheckoutButton>
-                        </CheckoutContainer>
-                    </Menu>
-                </>
+            {globalState.cartMenuOpen && ( 
+                <Menu
+                    key = 'menu'
+                    initial = {{ opacity: 0, y: -75 }}
+                    animate = {{ opacity: 1, y: 0 }}
+                    exit={{ opacity: 0 }}
+                >
+                    <Title shoppingBagQuantity = {globalState.cartData.lines.reduce((acc,l) => acc += l.quantity, 0)}
+                           favouritesQuantity = {globalState.wishList.length}
+                           isWishList = {globalState.isWishList}
+                           dispatch = {dispatch} />
+                        <MenuWrapper>
+                        <ScrollIntoViewIfNeeded active = {!globalState.isWishList}>
+                            <CartContainer ref = {ref} id = 'cart'>
+                                {renderProducts(globalState.cartData.lines, dispatch, globalState.cartData.id)}
+                                {renderSummary(globalState.cartData)}
+                                <CheckoutContainer key = 'checkoutContainer' initial = {{opacity: 0, y: '50px' }} animate = {{ opacity: 1, y: 0 }} transition={{ delay: 0.5 }} exit={{ opacity: 0.2 }}>
+                                    <img style = {{width: '65%'}} src = 'https://developer.apple.com/design/human-interface-guidelines/apple-pay/images/ap-below-incorrect_2x.png' />
+                                </CheckoutContainer>
+                            </CartContainer>
+                        </ScrollIntoViewIfNeeded>
+                            <CartContainer>
+
+                                <WishList isWishList = {globalState.isWishList} />
+
+                            </CartContainer>
+                        </MenuWrapper>
+                </Menu>
             )}
             </AnimatePresence>
     )
