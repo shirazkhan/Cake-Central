@@ -12,10 +12,7 @@ import Router from "next/router";
 import '../styles.css'
 import client from '../apollo-client';
 import { ApolloProvider } from '@apollo/client';
-import { CREATE_CART, GET_SLUGS_BY_COLLECTION_HANDLE } from '../graphql/mutations';
-import { useQuery, useMutation, gql } from "@apollo/client";
-import ClientOnly from '../components/ClientOnly';
-import TestComponent from '../components/TestComponent';
+import useLocalStorageState from 'use-local-storage-state';
 
 const extractFragmentHandle = (router, variants) => { // Check if router has href fragment. If it does, then use this as initial state.
   const fragment = router.asPath.slice(router.asPath.indexOf('#')+1)
@@ -37,24 +34,27 @@ Router.events.on("routeChangeError", progress.finish);
 // Create Context //////////
 export const GlobalStateContext = React.createContext();
 
-// Reducer Config //////////
-const initialState = {
-  nightMode: false,
-  postId: 0,
-  navMenuOpen: false,
-  cartMenuOpen: false,
-  isWishList: false,
-  selectedProductVariant: '',
-  cartData: {
-    id: null,
-    lines: [],
-    subtotal: '0.00',
-    total: '0.00'
-  },
-  wishList: []
-};
-
 export default function MyApp({ Component, pageProps }) {
+
+  const [cartId, setCartId] = useLocalStorageState('cartId', '');
+  const [wishList, setWishList] = useLocalStorageState('wishList', '');
+
+    // Reducer Config //////////
+  const initialState = {
+    nightMode: false,
+    postId: 0,
+    navMenuOpen: false,
+    cartMenuOpen: false,
+    isWishList: false,
+    selectedProductVariant: '',
+    cartData: {
+      id: cartId,
+      lines: [],
+      subtotal: '0.00',
+      total: '0.00'
+    },
+    wishList: []
+  };
 
   const reducer = (prevState, action) => {
     switch(action.type){
@@ -71,6 +71,7 @@ export default function MyApp({ Component, pageProps }) {
       case 'SET_WISHLIST_FALSE':
         return {... prevState, isWishList: false};
       case 'UPDATE_CART':
+        setCartId(action.value.cart.id);
         return {
           ...prevState,
           cartData: {
@@ -116,10 +117,10 @@ export default function MyApp({ Component, pageProps }) {
             }
           ]
         };
-    case 'REMOVE_FROM_WISHLIST':
+      case 'REMOVE_FROM_WISHLIST': // action.value should be filtered list.
       return {
         ...prevState,
-        wishList: prevState.wishList.filter(f => f.variantId !== action.value.variantId)
+        wishList: action.value
       };
     default:
       throw new Error();
@@ -127,6 +128,7 @@ export default function MyApp({ Component, pageProps }) {
   }
 
   const [globalState, dispatch] = useReducer(reducer,initialState);
+
   return <ApolloProvider client={client}>
     <GlobalStateContext.Provider value = {{globalState, dispatch}}>
       <ThemeProvider theme = {globalState.nightMode ? darkTheme : lightTheme}>
