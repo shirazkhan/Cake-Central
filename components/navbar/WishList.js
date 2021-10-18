@@ -19,16 +19,16 @@ const WishListContainer = styled.div`
 `;
 
 const ProductCard = styled(motion.div)`
-    width: 40vw;
+    width: 30vw;
     min-width: 200px;
     max-width: 300px;
-    background: #8c690020;
+    background: #8c690010;
     margin: 15px;
     display: block;
     padding: 5px;
     text-decoration: none;
     border-radius: 10px;
-    box-shadow: 0px 5px 10px -3px rgba(0,0,0,0.75);
+    box-shadow: 0px 5px 13px -3px rgba(0,0,0,0.75);
 `;
 
 const ProductSpec = styled.div`
@@ -69,17 +69,18 @@ const renderFavouriteCards = (wishList,dispatch) =>
     wishList.map(f =>
         <ProductCard whileFocus={{ scale: 1.1 }}>
             <Link onClick = {() => dispatch({type: 'TOGGLE_CART_MENU'})} passHref href = {`/shop/${f.productType}/${f.productHandle}#${f.variantHandle}`}>
-            <div><Image sizes="50vw" objectFit = {'none'} layout = {'responsive'} height = {'100%'} width = {'100%'} src = {f.imgSrc}></Image>
-            <ProductSpec>
-                <Title>{f.productTitle}</Title>
-                <SubTitle >{f.variantTitle}</SubTitle>
-                <Price>£{f.price}</Price>
-                <AddRemoveContainer>
-                    <span>Move To Bag</span>
-                    <span onClick = {() => dispatch({type:'REMOVE_FROM_WISHLIST', value: f.variantId})}>Remove</span>
-                </AddRemoveContainer>
-            </ProductSpec>
-            </div>
+                <div>
+                    <Image sizes="50vw" objectFit = {'contain'} layout = {'responsive'} height = {'100%'} width = {'100%'} src = {f.imgSrc} />
+                    <ProductSpec>
+                        <Title>{f.productTitle}</Title>
+                        <SubTitle >{f.variantTitle}</SubTitle>
+                        <Price>£{f.price}</Price>
+                        <AddRemoveContainer>
+                            <span>Add To Bag</span>
+                            <a onClick = {() => dispatch({type:'REMOVE_FROM_WISHLIST', value: wishList.filter(ff => f.variantId !== ff.variantId)})}>Remove</a>
+                        </AddRemoveContainer>
+                    </ProductSpec>
+                </div>
             </Link>
         </ProductCard>
     );

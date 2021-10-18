@@ -58,7 +58,6 @@ const renderImages = (images, variants, setImageIdx, myRef) => {
                         <ImageContainer id = {variants.length <= 1 ? null : variants[i].handle} entry = {entry} ref = {ref} idx = {i} active = {inView}>
                             <Image
                                 placeholder = 'blur'
-                                objectFit = {'cover'}
                                 blurDataURL={`data:image/svg+xml;base64,${toBase64(shimmer(700, 475))}`}
                                 layout = 'fill'
                                 src = {img.src}

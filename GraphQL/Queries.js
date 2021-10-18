@@ -143,7 +143,7 @@ export const GET_CART = id =>  {
   return { query: gql`
   query {
     cart(id: "${id}") {
-      lines(first: 10) {
+      lines(first: 100) {
         edges {
           node {
             id
@@ -159,7 +159,15 @@ export const GET_CART = id =>  {
                   src
                 }
                 product {
+                  id
+                  handle
                   title
+                  priceRange {
+                    minVariantPrice {
+                      amount
+                    }
+                  }
+                  productType
                 }
               }
             }

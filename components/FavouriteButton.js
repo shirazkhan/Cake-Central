@@ -34,22 +34,22 @@ const Button = styled(motion.button)`
 `;
 
 const handleAddToFavourites = (props, dispatch) => {
-    dispatch({type: 'ADD_TO_WISHLIST', value: props})
+    dispatch({type: 'ADD_TO_WISHLIST', value: props});
   }
 
-const handleRemoveFromFavourites = (props, dispatch) => {
-    dispatch({type: 'REMOVE_FROM_WISHLIST', value: props})
+const handleRemoveFromFavourites = (globalState, dispatch, variantId) => {
+    dispatch({type: 'REMOVE_FROM_WISHLIST', value: globalState.wishList.filter(w => w.variantId !== variantId)});
 }
 
 export default function FavouriteButton(props) {
 
     const { globalState, dispatch } = useContext(GlobalStateContext);
-    let isAlreadyInFavourites = !!globalState.wishList.find(f => f.variantId === props.variantId);
+    let isAlreadyInFavourites = globalState.wishList ? !!globalState.wishList.find(f => f.variantId === props.variantId) : false;
     return (
         <>
             <Container whileTap = {{scale: 1.1}}>
                 <Button
-                    onClick = {isAlreadyInFavourites ? () => handleRemoveFromFavourites(props, dispatch) : () => handleAddToFavourites(props, dispatch) }>
+                    onClick = {isAlreadyInFavourites ? () => handleRemoveFromFavourites(globalState, dispatch, props.variantId) : () => handleAddToFavourites(props, dispatch) }>
                         {isAlreadyInFavourites ? 'Remove From Favourites' : 'Add To Favourites'}
                 </Button>
             </Container>

@@ -13,6 +13,7 @@ import '../styles.css'
 import client from '../apollo-client';
 import { ApolloProvider } from '@apollo/client';
 import useLocalStorageState from 'use-local-storage-state';
+import { GET_CART } from '../graphql/queries';
 
 const extractFragmentHandle = (router, variants) => { // Check if router has href fragment. If it does, then use this as initial state.
   const fragment = router.asPath.slice(router.asPath.indexOf('#')+1)
@@ -34,10 +35,17 @@ Router.events.on("routeChangeError", progress.finish);
 // Create Context //////////
 export const GlobalStateContext = React.createContext();
 
+const handleInitializeCart = async (globalState, dispatch, cartId) => {
+  if(cartId){
+    const { data } = await client.query(GET_CART(cartId));
+    dispatch({type: 'INITIALIZE_CART', value: data});
+  }
+}
+
 export default function MyApp({ Component, pageProps }) {
 
   const [cartId, setCartId] = useLocalStorageState('cartId', '');
-  const [wishList, setWishList] = useLocalStorageState('wishList', '');
+  const [wishList, setWishList] = useLocalStorageState('wishList', []);
 
     // Reducer Config //////////
   const initialState = {
@@ -46,14 +54,13 @@ export default function MyApp({ Component, pageProps }) {
     navMenuOpen: false,
     cartMenuOpen: false,
     isWishList: false,
-    selectedProductVariant: '',
     cartData: {
       id: cartId,
       lines: [],
       subtotal: '0.00',
       total: '0.00'
     },
-    wishList: []
+    wishList: wishList
   };
 
   const reducer = (prevState, action) => {
@@ -69,13 +76,30 @@ export default function MyApp({ Component, pageProps }) {
       case 'SET_WISHLIST_TRUE':
         return {... prevState, isWishList: true};
       case 'SET_WISHLIST_FALSE':
-        return {... prevState, isWishList: false};
+        return {...prevState, isWishList: false};
+      case 'INITIALIZE_CART':
+        return {...prevState, cartData: {
+          id: action.value.cart.id,
+            lines: action.value.cart.lines.edges.map(l => (
+              {
+                id: l.node.id,
+                productHandle: l.node.merchandise.product.handle,
+                productTitle: l.node.merchandise.product.title,
+                productId: l.node.merchandise.product.id,
+                productType: l.node.merchandise.product.productType,
+                variantHandle: l.node.merchandise.sku,
+                variantTitle: l.node.merchandise.title,
+                variantId: l.node.merchandise.id,
+                quantity: l.node.quantity,
+                variantImageSrc: l.node.merchandise.image.src,
+                price: l.node.merchandise.price
+              })),
+            subtotal: action.value.cart.estimatedCost.subtotalAmount.amount,
+            total: action.value.cart.estimatedCost.totalAmount.amount
+        }};
       case 'UPDATE_CART':
-        setCartId(action.value.cart.id);
-        return {
-          ...prevState,
-          cartData: {
-            id: action.value.cart.id,
+        const newCart = {
+          id: action.value.cart.id,
             lines: action.value.cart.lines.edges.map(l => (
               {
                 id: l.node.id,
@@ -92,15 +116,35 @@ export default function MyApp({ Component, pageProps }) {
               })),
             subtotal: action.value.cart.estimatedCost.subtotalAmount.amount,
             total: action.value.cart.estimatedCost.totalAmount.amount
-          }
+        }
+
+        setCartId(action.value.cart.id);
+
+        return {
+          ...prevState,
+          cartData: newCart
         };
       case 'ADD_TO_WISHLIST':
         const { variantId, imgSrc, price, productType, productTitle, variantTitle, productHandle, variantHandle } = action.value;
 
-        if(prevState.wishList.find(f => f.variantId === variantId)){
+        if(prevState.wishList.find(f => f.variantId === variantId)){ // If line already exists, then just return state.
           return prevState
         }
         
+        setWishList([
+          ...prevState.wishList,
+          {
+            variantId,
+            imgSrc,
+            price,
+            productType,
+            productTitle,
+            variantTitle,
+            productHandle,
+            variantHandle
+          }
+        ])
+
         return {
           ...prevState,
           wishList: [
@@ -118,6 +162,7 @@ export default function MyApp({ Component, pageProps }) {
           ]
         };
       case 'REMOVE_FROM_WISHLIST': // action.value should be filtered list.
+      setWishList(action.value);
       return {
         ...prevState,
         wishList: action.value
@@ -128,6 +173,10 @@ export default function MyApp({ Component, pageProps }) {
   }
 
   const [globalState, dispatch] = useReducer(reducer,initialState);
+
+  useEffect(() => {
+    handleInitializeCart(globalState,dispatch,cartId);
+  },[])
 
   return <ApolloProvider client={client}>
     <GlobalStateContext.Provider value = {{globalState, dispatch}}>
