@@ -2,8 +2,8 @@ import React, { useReducer, useEffect} from 'react';
 import '../src/index.css';
 import { lightTheme, darkTheme, GlobalStyle, MainGrid, Header, NavBar, Brand, NavButton, NavUILabel, NavInputUI,
          Hamburger, NavSideMenu, NavSideMenuShadow, NavLinks, NavLink,
-         NightButton, SwitchUI, SwitchInputUI, SwitchSliderUI, NavMobHFade, NavMobHSpacer,
-         Footer, Content, HamburgerInner1, HamburgerInner2, NavMobHMenu, NavMobHOverflow, NavFilter, FooterContent } from '../src/styled/App';
+         NightButton, SwitchUI, SwitchInputUI, SwitchSliderUI, NavMobHFade, NavMobHSpacer, FooterColumn1, FooterColumn2,
+         FooterLink, Footer, Content, HamburgerInner1, HamburgerInner2, NavMobHMenu, NavMobHOverflow, NavFilter, FooterContent } from '../src/styled/App';
 import Link from 'next/link';
 import { ThemeProvider } from 'styled-components';
 import Navbar from '../components/navbar/Navbar';
@@ -191,16 +191,38 @@ export default function MyApp({ Component, pageProps }) {
               <Component {...pageProps} />
               {/* ///////////////// */}
           </Content>
-          {/* <Footer>
+          <Footer>
             <FooterContent>
-              <div>
-                Lorem ipsum dolor, sit amet consectetur adipisicing elit. 
-                Illo at, similique delectus blanditiis labore nesciunt est officiis atque, 
-                perspiciatis tenetur, quae ad ipsa ipsum veniam quas enim quod rem adipisci error? 
-                Consectetur a odio cumque rerum dolores adipisci quos voluptatem.
-              </div>
+              <FooterColumn1>
+                <Link href = '/' passHref>
+                  <FooterLink>FAQ</FooterLink>
+                </Link>
+                <Link href = '/' passHref>
+                  <FooterLink>Privacy Policy</FooterLink>
+                </Link>
+                <Link href = '/' passHref>
+                  <FooterLink>Billing and Shipping</FooterLink>
+                </Link>
+                <Link href = '/' passHref>
+                  <FooterLink>Terms and Conditions</FooterLink>
+                </Link>
+              </FooterColumn1>
+              <FooterColumn2>
+                <Link href = '/' passHref>
+                  <FooterLink>About Henna Central</FooterLink>
+                </Link>
+                <Link href = '/' passHref>
+                <FooterLink>About Sidra Khan</FooterLink>
+                </Link>
+                <Link href = '/' passHref>
+                  <FooterLink>Work With Us</FooterLink>
+                </Link>
+                <Link href = '/' passHref>
+                  <FooterLink>Contact Us</FooterLink>
+                </Link>
+              </FooterColumn2>
             </FooterContent>
-          </Footer> */}
+          </Footer>
         </MainGrid>
       </ThemeProvider>
     </GlobalStateContext.Provider>

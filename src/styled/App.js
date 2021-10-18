@@ -251,10 +251,43 @@ export const Footer = styled.div`
 `;
 
 export const FooterContent = styled.div`
-  border: 2px solid red;
-  width: 90%;
+  width: 95%;
+  height: 100%;
   max-width: ${WEBSITE_WIDTH};
+  display: flex;
+  justify-content: center;
+  align-items: center;
+`;
 
+export const FooterColumn1 = styled.div`
+  width: 100%;
+  height: 100%;
+  max-width: ${WEBSITE_WIDTH};
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+  line-height: 2;
+  text-decoration: none;
+  color: white;
+`;
+
+export const FooterColumn2 = styled.div`
+  width: 100%;
+  height: 100%;
+  max-width: ${WEBSITE_WIDTH};
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-end;
+  line-height: 2;
+  text-decoration: none;
+  color: white;
+`;
+
+export const FooterLink = styled.a`
+  color: white;
+  text-decoration: none;
 `;
 
 export const NavSideMenu = styled.div`
