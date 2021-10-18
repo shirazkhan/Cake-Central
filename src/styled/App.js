@@ -12,11 +12,14 @@ export const MainGrid = styled.div`
     "Header Header Header"
     "Content Content Content"
     "Footer Footer Footer";
-  grid-template-rows: ${MOBILE_NAV_HEIGHT} auto ${FOOTER_HEIGHT};
+  grid-template-rows: ${MOBILE_NAV_HEIGHT} auto auto;
   grid-template-columns: 1fr 1fr 1fr;
   margin: 0 auto;
   max-width: ${WEBSITE_WIDTH};
   background: ${props => props.theme.main};
+  font-family: futura-pt, sans-serif;
+  font-weight: 400;
+  font-style: normal;
 `;
 
 MainGrid.defaultProps = {
@@ -245,18 +248,66 @@ export const Footer = styled.div`
   padding: 25px 0;
   color: ${FOOTER_FONT_COLOR};
   width: 100%;
+  height: 100%;
   display: flex;
   justify-content: center;
   align-items: center;
+  flex-direction: column;
 `;
 
 export const FooterContent = styled.div`
+  color: ${FOOTER_FONT_COLOR};
   width: 95%;
   height: 100%;
   max-width: ${WEBSITE_WIDTH};
   display: flex;
   justify-content: center;
   align-items: center;
+`;
+
+export const SocialFooter = styled.div`
+  color: ${FOOTER_FONT_COLOR};
+  width: 95%;
+  height: 100%;
+  max-width: ${WEBSITE_WIDTH};
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+`;
+
+export const NewsLetterFooter = styled.div`
+  color: ${FOOTER_FONT_COLOR};
+  width: 95%;
+  height: 100%;
+  max-width: ${WEBSITE_WIDTH};
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+`;
+
+export const NewsLetterInput = styled.input`
+  border-radius: 25px;
+  padding: 7px 7px 7px 14px;
+  border: none;
+  margin: 5px;
+`;
+
+export const NewsLetterButton = styled.button`
+  border-radius: 25px;
+  padding: 7px 15px;
+  background: #8c6900;
+  color: white;
+  border: none;
+  margin-left: -40px;
+  font-family: futura-pt, sans-serif;
+  font-weight: 500;
+  font-style: normal;
+`;
+
+export const FooterSocialTitle = styled.div`
+  margin: 5px;
 `;
 
 export const FooterColumn1 = styled.div`
@@ -268,8 +319,6 @@ export const FooterColumn1 = styled.div`
   justify-content: center;
   align-items: flex-start;
   line-height: 2;
-  text-decoration: none;
-  color: white;
 `;
 
 export const FooterColumn2 = styled.div`
@@ -281,13 +330,22 @@ export const FooterColumn2 = styled.div`
   justify-content: center;
   align-items: flex-end;
   line-height: 2;
-  text-decoration: none;
-  color: white;
 `;
 
 export const FooterLink = styled.a`
-  color: white;
+  color: ${FOOTER_FONT_COLOR};
   text-decoration: none;
+  font-family: futura-pt, sans-serif;
+  font-weight: 500;
+  font-style: normal;
+`;
+
+export const FooterSocialLink = styled.a`
+  background: #8c6900;
+  border-radius: 25px;
+  height: 25px;
+  width: 25px;
+  margin: 5px;
 `;
 
 export const NavSideMenu = styled.div`

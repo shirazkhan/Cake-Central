@@ -17,20 +17,21 @@ const Container = styled(motion.div)`
     z-index: 1000;
     background: #8c6900;
     bottom: 0;
-    box-shadow: 0px 5px 5px -4px #000000
-
+    box-shadow: 0px 5px 5px -4px #000000;
 `;
 
 const Button = styled(motion.button)`
     width: 100%;
     height: 100%;
     margin: 0 auto;
-    font-size: 1rem;
-    font-weight: 500;
+    font-size: 1em;
     color: white;
     background: rgba(0,0,0,0);
     border: none;
     outline: none;
+    font-family: futura-pt, sans-serif;
+    font-weight: 500;
+    font-style: normal;
 `;
 
 const Ref = styled.div`

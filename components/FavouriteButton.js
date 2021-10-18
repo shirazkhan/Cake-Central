@@ -15,7 +15,6 @@ const Container = styled(motion.div)`
     bottom: 0;
     box-shadow: 0px 5px 5px -4px #000000
     border: 1px solid #8c6900;
-
 `;
 
 const Button = styled(motion.button)`
@@ -30,7 +29,9 @@ const Button = styled(motion.button)`
     outline: none;
     border: 1px solid #8c6900;
     border-radius: 30px;
-
+    font-family: futura-pt, sans-serif;
+    font-weight: 500;
+    font-style: normal;
 `;
 
 const handleAddToFavourites = (props, dispatch) => {

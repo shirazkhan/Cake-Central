@@ -1,15 +1,15 @@
 import React, { useReducer, useEffect} from 'react';
 import '../src/index.css';
-import { lightTheme, darkTheme, GlobalStyle, MainGrid, Header, NavBar, Brand, NavButton, NavUILabel, NavInputUI,
-         Hamburger, NavSideMenu, NavSideMenuShadow, NavLinks, NavLink,
-         NightButton, SwitchUI, SwitchInputUI, SwitchSliderUI, NavMobHFade, NavMobHSpacer, FooterColumn1, FooterColumn2,
-         FooterLink, Footer, Content, HamburgerInner1, HamburgerInner2, NavMobHMenu, NavMobHOverflow, NavFilter, FooterContent } from '../src/styled/App';
+import { lightTheme, darkTheme, GlobalStyle, MainGrid, Header,
+         SocialFooter, FooterSocialLink, FooterSocialTitle,
+         FooterColumn1, FooterColumn2, NewsLetterFooter, NewsLetterInput, NewsLetterButton,
+         FooterLink, Footer, Content, FooterContent, HeroVideo } from '../src/styled/App';
 import Link from 'next/link';
 import { ThemeProvider } from 'styled-components';
 import Navbar from '../components/navbar/Navbar';
 import ProgressBar from "@badrap/bar-of-progress";
 import Router from "next/router";
-import '../styles.css'
+import '../styles.css';
 import client from '../apollo-client';
 import { ApolloProvider } from '@apollo/client';
 import useLocalStorageState from 'use-local-storage-state';
@@ -192,7 +192,23 @@ export default function MyApp({ Component, pageProps }) {
               {/* ///////////////// */}
           </Content>
           <Footer>
-            <FooterContent>
+          <NewsLetterFooter>
+              <div>Get the latest tips, designs and offers</div>
+              <div>
+                <NewsLetterInput placeholder = 'Your email address' />
+                <NewsLetterButton>Sign Up!</NewsLetterButton>
+              </div>
+            </NewsLetterFooter>
+            <SocialFooter>
+              <FooterSocialTitle>Follow us on social media</FooterSocialTitle>
+                <div>
+                  <FooterSocialLink>1</FooterSocialLink>
+                  <FooterSocialLink>2</FooterSocialLink>
+                  <FooterSocialLink>3</FooterSocialLink>
+                  <FooterSocialLink>4</FooterSocialLink>
+                </div>
+            </SocialFooter>
+          <FooterContent>
               <FooterColumn1>
                 <Link href = '/' passHref>
                   <FooterLink>FAQ</FooterLink>
