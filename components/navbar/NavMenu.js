@@ -17,6 +17,8 @@ const Menu = styled(motion.div)`
     display: flex;
     flex-direction: column;
     padding-top: 25px;
+    background: black;
+    color: white;
 `;
 
 const NavLink = styled.div`
@@ -26,6 +28,8 @@ const NavLink = styled.div`
     padding-left: 10%;
     justify-content: flex-start;
     align-items: center;
+    color: white;
+    text-decoration: none;
 `;
 
 const Background = styled(motion.div)`
