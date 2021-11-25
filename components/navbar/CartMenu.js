@@ -269,9 +269,7 @@ export default function CartMenu() {
                             </CartContainer>
                         </ScrollIntoViewIfNeeded>
                             <CartContainer>
-
                                 <WishList isWishList = {globalState.isWishList} />
-
                             </CartContainer>
                         </MenuWrapper>
                 </Menu>

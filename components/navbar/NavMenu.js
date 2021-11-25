@@ -17,19 +17,24 @@ const Menu = styled(motion.div)`
     display: flex;
     flex-direction: column;
     padding-top: 25px;
-    background: black;
+    background: white;
     color: white;
+    align-items: center;
+    white-space: none;
+    overflow: scroll;
+    flex-wrap: nowrap;
 `;
 
 const NavLink = styled.div`
-    width: 90%;
-    height: 50px;
+    width: 100%;
+    min-height: 60px;
     display: flex;
-    padding-left: 10%;
     justify-content: flex-start;
     align-items: center;
     color: white;
     text-decoration: none;
+    text-transform: uppercase;
+    background: white;
 `;
 
 const Background = styled(motion.div)`
@@ -45,7 +50,14 @@ const Background = styled(motion.div)`
 `;
 
 const Link = styled.a`
-
+    color: #8c6900;
+    font-size: 1.3em;
+    text-decoration: none;
+    padding-left: 20px;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
 `;
 
 const renderSignInOut = (session, loading) => {

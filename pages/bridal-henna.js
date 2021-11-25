@@ -1,9 +1,11 @@
-import React from 'react'
+import React from 'react';
+import Heading from '../components/general/heading';
 
 export default function BridalHenna() {
     return (
-        <div>
+        <>
             THIS IS THE BRIDAL HENNA PAGE
-        </div>
+            <Heading />
+        </>
     )
 }

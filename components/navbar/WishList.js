@@ -63,8 +63,6 @@ const AddRemoveContainer = styled.div`
     width: 100%;
 `;
 
-
-
 const renderFavouriteCards = (wishList,dispatch) =>
     wishList.map(f =>
         <ProductCard whileFocus={{ scale: 1.1 }}>
@@ -99,11 +97,13 @@ export default function WishList({isWishList}) {
 
     return (
         <ScrollIntoViewIfNeeded active = {isWishList}>
-            {globalState.wishList.length
+            {
+                globalState.wishList.length
                 ? <WishListContainer ref = {ref} id = 'wishlist'>
-                {renderFavouriteCards(globalState.wishList, dispatch)}
-                </WishListContainer>
-                : <div>There's nothing in your favourites...</div>}
+                        {renderFavouriteCards(globalState.wishList, dispatch)}
+                  </WishListContainer>
+                : <div>There's nothing in your favourites...</div>
+            }
         </ScrollIntoViewIfNeeded>
     )
 }
