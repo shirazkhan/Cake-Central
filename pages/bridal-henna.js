@@ -1,11 +1,17 @@
 import React from 'react';
-import Heading from '../components/general/heading';
+import Testimonials from '../components/general/Testimonials';
+import MiniPortfolio from '../components/general/MiniPortfolio';
+import SectionBanner from '../components/general/SectionBanner';
+import SectionBannerWithImage from '../components/general/SectionBannerWithImage';
+import StepsSection from '../components/general/StepsSection';
 
 export default function BridalHenna() {
     return (
         <>
-            THIS IS THE BRIDAL HENNA PAGE
-            <Heading />
+            <SectionBanner />
+            <StepsSection />
+            <MiniPortfolio />
+            <Testimonials />
         </>
     )
 }
