@@ -2,7 +2,6 @@ import React from 'react';
 import styled from 'styled-components';
 
 const Container = styled.div`
-    border-top: 3px solid white;
     background: #8c6900;
     width: 100%;
     color: black;
@@ -12,6 +11,8 @@ const Container = styled.div`
     font-size: 1.75em;
     flex-direction: column;
     text-align: center;
+    border-top: 3px solid white;
+    border-bottom: 3px solid white;
 `;
 
 const Title = styled.h3`
@@ -65,6 +66,7 @@ const StepSubTitle = styled.p`
 
 const Image = styled.div`
     width: 100%;
+    box-shadow: rgba(0, 0, 0, 0.25) 0px 54px 55px, rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px, rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px;
     height: 500px;
     background-image: url("/${props => props.src}");
     background-size: cover;
@@ -88,7 +90,7 @@ export default function StepsSection() {
                     <StepSubTitle>We have a range of bridal packages for all budgets and styles. We also cater for complete bespoke designs, so feel free to give us your creative input as well.</StepSubTitle>
                 </StepContainer>
                 <StepContainer>
-                    <Image src = "shutterstock_1936291519.jpg" />
+                    <Image src = "AdobeStock_197647853.jpeg" />
                     <StepTitle>Select Your Date</StepTitle>
                     <StepSubTitle>Fusce sed maximus est, et viverra mauris. Phasellus a lorem ipsum dolor cursus elit. Praesent varius sem id felis scelerisque vehicula.</StepSubTitle>
                 </StepContainer>

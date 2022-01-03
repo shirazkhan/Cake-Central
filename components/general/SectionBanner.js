@@ -6,7 +6,6 @@ const Container = styled.div`
     background-image: url("/Mehndi-Image.jpeg");
     background-blend-mode: overlay;
     background-size: cover;
-    background-attachment: fixed;
     background-position: center;
     background-repeat: no-repeat;
     width: 100%;
@@ -18,6 +17,8 @@ const Container = styled.div`
     font-size: 1.75em;
     flex-direction: column;
     text-align: center;
+    border-top: 3px solid white;
+    border-bottom: 3px solid white;
 `;
 
 const Title = styled.h3`
