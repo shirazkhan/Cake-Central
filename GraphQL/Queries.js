@@ -107,29 +107,23 @@ export const GET_SLUGS_BY_COLLECTION_HANDLE = handle => (
 export const GET_PRODUCTS_BY_COLLECTION_HANDLE = handle =>  {
   return { query: gql`
   query {
-    shop {
-      collectionByHandle(handle: "${handle}") {
-        title
-        products(first: 10) {
-          edges {
-            node {
+    collectionByHandle(handle: "latest-stuff") {
+      title
+      products(first: 10) {
+        nodes {
+          title
+          id
+          images(first: 10) {
+            nodes {
               id
-              title
-              handle
-              productType
-              priceRange {
-                minVariantPrice {
-                  amount
-                }
-              }
-              images(first: 1) {
-                edges {
-                  node {
-                    id
-                    src
-                  }
-                }
-              }
+            }
+          }
+          handle
+          productType
+          priceRange {
+            minVariantPrice {
+              amount
+              currencyCode
             }
           }
         }

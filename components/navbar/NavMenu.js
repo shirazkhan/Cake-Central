@@ -3,7 +3,6 @@ import styled from 'styled-components';
 import NextLink from 'next/link';
 import { motion, AnimatePresence } from "framer-motion"
 import { GlobalStateContext } from '../../pages/_app';
-import { useSession, signIn, signOut} from 'next-auth/client';
 
 const Menu = styled(motion.div)`
     height: calc(100vh - 50px);
@@ -60,24 +59,9 @@ const Link = styled.a`
     align-items: center;
 `;
 
-const renderSignInOut = (session, loading) => {
-    const isSignedIn = !session && !loading;
-    return <NavLink>
-        <NextLink href = {`/api/auth/${isSignedIn ? 'signin' : 'signout'}`} passHref>
-            <Link onClick = {() => {
-                dispatch({type: 'TOGGLE_NAV_MENU'});
-                e.preventDefault();
-                isSignedIn ? signIn('github') : signOut();
-            }}>{isSignedIn ? 'Sign In' : 'Sign Out'}</Link>
-        </NextLink>
-    </NavLink>
-}
-
 export default function NavMenu() {
 
     const {globalState, dispatch} = useContext(GlobalStateContext);
-
-    const [session, loading] = useSession();
 
     return (
         <AnimatePresence>
@@ -129,7 +113,6 @@ export default function NavMenu() {
                                 <Link onClick = {() => dispatch({type: 'TOGGLE_NAV_MENU'})}>Contact</Link>
                             </NextLink>
                         </NavLink>
-                        {renderSignInOut(session,loading)}
                     </Menu>
                     <Background onClick = {() => dispatch({type: 'TOGGLE_NAV_MENU'})}
                         key="navMenuBackground"

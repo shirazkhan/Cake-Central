@@ -211,30 +211,30 @@ export default function MyApp({ Component, pageProps }) {
           <FooterContent>
               <FooterColumn1>
                 <Link href = '/' passHref>
-                  <FooterLink>FAQ</FooterLink>
+                  FAQ
                 </Link>
                 <Link href = '/' passHref>
-                  <FooterLink>Privacy Policy</FooterLink>
+                  Privacy Policy
                 </Link>
                 <Link href = '/' passHref>
-                  <FooterLink>Billing and Shipping</FooterLink>
+                  Billing and Shipping
                 </Link>
                 <Link href = '/' passHref>
-                  <FooterLink>Terms and Conditions</FooterLink>
+                  Terms and Conditions
                 </Link>
               </FooterColumn1>
               <FooterColumn2>
                 <Link href = '/' passHref>
-                  <FooterLink>About Henna Central</FooterLink>
+                  About Henna Central
                 </Link>
                 <Link href = '/' passHref>
-                <FooterLink>About Sidra Khan</FooterLink>
+                About Sidra Khan
                 </Link>
                 <Link href = '/' passHref>
-                  <FooterLink>Work With Us</FooterLink>
+                  Work With Us
                 </Link>
                 <Link href = '/' passHref>
-                  <FooterLink>Contact Us</FooterLink>
+                  Contact Us
                 </Link>
               </FooterColumn2>
             </FooterContent>

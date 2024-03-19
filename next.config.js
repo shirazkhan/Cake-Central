@@ -3,3 +3,5 @@ module.exports = {
       domains: ['cdn.shopify.com'],
     },
   }
+
+  

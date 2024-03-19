@@ -86,8 +86,8 @@ const CardInfoLink = styled.div`
 `;
 
 const renderCards = () =>
-      [...Array(5)].map(() =>
-        <CardContainer>
+      [...Array(5)].map((a,b) =>
+        <CardContainer key={b}>
             <CardImage src = '/misc-plates.jpg' />
             <CardInfo>
                 <CardInfoTitle>HENNA PLATES</CardInfoTitle>

@@ -8,7 +8,7 @@ const renderProducts = productArr =>
 productArr.map(p => 
     <Link key = {p.id} href = {`/shop/${p.productType}/${p.slug}`} >
         <a>{p.title} - £{p.price}
-            <img height = '400px' width = '400px' src = {p.images[0].src}></img>
+            <img height = '400px' width = '400px' src = {p.images[0].srcrf}></img>
         </a>
     </Link>
   )
@@ -29,21 +29,21 @@ productArr.map(p =>
 
 export async function getStaticProps() {
 
-    const { data } = await client.query(GET_PRODUCTS_BY_COLLECTION_HANDLE('latest-stuff'));
+    let { data } = await (client.query(GET_PRODUCTS_BY_COLLECTION_HANDLE('latest-stuff')));
 
     return {
       props: {
-        products: data.shop.collectionByHandle.products.edges.map(p => {
+        products: data.collectionByHandle.products.nodes.map(p => {
             return {
-                id: p.node.id,
-                title: p.node.title,
-                slug: p.node.handle,
-                productType: p.node.productType.toLowerCase(),
-                price: p.node.priceRange.minVariantPrice.amount,
-                images: p.node.images.edges.map(img => {
+                id: p.id,
+                title: p.title,
+                slug: p.handle,
+                productType: p.productType.toLowerCase(),
+                price: p.priceRange.minVariantPrice.amount,
+                images: p.images.nodes.map(img => {
                     return {
-                        id: img.node.id,
-                        src: img.node.src
+                        id: img.id,
+                        src: img.src
                     }
                 })
             }
