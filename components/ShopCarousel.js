@@ -11,11 +11,13 @@ const Container = styled.div`
 const Title = styled.h4`
     margin: 10px 15px;
     padding: 0;
+    border: 1px solid red;
 `;
 
 const SubTitle = styled.p`
     margin: 10px 15px;
     padding: 0;
+    font-size: 2em;
 `;
 
 const CardsContainer = styled.div`
@@ -101,8 +103,8 @@ export default function ShopCarousel() {
     return (
         <>
             <Container>
-                <Title>Shop</Title>
-                <SubTitle>This is where the shop description goes...</SubTitle>
+                {/* <Title>Shop</Title> */}
+                <SubTitle>TAKE A LOOK AT OUR PRODUCTS & COLLECTIONS</SubTitle>
                 <CardsContainer>
                     {renderCards()}
                 </CardsContainer>
