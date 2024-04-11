@@ -210,30 +210,30 @@ export default function MyApp({ Component, pageProps }) {
             </SocialFooter>
           <FooterContent>
               <FooterColumn1>
-                <Link href = '/' passHref>
+                <Link href = '/' passHref style={{textDecoration:"none", color:"white", textShadow: "2px 2px 10px grey"}}>
                   FAQ
                 </Link>
-                <Link href = '/' passHref>
+                <Link href = '/' passHref style={{textDecoration:"none", color:"white", textShadow: "2px 2px 10px grey"}}>
                   Privacy Policy
                 </Link>
-                <Link href = '/' passHref>
+                <Link href = '/' passHref style={{textDecoration:"none", color:"white", textShadow: "2px 2px 10px grey"}}>
                   Billing and Shipping
                 </Link>
-                <Link href = '/' passHref>
+                <Link href = '/' passHref style={{textDecoration:"none", color:"white", textShadow: "2px 2px 10px grey"}}>
                   Terms and Conditions
                 </Link>
               </FooterColumn1>
               <FooterColumn2>
-                <Link href = '/' passHref>
+                <Link href = '/' passHref style={{textDecoration:"none", color:"white", textShadow: "2px 2px 10px grey"}}>
                   About Henna Central
                 </Link>
-                <Link href = '/' passHref>
+                <Link href = '/' passHref style={{textDecoration:"none", color:"white", textShadow: "2px 2px 10px grey"}}>
                 About Sidra Khan
                 </Link>
-                <Link href = '/' passHref>
+                <Link href = '/' passHref style={{textDecoration:"none", color:"white", textShadow: "2px 2px 10px grey"}}>
                   Work With Us
                 </Link>
-                <Link href = '/' passHref>
+                <Link href = '/' passHref style={{textDecoration:"none", color:"white", textShadow: "2px 2px 10px grey"}}>
                   Contact Us
                 </Link>
               </FooterColumn2>

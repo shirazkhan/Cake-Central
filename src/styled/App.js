@@ -319,6 +319,7 @@ export const FooterColumn1 = styled.div`
   justify-content: center;
   align-items: flex-start;
   line-height: 2;
+  font-size: 1.2em;
 `;
 
 export const FooterColumn2 = styled.div`
@@ -330,6 +331,7 @@ export const FooterColumn2 = styled.div`
   justify-content: center;
   align-items: flex-end;
   line-height: 2;
+  font-size: 1.2em;
 `;
 
 export const FooterLink = styled.a`

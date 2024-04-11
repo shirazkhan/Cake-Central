@@ -6,17 +6,17 @@ import styled from 'styled-components';
 import { GlobalStateContext } from '../../pages/_app';
 import NavMenu from './NavMenu';
 import CartMenu from './CartMenu';
+import { NAV_BAR_COLOR } from '../../GlobalVariables';
 
 const Bar = styled.div`
     display: flex;
     justify-content: space-between;
     align-items: center;
     width: 100%;
-    background: rgba(255,255,255,0.5);
+    background: ${NAV_BAR_COLOR};
     height: 100%;
     max-width: 1400px;
     z-index: 2499;
-
 `;
 
 const LogoBox = styled.div`
@@ -31,6 +31,7 @@ const LogoBox = styled.div`
 const Logo = styled.img`
     width: 225px;
     height: 13px;
+    filter: drop-shadow( 1px 1px 2px rgba(0, 0, 0, 0.2));
 `;
 
 const Links = styled.div`
@@ -51,7 +52,8 @@ const LeftButton = styled.div`
 
 const HamBurger = styled(motion.img)`
     width: 25px;
-    height: 25px
+    height: 25px;
+    filter: drop-shadow( 1px 1px 2px rgba(0, 0, 0, 0.2));
 `;
 
 const RightButton = styled.div`
@@ -65,6 +67,7 @@ const RightButton = styled.div`
 const Cart = styled(motion.img)`
     width: 25px;
     height: 25px;
+    filter: drop-shadow( 1px 1px 2px rgba(0, 0, 0, 0.2));
 `;
 
 export default function NavBar() {
@@ -75,7 +78,7 @@ export default function NavBar() {
     <>
         <Bar>
             <LeftButton onClick = {() => dispatch({type: 'TOGGLE_NAV_MENU'})}>
-                <HamBurger animate = {{ rotate: 270 }} transition={{ duration: 0.75 }} src = {globalState.navMenuOpen ? '/menu-cross.svg' : '/menu.svg'} />
+                <HamBurger src = {globalState.navMenuOpen ? '/menu-cross.svg' : '/menu.svg'} />
             </LeftButton>
             <LogoBox>
                 <Link href = '/' passHref>

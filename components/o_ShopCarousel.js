@@ -40,7 +40,7 @@ const CardsContainer = styled.div`
 `;
 
 const CardContainer = styled.div`
-    height: 345px;
+    height: 495px;
     width: 315px;
     display: flex;
     flex-direction: column;
@@ -48,8 +48,7 @@ const CardContainer = styled.div`
     flex-shrink: 0;
     border-radius: 15px;
     overflow: hidden;
-    box-shadow: rgba(0, 0, 0, 0.02) 0px 1px 3px 0px, rgba(27, 31, 35, 0.15) 0px 0px 0px 1px;
-    
+    box-shadow: 0px 3px 14px 0px rgba(0,0,0,0.75);
 `;
 
 const CardImage = styled.img`
@@ -58,16 +57,15 @@ const CardImage = styled.img`
 `;
 
 const CardInfo = styled.div`
-    height: 120px;
+    height: 180px;
     width: 100%;
     z-index: 333;
     position: relative;
-    margin-top: -120px;
+    margin-top: -180px;
     backdrop-filter: blur(10px);
-    background: rgba(255,192,203,0.6);
+    background: rgba(0,0,0,0.25);
     border-bottom-left-radius: 10px;
     border-bottom-right-radius: 10px;
-    text-shadow: 2px 2px 5px grey;
 `;
 
 const CardInfoTitle = styled.h3`
@@ -91,20 +89,19 @@ const CardInfoLink = styled.div`
     margin: 15px auto;
 `;
 
-export default function ShopCarousel({data, title, subtitle}) {
-
-    const renderCards = () =>
-      data.map((node,b) =>
+const renderCards = () =>
+      [...Array(5)].map((a,b) =>
         <CardContainer key={b}>
-            <CardImage src = {`/${node.img}`} />
+            <CardImage src = '/misc-plates.jpg' />
             <CardInfo>
-                <CardInfoTitle>{node.title}</CardInfoTitle>
-                <CardInfoDescription>{node.description}</CardInfoDescription>
+                <CardInfoTitle>HENNA PLATES</CardInfoTitle>
+                <CardInfoDescription>Take your brow game to the next level! Try our digital brow tool to help you find the perfect version of your brows</CardInfoDescription>
                 <CardInfoLink></CardInfoLink>
             </CardInfo>
         </CardContainer>
   )
-  
+
+export default function ShopCarousel({title,subtitle}) {
     return (
         <>
             <Container>
