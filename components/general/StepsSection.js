@@ -1,8 +1,9 @@
 import React from 'react';
 import styled from 'styled-components';
+import { PRIMARY_THEME_COLOR } from '../../GlobalVariables';
 
 const Container = styled.div`
-    background: #8c6900;
+    background: ${PRIMARY_THEME_COLOR};
     width: 100%;
     color: black;
     display: flex;

@@ -6,6 +6,7 @@ import { motion, AnimatePresence, useViewportScroll } from "framer-motion"
 import { GlobalStateContext } from '../../pages/_app';
 import ScrollIntoViewIfNeeded from 'react-scroll-into-view-if-needed';
 import { useInView } from 'react-intersection-observer';
+import { PRIMARY_THEME_COLOR } from '../../GlobalVariables';
 
 const WishListContainer = styled.div`
     display: flex;
@@ -22,7 +23,7 @@ const ProductCard = styled(motion.div)`
     width: 30vw;
     min-width: 200px;
     max-width: 300px;
-    background: #8c690010;
+    background: ${PRIMARY_THEME_COLOR};
     margin: 15px;
     display: block;
     padding: 5px;

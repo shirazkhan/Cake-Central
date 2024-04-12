@@ -3,7 +3,7 @@ import Link from 'next/link';
 import React from 'react';
 import {WEBSITE_WIDTH, MOBILE_NAV_HEIGHT, DESKTOP_NAV_HEIGHT, FOOTER_HEIGHT, NAV_MENU_WIDTH,
   NAV_GAP, NAV_LINKS_ALIGNMENT, CONTENT_H_MARGIN, CONTENT_V_MARGIN, HAMBURGER_COLOR, NAV_FONT_COLOR,
-  FOOTER_COLOR, FOOTER_FONT_COLOR, MOBILE, TABLET, NAVFILTER_COLOR      
+  FOOTER_COLOR, FOOTER_FONT_COLOR, MOBILE, TABLET, NAVFILTER_COLOR, PRIMARY_THEME_COLOR      
 } from '../../GlobalVariables';
 
 export const MainGrid = styled.div`
@@ -297,7 +297,7 @@ export const NewsLetterInput = styled.input`
 export const NewsLetterButton = styled.button`
   border-radius: 25px;
   padding: 7px 15px;
-  background: #8c6900;
+  background: ${PRIMARY_THEME_COLOR};
   color: white;
   border: none;
   margin-left: -40px;
@@ -343,7 +343,7 @@ export const FooterLink = styled.a`
 `;
 
 export const FooterSocialLink = styled.a`
-  background: #8c6900;
+  background: ${PRIMARY_THEME_COLOR};
   border-radius: 25px;
   height: 25px;
   width: 25px;

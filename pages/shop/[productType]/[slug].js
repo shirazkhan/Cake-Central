@@ -11,7 +11,6 @@ import Head from 'next/head';
 import {DOMAIN, WEBSITE_NAME} from '../../../GlobalVariables';
 import { client } from '../../../apollo-client';
 import { gql } from '@apollo/client';
-import parse from 'html-react-parser';
 import { GET_PRODUCT_BY_HANDLE, GET_SLUGS_BY_COLLECTION_HANDLE, GET_RECOMMENDED_PRODUCTS_BY_ID } from "../../../graphql/queries.js";
 import ProductAccordion from '../../../components/ProductAccordion';
 import FavouriteButton from '../../../components/FavouriteButton';
@@ -107,14 +106,14 @@ export async function getStaticProps({params}) {
     }
 }
 
-export async function getStaticPaths() {
+export async function getStaticPaths(handle) {
   
-  const { data } = await client.query(GET_SLUGS_BY_COLLECTION_HANDLE('latest-stuff'));
+  const { data } = await client.query(GET_SLUGS_BY_COLLECTION_HANDLE('birthday-cakes'));
   
   const paths = data.collectionByHandle.products.edges.map(p => {
     return {
       params: {
-        productType: p.node.productType.toLowerCase(),
+        productType: p.node.productType.toLowerCase().replace(/ /g, "-"),
         slug: p.node.handle
       } 
     }

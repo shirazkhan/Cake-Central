@@ -88,7 +88,7 @@ export const GET_SLUGS_BY_COLLECTION_HANDLE = handle => (
   {
     query: gql`
       {
-        collectionByHandle(handle: ${handle}) {
+        collectionByHandle(handle: "${handle}") {
           products(first: 10) {
             edges {
               node {

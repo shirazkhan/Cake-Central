@@ -4,6 +4,7 @@ import { motion, AnimatePresence } from 'framer-motion';
 import Image from 'next/image';
 import { useRouter } from 'next/router';
 import ScrollContainer from 'react-indiana-drag-scroll';
+import { PRIMARY_THEME_COLOR } from '../GlobalVariables';
 
 const Container = styled.div`
     margin: 0px 0 20px 0;
@@ -42,7 +43,7 @@ const Selected = styled(motion.div)`
     height: ${props => props.selected ? '100px' : ''};
     width: ${props => props.selected ? '100px' : ''};
     border-radius: ${props => props.selected ? '11px' : ''};
-    background: ${props => props.selected ? '#8c690040' : ''};
+    background: ${props => props.selected ? PRIMARY_THEME_COLOR : ''};
     margin-left: ${props => props.selected ? '-110px' : ''};
     z-index: 33;
 `;
@@ -56,7 +57,7 @@ const renderVariants = (variants,selected,setSelected) =>
                 href = {`#${v.handle}`}
                 selected = {v.handle === selected ? true : false}
             >
-                <Image width = '100px' height = '100px' src = {v.image} />
+                <Image width = '100' height = '100' src = {v.image} />
             </Variant>
             {v.handle === selected && (
             <Selected animate = {{opacity: 1}} exit = {{ opacity: 0 }} selected = {v.handle === selected ? true : false} />

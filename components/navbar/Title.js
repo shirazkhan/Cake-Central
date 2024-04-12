@@ -1,11 +1,12 @@
 import React from 'react';
 import styled from 'styled-components';
 import { motion } from 'framer-motion';
+import { PRIMARY_THEME_COLOR } from '../../GlobalVariables';
 
 const SwitchContainer = styled(motion.div)`
     width: 300px;
     height: 30px;
-    background-color: #8c690030;
+    background-color: ${PRIMARY_THEME_COLOR};
     display: flex;
     justify-content: ${props => props.isWishList ? 'flex-end' : 'flex-start'};
     border-radius: 50px;
@@ -19,7 +20,7 @@ const SwitchContainer = styled(motion.div)`
 const SwitchButton = styled(motion.div)`
     width: 150px;
     height: 30px;
-    background-color: #8c6900;
+    background-color: ${PRIMARY_THEME_COLOR};
     border-radius: 40px;
 `;
 

@@ -1,5 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
+import { PRIMARY_THEME_COLOR } from '../../GlobalVariables';
 
 const Container = styled.div`
     background: #f1ece2;
@@ -60,7 +61,7 @@ const ProfileTitle = styled.div`
 
 const ProfileSubTitle = styled.div`
     font-size: 0.5em;
-    color: #8c6900;
+    color: ${PRIMARY_THEME_COLOR};
     font-family: futura-pt, sans-serif;
     font-weight: 500;
     font-style: normal;

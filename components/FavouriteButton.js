@@ -2,6 +2,7 @@ import React, { useContext } from 'react';
 import styled from 'styled-components';
 import { motion } from 'framer-motion';
 import { GlobalStateContext } from '../pages/_app';
+import { PRIMARY_THEME_COLOR } from '../GlobalVariables';
 
 const Container = styled(motion.div)`
     width: 80%;
@@ -11,10 +12,10 @@ const Container = styled(motion.div)`
     display: flex;
     position: relative;
     z-index: 1000;
-    background: #8c6900;
+    background: ${PRIMARY_THEME_COLOR};
     bottom: 0;
     box-shadow: 0px 5px 5px -4px #000000
-    border: 1px solid #8c6900;
+    border: 1px solid ${PRIMARY_THEME_COLOR};
 `;
 
 const Button = styled(motion.button)`
@@ -27,7 +28,7 @@ const Button = styled(motion.button)`
     background: white;
     border: none;
     outline: none;
-    border: 1px solid #8c6900;
+    border: 1px solid ${PRIMARY_THEME_COLOR};
     border-radius: 30px;
     font-family: futura-pt, sans-serif;
     font-weight: 500;

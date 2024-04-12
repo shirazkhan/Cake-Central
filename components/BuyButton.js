@@ -2,7 +2,7 @@ import React, {useState, useEffect, useContext} from 'react';
 import styled from 'styled-components';
 import {motion} from 'framer-motion';
 import { useInView } from 'react-intersection-observer';
-import { MOBILE } from '../GlobalVariables';
+import { MOBILE, PRIMARY_THEME_COLOR } from '../GlobalVariables';
 import { GlobalStateContext } from '../pages/_app';
 import client from '../apollo-client';
 import { CREATE_CART, CART_LINES_ADD } from '../graphql/mutations';
@@ -15,7 +15,7 @@ const Container = styled(motion.div)`
     display: flex;
     position: ${props => props.inView ? 'relative' : 'fixed'};
     z-index: 1000;
-    background: #8c6900;
+    background: ${PRIMARY_THEME_COLOR};
     bottom: 0;
     box-shadow: 0px 5px 5px -4px #000000;
 `;

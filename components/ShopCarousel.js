@@ -1,5 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
+import Link from 'next/link';
 import { motion } from 'framer-motion';
 import { PRIMARY_THEME_COLOR } from '../GlobalVariables';
 
@@ -118,18 +119,20 @@ const EndPiece = styled.div`
     box-shadow: rgba(0, 0, 0, 0.02) 0px 1px 3px 0px, rgba(27, 31, 35, 0.15) 0px 0px 0px 1px;
 `;
 
-export default function ShopCarousel({data, title, subtitle, endCard}) {
+export default function ShopCarousel({data, title, subtitle, handle, cardType, endCard}) {
 
     const renderCards = () =>
       data.map((node,b) =>
-        <CardContainer key={b}>
-            <CardImage src = {`/${node.img}`} />
-            <CardInfo>
-                <CardInfoTitle>{node.title}</CardInfoTitle>
-                <CardInfoDescription>{node.description}</CardInfoDescription>
-                <CardInfoLink></CardInfoLink>
-            </CardInfo>
-        </CardContainer>
+        <Link href={`/shop`}>
+            <CardContainer key={b}>
+                <CardImage src = {`/${node.img}`} />
+                <CardInfo>
+                    <CardInfoTitle>{node.title}</CardInfoTitle>
+                    <CardInfoDescription>{node.description}</CardInfoDescription>
+                    <CardInfoLink></CardInfoLink>
+                </CardInfo>
+            </CardContainer>
+        </Link>
   )
   
     return (

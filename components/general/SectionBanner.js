@@ -1,5 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
+import { PRIMARY_THEME_COLOR } from '../../GlobalVariables';
 
 const Container = styled.div`
     background-color: rgba(0,0,0,0.75);
@@ -43,7 +44,7 @@ const Text = styled.p`
 const Border = styled.span`
     height: 3px;
     width: 40%;
-    border-top: 3px solid #8c6900;
+    border-top: 3px solid ${PRIMARY_THEME_COLOR};
     margin: 25px 0;
 `;
 

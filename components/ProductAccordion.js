@@ -1,6 +1,7 @@
 import React, {useState} from 'react';
 import styled from 'styled-components';
 import { motion } from 'framer-motion';
+import { PRIMARY_THEME_COLOR } from '../GlobalVariables';
 
 const Accordion = styled(motion.button)`
     background-color: rgba(0,0,0,0);
@@ -16,7 +17,7 @@ const Accordion = styled(motion.button)`
     justify-content: space-between;
     align-items: center;
     font-size: 0.9rem;
-    border-bottom: 1px solid #8c6900;
+    border-bottom: 1px solid ${PRIMARY_THEME_COLOR};
 `;
 
 const Panel = styled(motion.div)`

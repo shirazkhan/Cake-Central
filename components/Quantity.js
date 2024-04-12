@@ -4,6 +4,7 @@ import {motion} from 'framer-motion';
 import { GlobalStateContext } from '../pages/_app';
 import client from '../apollo-client';
 import { CART_LINES_UPDATE } from '../graphql/mutations';
+import { PRIMARY_THEME_COLOR } from '../GlobalVariables';
 
 const Container = styled(motion.div)`
     width: 100px;
@@ -19,7 +20,7 @@ const Button = styled.button`
     width: 35px;
     height: 35px;
     border: none;
-    background: #8c6900;
+    background: ${PRIMARY_THEME_COLOR};
     color: white;
     font-weight: 900;
 `;

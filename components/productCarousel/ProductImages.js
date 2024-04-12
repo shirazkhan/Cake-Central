@@ -4,6 +4,7 @@ import styled from 'styled-components';
 import { motion } from 'framer-motion';
 import Indicator from './indicator';
 import { InView } from 'react-intersection-observer';
+import { PRIMARY_THEME_COLOR } from '../../GlobalVariables';
 
 const Container = styled.div`
     width: 100%;
@@ -33,7 +34,7 @@ const shimmer = (w, h) => `
     <svg width="${w}" height="${h}" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
     <defs>
         <linearGradient id="g">
-        <stop stop-color="#8c690010" offset="20%" />
+        <stop stop-color="${PRIMARY_THEME_COLOR}" offset="20%" />
         <stop stop-color="#edeef1" offset="50%" />
         <stop stop-color="#f6f7f8" offset="70%" />
         </linearGradient>
@@ -57,7 +58,7 @@ const renderImages = (images, variants, setImageIdx, myRef) => {
                     {({ inView, ref, entry }) => (
                         <ImageContainer id = {variants.length <= 1 ? null : variants[i].handle} entry = {entry} ref = {ref} idx = {i} active = {inView}>
                             <Image
-                                placeholder = 'blur'
+                                placeholder = {'blur'}
                                 blurDataURL={`data:image/svg+xml;base64,${toBase64(shimmer(700, 475))}`}
                                 layout = 'fill'
                                 src = {img.src}

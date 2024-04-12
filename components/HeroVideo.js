@@ -1,6 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 import { motion } from 'framer-motion';
+import { PRIMARY_THEME_COLOR } from '../GlobalVariables';
 
 const IFrameContainer = styled.div`
     position: relative;
@@ -29,7 +30,7 @@ const IFrame = styled.iframe`
 `;
 
 const Button = styled.div`
-    background: #8c6900;
+    background: ${PRIMARY_THEME_COLOR};
     text-align: center;
     border-radius: 3px;
     padding: 5px;

@@ -10,6 +10,7 @@ import WishList from './WishList';
 import Title from './Title';
 import ScrollIntoViewIfNeeded from 'react-scroll-into-view-if-needed';
 import { useInView } from 'react-intersection-observer';
+import { PRIMARY_THEME_COLOR } from '../../GlobalVariables';
 
 const Menu = styled(motion.div)`
     height: 100%;
@@ -71,7 +72,7 @@ const CheckoutContainer = styled(motion.div)`
     height: 125px;
     padding: 10px 0 10px 0;
     width: 100%;
-    background: #8c6900;
+    background: ${PRIMARY_THEME_COLOR};
     position: relative;
     bottom: 0;
     left: 0;

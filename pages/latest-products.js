@@ -30,9 +30,7 @@ productArr.map(p =>
 export async function getStaticProps() {
 
     let { data } = await (client.query(GET_PRODUCTS_BY_COLLECTION_HANDLE('birthday-cakes')));
-    console.log('1111111111111')
-    console.log(data.collectionByHandle.products.nodes[0].images.nodes[0]);
-    console.log('1111111111111111')
+    
     return {
       props: {
         products: data.collectionByHandle.products.nodes.map(p => {
