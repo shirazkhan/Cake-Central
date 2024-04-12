@@ -7,7 +7,7 @@ export const cakes = [
     {
         title: "Floral Cakes",
         description: "We can cater for your wedding.",
-        img: "homepage/weddingcake.png"
+        img: "homepage/floralcake.png"
     },
     {
         title: "Baby Shower Cakes",

@@ -1,6 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 import { motion } from 'framer-motion';
+import { PRIMARY_THEME_COLOR } from '../GlobalVariables';
 
 //margin-top should be 25px
 const Container = styled.div`
@@ -91,7 +92,33 @@ const CardInfoLink = styled.div`
     margin: 15px auto;
 `;
 
-export default function ShopCarousel({data, title, subtitle}) {
+const EndCard = styled.div`
+    height: 140px;
+    width: 140px;
+    color: white;
+    background: ${PRIMARY_THEME_COLOR};
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    margin: 15px;
+    flex-shrink: 0;
+    border-radius: 200px;
+    overflow: hidden;
+    text-shadow: 2px 2px 5px grey;
+    box-shadow: rgba(0, 0, 0, 0.02) 0px 1px 3px 0px, rgba(27, 31, 35, 0.15) 0px 0px 0px 1px;
+`;
+
+const EndPiece = styled.div`
+    height: 1px;
+    width: 1px;
+    margin: 15px;
+    flex-shrink: 0;
+    overflow: hidden;
+    box-shadow: rgba(0, 0, 0, 0.02) 0px 1px 3px 0px, rgba(27, 31, 35, 0.15) 0px 0px 0px 1px;
+`;
+
+export default function ShopCarousel({data, title, subtitle, endCard}) {
 
     const renderCards = () =>
       data.map((node,b) =>
@@ -112,6 +139,8 @@ export default function ShopCarousel({data, title, subtitle}) {
                 <SubTitle>{subtitle}</SubTitle>
                 <CardsContainer>
                     {renderCards()}
+                    <EndCard>Shop More</EndCard>
+                    <EndPiece />
                 </CardsContainer>
             </Container>
         </>

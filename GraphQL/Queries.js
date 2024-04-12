@@ -107,7 +107,7 @@ export const GET_SLUGS_BY_COLLECTION_HANDLE = handle => (
 export const GET_PRODUCTS_BY_COLLECTION_HANDLE = handle =>  {
   return { query: gql`
   query {
-    collectionByHandle(handle: "latest-stuff") {
+    collectionByHandle(handle: "${handle}") {
       title
       products(first: 10) {
         nodes {
@@ -116,6 +116,7 @@ export const GET_PRODUCTS_BY_COLLECTION_HANDLE = handle =>  {
           images(first: 10) {
             nodes {
               id
+              src
             }
           }
           handle

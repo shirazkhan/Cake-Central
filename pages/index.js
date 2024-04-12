@@ -8,6 +8,7 @@ import ShopCarousel from '../components/ShopCarousel';
 import AnnouncementBanner from '../components/index/AnnouncementBanner';
 import HomeHero from '../components/index/HomeHero'
 import { cakes, cupcakes, brownies, cookies, cheesecakes, weddingcakes, milkcakes } from '../HomepageSettings';
+import SocialBanner from '../components/index/SocialBanner';
 
 export default function Index() {
 
@@ -20,6 +21,7 @@ export default function Index() {
         <ShopCarousel data = {cupcakes} title={"CUPCAKES"} subtitle={"Tiny cakes, huge happiness"}/>
         <ShopCarousel data = {brownies} title={"BROWNIES"} subtitle={"Gooey goodness in every square"}/>
         <ShopCarousel data = {milkcakes} title={"MILK CAKES"} subtitle={"Gooey goodness in every square"}/>
+        <SocialBanner />
     </Content>
     </>
 }
