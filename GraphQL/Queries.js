@@ -58,7 +58,7 @@ export const GET_RECOMMENDED_PRODUCTS_BY_ID = handle => (
     query: gql`
     {
       productRecommendations(
-        productId: "Z2lkOi8vc2hvcGlmeS9Qcm9kdWN0LzY4Njk5MTE3NjUxODg="
+        productId: "${handle}"
       ) {
         id
         priceRange {
@@ -88,7 +88,7 @@ export const GET_SLUGS_BY_COLLECTION_HANDLE = handle => (
   {
     query: gql`
       {
-        collectionByHandle(handle: "latest-stuff") {
+        collectionByHandle(handle: ${handle}) {
           products(first: 10) {
             edges {
               node {
