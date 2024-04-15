@@ -23,6 +23,7 @@ const Menu = styled(motion.div)`
     flex-direction: column;
     flex-stretch: 1;
     flex-wrap: nowrap;
+    padding: 20px;
 `;
 
 const MenuWrapper = styled(motion.div)`
@@ -264,9 +265,6 @@ export default function CartMenu() {
                             <CartContainer ref = {ref} id = 'cart'>
                                 {renderProducts(globalState.cartData.lines, dispatch, globalState.cartData.id)}
                                 {renderSummary(globalState.cartData)}
-                                <CheckoutContainer key = 'checkoutContainer' initial = {{opacity: 0, y: '50px' }} animate = {{ opacity: 1, y: 0 }} transition={{ delay: 0.5 }} exit={{ opacity: 0.2 }}>
-                                    <img style = {{width: '65%'}} src = 'https://developer.apple.com/design/human-interface-guidelines/apple-pay/images/ap-below-incorrect_2x.png' />
-                                </CheckoutContainer>
                             </CartContainer>
                         </ScrollIntoViewIfNeeded>
                             <CartContainer>

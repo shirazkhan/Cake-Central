@@ -43,7 +43,7 @@ const Selected = styled(motion.div)`
     height: ${props => props.selected ? '100px' : ''};
     width: ${props => props.selected ? '100px' : ''};
     border-radius: ${props => props.selected ? '11px' : ''};
-    background: ${props => props.selected ? PRIMARY_THEME_COLOR : ''};
+    background: ${props => props.selected ? PRIMARY_THEME_COLOR + '40' : ''};
     margin-left: ${props => props.selected ? '-110px' : ''};
     z-index: 33;
 `;

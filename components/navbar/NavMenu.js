@@ -3,7 +3,7 @@ import styled from 'styled-components';
 import NextLink from 'next/link';
 import { motion, AnimatePresence } from "framer-motion"
 import { GlobalStateContext } from '../../pages/_app';
-import { PRIMARY_THEME_COLOR } from '../../GlobalVariables';
+import { NAV_LINK_COLOR, NAV_MENU_COLOR, PRIMARY_THEME_COLOR } from '../../GlobalVariables';
 
 const Menu = styled(motion.div)`
     height: calc(100vh - 50px);
@@ -34,7 +34,7 @@ const NavLink = styled.div`
     color: white;
     text-decoration: none;
     text-transform: uppercase;
-    background: white;
+    background: ${NAV_LINK_COLOR};
 `;
 
 const Background = styled(motion.div)`

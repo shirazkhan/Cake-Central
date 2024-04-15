@@ -10,6 +10,20 @@ export const GET_SHOP_TITLE = {
   `
 };
 
+export const GET_COLLECTIONS = {
+    query: gql` 
+      query {
+        collections(first: 100) {
+          nodes {
+            title
+            description
+            handle
+          }
+        }
+      }
+    `
+  }
+
 export const GET_PRODUCT_BY_HANDLE = handle => {
   return {
     query: gql`

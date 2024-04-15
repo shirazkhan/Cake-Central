@@ -6,7 +6,7 @@ import { PRIMARY_THEME_COLOR } from '../../GlobalVariables';
 const SwitchContainer = styled(motion.div)`
     width: 300px;
     height: 30px;
-    background-color: ${PRIMARY_THEME_COLOR};
+    background-color: ${PRIMARY_THEME_COLOR + '80'};
     display: flex;
     justify-content: ${props => props.isWishList ? 'flex-end' : 'flex-start'};
     border-radius: 50px;
