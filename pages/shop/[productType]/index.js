@@ -5,10 +5,10 @@ import styled from 'styled-components';
 import { Primary } from '../../../src/styled/App';
 import ProductGrid from '../../../components/productType Page/ProductGrid';
 import { InferGetStaticPropsType, GetStaticProps } from 'next';
+import { GET_COLLECTIONS, GET_PRODUCTS_BY_COLLECTION_HANDLE } from '../../../graphql/queries';
 
 const Container = styled.div`
     display: flex;
-
 `;
 
 const Header = styled.h1`
@@ -21,24 +21,18 @@ const Description = styled.p`
     margin: 0 auto;
 `;
 
-export default function ProductType() {
+export default function ProductType({handle, title, description, products}) {
 
     const router = useRouter();
     const { productType } = router.query;
 
-    // productType = productType.split('-').map(w => w.charAt(0).toUpperCase() + w.slice(1)).join(' ')
-
     return (
         <Primary>
             <Header>
-                {productType}
+                {title}
             </Header>
-            <Description>Lorem Ipsum Blah Blah Lorem Ipsum Blah Blah Lorem Ipsum Blah Blah Lorem Ipsum Blah Blah Lorem Ipsum Blah Blah 
-            Lorem Ipsum Blah Blah Lorem Ipsum Blah Blah Lorem Ipsum Blah Blah Lorem Ipsum Blah Blah Lorem Ipsum Blah Blah Lorem Ipsum Blah Blah Lorem Ipsum Blah Blah 
-            Lorem Ipsum Blah Blah Lorem Ipsum Blah Blah Lorem Ipsum Blah Blah Lorem Ipsum Blah Blah Lorem Ipsum Blah Blah Lorem Ipsum Blah Blah 
-            Lorem Ipsum Blah Blah Lorem Ipsum Blah Blah Lorem Ipsum Blah Blah Lorem Ipsum Blah Blah Lorem Ipsum Blah Blah Lorem Ipsum Blah Blah 
-            </Description>
-            <ProductGrid />
+            <Description>{description}</Description>
+            <ProductGrid products = {products} productType = {productType} />
         </Primary>
     )
 }
@@ -47,24 +41,36 @@ export async function getStaticProps({params}) {
 
     const { productType, slug } = params;
   
-    const { data } = await client.query(GET_PRODUCT_BY_HANDLE(slug));
+    let { data } = await client.query(GET_PRODUCTS_BY_COLLECTION_HANDLE(productType));
+    data = data.collectionByHandle;
+    const props = {
+        handle: data.handle,
+        title: data.title,
+        description: data.description,
+        products: data.products.nodes.map(p => {
+            return {
+                title: p.title,
+                id: p.id,
+                images: p.images.nodes[0].src,
+                handle: p.handle,
+                price: p.priceRange.minVariantPrice.amount
+            }
+        })
+    }
 
     return {
-        props: {
-
-        }
+        props
       }
   }
 
-export async function getStaticPaths(handle) {
+  export async function getStaticPaths() {
   
-    const { data } = await client.query(GET_SLUGS_BY_COLLECTION_HANDLE('birthday-cakes'));
-    
-    const paths = data.collectionByHandle.products.edges.map(p => {
+    const { data } = await client.query(GET_COLLECTIONS);
+
+    const paths = data.collections.nodes.map(c => {
       return {
         params: {
-          productType: p.node.productType.toLowerCase().replace(/ /g, "-"),
-          slug: p.node.handle
+          productType: c.handle
         } 
       }
     })

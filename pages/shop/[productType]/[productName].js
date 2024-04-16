@@ -11,7 +11,7 @@ import Head from 'next/head';
 import {DOMAIN, WEBSITE_NAME} from '../../../GlobalVariables';
 import { client } from '../../../apollo-client';
 import { gql } from '@apollo/client';
-import { GET_PRODUCT_BY_HANDLE, GET_SLUGS_BY_COLLECTION_HANDLE, GET_RECOMMENDED_PRODUCTS_BY_ID } from "../../../graphql/queries.js";
+import { GET_PRODUCT_BY_HANDLE, GET_SLUGS_BY_COLLECTION_HANDLE, GET_RECOMMENDED_PRODUCTS_BY_ID, GET_PRODUCT_AND_COLLECTION_HANDLES } from "../../../graphql/queries.js";
 import ProductAccordion from '../../../components/ProductAccordion';
 import FavouriteButton from '../../../components/FavouriteButton';
 
@@ -24,7 +24,7 @@ export default function Product({id,title,description,images,price,variants,prod
 
   const router = useRouter();
 
-  const { productType, slug } = router.query;
+  const { productType, productName } = router.query;
 
   const [selectedVariant, setSelectedVariant] = useState(extractFragmentHandle(router, variants));
   
@@ -45,20 +45,19 @@ export default function Product({id,title,description,images,price,variants,prod
         variantHandle = {selectedVariant}
         variantTitle = {variants.find(v => v.handle === selectedVariant).title}
         productType = {productType}
-        productHandle = {slug} />
+        productHandle = {productName} />
       <ProductAccordion title = 'Description' content = {description} initial = {true} />
       <ProductAccordion title = 'Details' content = {description} />
       <ProductAccordion title = 'Delivery & Returns' content = {description} />
-      <RecommendedCarousel products = {productRecommendations} />
     </Primary>
   </>
 }
 
 export async function getStaticProps({params}) {
 
-  const { productType, slug } = params;
+  const { productType, productName } = params;
 
-  const { data } = await client.query(GET_PRODUCT_BY_HANDLE(slug));
+  const { data } = await client.query(GET_PRODUCT_BY_HANDLE(productName));
 
   const images = data.productByHandle.images.edges.map(i => {
     return {
@@ -106,18 +105,20 @@ export async function getStaticProps({params}) {
     }
 }
 
-export async function getStaticPaths(handle) {
+export async function getStaticPaths() {
   
-  const { data } = await client.query(GET_SLUGS_BY_COLLECTION_HANDLE('birthday-cakes'));
-  
-  const paths = data.collectionByHandle.products.edges.map(p => {
-    return {
-      params: {
-        productType: p.node.productType.toLowerCase().replace(/ /g, "-"),
-        slug: p.node.handle
-      } 
-    }
-  })
+  const { data } = await client.query(GET_PRODUCT_AND_COLLECTION_HANDLES);
+
+  const paths = data.collections.nodes.map(c => {
+    return c.products.nodes.map(p => {
+      return {
+        params: {
+          productType: c.handle,
+          productName: p.handle
+        }
+      }
+    })
+  }).flat()
 
   return {
     paths,

@@ -2,6 +2,8 @@ import React from 'react';
 import styled from 'styled-components';
 import Pagination from './Pagination';
 import Filter from './Filter';
+import Image from 'next/image';
+import Link from 'next/link';
 
 const Container = styled.div`
 
@@ -32,11 +34,11 @@ const ProductCard = styled.div`
     justify-content: space-between;
 `;
 
-const ProductImage = styled.img`
-    background: red;
+const ProductImage = styled.div`
     height: 200px;
     width: 100%;
     border-radius: 5px 5px 0 0;
+    position: relative;
 `;
 
 const CardTitle = styled.div`
@@ -62,35 +64,41 @@ const CardPrice = styled.div`
 const AddToCart = styled.button`
     border: 2px solid pink;
     height: 40px;
-    width: calc(100% - 40px);
+    width: calc(100% - 80px);
     margin: 10px auto;
     border-radius: 20px;
     background: white;
     color: black;
 `;
 
-export default function ProductGrid(props) {
+const renderProducts = (products,productType) =>
+    products.map(p => {
+        return (
+            <ProductCard>
+            <Link href = {`/shop/${productType}/${p.handle}`}>
+            <ProductImage>
+                <Image
+                    style = {{objectFit: "cover"}}
+                    layout='fill' src={p.images} />
+            </ProductImage>
+            <CardTitle>{p.title}</CardTitle>
+            <PriceAndReviewContainer>
+                <ReviewContainer>1 2 3 4 5</ReviewContainer>
+                <CardPrice>£{p.price}</CardPrice>
+            </PriceAndReviewContainer>
+        </Link> 
+            <AddToCart>Add To Cart</AddToCart>
+        </ProductCard>
+        )
+    })
 
+export default function ProductGrid({products, productType}) {
     return (
         <Container>
-            <Filter />
+            <Filter products = {products}/>
             <Grid>
-                <ProductCard>
-                    <ProductImage />
-                    <CardTitle>8 Inch Chocolate Pudding Milk Cake</CardTitle>
-                    <PriceAndReviewContainer>
-                        <ReviewContainer>1 2 3 4 5</ReviewContainer>
-                        <CardPrice>£79.99</CardPrice>
-                    </PriceAndReviewContainer>
-                    <AddToCart>Add To Cart</AddToCart>
-                </ProductCard>
-                <ProductCard />
-                <ProductCard />
-                <ProductCard />
-                <ProductCard />
-                <ProductCard />
+                {renderProducts(products, productType)}
             </Grid>
-            <Pagination />
         </Container>
     )
 }

@@ -22,7 +22,7 @@ export const GET_COLLECTIONS = {
         }
       }
     `
-  }
+  };
 
 export const GET_PRODUCT_BY_HANDLE = handle => {
   return {
@@ -98,22 +98,45 @@ export const GET_RECOMMENDED_PRODUCTS_BY_ID = handle => (
   }
 )
 
+export const GET_PRODUCT_AND_COLLECTION_HANDLES = {
+  query: gql`
+  {
+    collections(first: 100) {
+      nodes {
+        handle
+        products(first: 100) {
+          nodes {
+            handle
+          }
+        }
+      }
+    }
+  }`
+};
+
 export const GET_SLUGS_BY_COLLECTION_HANDLE = handle => (
   {
     query: gql`
-      {
-        collectionByHandle(handle: "${handle}") {
-          products(first: 10) {
-            edges {
-              node {
-                title
-                productType
-                handle
+    {
+      collectionByHandle(handle: "${handle}") {
+        products(first: 10) {
+          edges {
+            node {
+              title
+              productType
+              handle
+              collections(first: 100) {
+                edges {
+                  node {
+                    handle
+                  }
+                }
               }
             }
           }
         }
       }
+    }
     `
   }
 )
@@ -122,12 +145,15 @@ export const GET_PRODUCTS_BY_COLLECTION_HANDLE = handle =>  {
   return { query: gql`
   query {
     collectionByHandle(handle: "${handle}") {
+      id
+      handle
       title
+      description
       products(first: 10) {
         nodes {
           title
           id
-          images(first: 10) {
+          images(first: 1) {
             nodes {
               id
               src
