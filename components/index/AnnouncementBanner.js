@@ -10,7 +10,6 @@ const Container = styled.h5`
     display: flex;
     margin: 0;
     color: black;
-    background: white;
     align-items: center;
     justify-content: center;
     box-shadow: 0px 0px 14px -6px rgba(0,0,0,0.8);

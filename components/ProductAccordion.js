@@ -4,20 +4,21 @@ import { motion } from 'framer-motion';
 import { PRIMARY_THEME_COLOR } from '../GlobalVariables';
 
 const Accordion = styled(motion.button)`
-    background-color: rgba(0,0,0,0);
+    background-color: ${PRIMARY_THEME_COLOR};
     cursor: pointer;
     height: 70px;
     padding: 0 10px 0 10px;
     width: 100%;
     text-align: left;
-    border: none;
+    border: 3px solid white;
     outline: none;
     transition: 0.4s;
     display: flex;
     justify-content: space-between;
     align-items: center;
     font-size: 0.9rem;
-    border-bottom: 1px solid ${PRIMARY_THEME_COLOR};
+    font-weight: 800;
+    color: black;
 `;
 
 const Panel = styled(motion.div)`

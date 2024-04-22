@@ -4,7 +4,6 @@ import client from '../../../apollo-client';
 import styled from 'styled-components';
 import { Primary } from '../../../src/styled/App';
 import ProductGrid from '../../../components/productType Page/ProductGrid';
-import { InferGetStaticPropsType, GetStaticProps } from 'next';
 import { GET_COLLECTIONS, GET_PRODUCTS_BY_COLLECTION_HANDLE } from '../../../graphql/queries';
 
 const Container = styled.div`
@@ -32,7 +31,7 @@ export default function ProductType({handle, title, description, products}) {
                 {title}
             </Header>
             <Description>{description}</Description>
-            <ProductGrid products = {products} productType = {productType} />
+            <ProductGrid reviewsOn = {false} products = {products} productType = {productType} />
         </Primary>
     )
 }

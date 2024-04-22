@@ -14,7 +14,7 @@ import client from '../apollo-client';
 import { ApolloProvider } from '@apollo/client';
 import useLocalStorageState from 'use-local-storage-state';
 import { GET_CART } from '../graphql/queries';
-import { PRIMARY_THEME_COLOR, SECONDARY_THEME_COLOR } from '../GlobalVariables';
+import { LOADING_BAR_COLOR } from '../GlobalVariables';
 
 const extractFragmentHandle = (router, variants) => { // Check if router has href fragment. If it does, then use this as initial state.
   const fragment = router.asPath.slice(router.asPath.indexOf('#')+1)
@@ -24,7 +24,7 @@ const extractFragmentHandle = (router, variants) => { // Check if router has hre
 // Progress Bar //////////
 const progress = new ProgressBar({
   size: 4,
-  color: SECONDARY_THEME_COLOR,
+  color: LOADING_BAR_COLOR,
   className: "bar-of-progress",
   delay: 0,
 });

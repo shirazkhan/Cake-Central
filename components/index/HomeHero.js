@@ -1,6 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
-import { PRIMARY_THEME_COLOR } from '../../GlobalVariables';
+import { PRIMARY_THEME_COLOR, SECONDARY_THEME_COLOR } from '../../GlobalVariables';
 
 const Container = styled.div`
     width: 100%;
@@ -8,6 +8,7 @@ const Container = styled.div`
     background-size: cover;
     background-image: url("/creamcheese.webp");
     text-align: center;
+    border-bottom: 10px solid skyblue;
     margin-bottom: 20px;
 `;
 
@@ -26,6 +27,7 @@ const Button = styled.button`
     border: 4px solid white;
     background: ${PRIMARY_THEME_COLOR};
     font-size: 1em;
+    font-weight: 700;
     height: 50px;
     color: white;
     width: 175px;
@@ -40,7 +42,7 @@ const Caption = styled.h2`
     color: white;
     padding: 0;
     margin: 0 25px;
-    text-shadow: 3px 5px 2px ${PRIMARY_THEME_COLOR};
+    text-shadow: 3px 5px 0px ${PRIMARY_THEME_COLOR};
     `;
 
 export default function HomeHero(props) {

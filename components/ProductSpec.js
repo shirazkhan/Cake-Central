@@ -5,8 +5,6 @@ import ProductVariant from './ProductVariant';
 
 const Container = styled.div`
     width: 95%;
-    height: 150px;
-
     display: flex;
     margin: 0 auto;
     flex-direction: column;
@@ -14,16 +12,14 @@ const Container = styled.div`
 
 const ProductTitleContainer = styled.div`
     width: 100%;
-
-    height: 50px;
     display: flex;
     flex-direction: row;
+    align-items: center;
 `;
 
 const ProductTitle = styled.h1`
-    font-size: 1.125rem;
-    line-height: 1.125rem;
-
+    font-size: 1.2rem;
+    line-height: 1.2em;
     width: 80%;
     padding: 0;
     margin: 0;
@@ -66,7 +62,7 @@ export default function ProductSpec({title, price, variants, selectedVariant, se
                     PLATES
                 </ProductType>
                 <ProductTitleContainer>
-                    <ProductTitle>Farah Designer Charger Plate</ProductTitle>
+                    <ProductTitle>{title}</ProductTitle>
                     <Icon src = '/share.svg' />
                 </ProductTitleContainer>
                 <Price>

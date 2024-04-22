@@ -62,6 +62,7 @@ const renderImages = (images, variants, setImageIdx, myRef) => {
                                 blurDataURL={`data:image/svg+xml;base64,${toBase64(shimmer(700, 475))}`}
                                 layout = 'fill'
                                 src = {img.src}
+                                style={{objectFit: "cover"}}
                             />
                         </ImageContainer>
                     )}

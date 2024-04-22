@@ -82,12 +82,14 @@ export default function ProductVariant({variants, selectedVariant, setSelectedVa
     
     const router = useRouter(); 
     
-    return <Container key = {Math.random()}>
+    return <>{ variants.length > 1 ?
+            <Container key = {Math.random()}>
                 <Title animate = {{ opacity: 1}}>
                     {variants.find(v => v.handle === selectedVariant).title}
                 </Title>
                 <Variants>
                     {renderVariants(variants,selectedVariant,setSelectedVariant)}
                 </Variants>
-            </Container>
+            </Container> : ''}
+            </>
 }

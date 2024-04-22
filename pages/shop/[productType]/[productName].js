@@ -45,7 +45,8 @@ export default function Product({id,title,description,images,price,variants,prod
         variantHandle = {selectedVariant}
         variantTitle = {variants.find(v => v.handle === selectedVariant).title}
         productType = {productType}
-        productHandle = {productName} />
+        productHandle = {productName}
+      />
       <ProductAccordion title = 'Description' content = {description} initial = {true} />
       <ProductAccordion title = 'Details' content = {description} />
       <ProductAccordion title = 'Delivery & Returns' content = {description} />

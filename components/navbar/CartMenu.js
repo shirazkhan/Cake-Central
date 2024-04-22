@@ -84,14 +84,19 @@ const CheckoutContainer = styled(motion.div)`
     justify-content: flex-start;
 `;
 
-const CheckoutButton = styled(motion.div)`
-    width: 80%;
+const CheckoutButton = styled(motion.button)`
+    width: 50%;
     height: 50px;
-    background: white;
-    border-radius: 5px;
+    background: ${PRIMARY_THEME_COLOR};
+    border-radius: 30px;
     margin-top: 10px;
     text-align: center;
     flex-shrink: 0;
+    align-self: center;
+    border: none;
+    color: white;
+    font-weight: 600;
+    font-size: 1em;
 `;
 
 const ProductContainer = styled(motion.div)`
@@ -123,7 +128,6 @@ const ProductSpecContainer = styled.div`
     display: flex;
     height: 125px;
     width: 70%;
-    padding: 0 0 0 10px;
     justify-content: space-between;
     align-items: flex-start;
 `;
@@ -133,11 +137,22 @@ const ProductSpecDiv = styled.div`
     flex-direction: column;
     justify-content: space-between;
     height: 100%;
+    overflow: auto;
+    padding-right: 15px;
+`;
+
+const PriceAndRemoveContainer = styled.div`
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    height: 100%;
+    align-items: end;
 `;
 
 const ProductTitle = styled.a`
     font-weight: 600;
     cursor: pointer;
+    text-wrap: wrap;
 `;
 
 const ProductVariant = styled.a`
@@ -145,7 +160,7 @@ const ProductVariant = styled.a`
 `;
 
 const ProductPrice = styled.div`
-    padding-left: 15px;
+    
 `;
 
 const SummaryContainer = styled.div`
@@ -155,7 +170,6 @@ const SummaryContainer = styled.div`
     flex-direction: column;
     margin: 10px 0 25px 10px;
     flex-shrink: 0;
-    
 `;
 
 const SummaryTitle = styled.div`
@@ -212,10 +226,10 @@ const renderProducts = (lines, dispatch, cartId) =>
                     </div>
                     <Quantity quantity = {l.quantity} variantId = {l.variantId} lineId = {l.id} />
                 </ProductSpecDiv>
-                <ProductSpecDiv>
+                <PriceAndRemoveContainer>
                     <ProductPrice>£{l.price}</ProductPrice>
                     <span onClick = {() => handleRemoveProduct(l.id, cartId, dispatch)} style = {{fontSize: '0.9em', textAlign: 'right', cursor: 'pointer'}}>Remove</span>
-                </ProductSpecDiv>
+                </PriceAndRemoveContainer>
             </ProductSpecContainer>
         </ProductContainer> ))
         : <span style = {{marginLeft: '10px'}}>Theres nothing in your basket!</span>
@@ -232,6 +246,7 @@ const renderSummary = cartData => (
             <span>£4.99</span>
         </SummaryDelivery>
         <Taxes>Taxes Included</Taxes>
+        <CheckoutButton>Checkout</CheckoutButton>
     </SummaryContainer>
 )
 
