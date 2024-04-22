@@ -246,7 +246,9 @@ const renderSummary = cartData => (
             <span>£4.99</span>
         </SummaryDelivery>
         <Taxes>Taxes Included</Taxes>
-        <CheckoutButton>Checkout</CheckoutButton>
+        <NextLink href='/shop/checkout'>
+            <CheckoutButton>Checkout</CheckoutButton>
+        </NextLink>
     </SummaryContainer>
 )
 
