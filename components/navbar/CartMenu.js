@@ -1,6 +1,6 @@
 import React, { useEffect, useContext } from 'react';
 import styled from 'styled-components';
-import NextLink from 'next/link';
+import Link from 'next/link';
 import { motion, AnimatePresence } from "framer-motion"
 import { GlobalStateContext } from '../../pages/_app';
 import Quantity from '../Quantity';
@@ -50,10 +50,6 @@ const NavLink = styled(motion.div)`
     align-items: center;
 `;
 
-const Link = styled.a`
-
-`;
-
 const CartContainer = styled(motion.div)`
     height: 100%;
     width: 100vw;
@@ -85,14 +81,12 @@ const CheckoutContainer = styled(motion.div)`
 `;
 
 const CheckoutButton = styled(motion.button)`
-    width: 50%;
     height: 50px;
+    width: 100%;
     background: ${PRIMARY_THEME_COLOR};
     border-radius: 30px;
     margin-top: 10px;
     text-align: center;
-    flex-shrink: 0;
-    align-self: center;
     border: none;
     color: white;
     font-weight: 600;
@@ -107,13 +101,21 @@ const ProductContainer = styled(motion.div)`
     flex-shrink: 0;
 `;
 
-const ProductImageContainer = styled(NextLink)`
+const ProductImageContainer = styled(Link)`
     height: 125px;
     width: 30%;
     display: flex;
     align-items: center;
     justify-content: center;
 
+`;
+
+const CheckoutLink = styled(Link)`
+    align-self: center;
+    width: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 `;
 
 const ProductImage = styled.img`
@@ -217,12 +219,12 @@ const renderProducts = (lines, dispatch, cartId) =>
             <ProductSpecContainer>
                 <ProductSpecDiv>
                     <div style = {{display: 'flex', flexDirection: 'column'}} onClick = {() => dispatch({type: 'TOGGLE_CART_MENU'})}>
-                        <NextLink href = {`/shop/${l.productType.toLowerCase()}/${l.productHandle}#${l.variantHandle}`}>
+                        <Link href = {`/shop/${l.productType.replaceAll('%20','-').toLowerCase()}/${l.productHandle}#${l.variantHandle}`}>
                             <ProductTitle>{l.productTitle}</ProductTitle>
-                        </NextLink>
-                        <NextLink href = {`/shop/${l.productType.toLowerCase()}/${l.productHandle}#${l.variantHandle}`}>
+                        </Link>
+                        <Link href = {`/shop/${l.productType.replaceAll('%20','-').toLowerCase()}/${l.productHandle}#${l.variantHandle}`}>
                             <ProductVariant>{l.variantTitle}</ProductVariant>
-                        </NextLink>
+                        </Link>
                     </div>
                     <Quantity quantity = {l.quantity} variantId = {l.variantId} lineId = {l.id} />
                 </ProductSpecDiv>
@@ -246,9 +248,9 @@ const renderSummary = cartData => (
             <span>£4.99</span>
         </SummaryDelivery>
         <Taxes>Taxes Included</Taxes>
-        <NextLink href='/shop/checkout'>
+        <CheckoutLink onClick = {() => dispatch({type: 'TOGGLE_CART_MENU'})} href='/shop/checkout'>
             <CheckoutButton>Checkout</CheckoutButton>
-        </NextLink>
+        </CheckoutLink>
     </SummaryContainer>
 )
 
