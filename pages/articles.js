@@ -15,7 +15,7 @@ export default function Articles({data}) {
                 <title>All Articles | KhanDev </title>
                 <meta name="viewport" content="initial-scale=1.0, width=device-width" />
             </Head>
-            <Primary>
+            {/* <Primary>
             <PageHeading>All Articles</PageHeading>
             <ul>
                 {data.map(post => {
@@ -24,20 +24,20 @@ export default function Articles({data}) {
                             </li>
                 })}
             </ul>
-            </Primary>
+            </Primary> */}
         </>
     )
 }
 
-export async function getStaticProps() {
-    const res = await axios(
-    `${DOMAIN}/wp-json/wp/v2/posts/?_fields=id,slug,title&per_page=50`,
-    );
-    const data = res.data;
+// export async function getStaticProps() {
+//     const res = await axios(
+//     `${DOMAIN}/wp-json/wp/v2/posts/?_fields=id,slug,title&per_page=50`,
+//     );
+//     const data = res.data;
 
-    return {
-      props: {
-        data
-      },
-    }
-  }
+//     return {
+//       props: {
+//         data
+//       },
+//     }
+//   }
