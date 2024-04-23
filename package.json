@@ -29,7 +29,8 @@
     "react-scroll-into-view-if-needed": "^3.0.1",
     "react-social-media-embed": "^2.5.13",
     "smoothscroll-polyfill": "^0.4.4",
-    "styled-components": "^5.3.1",
+    "styled-components": "^6.1.8",
+    "stylis": "^4.3.2",
     "super-react-gist": "^1.0.4",
     "superjson": "^1.13.3",
     "use-local-storage-state": "^11.0.0"
