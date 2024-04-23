@@ -1,5 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
+import { PRIMARY_THEME_COLOR } from '../../GlobalVariables';
 
 const Container = styled.div`
     width: calc(100% - 20px);
@@ -51,11 +52,12 @@ const Input = styled.input`
 const Submit = styled.button`
     width: calc(100% - 20px);
     height: 50px;
-    background: black;
+    background: ${PRIMARY_THEME_COLOR};
     color: white;
     border-radius: 40px;
     border: none;
     margin: 20px auto;
+    font-weight: 800;
 `;
 
 export default function DeliveryOptions({title}) {

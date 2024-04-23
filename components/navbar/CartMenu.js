@@ -11,6 +11,7 @@ import Title from './Title';
 import ScrollIntoViewIfNeeded from 'react-scroll-into-view-if-needed';
 import { useInView } from 'react-intersection-observer';
 import { PRIMARY_THEME_COLOR } from '../../GlobalVariables';
+import CheckoutButton from '../checkout/CheckoutButton';
 
 const Menu = styled(motion.div)`
     height: 100%;
@@ -80,7 +81,7 @@ const CheckoutContainer = styled(motion.div)`
     justify-content: flex-start;
 `;
 
-const CheckoutButton = styled(motion.button)`
+const CheckoutButtonk = styled(motion.button)`
     height: 50px;
     width: 100%;
     background: ${PRIMARY_THEME_COLOR};
@@ -248,9 +249,9 @@ const renderSummary = cartData => (
             <span>£4.99</span>
         </SummaryDelivery>
         <Taxes>Taxes Included</Taxes>
-        <CheckoutLink onClick = {() => dispatch({type: 'TOGGLE_CART_MENU'})} href='/shop/checkout'>
-            <CheckoutButton>Checkout</CheckoutButton>
-        </CheckoutLink>
+        {cartData.lines.length ?
+            <CheckoutButton cartId={cartData.id} />
+        : ''}
     </SummaryContainer>
 )
 

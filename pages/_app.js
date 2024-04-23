@@ -93,7 +93,7 @@ export default function MyApp({ Component, pageProps }) {
                 variantId: l.node.merchandise.id,
                 quantity: l.node.quantity,
                 variantImageSrc: l.node.merchandise.image.src,
-                price: l.node.merchandise.price
+                price: l.node.merchandise.price.amount
               })),
             subtotal: action.value.cart.estimatedCost.subtotalAmount.amount,
             total: action.value.cart.estimatedCost.totalAmount.amount

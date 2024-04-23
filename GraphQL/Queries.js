@@ -187,7 +187,9 @@ export const GET_CART = id =>  {
               ... on ProductVariant {
                 id
                 sku
-                price
+                price{
+                  amount
+                }
                 title
                 image {
                   id
@@ -222,3 +224,13 @@ export const GET_CART = id =>  {
   }
  `}
 };
+
+export const GET_CHECKOUT_URL = cartId => {
+  return { query: gql`
+    query {
+      cart(id: "${cartId}") {
+        checkoutUrl
+      }
+    }
+  `}
+}
