@@ -1,7 +1,7 @@
 import React, {useState, useEffect} from 'react';
 import styled from 'styled-components';
 import client from '../../apollo-client';
-import { GET_CHECKOUT_URL } from '../../graphql/queries';
+import { GET_CHECKOUT_URL } from '../../graphql/Queries';
 import { PRIMARY_THEME_COLOR } from '../../GlobalVariables';
 
 const Button = styled.button`

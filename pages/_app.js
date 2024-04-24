@@ -13,7 +13,7 @@ import '../styles.css';
 import client from '../apollo-client';
 import { ApolloProvider } from '@apollo/client';
 import useLocalStorageState from 'use-local-storage-state';
-import { GET_CART } from '../graphql/queries';
+import { GET_CART } from '../graphql/Queries';
 import { LOADING_BAR_COLOR } from '../GlobalVariables';
 
 const extractFragmentHandle = (router, variants) => { // Check if router has href fragment. If it does, then use this as initial state.

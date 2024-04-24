@@ -5,7 +5,7 @@ import { useInView } from 'react-intersection-observer';
 import { MOBILE, PRIMARY_THEME_COLOR } from '../GlobalVariables';
 import { GlobalStateContext } from '../pages/_app';
 import client from '../apollo-client';
-import { CREATE_CART, CART_LINES_ADD } from '../graphql/mutations';
+import { CREATE_CART, CART_LINES_ADD } from '../graphql/Mutations';
 
 const Container = styled(motion.div)`
     width: ${props => props.inView ? '80%' : '100%'};
