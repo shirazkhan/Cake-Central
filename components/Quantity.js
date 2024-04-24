@@ -3,7 +3,7 @@ import styled from 'styled-components';
 import {motion} from 'framer-motion';
 import { GlobalStateContext } from '../pages/_app';
 import client from '../apollo-client';
-import { CART_LINES_UPDATE } from '../graph/Mutations';
+import { CART_LINES_UPDATE } from '../graphql/Mutations';
 import { PRIMARY_THEME_COLOR } from '../GlobalVariables';
 
 const Container = styled(motion.div)`
