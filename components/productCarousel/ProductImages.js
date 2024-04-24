@@ -2,7 +2,7 @@ import React, {useState, useRef, useEffect} from 'react';
 import Image from 'next/image';
 import styled from 'styled-components';
 import { motion } from 'framer-motion';
-import Indicator from './indicator';
+import Indicator from './Indicator';
 import { InView } from 'react-intersection-observer';
 import { PRIMARY_THEME_COLOR } from '../../GlobalVariables';
 

@@ -4,7 +4,7 @@ import client from '../../../apollo-client';
 import styled from 'styled-components';
 import { Primary } from '../../../src/styled/App';
 import ProductGrid from '../../../components/productType Page/ProductGrid';
-import { GET_COLLECTIONS, GET_PRODUCTS_BY_COLLECTION_HANDLE } from '../../../graphql/queries';
+import { GET_COLLECTIONS, GET_PRODUCTS_BY_COLLECTION_HANDLE} from '../../../graphql/Queries';
 
 const Container = styled.div`
     display: flex;
