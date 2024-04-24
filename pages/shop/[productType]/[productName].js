@@ -11,7 +11,7 @@ import Head from 'next/head';
 import {DOMAIN, WEBSITE_NAME} from '../../../GlobalVariables';
 import { client } from '../../../apollo-client';
 import { gql } from '@apollo/client';
-import { GET_PRODUCT_BY_HANDLE, GET_SLUGS_BY_COLLECTION_HANDLE, GET_RECOMMENDED_PRODUCTS_BY_ID, GET_PRODUCT_AND_COLLECTION_HANDLES } from "../../../graphql/queries.js";
+import { GET_PRODUCT_BY_HANDLE, GET_SLUGS_BY_COLLECTION_HANDLE, GET_RECOMMENDED_PRODUCTS_BY_ID, GET_PRODUCT_AND_COLLECTION_HANDLES } from "../../../graphql/Queries";
 import ProductAccordion from '../../../components/ProductAccordion';
 import FavouriteButton from '../../../components/FavouriteButton';
 
