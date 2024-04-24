@@ -5,7 +5,7 @@ import { motion, AnimatePresence } from "framer-motion"
 import { GlobalStateContext } from '../../pages/_app';
 import Quantity from '../Quantity';
 import client from '../../apollo-client';
-import { CART_LINES_REMOVE } from '../../graphql/Mutations';
+import { CART_LINES_REMOVE } from '../../graph/Mutations';
 import WishList from './WishList';
 import Title from './Title';
 import ScrollIntoViewIfNeeded from 'react-scroll-into-view-if-needed';
