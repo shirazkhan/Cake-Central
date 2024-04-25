@@ -1,268 +1,279 @@
 export const cakes = [
     {
         title: "Celebration Cakes",
-        description: "Elevate your celebration with irrestistible layers of flavour and fun!",
+        description: "Perfect for birthdays, weddings, and special occasions!",
         img: "homepage/dripcake.jpeg",
         handle: "celebration-cakes",
-        cardType: "category"
+        type: "collection"
     },
     {
         title: "Floral Cakes",
-        description: "We can cater for your wedding.",
+        description: "Exquisite floral designs for your dream wedding.",
         img: "homepage/floralcake.png",
         handle: "floral-cakes",
-        cardType: "category"
+        type: "collection"
     },
     {
         title: "Baby Shower Cakes",
-        description: "Celebrate with irrestistible layers of flavour and fun!",
+        description: "Delightful cakes to celebrate new beginnings.",
         img: "homepage/babyshowercake.png",
         handle: "baby-shower-cakes",
-        cardType: "category"
+        type: "collection"
     },
     {
         title: "Signature Cakes",
-        description: "Elevate your celebration with irrestistible layers of flavour and fun!",
+        description: "Unique creations for unforgettable moments.",
         img: "homepage/chocolatecake.png",
         handle: "signature-cakes",
-        cardType: "category"
+        type: "collection"
     },
     {
         title: "Celebration Cakes",
-        description: "Elevate your celebration with irrestistible layers of flavour and fun!",
+        description: "Perfect for birthdays, weddings, and special occasions!",
         img: "dripcake.jpeg",
         handle: "celebration-cakes",
-        cardType: "category"
+        type: "collection"
     },
     {
         title: "Eid Cakes",
-        description: "Elevate your celebration with irrestistible layers of flavour and fun!",
+        description: "Celebrate Eid with delicious and beautiful cakes.",
         img: "dripcake.jpeg",
         handle: "eid-cakes",
-        cardType: "category"
+        type: "collection"
     },
-]
+];
 
 export const cupcakes = [
     {
         title: "Birthday Cupcakes ",
-        description: "Elevate your celebration with irrestistible layers of flavour and fun!",
+        description: "Add sweetness to your special day!",
         img: "dripcake.jpeg",
         handle: "birthday-cupcakes",
-        cardType: "category"
+        type: "collection"
     },
     {
         title: "Signature Cupcakes",
-        description: "Elevate your celebration with irrestistible layers of flavour and fun!",
+        description: "Indulge in unique flavors for any occasion.",
         img: "dripcake.jpeg",
         handle: "signature-cupcakes",
-        cardType: "category"
+        type: "collection"
     },
     {
         title: "Celebration Cupcakes",
-        description: "Elevate your celebration with irrestistible layers of flavour and fun!",
+        description: "Delightful bites to make every moment special.",
         img: "/homepage/babyshowercake.png",
         handle: "celebration-cupcakes",
-        cardType: "category"
+        type: "collection"
     },
     {
         title: "Variety Boxes",
-        description: "Elevate your celebration with irrestistible layers of flavour and fun!",
+        description: "A mix of flavors to satisfy every craving.",
         img: "dripcake.jpeg",
         handle: "variety-cupcake-boxes",
-        cardType: "category"
+        type: "collection"
     },
     {
         title: "Floral Cupcakes",
-        description: "Elevate your celebration with irrestistible layers of flavour and fun!",
+        description: "Elegant cupcakes adorned with floral charm.",
         img: "dripcake.jpeg",
         handle: "floral-cupcakes",
-        cardType: "category"
+        type: "collection"
     },
     {
         title: "Eid Cupcakes",
-        description: "Elevate your celebration with irrestistible layers of flavour and fun!",
+        description: "Treats to add joy to your Eid celebrations.",
         img: "dripcake.jpeg",
         handle: "eid-cupcakes",
-        cardType: "category"
+        type: "collection"
     },
-]
+];
 
 export const brownies = [
     {
         title: "Create Your Own Box",
-        description: "Elevate your celebration with irrestistible layers of flavour and fun!",
+        description: "Craft your perfect box of indulgence.",
         img: "dripcake.jpeg",
         handle: "create-your-own-box",
-        cardType: "category"
+        type: "product"
     },
     {
         title: "Signature Box",
-        description: "Elevate your celebration with irrestistible layers of flavour and fun!",
+        description: "A box filled with signature flavors and joy.",
         img: "dripcake.jpeg",
         handle: "signature-box",
-        cardType: "category"
+        type: "product"
     },
     {
         title: "The Mega Mixed Box",
-        description: "Elevate your celebration with irrestistible layers of flavour and fun!",
+        description: "A grand assortment of irresistible treats.",
         img: "dripcake.jpeg",
         handle: "mega-mixed-box",
-        cardType: "category"
+        type: "product"
     },
     {
         title: "Nutty Collection",
-        description: "Elevate your celebration with irrestistible layers of flavour and fun!",
+        description: "Nutty delights for a delightful experience.",
         img: "dripcake.jpeg",
         handle: "nutty-collection",
-        cardType: "category"
+        type: "product"
     }
-]
+];
 
 export const cheesecakes = [
     {
         title: "Birthday Cakes",
-        description: "Elevate your celebration with irrestistible layers of flavour and fun!",
+        description: "Cheesecakes to make your birthday extra special.",
         img: "dripcake.jpeg",
-        handle: "birthday-cheesecakes"
+        handle: "birthday-cheesecakes",
+        type: "collection"
     },
     {
         title: "Baby Shower Cakes",
-        description: "Elevate your celebration with irrestistible layers of flavour and fun!",
+        description: "Celebrate new beginnings with delicious cheesecakes.",
         img: "dripcake.jpeg",
-        handle: "birthday-cakes"
+        handle: "birthday-cakes",
+        type: "collection"
     },
     {
         title: "Cakes For Boys",
-        description: "Elevate your celebration with irrestistible layers of flavour and fun!",
+        description: "Delicious cakes to make every boy's day.",
         img: "dripcake.jpeg",
-        handle: "birthday-cakes"
+        handle: "birthday-cakes",
+        type: "collection"
     },
     {
         title: "Floral Cakes",
-        description: "Elevate your celebration with irrestistible layers of flavour and fun!",
+        description: "Cheesecakes adorned with floral elegance.",
         img: "dripcake.jpeg",
-        handle: "birthday-cakes"
+        handle: "birthday-cakes",
+        type: "collection"
     },
     {
         title: "Easter Cakes",
-        description: "Elevate your celebration with irrestistible layers of flavour and fun!",
+        description: "Sweet treats to celebrate the joy of Easter.",
         img: "dripcake.jpeg",
-        handle: "birthday-cakes"
+        handle: "birthday-cakes",
+        type: "collection"
     },
-]
+];
 
 export const cookies = [
     {
         title: "Birthday Cakes",
-        description: "Elevate your celebration with irrestistible layers of flavour and fun!",
+        description: "Cookies to make your birthday even sweeter.",
         img: "dripcake.jpeg",
-        handle: "birthday-cakes"
+        handle: "birthday-cakes",
+        type: "collection"
     },
     {
         title: "Wedding Cakes",
-        description: "Elevate your celebration with irrestistible layers of flavour and fun!",
+        description: "Delightful cookies for your special day.",
         img: "dripcake.jpeg",
-        handle: "birthday-cakes"
+        handle: "birthday-cakes",
+        type: "collection"
     },
     {
         title: "Baby Shower Cakes",
-        description: "Elevate your celebration with irrestistible layers of flavour and fun!",
+        description: "Sweet treats to celebrate the arrival of a new baby.",
         img: "dripcake.jpeg",
-        handle: "birthday-cakes"
+        handle: "birthday-cakes",
+        type: "collection"
     },
     {
         title: "Cakes For Boys",
-        description: "Elevate your celebration with irrestistible layers of flavour and fun!",
+        description: "Cookies that every boy will love.",
         img: "dripcake.jpeg",
-        handle: "birthday-cakes"
+        handle: "birthday-cakes",
+        type: "collection"
     },
     {
         title: "Floral Cakes",
-        description: "Elevate your celebration with irrestistible layers of flavour and fun!",
+        description: "Cookies with a touch of floral charm.",
         img: "dripcake.jpeg",
-        handle: "birthday-cakes"
+        handle: "birthday-cakes",
+        type: "collection"
     },
     {
         title: "Easter Cakes",
-        description: "Elevate your celebration with irrestistible layers of flavour and fun!",
+        description: "Easter-themed cookies for a joyous celebration.",
         img: "dripcake.jpeg",
-        handle: "birthday-cakes"
+        handle: "birthday-cakes",
+        type: "collection"
     },
-]
+];
 
 export const weddingcakes = [
     {
         title: "Tiered Wedding Cakes",
-        description: "Elevate your celebration with irrestistible layers of flavour and fun!",
+        description: "Elegant tiered cakes for your dream wedding.",
         img: "homepage/weddingcake.png",
         handle: "tiered-wedding-cakes",
-        cardType: "category"
+        type: "collection"
     },
     {
         title: "Floral Wedding Cakes",
-        description: "Elevate your celebration with irrestistible layers of flavour and fun!",
+        description: "Elegant cakes adorned with floral beauty.",
         img: "homepage/weddingcake.png",
         handle: "floral-wedding-cakes",
-        cardType: "category"
+        type: "collection"
     },
     {
         title: "Naked Wedding Cakes",
-        description: "Elevate your celebration with irrestistible layers of flavour and fun!",
+        description: "Simplicity meets elegance in our naked wedding cakes.",
         img: "homepage/weddingcake.png",
         handle: "naked-wedding-cakes",
-        cardType: "category"
+        type: "collection"
     },
     {
         title: "Single-Tiered Cakes",
-        description: "Elevate your celebration with irrestistible layers of flavour and fun!",
+        description: "Perfect for intimate celebrations.",
         img: "homepage/weddingcake.png",
         handle: "single-tiered-wedding-cakes",
-        cardType: "category"
+        type: "collection"
     },
     {
         title: "Ombre Wedding Cakes",
-        description: "Elevate your celebration with irrestistible layers of flavour and fun!",
+        description: "Add a pop of color to your wedding with ombre cakes.",
         img: "homepage/weddingcake.png",
         handle: "ombre-wedding-cakes",
-        cardType: "category"
+        type: "collection"
     },
-]
+];
 
 export const milkcakes = [
     {
         title: "Pistachio Delight",
-        description: "Elevate your celebration with irrestistible layers of flavour and fun!",
+        description: "Delicious pistachio flavor to delight your taste buds.",
         img: "homepage/weddingcake.png",
         handle: "pistachio-delight",
-        cardType: "product"
+        type: "product"
     },
     {
         title: "Chocolate Dream Puddle",
-        description: "Elevate your celebration with irrestistible layers of flavour and fun!",
+        description: "Indulge in a chocolate dream with this delightful cake.",
         img: "homepage/weddingcake.png",
         handle: "chocolate-dream-puddle",
-        cardType: "product"
+        type: "product"
     },
     {
         title: "Classic Tres Leches",
-        description: "Elevate your celebration with irrestistible layers of flavour and fun!",
+        description: "Experience the classic goodness of tres leches cake.",
         img: "homepage/weddingcake.png",
         handle: "classic-tres-leches",
-        cardType: "product"
+        type: "product"
     },
     {
         title: "Lotus Biscoff Milk Cake",
-        description: "Elevate your celebration with irrestistible layers of flavour and fun!",
+        description: "Savor the unique flavor of Lotus Biscoff in this cake.",
         img: "homepage/weddingcake.png",
         handle: "lotus-biscoff",
-        cardType: "product"
+        type: "product"
     },
     {
         title: "Salted Caramel Milk Cake",
-        description: "Elevate your celebration with irrestistible layers of flavour and fun!",
+        description: "Indulge in the perfect blend of sweetness and saltiness.",
         img: "homepage/weddingcake.png",
         handle: "salted-caramel",
-        cardType: "product"
+        type: "product"
     },
-]
+];
