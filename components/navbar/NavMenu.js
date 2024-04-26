@@ -114,42 +114,42 @@ export default function NavMenu() {
                     >
                         <NavLink>
                             <NextLink href = '/shop' as = '/shop' passHref>
-                                <Link onClick = {() => dispatch({type: 'TOGGLE_NAV_MENU'})}>Shop</Link>
+                                <Link onClick = {isDesktop ? null : () => dispatch({type: 'TOGGLE_NAV_MENU'})}>Shop</Link>
                             </NextLink>
                         </NavLink>
                         <NavLink>
                             <NextLink href = '/account' as = '/account' passHref>
-                                <Link onClick = {() => dispatch({type: 'TOGGLE_NAV_MENU'})}>Account</Link>
+                                <Link onClick = {isDesktop ? null : () => dispatch({type: 'TOGGLE_NAV_MENU'})}>Account</Link>
                             </NextLink>
                         </NavLink>
                         <NavLink>
                             <NextLink href = '/latest-products' as = '/latest-products' passHref>
-                                <Link onClick = {() => dispatch({type: 'TOGGLE_NAV_MENU'})}>Latest Products</Link>
+                                <Link onClick = {isDesktop ? null : () => dispatch({type: 'TOGGLE_NAV_MENU'})}>Latest Products</Link>
                             </NextLink>
                         </NavLink>
                         <NavLink>
                             <NextLink href = '/bridal-henna' as = '/bridal-henna' passHref>
-                                <Link onClick = {() => dispatch({type: 'TOGGLE_NAV_MENU'})}>Bridal Henna</Link>
+                                <Link onClick = {isDesktop ? null : () => dispatch({type: 'TOGGLE_NAV_MENU'})}>Bridal Henna</Link>
                             </NextLink>
                         </NavLink>
                         <NavLink>
                             <NextLink href = '/articles' as = '/articles' passHref>
-                                <Link onClick = {() => dispatch({type: 'TOGGLE_NAV_MENU'})}>Articles</Link>
+                                <Link onClick = {isDesktop ? null : () => dispatch({type: 'TOGGLE_NAV_MENU'})}>Articles</Link>
                             </NextLink>
                         </NavLink>
                         <NavLink>
                             <NextLink href = '/videos' as = '/videos' passHref>
-                                <Link onClick = {() => dispatch({type: 'TOGGLE_NAV_MENU'})}>Videos</Link>
+                                <Link onClick = {isDesktop ? null : () => dispatch({type: 'TOGGLE_NAV_MENU'})}>Videos</Link>
                             </NextLink>
                         </NavLink>
                         <NavLink>
                             <NextLink href = '/about' as = '/about' passHref>
-                                <Link onClick = {() => dispatch({type: 'TOGGLE_NAV_MENU'})}>About</Link>
+                                <Link onClick = {isDesktop ? null : () => dispatch({type: 'TOGGLE_NAV_MENU'})}>About</Link>
                             </NextLink>
                         </NavLink>
                         <NavLink>
                             <NextLink href = '/contact' as = '/contact' passHref>
-                                <Link onClick = {() => dispatch({type: 'TOGGLE_NAV_MENU'})}>Contact</Link>
+                                <Link onClick = {isDesktop ? null : () => dispatch({type: 'TOGGLE_NAV_MENU'})}>Contact</Link>
                             </NextLink>
                         </NavLink>
                     </Menu>
