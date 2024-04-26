@@ -25,6 +25,7 @@
     "react-indiana-drag-scroll": "^2.0.1",
     "react-intersection-observer": "^8.32.1",
     "react-player": "^2.9.0",
+    "react-responsive": "^10.0.0",
     "react-scripts": "^5.0.1",
     "react-scroll-into-view-if-needed": "^3.0.1",
     "react-social-media-embed": "^2.5.13",

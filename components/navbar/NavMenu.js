@@ -1,9 +1,10 @@
-import React, { useContext } from 'react';
+import React, { useContext, useEffect } from 'react';
 import styled from 'styled-components';
 import NextLink from 'next/link';
-import { motion, AnimatePresence } from "framer-motion"
+import { motion, AnimatePresence } from "framer-motion";
+import { useMediaQuery } from 'react-responsive';
 import { GlobalStateContext } from '../../pages/_app';
-import { NAV_LINK_COLOR, NAV_MENU_COLOR, PRIMARY_THEME_COLOR } from '../../GlobalVariables';
+import { DESKTOP_LINK_HEIGHT, DESKTOP_NAV_HEIGHT, MOBILE, MOBILE_NAV_HEIGHT, NAV_LINK_COLOR, NAV_MENU_COLOR, PRIMARY_THEME_COLOR, WEBSITE_WIDTH } from '../../GlobalVariables';
 
 const Menu = styled(motion.div)`
     height: calc(100vh - 50px);
@@ -11,8 +12,7 @@ const Menu = styled(motion.div)`
     max-width: 275px;
     position: fixed;
     left: -275px;
-    top: 50px;
-    background: rgba(255,255,255);
+    top: ${MOBILE_NAV_HEIGHT};
     z-index: 1000;
     display: flex;
     flex-direction: column;
@@ -23,10 +23,23 @@ const Menu = styled(motion.div)`
     white-space: none;
     overflow: scroll;
     flex-wrap: nowrap;
+
+    @media (min-width:${MOBILE}){
+        top: ${DESKTOP_NAV_HEIGHT};
+        max-width: ${WEBSITE_WIDTH};
+        padding-top: 0;
+        flex-direction: row;
+        overflow: none;
+        align-items: center;
+        justify-content: center;
+        height: ${DESKTOP_LINK_HEIGHT};
+        gap: 30px;
+        position: absolute;
+
+      }
 `;
 
 const NavLink = styled.div`
-    width: 100%;
     min-height: 60px;
     display: flex;
     justify-content: flex-start;
@@ -35,6 +48,16 @@ const NavLink = styled.div`
     text-decoration: none;
     text-transform: uppercase;
     background: ${NAV_LINK_COLOR};
+
+    @media (min-width:${MOBILE}){
+        justify-content: center;
+        min-height: ${DESKTOP_LINK_HEIGHT};
+        flex-shrink: 0;
+        font-size: 0.8em;
+        font-weight: 600;
+        line-height: 1.2em;
+        text-align: center;
+      }
 `;
 
 const Background = styled(motion.div)`
@@ -58,11 +81,26 @@ const Link = styled.a`
     height: 100%;
     display: flex;
     align-items: center;
+
+    @media (min-width:${MOBILE}){
+        padding-left: 0;
+      }
 `;
 
 export default function NavMenu() {
 
     const {globalState, dispatch} = useContext(GlobalStateContext);
+
+    const isDesktop = useMediaQuery({ query: `(min-width:${MOBILE})` });
+
+    useEffect(() => {
+        if (isDesktop) {
+            dispatch({ type: 'NAV_MENU_ON' });
+        } else if(!isDesktop){
+            dispatch({ type: 'NAV_MENU_OFF'})
+        }
+    }, [isDesktop, dispatch]);
+
 
     return (
         <AnimatePresence>
@@ -115,12 +153,14 @@ export default function NavMenu() {
                             </NextLink>
                         </NavLink>
                     </Menu>
-                    <Background onClick = {() => dispatch({type: 'TOGGLE_NAV_MENU'})}
+                    { !isDesktop ? 
+                        <Background onClick = {() => dispatch({type: 'TOGGLE_NAV_MENU'})}
                         key="navMenuBackground"
                         animate = {{ opacity: 0.8 }}
                         transition={{duration: 0.75}}
                         exit={{ opacity: 0 }}
                     />
+                    : ''}
                 </>
             )}
             </AnimatePresence>

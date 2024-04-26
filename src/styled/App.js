@@ -20,6 +20,10 @@ export const MainGrid = styled.div`
   font-family: futura-pt, sans-serif;
   font-weight: 400;
   font-style: normal;
+
+  @media (min-width:${MOBILE}){
+    margin-top: calc(${DESKTOP_NAV_HEIGHT});
+  }
 `;
 
 MainGrid.defaultProps = {
@@ -31,19 +35,20 @@ MainGrid.defaultProps = {
 export const Header = styled.div`
   grid-area: Header;
   color: ${NAV_FONT_COLOR};
-  height: ${DESKTOP_NAV_HEIGHT};
+  height: ${MOBILE_NAV_HEIGHT};
   width: 100%;
   position: fixed;
   top: 0;
   left: 0;
   z-index: 2500;
-  background: white;
+  background: ${PRIMARY_THEME_COLOR};
   box-shadow: 0px 0px 14px -6px rgba(0,0,0,0.8);
   display: flex;
   justify-content: center;
 
-  @media (max-width:${MOBILE}){
-    height: ${MOBILE_NAV_HEIGHT};
+  @media (min-width:${MOBILE}){
+    height: ${DESKTOP_NAV_HEIGHT};
+    position: absolute;
   }
   
 `;

@@ -70,6 +70,10 @@ export default function MyApp({ Component, pageProps }) {
         return {...prevState, nightMode: !prevState.nightMode};
       case 'TOGGLE_NAV_MENU':
         return {... prevState, cartMenuOpen: false, navMenuOpen: !prevState.navMenuOpen, isWishList: false};
+      case 'NAV_MENU_ON':
+        return {... prevState, navMenuOpen: true};
+      case 'NAV_MENU_OFF':
+        return {... prevState, navMenuOpen: false};
       case 'TOGGLE_CART_MENU':
         return {... prevState, navMenuOpen: false, cartMenuOpen: !prevState.cartMenuOpen, isWishList: false};
       case 'TOGGLE_WISHLIST':
