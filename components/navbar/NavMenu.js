@@ -4,7 +4,7 @@ import NextLink from 'next/link';
 import { motion, AnimatePresence } from "framer-motion";
 import { useMediaQuery } from 'react-responsive';
 import { GlobalStateContext } from '../../pages/_app';
-import { DESKTOP_LINK_HEIGHT, DESKTOP_NAV_HEIGHT, MOBILE, MOBILE_NAV_HEIGHT, NAV_LINK_COLOR, NAV_MENU_COLOR, PRIMARY_THEME_COLOR, WEBSITE_WIDTH } from '../../GlobalVariables';
+import { DESKTOP_LINK_COLOR, DESKTOP_LINK_HEIGHT, DESKTOP_NAV_BACKGROUND_COLOR, DESKTOP_NAV_HEIGHT, MOBILE, MOBILE_NAV_HEIGHT, NAV_LINK_COLOR, NAV_MENU_COLOR, PRIMARY_THEME_COLOR, WEBSITE_WIDTH } from '../../GlobalVariables';
 
 const Menu = styled(motion.div)`
     height: calc(100vh - 50px);
@@ -26,7 +26,7 @@ const Menu = styled(motion.div)`
 
     @media (min-width:${MOBILE}){
         top: ${DESKTOP_NAV_HEIGHT};
-        max-width: ${WEBSITE_WIDTH};
+        max-width: none;
         padding-top: 0;
         flex-direction: row;
         overflow: none;
@@ -35,7 +35,9 @@ const Menu = styled(motion.div)`
         height: ${DESKTOP_LINK_HEIGHT};
         gap: 30px;
         position: absolute;
-
+        width: 100%;
+        box-shadow: 0px 0px 12px -6px rgba(0,0,0,0.8);
+        background: ${DESKTOP_NAV_BACKGROUND_COLOR};
       }
 `;
 
@@ -57,6 +59,7 @@ const NavLink = styled.div`
         font-weight: 600;
         line-height: 1.2em;
         text-align: center;
+        background: none;
       }
 `;
 
@@ -84,6 +87,8 @@ const Link = styled.a`
 
     @media (min-width:${MOBILE}){
         padding-left: 0;
+        color: ${DESKTOP_LINK_COLOR};
+        background: none;
       }
 `;
 

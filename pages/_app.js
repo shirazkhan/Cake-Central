@@ -15,6 +15,7 @@ import { ApolloProvider } from '@apollo/client';
 import useLocalStorageState from 'use-local-storage-state';
 import { GET_CART } from '../graphql/Queries';
 import { LOADING_BAR_COLOR } from '../GlobalVariables';
+import NavMenu from '../components/navbar/NavMenu';
 
 const extractFragmentHandle = (router, variants) => { // Check if router has href fragment. If it does, then use this as initial state.
   const fragment = router.asPath.slice(router.asPath.indexOf('#')+1)
@@ -191,6 +192,7 @@ export default function MyApp({ Component, pageProps }) {
           <Header>
             <Navbar />
           </Header>
+            <NavMenu />
           <Content>
               {/* Content Goes Here */}
               <Component {...pageProps} />

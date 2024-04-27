@@ -6,7 +6,7 @@ import styled from 'styled-components';
 import { GlobalStateContext } from '../../pages/_app';
 import NavMenu from './NavMenu';
 import CartMenu from './CartMenu';
-import { NAV_BAR_COLOR } from '../../GlobalVariables';
+import { NAV_BAR_COLOR, MOBILE, WEBSITE_WIDTH } from '../../GlobalVariables';
 
 const Bar = styled.div`
     display: flex;
@@ -15,8 +15,12 @@ const Bar = styled.div`
     width: 100%;
     background: ${NAV_BAR_COLOR};
     height: 100%;
-    max-width: 1400px;
+    max-width: ${WEBSITE_WIDTH};
     z-index: 2499;
+
+    @media (min-width:${MOBILE}){
+        width: 100%;
+      }
 `;
 
 const LogoBox = styled.div`
@@ -24,14 +28,22 @@ const LogoBox = styled.div`
     padding: 0 10px;
     height: 100%;
     display: flex;
-    justify-content: flex-start;
+    justify-content: center;
     align-items: center;
+
+    @media (min-width:${MOBILE}){
+        width: 450px;
+      }
 `;
 
 const Logo = styled.img`
-    width: 225px;
-    height: 13px;
+    width: 100%;
+    height: 100%;
     filter: drop-shadow( 1px 1px 2px rgba(0, 0, 0, 0.2));
+    
+    @media (min-width:${MOBILE}){
+        
+    }
 `;
 
 const Links = styled.div`
@@ -48,6 +60,13 @@ const LeftButton = styled.div`
     display: flex;
     justify-content: center;
     align-items: center;
+
+    @media (min-width:${MOBILE}){
+        height: 50%;
+        justify-content: center;
+        margin-left: 100px;
+        visibility: hidden;
+    }
 `;
 
 const HamBurger = styled(motion.img)`
@@ -58,15 +77,20 @@ const HamBurger = styled(motion.img)`
 
 const RightButton = styled.div`
     width: 50px;
-    height: 100%;
+    height: 50%;
     display: flex;
     justify-content: center;
     align-items: center;
+    
+    @media (min-width:${MOBILE}){
+        height: 50%;
+        margin-right: 100px;
+    }
 `;
 
 const Cart = styled(motion.img)`
-    width: 25px;
-    height: 25px;
+    width: 100%;
+    height: 100%;
     filter: drop-shadow( 1px 1px 2px rgba(0, 0, 0, 0.2));
 `;
 
@@ -89,7 +113,6 @@ export default function NavBar() {
                 <Cart src = '/cart-icon.svg' />
             </RightButton>
         </Bar>
-        <NavMenu />
         <CartMenu />
     </>
     )
