@@ -10,8 +10,10 @@ import WishList from './WishList';
 import Title from './Title';
 import ScrollIntoViewIfNeeded from 'react-scroll-into-view-if-needed';
 import { useInView } from 'react-intersection-observer';
-import { PRIMARY_THEME_COLOR } from '../../GlobalVariables';
+import { PRIMARY_THEME_COLOR, MOBILE, DESKTOP_NAV_HEIGHT } from '../../GlobalVariables';
 import CheckoutButton from '../checkout/CheckoutButton';
+import useDetectScroll from '@smakss/react-scroll-direction';
+
 
 const Menu = styled(motion.div)`
     height: 100%;
@@ -25,6 +27,16 @@ const Menu = styled(motion.div)`
     flex-stretch: 1;
     flex-wrap: nowrap;
     padding: 20px;
+
+    @media (min-width:${MOBILE}){
+        width: 30%;
+        height: 50%;
+        border-radius: 20px;
+        margin-top: 50px;
+        right: 50px;
+        z-index: 10000;
+        box-shadow: rgba(0, 0, 0, 0.25) 0px 54px 55px, rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px, rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px;
+      }
 `;
 
 const MenuWrapper = styled(motion.div)`
@@ -259,7 +271,11 @@ export default function CartMenu() {
 
     const {globalState, dispatch} = useContext(GlobalStateContext);
 
+    const isDesktop = globalState.isDesktop;
+
     const { ref, inView } = useInView({threshold: 0.2});
+
+    const { scrollDir, scrollPosition } = useDetectScroll();
 
     useEffect(() => {
         if(inView === false){
@@ -267,6 +283,11 @@ export default function CartMenu() {
         }
     },[inView])
 
+    useEffect(() => {
+       dispatch({type: 'CART_MENU_OFF'});
+    },[scrollPosition.top])
+
+    console.log(scrollPosition.top)
     return (
         <AnimatePresence>
             {globalState.cartMenuOpen && ( 
@@ -291,6 +312,7 @@ export default function CartMenu() {
                                 <WishList isWishList = {globalState.isWishList} />
                             </CartContainer>
                         </MenuWrapper>
+                        
                 </Menu>
             )}
             </AnimatePresence>

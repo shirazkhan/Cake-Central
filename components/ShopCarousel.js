@@ -2,13 +2,17 @@ import React from 'react';
 import styled from 'styled-components';
 import Link from 'next/link';
 import { motion } from 'framer-motion';
-import { PRIMARY_THEME_COLOR } from '../GlobalVariables';
+import { MOBILE, PRIMARY_THEME_COLOR } from '../GlobalVariables';
 
 //margin-top should be 25px
 const Container = styled.div`
     white-space: nowrap;
     padding-bottom: 25px;
     overflow: hidden;
+
+    @media (min-width:${MOBILE}){
+        margin: 0 120px 0 120px;
+      }
 `;
 
 const Title = styled.h3`

@@ -6,6 +6,7 @@
     "@apollo/client": "^3.4.10",
     "@badrap/bar-of-progress": "^0.1.2",
     "@next/env": "^14.0.4",
+    "@smakss/react-scroll-direction": "^4.1.0",
     "@testing-library/jest-dom": "^4.2.4",
     "@testing-library/react": "^9.5.0",
     "@testing-library/user-event": "^7.2.1",

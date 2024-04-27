@@ -14,8 +14,9 @@ import client from '../apollo-client';
 import { ApolloProvider } from '@apollo/client';
 import useLocalStorageState from 'use-local-storage-state';
 import { GET_CART } from '../graphql/Queries';
-import { LOADING_BAR_COLOR } from '../GlobalVariables';
+import { LOADING_BAR_COLOR, MOBILE } from '../GlobalVariables';
 import NavMenu from '../components/navbar/NavMenu';
+import { useMediaQuery } from 'react-responsive';
 
 const extractFragmentHandle = (router, variants) => { // Check if router has href fragment. If it does, then use this as initial state.
   const fragment = router.asPath.slice(router.asPath.indexOf('#')+1)
@@ -48,7 +49,8 @@ export default function MyApp({ Component, pageProps }) {
 
   const [cartId, setCartId] = useLocalStorageState('cartId', '');
   const [wishList, setWishList] = useLocalStorageState('wishList', []);
-
+  const isDesktop = useMediaQuery({ query: `(min-width:${MOBILE})` });
+  
     // Reducer Config //////////
   const initialState = {
     nightMode: false,
@@ -62,7 +64,8 @@ export default function MyApp({ Component, pageProps }) {
       subtotal: '0.00',
       total: '0.00'
     },
-    wishList: wishList
+    wishList: wishList,
+    isDesktop: isDesktop
   };
 
   const reducer = (prevState, action) => {
@@ -77,6 +80,10 @@ export default function MyApp({ Component, pageProps }) {
         return {... prevState, navMenuOpen: false};
       case 'TOGGLE_CART_MENU':
         return {... prevState, navMenuOpen: false, cartMenuOpen: !prevState.cartMenuOpen, isWishList: false};
+      case 'CART_MENU_OFF':
+        return {... prevState, cartMenuOpen: false};
+      case 'DESKTOP_CART_MENU_ON':
+        return {... prevState, cartMenuOpen: !prevState.cartMenuOpen, isWishList: false};
       case 'TOGGLE_WISHLIST':
         return {... prevState, isWishList: !prevState.isWishList};
       case 'SET_WISHLIST_TRUE':

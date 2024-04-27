@@ -109,7 +109,7 @@ export default function NavBar() {
                     <Logo src = '/hennacentralcom_brown.svg'></Logo>
                 </Link>
             </LogoBox>
-            <RightButton onClick = {() => dispatch({type: 'TOGGLE_CART_MENU'})}>
+            <RightButton onClick = {() => dispatch({type: 'DESKTOP_CART_MENU_ON'})}>
                 <Cart src = '/cart-icon.svg' />
             </RightButton>
         </Bar>
