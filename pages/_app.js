@@ -65,7 +65,8 @@ export default function MyApp({ Component, pageProps }) {
       total: '0.00'
     },
     wishList: wishList,
-    isDesktop: isDesktop
+    isDesktop: isDesktop,
+    miniNav: true,
   };
 
   const reducer = (prevState, action) => {

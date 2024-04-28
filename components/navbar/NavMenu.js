@@ -4,7 +4,7 @@ import NextLink from 'next/link';
 import { motion, AnimatePresence } from "framer-motion";
 import { useMediaQuery } from 'react-responsive';
 import { GlobalStateContext } from '../../pages/_app';
-import { DESKTOP_LINK_COLOR, DESKTOP_LINK_HEIGHT, DESKTOP_NAV_BACKGROUND_COLOR, DESKTOP_NAV_HEIGHT, MOBILE, MOBILE_NAV_HEIGHT, NAV_LINK_COLOR, NAV_MENU_COLOR, PRIMARY_THEME_COLOR, WEBSITE_WIDTH } from '../../GlobalVariables';
+import { DESKTOP_LINK_COLOR, DESKTOP_LINK_HEIGHT, DESKTOP_NAV_BACKGROUND_COLOR, DESKTOP_NAV_FIXED, DESKTOP_NAV_HEIGHT, MOBILE, MOBILE_NAV_HEIGHT, NAV_LINK_COLOR, NAV_MENU_COLOR, PRIMARY_THEME_COLOR, WEBSITE_WIDTH } from '../../GlobalVariables';
 
 const Menu = styled(motion.div)`
     height: calc(100vh - 50px);
@@ -13,7 +13,7 @@ const Menu = styled(motion.div)`
     position: fixed;
     left: -275px;
     top: ${MOBILE_NAV_HEIGHT};
-    z-index: 1000;
+    z-index: 999999999;
     display: flex;
     flex-direction: column;
     padding-top: 25px;
@@ -34,10 +34,10 @@ const Menu = styled(motion.div)`
         justify-content: center;
         height: ${DESKTOP_LINK_HEIGHT};
         gap: 30px;
-        position: absolute;
         width: 100%;
         box-shadow: 0px 0px 12px -6px rgba(0,0,0,0.8);
         background: ${DESKTOP_NAV_BACKGROUND_COLOR};
+        position: ${DESKTOP_NAV_FIXED ? 'fixed' : 'absolute'};
       }
 `;
 

@@ -3,8 +3,9 @@ import Link from 'next/link';
 import React from 'react';
 import {WEBSITE_WIDTH, MOBILE_NAV_HEIGHT, DESKTOP_NAV_HEIGHT, FOOTER_HEIGHT, NAV_MENU_WIDTH,
   NAV_GAP, NAV_LINKS_ALIGNMENT, CONTENT_H_MARGIN, CONTENT_V_MARGIN, HAMBURGER_COLOR, NAV_FONT_COLOR,
-  FOOTER_COLOR, FOOTER_FONT_COLOR, MOBILE, TABLET, NAVFILTER_COLOR, PRIMARY_THEME_COLOR      
+  FOOTER_COLOR, FOOTER_FONT_COLOR, MOBILE, TABLET, NAVFILTER_COLOR, PRIMARY_THEME_COLOR, DESKTOP_NAV_FIXED      
 } from '../../GlobalVariables';
+
 
 export const MainGrid = styled.div`
   display: grid;
@@ -40,7 +41,7 @@ export const Header = styled.div`
   position: fixed;
   top: 0;
   left: 0;
-  z-index: 2500;
+  z-index: 99999999;
   background: ${PRIMARY_THEME_COLOR};
   box-shadow: 0px 0px 14px -6px rgba(0,0,0,0.8);
   display: flex;
@@ -48,7 +49,7 @@ export const Header = styled.div`
 
   @media (min-width:${MOBILE}){
     height: ${DESKTOP_NAV_HEIGHT};
-    position: absolute;
+    position: ${DESKTOP_NAV_FIXED ? 'fixed' : 'absolute'};
   }
   
 `;

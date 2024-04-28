@@ -32,7 +32,7 @@ const LogoBox = styled.div`
     align-items: center;
 
     @media (min-width:${MOBILE}){
-        width: 450px;
+        width: 175px;
       }
 `;
 
@@ -106,7 +106,7 @@ export default function NavBar() {
             </LeftButton>
             <LogoBox>
                 <Link href = '/' passHref>
-                    <Logo src = '/hennacentralcom_brown.svg'></Logo>
+                    <Logo src = '/CakeCentral-Logo-Short.svg'></Logo>
                 </Link>
             </LogoBox>
             <RightButton onClick = {() => dispatch({type: 'DESKTOP_CART_MENU_ON'})}>
