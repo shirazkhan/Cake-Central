@@ -1,8 +1,8 @@
-import React from 'react';
+import React, {useState, useEffect, useRef} from 'react';
 import styled from 'styled-components';
 import Link from 'next/link';
-import { motion } from 'framer-motion';
 import { MOBILE, PRIMARY_THEME_COLOR } from '../GlobalVariables';
+import { inView, motion, useScroll, useAnimate } from "framer-motion";
 
 //margin-top should be 25px
 const Container = styled.div`
@@ -11,7 +11,7 @@ const Container = styled.div`
     overflow: hidden;
 
     @media (min-width:${MOBILE}){
-        margin: 0 120px 0 120px;
+        margin: 0 60px;
       }
 `;
 
@@ -30,6 +30,15 @@ const SubTitle = styled.h4`
 `;
 
 const CardsContainer = styled.div`
+    width: 100%;
+    height: 100%;
+    z-index: 99990;
+    justify-content: flex-start;
+    align-items: center;
+    position: relative;
+`;
+
+const Cards = styled.div`
     display: flex;
     width: 100%;
     justify-content: flex-start;
@@ -42,11 +51,15 @@ const CardsContainer = styled.div`
     scrollbar-width: none;
     &::-webkit-scrollbar {
         display: none;
-      };
+    };
+
+    @media (min-width:${MOBILE}){
+
+    }
 `;
 
 const CardContainer = styled.div`
-    height: 345px;
+    height: 350px;
     width: 315px;
     display: flex;
     flex-direction: column;
@@ -123,7 +136,68 @@ const EndPiece = styled.div`
     box-shadow: rgba(0, 0, 0, 0.02) 0px 1px 3px 0px, rgba(27, 31, 35, 0.15) 0px 0px 0px 1px;
 `;
 
+
+const SliderMenuContainer = styled.div`
+    position: relative;
+    overflow-x: auto;
+    white-space: nowrap;
+`;
+
+const SliderMenu = styled.div`
+    display: inline-block;
+`;
+
+const LeftButton = styled(motion.div)`
+    position: absolute;
+    display: flex;
+    left: 0;
+    top: 0;
+    height: 100%;
+    width: 70px;
+    z-index: 9999999;
+    background: linear-gradient(90deg, rgba(255,255,255,1) 0%, rgba(255,255,255,1) 5%, rgba(255,255,255,0) 100%);
+    align-items: center;
+`;
+
+const RightButton = styled(motion.div)`
+    position: absolute;
+    display: flex;
+    right: 0;
+    top: 0;
+    height: 100%;
+    width: 50px;
+    z-index: 9999999;
+    background: white;
+    background: linear-gradient(270deg, rgba(255,255,255,1) 0%, rgba(255,255,255,1) 5%, rgba(255,255,255,0) 100%);
+    align-items: center;
+`;
+
+const Button = styled.button`
+    height: 50px;
+    width: 50px;
+    border-radius: 50px;
+    background: ${PRIMARY_THEME_COLOR};
+    border: 0.5px solid grey;
+    box-shadow: rgba(0, 0, 0, 0.16) 0px 3px 6px, rgba(0, 0, 0, 0.23) 0px 3px 6px;
+`;
+
 export default function ShopCarousel({data, title, subtitle, handle, cardType, endCard}) {
+
+    const cardsContainerRef = useRef(null);
+
+    const { scrollXProgress } = useScroll({ container: cardsContainerRef });
+
+    const handleScrollLeft = () => {
+        if (cardsContainerRef.current) {
+            cardsContainerRef.current.scrollLeft -= 1000; // Adjust the scroll amount as needed
+        }
+    };
+
+    const handleScrollRight = () => {
+        if (cardsContainerRef.current) {
+            cardsContainerRef.current.scrollLeft += 1000; // Adjust the scroll amount as needed
+        }
+    };
 
     const renderCards = () =>
       data.map((node,b) =>
@@ -138,16 +212,65 @@ export default function ShopCarousel({data, title, subtitle, handle, cardType, e
             </CardContainer>
         </Link>
   )
-  
+
+  const [leftVisibility, setLeftVisibility] = useState(false);
+  const [rightVisibility, setRightVisibility] = useState(true);
+  const handleScroll = () => {
+    if(scrollXProgress.current >= 0.1){
+        setLeftVisibility(true);
+    } else{
+        setLeftVisibility(false)
+    }
+    if(scrollXProgress.current <= 0.9){
+        setRightVisibility(true);
+    } else {
+        setRightVisibility(false);
+    }
+  }
+
+  const [scopeL, animateL] = useAnimate();
+  const [scopeR, animateR] = useAnimate();
+
+  useEffect(() => {
+    // This "li" selector will only select children
+    // of the element that receives `scope`.
+    if(scrollXProgress.current >= 0.1){
+        animateL("button", { opacity: 1 })
+        animateL(scopeL.current, { opacity: 1 })
+    } else {
+        animateL("button", { opacity: 0 })
+        animateL(scopeL.current, { opacity: 0 })
+    }
+    if(scrollXProgress.current <= 0.9){
+        animateR("button", { opacity: 1 })
+        animateR(scopeR.current, { opacity: 1 })
+    } else {
+        animateR("button", { opacity: 0 })
+        animateR(scopeR.current, { opacity: 0 })
+    }
+  })
+
     return (
         <>
             <Container>
                 <Title>{title}</Title>
                 <SubTitle>{subtitle}</SubTitle>
                 <CardsContainer>
-                    {renderCards()}
-                    <EndCard>Shop More</EndCard>
-                    <EndPiece />
+                        <LeftButton
+                            ref={scopeL}
+                        >
+                            <Button onClick={handleScrollLeft} whileTap = {{scale: 1.2}}>{'<'}</Button>
+                        </LeftButton>
+                        <RightButton
+                            ref={scopeR}
+                        >
+                            <Button onClick={handleScrollRight} whileTap = {{scale: 1.2}}>{'>'}</Button>
+                        </RightButton>
+                    <Cards onScroll={() => handleScroll()} ref={cardsContainerRef}>    
+                        {renderCards()}
+                        <EndCard>Shop More</EndCard>
+                        <EndPiece />
+                    </Cards>
                 </CardsContainer>
             </Container>
         </>

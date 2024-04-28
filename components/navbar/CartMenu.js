@@ -286,8 +286,7 @@ export default function CartMenu() {
     useEffect(() => {
        dispatch({type: 'CART_MENU_OFF'});
     },[scrollPosition.top])
-
-    console.log(scrollPosition.top)
+    
     return (
         <AnimatePresence>
             {globalState.cartMenuOpen && ( 

@@ -8,8 +8,7 @@ const Container = styled.div`
     background-size: cover;
     background-image: url("/creamcheese.webp");
     text-align: center;
-    border-bottom: 10px solid skyblue;
-    margin-bottom: 20px;
+    margin-bottom: 50px;
 `;
 
 const SubContainer = styled.div`
