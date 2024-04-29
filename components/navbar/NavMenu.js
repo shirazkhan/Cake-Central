@@ -27,6 +27,7 @@ const Menu = styled(motion.div)`
 
     @media (min-width:${MOBILE}){
         top: ${DESKTOP_NAV_HEIGHT};
+        left: 0;
         max-width: none;
         padding-top: 0;
         flex-direction: row;
@@ -70,7 +71,7 @@ const Background = styled(motion.div)`
     position: fixed;
     top: 50px;
     right: 0;
-    z-index: 999;
+    z-index: 8;
     opacity: 0;
     background: rgba(0,0,0,0.8);
     backdrop-filter: blur(14px);
@@ -118,51 +119,51 @@ export default function NavMenu() {
                     <Menu
                         key="navMenu"
                         animate = {{
-                            x: 275,
+                            x: isDesktop ? 0 : 275,
                             y: globalState.scrollYProgress.current > 0.1 && isDesktop
                             ? -parseInt(DESKTOP_SCROLLED_NAV_HEIGHT.replace('px',''))
                             : 0 }}
                         exit={{ x: -10 }}
-                        transition= {{ type: 'spring', stiffness: 75}}
+                        transition= {{ type: 'spring', stiffness: 75, x: { type: 'tween' }}}
                     >
                         <NavLink>
                             <NextLink href = '/shop' as = '/shop' passHref>
-                                <Link onClick = {isDesktop ? null : () => dispatch({type: 'TOGGLE_NAV_MENU'})}>Shop</Link>
+                                <Link onClick = {isDesktop ? null : () => dispatch({type: 'TOGGLE_NAV_MENU'})}>Cakes</Link>
                             </NextLink>
                         </NavLink>
                         <NavLink>
                             <NextLink href = '/account' as = '/account' passHref>
-                                <Link onClick = {isDesktop ? null : () => dispatch({type: 'TOGGLE_NAV_MENU'})}>Account</Link>
+                                <Link onClick = {isDesktop ? null : () => dispatch({type: 'TOGGLE_NAV_MENU'})}>Cupcakes</Link>
                             </NextLink>
                         </NavLink>
                         <NavLink>
                             <NextLink href = '/latest-products' as = '/latest-products' passHref>
-                                <Link onClick = {isDesktop ? null : () => dispatch({type: 'TOGGLE_NAV_MENU'})}>Latest Products</Link>
+                                <Link onClick = {isDesktop ? null : () => dispatch({type: 'TOGGLE_NAV_MENU'})}>Brownies</Link>
                             </NextLink>
                         </NavLink>
                         <NavLink>
                             <NextLink href = '/bridal-henna' as = '/bridal-henna' passHref>
-                                <Link onClick = {isDesktop ? null : () => dispatch({type: 'TOGGLE_NAV_MENU'})}>Bridal Henna</Link>
+                                <Link onClick = {isDesktop ? null : () => dispatch({type: 'TOGGLE_NAV_MENU'})}>Cookies</Link>
                             </NextLink>
                         </NavLink>
                         <NavLink>
                             <NextLink href = '/articles' as = '/articles' passHref>
-                                <Link onClick = {isDesktop ? null : () => dispatch({type: 'TOGGLE_NAV_MENU'})}>Articles</Link>
+                                <Link onClick = {isDesktop ? null : () => dispatch({type: 'TOGGLE_NAV_MENU'})}>Milk Cakes</Link>
                             </NextLink>
                         </NavLink>
                         <NavLink>
                             <NextLink href = '/videos' as = '/videos' passHref>
-                                <Link onClick = {isDesktop ? null : () => dispatch({type: 'TOGGLE_NAV_MENU'})}>Videos</Link>
+                                <Link onClick = {isDesktop ? null : () => dispatch({type: 'TOGGLE_NAV_MENU'})}>Wedding</Link>
                             </NextLink>
                         </NavLink>
                         <NavLink>
                             <NextLink href = '/about' as = '/about' passHref>
-                                <Link onClick = {isDesktop ? null : () => dispatch({type: 'TOGGLE_NAV_MENU'})}>About</Link>
+                                <Link onClick = {isDesktop ? null : () => dispatch({type: 'TOGGLE_NAV_MENU'})}>Birthdays</Link>
                             </NextLink>
                         </NavLink>
                         <NavLink>
                             <NextLink href = '/contact' as = '/contact' passHref>
-                                <Link onClick = {isDesktop ? null : () => dispatch({type: 'TOGGLE_NAV_MENU'})}>Contact</Link>
+                                <Link onClick = {isDesktop ? null : () => dispatch({type: 'TOGGLE_NAV_MENU'})}>More</Link>
                             </NextLink>
                         </NavLink>
                     </Menu>
