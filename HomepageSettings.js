@@ -30,14 +30,14 @@ export const cakes = [
     {
         title: "Celebration Cakes",
         description: "Perfect for birthdays, weddings, and special occasions!",
-        img: "dripcake.jpeg",
+        img: "homepage/weddingcake.png",
         handle: "celebration-cakes",
         type: "collection"
     },
     {
         title: "Eid Cakes",
         description: "Celebrate Eid with delicious and beautiful cakes.",
-        img: "dripcake.jpeg",
+        img: "homepage/weddingcake.png",
         handle: "eid-cakes",
         type: "collection"
     },
@@ -47,42 +47,42 @@ export const cupcakes = [
     {
         title: "Birthday Cupcakes ",
         description: "Add sweetness to your special day!",
-        img: "dripcake.jpeg",
+        img: "homepage/weddingcake.png",
         handle: "birthday-cupcakes",
         type: "collection"
     },
     {
         title: "Signature Cupcakes",
         description: "Indulge in unique flavors for any occasion.",
-        img: "dripcake.jpeg",
+        img: "homepage/weddingcake.png",
         handle: "signature-cupcakes",
         type: "collection"
     },
     {
         title: "Celebration Cupcakes",
         description: "Delightful bites to make every moment special.",
-        img: "/homepage/babyshowercake.png",
+        img: "homepage/weddingcake.png",
         handle: "celebration-cupcakes",
         type: "collection"
     },
     {
         title: "Variety Boxes",
         description: "A mix of flavors to satisfy every craving.",
-        img: "dripcake.jpeg",
+        img: "homepage/weddingcake.png",
         handle: "variety-cupcake-boxes",
         type: "collection"
     },
     {
         title: "Floral Cupcakes",
         description: "Elegant cupcakes adorned with floral charm.",
-        img: "dripcake.jpeg",
+        img: "homepage/weddingcake.png",
         handle: "floral-cupcakes",
         type: "collection"
     },
     {
         title: "Eid Cupcakes",
         description: "Treats to add joy to your Eid celebrations.",
-        img: "dripcake.jpeg",
+        img: "homepage/weddingcake.png",
         handle: "eid-cupcakes",
         type: "collection"
     },
@@ -92,28 +92,28 @@ export const brownies = [
     {
         title: "Create Your Own Box",
         description: "Craft your perfect box of indulgence.",
-        img: "dripcake.jpeg",
+        img: "homepage/weddingcake.png",
         handle: "create-your-own-box",
         type: "product"
     },
     {
         title: "Signature Box",
         description: "A box filled with signature flavors and joy.",
-        img: "dripcake.jpeg",
+        img: "homepage/weddingcake.png",
         handle: "signature-box",
         type: "product"
     },
     {
         title: "The Mega Mixed Box",
         description: "A grand assortment of irresistible treats.",
-        img: "dripcake.jpeg",
+        img: "homepage/weddingcake.png",
         handle: "mega-mixed-box",
         type: "product"
     },
     {
         title: "Nutty Collection",
         description: "Nutty delights for a delightful experience.",
-        img: "dripcake.jpeg",
+        img: "homepage/weddingcake.png",
         handle: "nutty-collection",
         type: "product"
     }

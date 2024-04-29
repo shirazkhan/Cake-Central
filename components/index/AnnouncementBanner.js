@@ -3,7 +3,7 @@ import styled from 'styled-components';
 import { NAV_BAR_COLOR } from '../../GlobalVariables';
 
 const Container = styled.h5`
-    height: 40px;
+    height: 50px;
     background: white;
     color: black;
     width: 100%;

@@ -201,8 +201,8 @@ export default function ShopCarousel({data, title, subtitle, handle, cardType, e
 
     const renderCards = () =>
       data.map((node,b) =>
-        <Link href={`/shop/${node.handle}/`}>
-            <CardContainer key={b}>
+        <Link key={b} href={`/shop/${node.handle}/`}>
+            <CardContainer>
                 <CardImage src = {`/${node.img}`} />
                 <CardInfo>
                     <CardInfoTitle>{node.title}</CardInfoTitle>
@@ -259,12 +259,12 @@ export default function ShopCarousel({data, title, subtitle, handle, cardType, e
                         <LeftButton
                             ref={scopeL}
                         >
-                            <Button onClick={handleScrollLeft} whileTap = {{scale: 1.2}}>{'<'}</Button>
+                            <Button onClick={handleScrollLeft}>{'<'}</Button>
                         </LeftButton>
                         <RightButton
                             ref={scopeR}
                         >
-                            <Button onClick={handleScrollRight} whileTap = {{scale: 1.2}}>{'>'}</Button>
+                            <Button onClick={handleScrollRight}>{'>'}</Button>
                         </RightButton>
                     <Cards onScroll={() => handleScroll()} ref={cardsContainerRef}>    
                         {renderCards()}

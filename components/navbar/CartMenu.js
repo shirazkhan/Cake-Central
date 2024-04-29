@@ -282,10 +282,6 @@ export default function CartMenu() {
             dispatch({type: 'SET_WISHLIST_TRUE'})
         }
     },[inView])
-
-    useEffect(() => {
-       dispatch({type: 'CART_MENU_OFF'});
-    },[scrollPosition.top])
     
     return (
         <AnimatePresence>

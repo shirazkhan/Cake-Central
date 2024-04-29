@@ -6,7 +6,7 @@ import styled from 'styled-components';
 import { GlobalStateContext } from '../../pages/_app';
 import NavMenu from './NavMenu';
 import CartMenu from './CartMenu';
-import { NAV_BAR_COLOR, MOBILE, WEBSITE_WIDTH, DESKTOP_SCROLLED_NAV_HEIGHT } from '../../GlobalVariables';
+import { NAV_BAR_COLOR, MOBILE, WEBSITE_WIDTH, DESKTOP_SCROLLED_NAV_HEIGHT, SECONDARY_THEME_COLOR } from '../../GlobalVariables';
 import dynamic from 'next/dynamic';
 const MediaQuery = dynamic(() => import('react-responsive'), {
     ssr: false
@@ -52,6 +52,16 @@ const Logo = styled(motion.img)`
     }
 `;
 
+const Search = styled.div`
+    min-width: 40px;
+    width: 100%;
+    max-width: 150px;
+    height: 38px;
+    border-radius: 30px;
+    filter: drop-shadow( 1px 1px 2px rgba(0, 0, 0, 0.2));
+    background: white;
+`;
+
 const Links = styled.div`
     width: 70%;
     height: 100%;
@@ -89,7 +99,7 @@ const RightButton = styled.div`
     align-items: center;
     
     @media (min-width:${MOBILE}){
-        height: 50%;
+        height: 38px;
         margin-right: 100px;
     }
 `;
@@ -116,7 +126,6 @@ export default function NavBar() {
                         { globalState.scrollYProgress.current < 0.1
                         ?   <Logo
                                 key = "BigLogo"
-                                scrollYProgress = {globalState.scrollYProgress.current}
                                 src = '/CakeCentral-Logo-Short.svg'
                                 initial = {{ opacity: 0 }}
                                 animate={{ opacity: 1 }}
@@ -126,7 +135,6 @@ export default function NavBar() {
                             />
                         :   <Logo
                                 key = "SmallLogo"
-                                scrollYProgress = {globalState.scrollYProgress.current}
                                 src = '/CakeCentral-mini.svg'
                                 initial = {{ opacity: 0 }}
                                 animate={{ opacity: 1 }}
@@ -138,7 +146,7 @@ export default function NavBar() {
                     <MediaQuery maxWidth={parseInt(MOBILE.replace('px',''))}>
                         <Logo
                                 key = "SmallLogo"
-                                scrollYProgress = {globalState.scrollYProgress.current}
+                                $scrollYProgress = {globalState.scrollYProgress.current}
                                 src = '/CakeCentral-mini.svg'
                                 initial = {{ opacity: 0 }}
                                 animate={{ opacity: 1 }}
