@@ -56,6 +56,8 @@ export default function MyApp({ Component, pageProps }) {
   
   const { scrollYProgress } = useScroll();
 
+  const mediaQuery = useMediaQuery({ query: '(max-width: 768px)' });
+
     // Reducer Config //////////
   const initialState = {
     nightMode: false,
@@ -70,7 +72,7 @@ export default function MyApp({ Component, pageProps }) {
       total: '0.00'
     },
     wishList: wishList,
-    isDesktop,
+    isDesktop: mediaQuery,
     scrollYProgress: scrollYProgress,
   };
 

@@ -6,6 +6,7 @@ import { useMediaQuery } from 'react-responsive';
 import { GlobalStateContext } from '../../pages/_app';
 import { DESKTOP_LINK_COLOR, DESKTOP_LINK_HEIGHT, DESKTOP_NAV_BACKGROUND_COLOR, DESKTOP_NAV_FIXED, DESKTOP_NAV_HEIGHT, DESKTOP_SCROLLED_NAV_HEIGHT, MOBILE, MOBILE_NAV_HEIGHT, NAV_LINK_COLOR, NAV_MENU_COLOR, PRIMARY_THEME_COLOR, WEBSITE_WIDTH } from '../../GlobalVariables';
 
+
 const Menu = styled(motion.div)`
     height: calc(100vh - 50px);
     width: 100%;
@@ -73,6 +74,10 @@ const Background = styled(motion.div)`
     opacity: 0;
     background: rgba(0,0,0,0.8);
     backdrop-filter: blur(14px);
+
+    @media (min-width:${MOBILE}){
+        display: none;
+      }
 `;
 
 const Link = styled.a`
@@ -95,8 +100,7 @@ const Link = styled.a`
 export default function NavMenu() {
 
     const {globalState, dispatch} = useContext(GlobalStateContext);
-
-    const isDesktop = globalState.isDesktop;
+    const isDesktop = useMediaQuery({ query: `(min-width:${MOBILE})` });
 
     useEffect(() => {
         if (isDesktop) {
@@ -115,7 +119,7 @@ export default function NavMenu() {
                         key="navMenu"
                         animate = {{
                             x: 275,
-                            y: globalState.scrollYProgress.current > 0.1 && globalState.isDesktop
+                            y: globalState.scrollYProgress.current > 0.1 && isDesktop
                             ? -parseInt(DESKTOP_SCROLLED_NAV_HEIGHT.replace('px',''))
                             : 0 }}
                         exit={{ x: -10 }}
