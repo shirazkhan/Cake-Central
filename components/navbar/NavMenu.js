@@ -4,7 +4,7 @@ import NextLink from 'next/link';
 import { motion, AnimatePresence } from "framer-motion";
 import { useMediaQuery } from 'react-responsive';
 import { GlobalStateContext } from '../../pages/_app';
-import { DESKTOP_LINK_COLOR, DESKTOP_LINK_HEIGHT, DESKTOP_NAV_BACKGROUND_COLOR, DESKTOP_NAV_FIXED, DESKTOP_NAV_HEIGHT, MOBILE, MOBILE_NAV_HEIGHT, NAV_LINK_COLOR, NAV_MENU_COLOR, PRIMARY_THEME_COLOR, WEBSITE_WIDTH } from '../../GlobalVariables';
+import { DESKTOP_LINK_COLOR, DESKTOP_LINK_HEIGHT, DESKTOP_NAV_BACKGROUND_COLOR, DESKTOP_NAV_FIXED, DESKTOP_NAV_HEIGHT, DESKTOP_SCROLLED_NAV_HEIGHT, MOBILE, MOBILE_NAV_HEIGHT, NAV_LINK_COLOR, NAV_MENU_COLOR, PRIMARY_THEME_COLOR, WEBSITE_WIDTH } from '../../GlobalVariables';
 
 const Menu = styled(motion.div)`
     height: calc(100vh - 50px);
@@ -13,7 +13,7 @@ const Menu = styled(motion.div)`
     position: fixed;
     left: -275px;
     top: ${MOBILE_NAV_HEIGHT};
-    z-index: 999999999;
+    z-index: 100;
     display: flex;
     flex-direction: column;
     padding-top: 25px;
@@ -113,9 +113,13 @@ export default function NavMenu() {
                 <>
                     <Menu
                         key="navMenu"
-                        animate = {{ x: 275 }}
+                        animate = {{
+                            x: 275,
+                            y: globalState.scrollYProgress.current > 0.1 && globalState.isDesktop
+                            ? -parseInt(DESKTOP_SCROLLED_NAV_HEIGHT.replace('px',''))
+                            : 0 }}
                         exit={{ x: -10 }}
-                        transition= {{ type: 'ease', stiffness: 125}}
+                        transition= {{ type: 'spring', stiffness: 75}}
                     >
                         <NavLink>
                             <NextLink href = '/shop' as = '/shop' passHref>

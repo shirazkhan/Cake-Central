@@ -33,27 +33,6 @@ MainGrid.defaultProps = {
   }
 }
 
-export const Header = styled.div`
-  grid-area: Header;
-  color: ${NAV_FONT_COLOR};
-  height: ${MOBILE_NAV_HEIGHT};
-  width: 100%;
-  position: fixed;
-  top: 0;
-  left: 0;
-  z-index: 99999999;
-  background: ${PRIMARY_THEME_COLOR};
-  box-shadow: 0px 0px 14px -6px rgba(0,0,0,0.8);
-  display: flex;
-  justify-content: center;
-
-  @media (min-width:${MOBILE}){
-    height: ${DESKTOP_NAV_HEIGHT};
-    position: ${DESKTOP_NAV_FIXED ? 'fixed' : 'absolute'};
-  }
-  
-`;
-
 export const NavBar = styled.div`
   display: flex;
   justify-content: space-between;

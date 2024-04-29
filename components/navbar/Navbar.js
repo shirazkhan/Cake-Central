@@ -6,7 +6,11 @@ import styled from 'styled-components';
 import { GlobalStateContext } from '../../pages/_app';
 import NavMenu from './NavMenu';
 import CartMenu from './CartMenu';
-import { NAV_BAR_COLOR, MOBILE, WEBSITE_WIDTH } from '../../GlobalVariables';
+import { NAV_BAR_COLOR, MOBILE, WEBSITE_WIDTH, DESKTOP_SCROLLED_NAV_HEIGHT } from '../../GlobalVariables';
+import dynamic from 'next/dynamic';
+const MediaQuery = dynamic(() => import('react-responsive'), {
+    ssr: false
+  })
 
 const Bar = styled.div`
     display: flex;
@@ -23,26 +27,28 @@ const Bar = styled.div`
       }
 `;
 
-const LogoBox = styled.div`
+const LogoBox = styled(motion.div)`
     width: 225px;
     padding: 0 10px;
-    height: 100%;
-    display: flex;
+    height: 85%;
+    display: hidden;
     justify-content: center;
     align-items: center;
 
     @media (min-width:${MOBILE}){
         width: 175px;
+        height: 100%;
       }
 `;
 
-const Logo = styled.img`
+const Logo = styled(motion.img)`
     width: 100%;
     height: 100%;
     filter: drop-shadow( 1px 1px 2px rgba(0, 0, 0, 0.2));
     
     @media (min-width:${MOBILE}){
-        
+        width: 100%;
+        height: 100%;
     }
 `;
 
@@ -106,7 +112,41 @@ export default function NavBar() {
             </LeftButton>
             <LogoBox>
                 <Link href = '/' passHref>
-                    <Logo src = '/CakeCentral-Logo-Short.svg'></Logo>
+                    <MediaQuery minWidth={parseInt(MOBILE.replace('px',''))}>
+                        { globalState.scrollYProgress.current < 0.1
+                        ?   <Logo
+                                key = "BigLogo"
+                                scrollYProgress = {globalState.scrollYProgress.current}
+                                src = '/CakeCentral-Logo-Short.svg'
+                                initial = {{ opacity: 0 }}
+                                animate={{ opacity: 1 }}
+                                transition={{ duration: 1.5, scale: { duration: 0.1 } }}
+                                exit={{ opacity: 0 }}
+                                whileTap = {{scale: 0.96}}
+                            />
+                        :   <Logo
+                                key = "SmallLogo"
+                                scrollYProgress = {globalState.scrollYProgress.current}
+                                src = '/CakeCentral-mini.svg'
+                                initial = {{ opacity: 0 }}
+                                animate={{ opacity: 1 }}
+                                transition={{ duration: 1.5, scale: { duration: 0.1 } }}
+                                exit={{ opacity: 0 }}
+                                whileTap = {{scale: 0.96}}
+                            />}
+                    </MediaQuery>
+                    <MediaQuery maxWidth={parseInt(MOBILE.replace('px',''))}>
+                        <Logo
+                                key = "SmallLogo"
+                                scrollYProgress = {globalState.scrollYProgress.current}
+                                src = '/CakeCentral-mini.svg'
+                                initial = {{ opacity: 0 }}
+                                animate={{ opacity: 1 }}
+                                transition={{ duration: 1.5, scale: { duration: 0.1 } }}
+                                exit={{ opacity: 0 }}
+                                whileTap = {{scale: 0.96}}
+                        />
+                    </MediaQuery>
                 </Link>
             </LogoBox>
             <RightButton onClick = {() => dispatch({type: 'DESKTOP_CART_MENU_ON'})}>

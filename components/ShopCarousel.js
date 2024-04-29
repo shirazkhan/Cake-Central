@@ -32,7 +32,7 @@ const SubTitle = styled.h4`
 const CardsContainer = styled.div`
     width: 100%;
     height: 100%;
-    z-index: 99990;
+    z-index: 1;
     justify-content: flex-start;
     align-items: center;
     position: relative;

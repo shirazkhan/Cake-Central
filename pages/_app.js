@@ -1,6 +1,6 @@
-import React, { useReducer, useEffect} from 'react';
+import React, { useReducer, useEffect, useState} from 'react';
 import '../src/index.css';
-import { lightTheme, darkTheme, GlobalStyle, MainGrid, Header,
+import { lightTheme, darkTheme, GlobalStyle, MainGrid,
          SocialFooter, FooterSocialLink, FooterSocialTitle,
          FooterColumn1, FooterColumn2, NewsLetterFooter, NewsLetterInput, NewsLetterButton,
          FooterLink, Footer, Content, FooterContent, HeroVideo } from '../src/styled/App';
@@ -17,6 +17,8 @@ import { GET_CART } from '../graphql/Queries';
 import { LOADING_BAR_COLOR, MOBILE } from '../GlobalVariables';
 import NavMenu from '../components/navbar/NavMenu';
 import { useMediaQuery } from 'react-responsive';
+import Header from '../components/navbar/Header';
+import { useScroll } from "framer-motion";
 
 const extractFragmentHandle = (router, variants) => { // Check if router has href fragment. If it does, then use this as initial state.
   const fragment = router.asPath.slice(router.asPath.indexOf('#')+1)
@@ -49,8 +51,11 @@ export default function MyApp({ Component, pageProps }) {
 
   const [cartId, setCartId] = useLocalStorageState('cartId', '');
   const [wishList, setWishList] = useLocalStorageState('wishList', []);
+
   const isDesktop = useMediaQuery({ query: `(min-width:${MOBILE})` });
   
+  const { scrollYProgress } = useScroll();
+
     // Reducer Config //////////
   const initialState = {
     nightMode: false,
@@ -65,8 +70,8 @@ export default function MyApp({ Component, pageProps }) {
       total: '0.00'
     },
     wishList: wishList,
-    isDesktop: isDesktop,
-    miniNav: true,
+    isDesktop,
+    scrollYProgress: scrollYProgress,
   };
 
   const reducer = (prevState, action) => {
@@ -197,9 +202,7 @@ export default function MyApp({ Component, pageProps }) {
       <ThemeProvider theme = {globalState.nightMode ? darkTheme : lightTheme}>
         <GlobalStyle />
         <MainGrid>
-          <Header>
-            <Navbar />
-          </Header>
+          <Header />
             <NavMenu />
           <Content>
               {/* Content Goes Here */}
