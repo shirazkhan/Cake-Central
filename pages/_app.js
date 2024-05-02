@@ -19,7 +19,7 @@ import NavMenu from '../components/navbar/NavMenu';
 import { useMediaQuery } from 'react-responsive';
 import Header from '../components/navbar/Header';
 import { useScroll } from "framer-motion";
-import { SpeedInsights } from "@vercel/speed-insights/next"
+import { SpeedInsights } from '@vercel/speed-insights/next';
 
 const extractFragmentHandle = (router, variants) => { // Check if router has href fragment. If it does, then use this as initial state.
   const fragment = router.asPath.slice(router.asPath.indexOf('#')+1)
@@ -54,7 +54,6 @@ export default function MyApp({ Component, pageProps }) {
   const [wishList, setWishList] = useLocalStorageState('wishList', []);
 
   const { scrollYProgress } = useScroll();
-
 
     // Reducer Config //////////
   const initialState = {
@@ -196,12 +195,14 @@ export default function MyApp({ Component, pageProps }) {
     handleInitializeCart(globalState,dispatch,cartId);
   },[])
 
-  return <SpeedInsights>
-    <ApolloProvider client={client}>
+
+  return <ApolloProvider client={client}>
     <GlobalStateContext.Provider value = {{globalState, dispatch}}>
       <ThemeProvider theme = {globalState.nightMode ? darkTheme : lightTheme}>
         <GlobalStyle />
         <MainGrid>
+        <SpeedInsights />
+
           <Header />
             <NavMenu />
           <Content>
@@ -261,5 +262,4 @@ export default function MyApp({ Component, pageProps }) {
       </ThemeProvider>
     </GlobalStateContext.Provider>
     </ApolloProvider>
-    </SpeedInsights>
   }
