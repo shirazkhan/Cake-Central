@@ -5,7 +5,7 @@ import { motion, AnimatePresence } from "framer-motion";
 import { useMediaQuery } from 'react-responsive';
 import { GlobalStateContext } from '../../pages/_app';
 import { DESKTOP_LINK_COLOR, DESKTOP_LINK_HEIGHT, DESKTOP_NAV_BACKGROUND_COLOR, DESKTOP_NAV_FIXED, DESKTOP_NAV_HEIGHT, DESKTOP_SCROLLED_NAV_HEIGHT, MOBILE, MOBILE_NAV_HEIGHT, NAV_LINK_COLOR, NAV_MENU_COLOR, PRIMARY_THEME_COLOR, WEBSITE_WIDTH } from '../../GlobalVariables';
-
+import { useScroll } from 'framer-motion';
 
 const Menu = styled(motion.div)`
     height: calc(100vh - 50px);
@@ -103,6 +103,7 @@ export default function NavMenu() {
 
     const {globalState, dispatch} = useContext(GlobalStateContext);
     const isDesktop = useMediaQuery({ query: `(min-width:${MOBILE})` });
+    const { scrollYProgress } = useScroll();
 
     useEffect(() => {
         if (isDesktop) {
@@ -121,7 +122,7 @@ export default function NavMenu() {
                         key="navMenu"
                         animate = {{
                             x: isDesktop ? 0 : 275,
-                            y: globalState.scrollYProgress.current > 0.1 && isDesktop
+                            y: scrollYProgress.current > 0.1 && isDesktop
                             ? -parseInt(DESKTOP_SCROLLED_NAV_HEIGHT.replace('px',''))
                             : 0 }}
                         exit={{ x: -10 }}
