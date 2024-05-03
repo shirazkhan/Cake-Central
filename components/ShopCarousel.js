@@ -1,8 +1,12 @@
 import React, {useState, useEffect, useRef} from 'react';
 import styled from 'styled-components';
 import Link from 'next/link';
+import Image from 'next/image';
 import { MOBILE, PRIMARY_THEME_COLOR } from '../GlobalVariables';
 import { inView, motion, useScroll, useAnimate } from "framer-motion";
+
+const cardWidth = 315;
+const cardHeight = 350;
 
 //margin-top should be 25px
 const Container = styled.div`
@@ -59,8 +63,8 @@ const Cards = styled.div`
 `;
 
 const CardContainer = styled.div`
-    height: 350px;
-    width: 315px;
+    height: ${cardHeight}px;
+    width: ${cardWidth}px;
     display: flex;
     flex-direction: column;
     margin: 15px;
@@ -71,7 +75,7 @@ const CardContainer = styled.div`
     
 `;
 
-const CardImage = styled.img`
+const CardImage = styled(Image)`
     height: 100%;
     object-fit: cover;
 `;
@@ -203,7 +207,7 @@ export default function ShopCarousel({data, title, subtitle, handle, cardType, e
       data.map((node,b) =>
         <Link key={b} href={`/shop/${node.handle}/`}>
             <CardContainer>
-                <CardImage src = {`/${node.img}`} />
+                <CardImage priority={b === 0 ? true : false} fill={false} alt={node.description} height={cardHeight} width={cardWidth} src = {`/${node.img}`} />
                 <CardInfo>
                     <CardInfoTitle>{node.title}</CardInfoTitle>
                     <CardInfoDescription>{node.description}</CardInfoDescription>

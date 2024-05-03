@@ -1,25 +1,19 @@
 import React from 'react';
 import styled from 'styled-components';
 import { PRIMARY_THEME_COLOR, SECONDARY_THEME_COLOR } from '../../GlobalVariables';
+import Image from 'next/image';
 
 const Container = styled.div`
     width: 100%;
     height: calc(100vh - 170px);
     background-size: cover;
-    background-image: url("/creamcheese.webp");
     text-align: center;
     margin-bottom: 50px;
-`;
-
-const SubContainer = styled.div`
-    height: 100%;
-    width: 100%;
-    max-width 1000px;
     display: flex;
     flex-direction: column;
-    justify-content: space-around;
     align-items: center;
-    margin: 0 auto;
+    position: relative;
+    object-fit: contain;
 `;
 
 const Button = styled.button`
@@ -50,10 +44,9 @@ export default function HomeHero(props) {
     return (
         <>
             <Container>
-                <SubContainer src='/creamcheese.webp'>
+                <Image objectFit='cover' alt='hero' priority={true} fill src='/creamcheese.webp' />
                     <Caption>All Your Favourites Now Delivered!</Caption>
                     <Button>ORDER NOW</Button>
-                </SubContainer>
             </Container>
         </>
     )

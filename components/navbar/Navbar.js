@@ -127,7 +127,7 @@ export default function NavBar() {
                         ?   <Logo
                                 key = "BigLogo"
                                 src = '/CakeCentral-Logo-Short.svg'
-                                initial = {{ opacity: 0 }}
+                                initial = {{ opacity: 1 }}
                                 animate={{ opacity: 1 }}
                                 transition={{ duration: 1.3, scale: { duration: 0.1 } }}
                                 exit={{ opacity: 0 }}
@@ -136,7 +136,7 @@ export default function NavBar() {
                         :   <Logo
                                 key = "SmallLogo"
                                 src = '/CakeCentral-mini.svg'
-                                initial = {{ opacity: 0 }}
+                                initial = {{ opacity: 1 }}
                                 animate={{ opacity: 1 }}
                                 transition={{ duration: 1.3, scale: { duration: 0.1 } }}
                                 exit={{ opacity: 0 }}
@@ -147,7 +147,7 @@ export default function NavBar() {
                         <Logo
                                 key = "SmallLogoMobile"
                                 src = '/CakeCentral-mini.svg'
-                                initial = {{ opacity: 0 }}
+                                initial = {{ opacity: 1 }}
                                 animate={{ opacity: 1 }}
                                 transition={{ duration: 1.5, scale: { duration: 0.1 } }}
                                 exit={{ opacity: 0 }}
