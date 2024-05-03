@@ -74,7 +74,7 @@ export default function MyApp({ Component, pageProps }) {
       total: '0.00'
     },
     wishList: wishList,
-    scrollYProgress: scrollYProgress.current
+    scrollYProgress: 0
   };
 
   const reducer = (prevState, action) => {

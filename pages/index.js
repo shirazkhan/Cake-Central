@@ -1,5 +1,6 @@
 import React from 'react';
 import Link from 'next/link';
+import Head from 'next/head';
 import styled from 'styled-components';
 import {Content, Primary, HeroContent} from '../src/styled/App';
 import BackgroundVideo from 'react-background-video-player';
@@ -14,6 +15,13 @@ import CollectionCollage from '../components/index/CollectionCollage';
 export default function Index() {
 
     return <>
+    <Head>
+        <title>Order Cakes Online for UK Delivery | CakeCentral </title>
+        <meta
+            name="description"
+            content="Handcrafted cakes from Lincolnshire, delivered to your doorstep across the UK. Explore our mouthwatering selection of unique cakes, perfect for any celebration or sweet craving. Order now for a taste of homemade indulgence!"
+        />
+    </Head>
     <Content>
         <AnnouncementBanner />
         <HomeHero />
