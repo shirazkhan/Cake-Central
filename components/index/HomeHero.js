@@ -25,7 +25,8 @@ const Button = styled.button`
     color: white;
     width: 175px;
     bottom: 125px;
-    
+    position: absolute;
+    top: 70%;
 `;
 
 const Caption = styled.h2`
@@ -36,6 +37,8 @@ const Caption = styled.h2`
     padding: 0;
     margin: 0 25px;
     text-shadow: 3px 5px 0px ${PRIMARY_THEME_COLOR};
+    position: absolute;
+    top: 30%;
     `;
 
 export default function HomeHero(props) {
