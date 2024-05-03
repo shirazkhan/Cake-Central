@@ -47,13 +47,13 @@ const NavLink = styled.div`
     display: flex;
     justify-content: flex-start;
     align-items: center;
-    color: white;
+    color: black;
     text-decoration: none;
     text-transform: uppercase;
-    text-shadow: 1px 1px 1px grey;
+    font-weight: 600;
     background: ${NAV_LINK_COLOR};
     a:link, a:visited {
-        color: white;
+        color: black;
     }
 
     @media (min-width:${MOBILE}){
@@ -61,10 +61,14 @@ const NavLink = styled.div`
         min-height: ${DESKTOP_LINK_HEIGHT};
         flex-shrink: 0;
         font-size: 1em;
-        font-weight: 600;
+        color: white;
+        text-shadow: 1px 1px 1px grey;
         line-height: 1.2em;
         text-align: center;
         background: none;
+        a:link, a:visited {
+            color: white;
+        }
         a:hover{
             color: black;
             transition: 0.25s;
