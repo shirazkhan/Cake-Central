@@ -1,6 +1,6 @@
 import React, { useContext, useEffect } from 'react';
 import styled from 'styled-components';
-import NextLink from 'next/link';
+import Link from 'next/link';
 import { motion, AnimatePresence } from "framer-motion";
 import { useMediaQuery } from 'react-responsive';
 import { GlobalStateContext } from '../../pages/_app';
@@ -50,7 +50,11 @@ const NavLink = styled.div`
     color: white;
     text-decoration: none;
     text-transform: uppercase;
+    text-shadow: 1px 1px 1px grey;
     background: ${NAV_LINK_COLOR};
+    a:link, a:visited {
+        color: white;
+    }
 
     @media (min-width:${MOBILE}){
         justify-content: center;
@@ -61,7 +65,11 @@ const NavLink = styled.div`
         line-height: 1.2em;
         text-align: center;
         background: none;
-        color: white;
+        a:hover{
+            color: black;
+            transition: 0.25s;
+            text-shadow: none;
+        }
       }
 `;
 
@@ -78,23 +86,6 @@ const Background = styled(motion.div)`
 
     @media (min-width:${MOBILE}){
         display: none;
-      }
-`;
-
-const Link = styled.a`
-    color: ${PRIMARY_THEME_COLOR};
-    font-size: 1.3em;
-    text-decoration: none;
-    padding-left: 20px;
-    width: 100%;
-    height: 100%;
-    display: flex;
-    align-items: center;
-
-    @media (min-width:${MOBILE}){
-        padding-left: 0;
-        color: ${DESKTOP_LINK_COLOR};
-        background: none;
       }
 `;
 
@@ -127,44 +118,74 @@ export default function NavMenu() {
                         transition= {{ type: 'spring', stiffness: 75, x: { type: 'tween' }}}
                     >
                         <NavLink>
-                            <NextLink onClick = {isDesktop ? null : () => dispatch({type: 'TOGGLE_NAV_MENU'})} href = '/shop' as = '/shop' >
-                                Cakes
-                            </NextLink>
+                            <Link
+                                
+                                onClick = {isDesktop ? null : () => dispatch({type: 'TOGGLE_NAV_MENU'})}
+                                href = '/shop'
+                                as = '/shop' >
+                                    Cakes
+                            </Link>
                         </NavLink>
                         <NavLink>
-                            <NextLink onClick = {isDesktop ? null : () => dispatch({type: 'TOGGLE_NAV_MENU'})} href = '/account' as = '/account' >
-                                Cupcakes
-                            </NextLink>
+                            <Link
+                                onClick = {isDesktop ? null : () => dispatch({type: 'TOGGLE_NAV_MENU'})}
+                                href = '/account'
+                                as = '/account' >
+                                    Cupcakes
+                            </Link>
                         </NavLink>
                         <NavLink>
-                            <NextLink onClick = {isDesktop ? null : () => dispatch({type: 'TOGGLE_NAV_MENU'})} href = '/latest-products' as = '/latest-products' >
-                                Brownies
-                            </NextLink>
+                            <Link
+                                onClick = {isDesktop ? null : () => dispatch({type: 'TOGGLE_NAV_MENU'})}
+                                href = '/latest-products'
+                                as = '/latest-products' >
+                                    Brownies
+                            </Link>
                         </NavLink>
                         <NavLink>
-                            <NextLink onClick = {isDesktop ? null : () => dispatch({type: 'TOGGLE_NAV_MENU'})} href = '/bridal-henna' as = '/bridal-henna' >
-                                Cookies
-                            </NextLink>
+                            <Link
+                                
+                                onClick = {isDesktop ? null : () => dispatch({type: 'TOGGLE_NAV_MENU'})}
+                                href = '/bridal-henna'
+                                as = '/bridal-henna' >
+                                    Cookies
+                            </Link>
                         </NavLink>
                         <NavLink>
-                            <NextLink onClick = {isDesktop ? null : () => dispatch({type: 'TOGGLE_NAV_MENU'})} href = '/articles' as = '/articles' >
-                                Milk Cakes
-                            </NextLink>
+                            <Link
+                                
+                                onClick = {isDesktop ? null : () => dispatch({type: 'TOGGLE_NAV_MENU'})}
+                                href = '/articles'
+                                as = '/articles' >
+                                    Milk Cakes
+                            </Link>
                         </NavLink>
                         <NavLink>
-                            <NextLink onClick = {isDesktop ? null : () => dispatch({type: 'TOGGLE_NAV_MENU'})} href = '/videos' as = '/videos' >
-                                Weddings
-                            </NextLink>
+                            <Link
+                                
+                                onClick = {isDesktop ? null : () => dispatch({type: 'TOGGLE_NAV_MENU'})}
+                                href = '/videos'
+                                as = '/videos' >
+                                    Weddings
+                            </Link>
                         </NavLink>
                         <NavLink>
-                            <NextLink onClick = {isDesktop ? null : () => dispatch({type: 'TOGGLE_NAV_MENU'})} href = '/about' as = '/about' >
-                                Birthdays
-                            </NextLink>
+                            <Link
+                                
+                                onClick = {isDesktop ? null : () => dispatch({type: 'TOGGLE_NAV_MENU'})}
+                                href = '/about'
+                                as = '/about' >
+                                    Birthdays
+                            </Link>
                         </NavLink>
                         <NavLink>
-                            <NextLink onClick = {isDesktop ? null : () => dispatch({type: 'TOGGLE_NAV_MENU'})} href = '/contact' as = '/contact'>
-                                More
-                            </NextLink>
+                            <Link
+                                
+                                onClick = {isDesktop ? null : () => dispatch({type: 'TOGGLE_NAV_MENU'})}
+                                href = '/contact'
+                                as = '/contact'>
+                                    More
+                            </Link>
                         </NavLink>
                     </Menu>
                     { !isDesktop ? 
