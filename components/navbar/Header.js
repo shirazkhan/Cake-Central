@@ -38,10 +38,10 @@ export default function Header(props) {
         <>
             <MediaQuery minWidth={parseInt(MOBILE.replace('px',''))}>
                 <Container
-                    animate={{ height: globalState.scrollYProgress.current > 0.1
+                    animate={{ height: globalState.scrollYProgress > 0.1
                         ? parseInt(DESKTOP_SCROLLED_NAV_HEIGHT.replace('px',''))
                         : null }}
-                    scrollYProgress = {globalState.scrollYProgress.current}
+                    scrollYProgress = {globalState.scrollYProgress}
                     transition= {{ type: 'spring', stiffness: 75}}
                 >
                     <NavBar />

@@ -18,7 +18,7 @@ import { LOADING_BAR_COLOR, MOBILE } from '../GlobalVariables';
 import NavMenu from '../components/navbar/NavMenu';
 import { useMediaQuery } from 'react-responsive';
 import Header from '../components/navbar/Header';
-import { useScroll } from "framer-motion";
+import { useScroll, useMotionValueEvent } from "framer-motion";
 import { SpeedInsights } from '@vercel/speed-insights/next';
 
 const extractFragmentHandle = (router, variants) => { // Check if router has href fragment. If it does, then use this as initial state.
@@ -55,6 +55,12 @@ export default function MyApp({ Component, pageProps }) {
 
   const { scrollYProgress } = useScroll();
 
+  useMotionValueEvent(scrollYProgress, "change", (latest) => {
+    console.log("Page scroll: ", latest)
+    dispatch({type: 'UPDATE_SCROLL_POSITION', value: latest})
+  })
+
+
     // Reducer Config //////////
   const initialState = {
     nightMode: false,
@@ -69,11 +75,13 @@ export default function MyApp({ Component, pageProps }) {
       total: '0.00'
     },
     wishList: wishList,
-    scrollYProgress: scrollYProgress.current
+    scrollYProgress: scrollYProgress
   };
 
   const reducer = (prevState, action) => {
     switch(action.type){
+      case 'UPDATE_SCROLL_POSITION':
+        return {... prevState, scrollYProgress: action.value}
       case 'TOGGLE_NIGHT_MODE':
         return {...prevState, nightMode: !prevState.nightMode};
       case 'TOGGLE_NAV_MENU':

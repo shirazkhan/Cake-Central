@@ -114,8 +114,6 @@ export default function NavBar() {
 
     const { globalState, dispatch } = useContext(GlobalStateContext);
 
-    const { scrollYProgress } = useScroll();
-
     return (
     <>
         <Bar>
@@ -125,12 +123,11 @@ export default function NavBar() {
             <LogoBox>
                 <Link href = '/' passHref>
                     <MediaQuery minWidth={parseInt(MOBILE.replace('px',''))}>
-                        { scrollYProgress.current < 0.1
+                        { globalState.scrollYProgress < 0.1
                         ?   <Logo
                                 key = "BigLogo"
                                 src = '/CakeCentral-Logo-Short.svg'
                                 initial = {{ opacity: 0 }}
-                                scrollYProgress = {globalState.scrollYProgress}
                                 animate={{ opacity: 1 }}
                                 transition={{ duration: 1.5, scale: { duration: 0.1 } }}
                                 exit={{ opacity: 0 }}
@@ -140,7 +137,6 @@ export default function NavBar() {
                                 key = "SmallLogo"
                                 src = '/CakeCentral-mini.svg'
                                 initial = {{ opacity: 0 }}
-                                scrollYProgress = {globalState.scrollYProgress}
                                 animate={{ opacity: 1 }}
                                 transition={{ duration: 1.5, scale: { duration: 0.1 } }}
                                 exit={{ opacity: 0 }}
@@ -151,7 +147,6 @@ export default function NavBar() {
                         <Logo
                                 key = "SmallLogoMobile"
                                 src = '/CakeCentral-mini.svg'
-                                scrollYProgress = {globalState.scrollYProgress}
                                 initial = {{ opacity: 0 }}
                                 animate={{ opacity: 1 }}
                                 transition={{ duration: 1.5, scale: { duration: 0.1 } }}
