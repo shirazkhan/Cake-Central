@@ -47,7 +47,7 @@ export default function HomeHero(props) {
     return (
         <>
             <Container>
-                <Image objectFit='cover' alt='hero' priority={true} fill src='/creamcheese.webp' />
+                <Image quality={11} objectFit='cover' alt='hero' priority={true} fill src='/creamcheese.webp' />
                     <Caption>All Your Favourites Now Delivered!</Caption>
                     <Button>ORDER NOW</Button>
             </Container>
