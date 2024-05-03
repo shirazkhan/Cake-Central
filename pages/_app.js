@@ -56,7 +56,6 @@ export default function MyApp({ Component, pageProps }) {
   const { scrollYProgress } = useScroll();
 
   useMotionValueEvent(scrollYProgress, "change", (latest) => {
-    console.log("Page scroll: ", latest)
     dispatch({type: 'UPDATE_SCROLL_POSITION', value: latest})
   })
 
@@ -75,7 +74,7 @@ export default function MyApp({ Component, pageProps }) {
       total: '0.00'
     },
     wishList: wishList,
-    scrollYProgress: scrollYProgress
+    scrollYProgress: scrollYProgress.current
   };
 
   const reducer = (prevState, action) => {

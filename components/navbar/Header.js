@@ -26,7 +26,7 @@ const Container = styled(motion.div)`
 
     @media (min-width:${MOBILE}){
     position: ${DESKTOP_NAV_FIXED ? 'fixed' : 'absolute'};
-    height: ${props => props.scrollYProgress > 0.1 ? DESKTOP_SCROLLED_NAV_HEIGHT : DESKTOP_NAV_HEIGHT}
+    height: ${props => props.$scrollYProgress > 0.1 ? DESKTOP_SCROLLED_NAV_HEIGHT : DESKTOP_NAV_HEIGHT}
     }
 `;
 
@@ -41,7 +41,7 @@ export default function Header(props) {
                     animate={{ height: globalState.scrollYProgress > 0.1
                         ? parseInt(DESKTOP_SCROLLED_NAV_HEIGHT.replace('px',''))
                         : null }}
-                    scrollYProgress = {globalState.scrollYProgress}
+                    $scrollYProgress = {globalState.scrollYProgress}
                     transition= {{ type: 'spring', stiffness: 75}}
                 >
                     <NavBar />

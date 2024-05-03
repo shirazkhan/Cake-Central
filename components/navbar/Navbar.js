@@ -129,7 +129,7 @@ export default function NavBar() {
                                 src = '/CakeCentral-Logo-Short.svg'
                                 initial = {{ opacity: 0 }}
                                 animate={{ opacity: 1 }}
-                                transition={{ duration: 0.1, scale: { duration: 0.1 } }}
+                                transition={{ duration: 1.3, scale: { duration: 0.1 } }}
                                 exit={{ opacity: 0 }}
                                 whileTap = {{scale: 0.96}}
                             />
@@ -138,7 +138,7 @@ export default function NavBar() {
                                 src = '/CakeCentral-mini.svg'
                                 initial = {{ opacity: 0 }}
                                 animate={{ opacity: 1 }}
-                                transition={{ duration: 0.1, scale: { duration: 0.1 } }}
+                                transition={{ duration: 1.3, scale: { duration: 0.1 } }}
                                 exit={{ opacity: 0 }}
                                 whileTap = {{scale: 0.96}}
                             />}
