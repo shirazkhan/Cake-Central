@@ -41,10 +41,15 @@ Router.events.on("routeChangeError", progress.finish);
 // Create Context //////////
 export const GlobalStateContext = React.createContext();
 
-const handleInitializeCart = async (globalState, dispatch, cartId) => {
+const handleInitializeCart = async (globalState, dispatch, cartId, setCartId) => {
   if(cartId){
     const { data } = await client.query(GET_CART(cartId));
-    dispatch({type: 'INITIALIZE_CART', value: data});
+    if(data.cart === null){
+      setCartId('');
+      dispatch({type: 'RESET_CART'});
+    } else {
+      dispatch({type: 'INITIALIZE_CART', value: data});
+    }
   }
 }
 
@@ -68,7 +73,7 @@ export default function MyApp({ Component, pageProps }) {
     cartMenuOpen: false,
     isWishList: false,
     cartData: {
-      id: cartId,
+      id: '',
       lines: [],
       subtotal: '0.00',
       total: '0.00'
@@ -101,6 +106,13 @@ export default function MyApp({ Component, pageProps }) {
         return {... prevState, isWishList: true};
       case 'SET_WISHLIST_FALSE':
         return {...prevState, isWishList: false};
+      case 'RESET_CART':
+        return {...prevState, cartData: {
+          id: '',
+          lines: [],
+          subtotal: '0.00',
+          total: '0.00'
+        } };
       case 'INITIALIZE_CART':
         return {...prevState, cartData: {
           id: action.value.cart.id,
@@ -199,7 +211,7 @@ export default function MyApp({ Component, pageProps }) {
   const [globalState, dispatch] = useReducer(reducer,initialState);
 
   useEffect(() => {
-    handleInitializeCart(globalState,dispatch,cartId);
+    handleInitializeCart(globalState,dispatch,cartId,setCartId);
   },[])
 
 

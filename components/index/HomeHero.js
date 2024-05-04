@@ -14,6 +14,7 @@ const Container = styled.div`
     align-items: center;
     position: relative;
     object-fit: contain;
+    overflow: hidden;
 `;
 
 const Button = styled.button`

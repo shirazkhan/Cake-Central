@@ -87,7 +87,7 @@ const renderProducts = (products, productType, reviewsOn) =>
             <ProductImage>
                 <Image
                     style = {{objectFit: "cover"}}
-                    layout='fill' src={p.images} />
+                    fill src={p.images} />
             </ProductImage>
             <CardTitle>{p.title}</CardTitle>
             <PriceAndReviewContainer>
