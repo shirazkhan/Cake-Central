@@ -2,7 +2,7 @@ import React, {useState, useEffect, useContext} from 'react';
 import styled from 'styled-components';
 import {motion} from 'framer-motion';
 import { useInView } from 'react-intersection-observer';
-import { MOBILE, PRIMARY_THEME_COLOR } from '../GlobalVariables';
+import { DESKTOP_VIEW, PRIMARY_THEME_COLOR } from '../GlobalVariables';
 import { GlobalStateContext } from '../pages/_app';
 import client from '../apollo-client';
 import { CREATE_CART, CART_LINES_ADD } from '../graphql/Mutations';

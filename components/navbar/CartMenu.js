@@ -10,7 +10,7 @@ import WishList from './WishList';
 import Title from './Title';
 import ScrollIntoViewIfNeeded from 'react-scroll-into-view-if-needed';
 import { useInView } from 'react-intersection-observer';
-import { PRIMARY_THEME_COLOR, MOBILE, DESKTOP_NAV_HEIGHT } from '../../GlobalVariables';
+import { PRIMARY_THEME_COLOR, DESKTOP_VIEW, DESKTOP_NAV_HEIGHT } from '../../GlobalVariables';
 import CheckoutButton from '../checkout/CheckoutButton';
 import useDetectScroll from '@smakss/react-scroll-direction';
 
@@ -28,7 +28,7 @@ const Menu = styled(motion.div)`
     flex-wrap: nowrap;
     padding: 20px;
 
-    @media (min-width:${MOBILE}){
+    ${DESKTOP_VIEW}{
         width: 30%;
         height: 50%;
         border-radius: 20px;

@@ -4,7 +4,7 @@ import Link from 'next/link';
 import { motion, AnimatePresence } from "framer-motion";
 import { useMediaQuery } from 'react-responsive';
 import { GlobalStateContext } from '../../pages/_app';
-import { DESKTOP_LINK_COLOR, DESKTOP_LINK_HEIGHT, DESKTOP_NAV_BACKGROUND_COLOR, DESKTOP_NAV_FIXED, DESKTOP_NAV_HEIGHT, DESKTOP_SCROLLED_NAV_HEIGHT, MOBILE, MOBILE_NAV_HEIGHT, NAV_LINK_COLOR, NAV_MENU_COLOR, PRIMARY_THEME_COLOR, WEBSITE_WIDTH } from '../../GlobalVariables';
+import { DESKTOP_VIEW, DESKTOP_LINK_COLOR, DESKTOP_LINK_HEIGHT, DESKTOP_NAV_BACKGROUND_COLOR, DESKTOP_NAV_FIXED, DESKTOP_NAV_HEIGHT, DESKTOP_SCROLLED_NAV_HEIGHT, MOBILE, MOBILE_NAV_HEIGHT, NAV_LINK_COLOR, NAV_MENU_COLOR, PRIMARY_THEME_COLOR, WEBSITE_WIDTH } from '../../GlobalVariables';
 
 const Menu = styled(motion.div)`
     height: calc(100vh - 50px);
@@ -24,7 +24,7 @@ const Menu = styled(motion.div)`
     overflow: scroll;
     flex-wrap: nowrap;
 
-    @media (min-width:${MOBILE}){
+    ${DESKTOP_VIEW}{
         top: ${DESKTOP_NAV_HEIGHT};
         left: 0;
         max-width: none;
@@ -56,7 +56,7 @@ const NavLink = styled.div`
         color: black;
     }
 
-    @media (min-width:${MOBILE}){
+    ${DESKTOP_VIEW}{
         justify-content: center;
         min-height: ${DESKTOP_LINK_HEIGHT};
         flex-shrink: 0;
@@ -88,7 +88,7 @@ const Background = styled(motion.div)`
     background: rgba(0,0,0,0.8);
     backdrop-filter: blur(14px);
 
-    @media (min-width:${MOBILE}){
+    ${DESKTOP_VIEW}{
         display: none;
       }
 `;

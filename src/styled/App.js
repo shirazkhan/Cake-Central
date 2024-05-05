@@ -3,7 +3,7 @@ import Link from 'next/link';
 import React from 'react';
 import {WEBSITE_WIDTH, MOBILE_NAV_HEIGHT, DESKTOP_NAV_HEIGHT, FOOTER_HEIGHT, NAV_MENU_WIDTH,
   NAV_GAP, NAV_LINKS_ALIGNMENT, CONTENT_H_MARGIN, CONTENT_V_MARGIN, HAMBURGER_COLOR, NAV_FONT_COLOR,
-  FOOTER_COLOR, FOOTER_FONT_COLOR, MOBILE, TABLET, NAVFILTER_COLOR, PRIMARY_THEME_COLOR, DESKTOP_NAV_FIXED      
+  FOOTER_COLOR, FOOTER_FONT_COLOR, MOBILE, DESKTOP_VIEW, TABLET, NAVFILTER_COLOR, PRIMARY_THEME_COLOR, DESKTOP_NAV_FIXED      
 } from '../../GlobalVariables';
 
 
@@ -22,7 +22,7 @@ export const MainGrid = styled.div`
   font-weight: 400;
   font-style: normal;
 
-  @media (min-width:${MOBILE}){
+  ${DESKTOP_VIEW}{
     margin-top: calc(${DESKTOP_NAV_HEIGHT});
   }
 `;

@@ -8,12 +8,31 @@ import BuyButton from '../../../components/BuyButton';
 import Quantity from '../../../components/Quantity';
 import RecommendedCarousel from '../../../components/RecommendedCarousel';
 import Head from 'next/head';
-import {DOMAIN, WEBSITE_NAME} from '../../../GlobalVariables';
+import {DOMAIN, WEBSITE_NAME, MOBILE, DESKTOP_VIEW} from '../../../GlobalVariables';
 import { client } from '../../../apollo-client';
 import { gql } from '@apollo/client';
 import { GET_PRODUCT_BY_HANDLE, GET_SLUGS_BY_COLLECTION_HANDLE, GET_RECOMMENDED_PRODUCTS_BY_ID, GET_PRODUCT_AND_COLLECTION_HANDLES } from "../../../graphql/Queries";
 import ProductAccordion from '../../../components/ProductAccordion';
 import FavouriteButton from '../../../components/FavouriteButton';
+
+const Container = styled.div`
+  ${DESKTOP_VIEW}{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+`;
+
+const SubContainer = styled.div`
+${DESKTOP_VIEW}{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: flex-start;
+    border: 1px solid red;
+    width: 50%;
+  }
+`;
 
 const extractFragmentHandle = (router, variants) => { // Check if router has href fragment. If it does, then use this as initial state.
   const fragment = router.asPath.slice(router.asPath.indexOf('#')+1)
@@ -34,23 +53,27 @@ export default function Product({id,title,description,images,price,variants,prod
         <meta name="viewport" content="initial-scale=1.0, width=device-width" />
     </Head>
     <Primary>
-      <ProductImages images = {images} variants = {variants}/>
-      <ProductSpec title = {title} price = {price} variants = {variants} selectedVariant = {selectedVariant} setSelectedVariant = {setSelectedVariant}  />
-      <BuyButton selectedVariant = {selectedVariant} variants = {variants} />
-      <FavouriteButton
-        variantId = {variants.find(v => v.handle === selectedVariant).id}
-        productTitle = {title}
-        imgSrc = {variants.find(v => v.handle === selectedVariant).image}
-        price = {price}
-        variantHandle = {selectedVariant}
-        variantTitle = {variants.find(v => v.handle === selectedVariant).title}
-        productType = {productType}
-        productHandle = {productName}
-      />
-      <ProductAccordion title = 'Description' content = {description} initial = {true} />
-      <ProductAccordion title = 'Details' content = {description} />
-      <ProductAccordion title = 'Delivery & Returns' content = {description} />
-    </Primary>
+    <Container>
+        <ProductImages images = {images} variants = {variants}/>
+        <SubContainer>
+          <ProductSpec title = {title} price = {price} variants = {variants} selectedVariant = {selectedVariant} setSelectedVariant = {setSelectedVariant}  />
+          <BuyButton selectedVariant = {selectedVariant} variants = {variants} />
+          <FavouriteButton
+            variantId = {variants.find(v => v.handle === selectedVariant).id}
+            productTitle = {title}
+            imgSrc = {variants.find(v => v.handle === selectedVariant).image}
+            price = {price}
+            variantHandle = {selectedVariant}
+            variantTitle = {variants.find(v => v.handle === selectedVariant).title}
+            productType = {productType}
+            productHandle = {productName}
+          />
+        </SubContainer>
+    </Container>
+        <ProductAccordion title = 'Description' content = {description} initial = {true} />
+        <ProductAccordion title = 'Details' content = {description} />
+        <ProductAccordion title = 'Delivery & Returns' content = {description} />
+      </Primary>
   </>
 }
 

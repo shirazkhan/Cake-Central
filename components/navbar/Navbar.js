@@ -6,7 +6,7 @@ import styled from 'styled-components';
 import { GlobalStateContext } from '../../pages/_app';
 import NavMenu from './NavMenu';
 import CartMenu from './CartMenu';
-import { NAV_BAR_COLOR, MOBILE, WEBSITE_WIDTH, DESKTOP_SCROLLED_NAV_HEIGHT, SECONDARY_THEME_COLOR } from '../../GlobalVariables';
+import { NAV_BAR_COLOR, DESKTOP_VIEW, MOBILE, WEBSITE_WIDTH, DESKTOP_SCROLLED_NAV_HEIGHT, SECONDARY_THEME_COLOR } from '../../GlobalVariables';
 import dynamic from 'next/dynamic';
 const MediaQuery = dynamic(() => import('react-responsive'), {
     ssr: false
@@ -22,7 +22,7 @@ const Bar = styled.div`
     max-width: ${WEBSITE_WIDTH};
     z-index: 2499;
 
-    @media (min-width:${MOBILE}){
+    ${DESKTOP_VIEW}{
         width: 100%;
       }
 `;
@@ -35,7 +35,7 @@ const LogoBox = styled(motion.div)`
     justify-content: center;
     align-items: center;
 
-    @media (min-width:${MOBILE}){
+    ${DESKTOP_VIEW}{
         width: 175px;
         height: 100%;
       }
@@ -46,7 +46,7 @@ const Logo = styled(motion.img)`
     height: 100%;
     filter: drop-shadow( 1px 1px 2px rgba(0, 0, 0, 0.2));
     
-    @media (min-width:${MOBILE}){
+    ${DESKTOP_VIEW}{
         width: 100%;
         height: 100%;
     }
@@ -77,7 +77,7 @@ const LeftButton = styled.div`
     justify-content: center;
     align-items: center;
 
-    @media (min-width:${MOBILE}){
+    ${DESKTOP_VIEW}{
         height: 50%;
         justify-content: center;
         margin-left: 100px;
@@ -98,7 +98,7 @@ const RightButton = styled.div`
     justify-content: center;
     align-items: center;
     
-    @media (min-width:${MOBILE}){
+    ${DESKTOP_VIEW}{
         height: 38px;
         margin-right: 100px;
     }

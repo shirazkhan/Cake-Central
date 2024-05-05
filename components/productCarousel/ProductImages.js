@@ -4,7 +4,7 @@ import styled from 'styled-components';
 import { motion } from 'framer-motion';
 import Indicator from './Indicator';
 import { InView } from 'react-intersection-observer';
-import { PRIMARY_THEME_COLOR } from '../../GlobalVariables';
+import { PRIMARY_THEME_COLOR, DESKTOP_VIEW } from '../../GlobalVariables';
 
 const Container = styled.div`
     width: 100%;
@@ -20,6 +20,10 @@ const Container = styled.div`
     &::-webkit-scrollbar {
         display: none;
       };
+    
+      ${DESKTOP_VIEW}{
+        width: 50%;
+    }
 `;
 
 const ImageContainer = styled.div`
@@ -28,6 +32,10 @@ const ImageContainer = styled.div`
     position: relative;
     display: inline-block;
     scroll-snap-align: start;
+
+    ${DESKTOP_VIEW}{
+        width: 100%;
+    }
 `;
 
 const shimmer = (w, h) => `

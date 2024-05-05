@@ -1,6 +1,6 @@
 import React, {useContext, useEffect} from 'react';
 import styled from 'styled-components';
-import { NAV_FONT_COLOR, MOBILE_NAV_HEIGHT, PRIMARY_THEME_COLOR, MOBILE, DESKTOP_NAV_HEIGHT, DESKTOP_NAV_FIXED, DESKTOP_SCROLLED_NAV_HEIGHT } from '../../GlobalVariables';
+import { DESKTOP_VIEW, NAV_FONT_COLOR, MOBILE_NAV_HEIGHT, PRIMARY_THEME_COLOR, MOBILE, DESKTOP_NAV_HEIGHT, DESKTOP_NAV_FIXED, DESKTOP_SCROLLED_NAV_HEIGHT } from '../../GlobalVariables';
 import NavBar from './Navbar';
 import { GlobalStateContext } from '../../pages/_app';
 import { motion } from 'framer-motion';
@@ -24,7 +24,7 @@ const Container = styled(motion.div)`
     display: flex;
     justify-content: center;
 
-    @media (min-width:${MOBILE}){
+    ${DESKTOP_VIEW}{
     position: ${DESKTOP_NAV_FIXED ? 'fixed' : 'absolute'};
     height: ${props => props.$scrollYProgress > 0.1 ? DESKTOP_SCROLLED_NAV_HEIGHT : DESKTOP_NAV_HEIGHT}
     }

@@ -9,6 +9,7 @@ export const SECONDARY_THEME_COLOR = "skyblue";
 export const WEBSITE_WIDTH = "1400px";
 //export const TABLET = "1050px";
 export const MOBILE = "992px";
+export const DESKTOP_VIEW = "@media (min-width:992px)"
 export const MOBILE_NAV_HEIGHT = "50px";
 export const DESKTOP_NAV_HEIGHT = "120px";
 export const DESKTOP_LINK_HEIGHT = "50px";

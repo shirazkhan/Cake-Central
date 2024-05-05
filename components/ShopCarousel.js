@@ -2,7 +2,7 @@ import React, {useState, useEffect, useRef} from 'react';
 import styled from 'styled-components';
 import Link from 'next/link';
 import Image from 'next/image';
-import { MOBILE, PRIMARY_THEME_COLOR } from '../GlobalVariables';
+import { DESKTOP_VIEW, PRIMARY_THEME_COLOR } from '../GlobalVariables';
 import { inView, motion, useScroll, useAnimate } from "framer-motion";
 
 const cardWidth = 315;
@@ -14,7 +14,7 @@ const Container = styled.div`
     padding-bottom: 25px;
     overflow: hidden;
 
-    @media (min-width:${MOBILE}){
+    ${DESKTOP_VIEW}{
         margin: 0 60px;
       }
 `;
@@ -57,7 +57,7 @@ const Cards = styled.div`
         display: none;
     };
 
-    @media (min-width:${MOBILE}){
+    ${DESKTOP_VIEW}{
 
     }
 `;
