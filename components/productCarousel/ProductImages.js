@@ -23,6 +23,9 @@ const Container = styled.div`
     
       ${DESKTOP_VIEW}{
         width: 50%;
+        border-radius: 10px;
+        position: sticky;
+        top: 130px;
     }
 `;
 
@@ -35,6 +38,7 @@ const ImageContainer = styled.div`
 
     ${DESKTOP_VIEW}{
         width: 100%;
+        height: 500px;
     }
 `;
 
@@ -87,8 +91,8 @@ export default function ProductImages({images, variants}) {
         <>
             <Container vertical = {false} className = 'scroll-container'>
                 {renderImages(images, variants, setImageIdx,myRef)}
+                <Indicator quantity = {images.length} idx = {imageIdx} />
             </Container>
-            <Indicator quantity = {images.length} idx = {imageIdx} />
         </>
     )
 }

@@ -29,6 +29,6 @@ export const CONTENT_V_MARGIN = "0px";
 export const HAMBURGER_COLOR = PRIMARY_THEME_COLOR;
 export const NAV_BAR_COLOR = PRIMARY_THEME_COLOR;
 export const NAV_FONT_COLOR = "black";
-export const FOOTER_FONT_COLOR = "white";
+export const FOOTER_FONT_COLOR = "black";
 export const FOOTER_COLOR = PRIMARY_THEME_COLOR;
 export const NAVFILTER_COLOR = "rgba(255,255,255,0.5)";

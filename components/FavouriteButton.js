@@ -5,14 +5,12 @@ import { GlobalStateContext } from '../pages/_app';
 import { PRIMARY_THEME_COLOR } from '../GlobalVariables';
 
 const Container = styled(motion.div)`
-    width: 80%;
-    border-radius: 30px;
+    width: 376px;
     margin: 10px auto;
-    height: 60px;
+    height: 63px;
     display: flex;
     position: relative;
-    z-index: 1000;
-    background: ${PRIMARY_THEME_COLOR};
+    z-index: 3;
     bottom: 0;
     box-shadow: 0px 5px 5px -4px #000000
     border: 1px solid ${PRIMARY_THEME_COLOR};
@@ -28,11 +26,12 @@ const Button = styled(motion.button)`
     background: white;
     border: none;
     outline: none;
-    border: 1px solid ${PRIMARY_THEME_COLOR};
+    border: 1px solid ${PRIMARY_THEME_COLOR}80;
     border-radius: 30px;
     font-family: futura-pt, sans-serif;
     font-weight: 500;
     font-style: normal;
+    cursor: pointer;
 `;
 
 const handleAddToFavourites = (props, dispatch) => {

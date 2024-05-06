@@ -97,6 +97,7 @@ const RightButton = styled.div`
     display: flex;
     justify-content: center;
     align-items: center;
+    cursor: pointer;
     
     ${DESKTOP_VIEW}{
         height: 38px;

@@ -8,30 +8,57 @@ import BuyButton from '../../../components/BuyButton';
 import Quantity from '../../../components/Quantity';
 import RecommendedCarousel from '../../../components/RecommendedCarousel';
 import Head from 'next/head';
-import {DOMAIN, WEBSITE_NAME, MOBILE, DESKTOP_VIEW} from '../../../GlobalVariables';
+import {DOMAIN, WEBSITE_NAME, MOBILE, DESKTOP_VIEW, PRIMARY_THEME_COLOR} from '../../../GlobalVariables';
 import { client } from '../../../apollo-client';
 import { gql } from '@apollo/client';
 import { GET_PRODUCT_BY_HANDLE, GET_SLUGS_BY_COLLECTION_HANDLE, GET_RECOMMENDED_PRODUCTS_BY_ID, GET_PRODUCT_AND_COLLECTION_HANDLES } from "../../../graphql/Queries";
 import ProductAccordion from '../../../components/ProductAccordion';
 import FavouriteButton from '../../../components/FavouriteButton';
 
-const Container = styled.div`
+const MainContainer = styled.div`
   ${DESKTOP_VIEW}{
     display: flex;
-    justify-content: center;
-    align-items: center;
+    margin: 50px 25px 25px 25px;
+    gap: 20px;
   }
 `;
 
-const SubContainer = styled.div`
-${DESKTOP_VIEW}{
-    display: flex;
-    flex-direction: column;
-    justify-content: space-around;
-    align-items: flex-start;
-    border: 1px solid red;
-    width: 50%;
+const SpecContainer = styled.div`
+  ${DESKTOP_VIEW}{
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-start;
+      gap: 20px;
+      width: 50%;
+    }
+`;
+
+const AccordionContainer = styled.div`
+    width: 90%;
+    margin: 0 auto;
+
+  > :first-child {
+    border-bottom: 1px solid ${PRIMARY_THEME_COLOR}90;
+    border-top: 1px solid ${PRIMARY_THEME_COLOR}90;
   }
+
+  > :last-child {
+    border-bottom: 1px solid ${PRIMARY_THEME_COLOR}90;
+    border-top: 1px solid ${PRIMARY_THEME_COLOR}90;
+  }
+`;
+
+const ButtonsContainer = styled.div`
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+
+    ${DESKTOP_VIEW}{
+      gap: 5px;
+      align-self: center;
+      width: 100%;
+    }
 `;
 
 const extractFragmentHandle = (router, variants) => { // Check if router has href fragment. If it does, then use this as initial state.
@@ -52,11 +79,11 @@ export default function Product({id,title,description,images,price,variants,prod
         <title>{`${title} | ${WEBSITE_NAME}`}</title>
         <meta name="viewport" content="initial-scale=1.0, width=device-width" />
     </Head>
-    <Primary>
-    <Container>
-        <ProductImages images = {images} variants = {variants}/>
-        <SubContainer>
-          <ProductSpec title = {title} price = {price} variants = {variants} selectedVariant = {selectedVariant} setSelectedVariant = {setSelectedVariant}  />
+    <MainContainer>
+      <ProductImages images = {images} variants = {variants}/>
+      <SpecContainer>
+        <ProductSpec title = {title} price = {price} variants = {variants} selectedVariant = {selectedVariant} setSelectedVariant = {setSelectedVariant}  />
+        <ButtonsContainer>
           <BuyButton selectedVariant = {selectedVariant} variants = {variants} />
           <FavouriteButton
             variantId = {variants.find(v => v.handle === selectedVariant).id}
@@ -68,12 +95,14 @@ export default function Product({id,title,description,images,price,variants,prod
             productType = {productType}
             productHandle = {productName}
           />
-        </SubContainer>
-    </Container>
-        <ProductAccordion title = 'Description' content = {description} initial = {true} />
-        <ProductAccordion title = 'Details' content = {description} />
-        <ProductAccordion title = 'Delivery & Returns' content = {description} />
-      </Primary>
+        </ButtonsContainer>
+        <AccordionContainer>
+          <ProductAccordion title = 'Description' content = {description} initial = {true} />
+          <ProductAccordion title = 'Ingredients & Allergens' content = {description} />
+          <ProductAccordion title = 'Delivery & Collection' content = {description} />
+        </AccordionContainer>
+      </SpecContainer>
+    </MainContainer>
   </>
 }
 

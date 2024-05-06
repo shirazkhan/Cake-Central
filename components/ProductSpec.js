@@ -4,24 +4,16 @@ import { motion } from 'framer-motion';
 import ProductVariant from './ProductVariant';
 
 const Container = styled.div`
-    width: 95%;
+    width: 100%;
+    padding: 0 10px;
     display: flex;
     margin: 0 auto;
     flex-direction: column;
 `;
 
-const ProductTitleContainer = styled.div`
-    width: 100%;
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-`;
-
 const ProductTitle = styled.h1`
-    font-size: 1.2rem;
-    line-height: 1.2em;
-    width: 80%;
-    padding: 0;
+    font-size: 1.2em;
+    width: 100%;
     margin: 0;
 `;
 
@@ -36,12 +28,13 @@ const ProductType = styled.div`
     font-size: 0.8rem;
     font-weight: 400;
     letter-spacing: 0.92px;
+    text-transform: uppercase;
 `;
 
 const Price = styled.div`
     height: 25px;
     width: 100%;
-    font-size: 1rem;
+    font-size: 1em;
     font-weight: 400;
 `;
 
@@ -50,7 +43,7 @@ const Credit = styled.p`
     height: 30px;
     margin: 0;
     padding: 0;
-    font-size: 0.85rem;
+    font-size: 0.8em;
     font-weight: 400;
 `;
 
@@ -58,19 +51,10 @@ export default function ProductSpec({title, price, variants, selectedVariant, se
     return (
         <>
             <Container>
-                <ProductType>
-                    PLATES
-                </ProductType>
-                <ProductTitleContainer>
-                    <ProductTitle>{title}</ProductTitle>
-                    <Icon src = '/share.svg' />
-                </ProductTitleContainer>
-                <Price>
-                    £{price}
-                </Price>
-                <Credit>
-                    Buy now, pay in 3 instalments with <span>Klarna</span>
-                </Credit>
+                <ProductType>Celebration Cakes</ProductType>
+                <ProductTitle>{title}</ProductTitle>
+                <Price>£{price}</Price>
+                <Credit>Buy now, pay in 3 instalments with <span>Klarna</span></Credit>
             </Container>
             <ProductVariant variants = {variants} selectedVariant = {selectedVariant} setSelectedVariant = {setSelectedVariant}/>
         </>

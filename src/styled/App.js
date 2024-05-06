@@ -3,7 +3,7 @@ import Link from 'next/link';
 import React from 'react';
 import {WEBSITE_WIDTH, MOBILE_NAV_HEIGHT, DESKTOP_NAV_HEIGHT, FOOTER_HEIGHT, NAV_MENU_WIDTH,
   NAV_GAP, NAV_LINKS_ALIGNMENT, CONTENT_H_MARGIN, CONTENT_V_MARGIN, HAMBURGER_COLOR, NAV_FONT_COLOR,
-  FOOTER_COLOR, FOOTER_FONT_COLOR, MOBILE, DESKTOP_VIEW, TABLET, NAVFILTER_COLOR, PRIMARY_THEME_COLOR, DESKTOP_NAV_FIXED      
+  FOOTER_COLOR, FOOTER_FONT_COLOR, MOBILE, DESKTOP_VIEW, TABLET, NAVFILTER_COLOR, PRIMARY_THEME_COLOR, DESKTOP_NAV_FIXED, SECONDARY_THEME_COLOR      
 } from '../../GlobalVariables';
 
 
@@ -211,6 +211,12 @@ export const Primary = styled.div`
   @media (max-width:${MOBILE}){
     padding: 0;
     margin: 0;
+      img{
+        max-width: none;
+        display: block;
+        object-fit: cover;
+        margin: 0 auto;
+      }
   }
 `;
 
@@ -230,8 +236,8 @@ export const Secondary = styled.div`
 export const Footer = styled.div`
   grid-area: Footer;
   background: ${FOOTER_COLOR};
-  padding: 25px 0;
-  color: ${FOOTER_FONT_COLOR};
+  padding: 15px 0;
+  color: green;
   width: 100%;
   height: 100%;
   display: flex;
@@ -241,13 +247,20 @@ export const Footer = styled.div`
 `;
 
 export const FooterContent = styled.div`
-  color: ${FOOTER_FONT_COLOR};
   width: 95%;
   height: 100%;
-  max-width: ${WEBSITE_WIDTH};
+  max-width: calc(${WEBSITE_WIDTH} - 400px);
   display: flex;
-  justify-content: center;
+  justify-content: space-between;
   align-items: center;
+  
+  :first-child {
+    align-items: flex-start;
+  }
+
+  :last-child {
+    align-items: flex-end;
+  }
 `;
 
 export const SocialFooter = styled.div`
@@ -262,7 +275,6 @@ export const SocialFooter = styled.div`
 `;
 
 export const NewsLetterFooter = styled.div`
-  color: ${FOOTER_FONT_COLOR};
   width: 95%;
   height: 100%;
   max-width: ${WEBSITE_WIDTH};
@@ -295,36 +307,23 @@ export const FooterSocialTitle = styled.div`
   margin: 5px;
 `;
 
-export const FooterColumn1 = styled.div`
+export const FooterColumn = styled.div`
   width: 100%;
   height: 100%;
   max-width: ${WEBSITE_WIDTH};
   display: flex;
   flex-direction: column;
   justify-content: center;
-  align-items: flex-start;
   line-height: 2;
   font-size: 1.2em;
 `;
 
-export const FooterColumn2 = styled.div`
-  width: 100%;
-  height: 100%;
-  max-width: ${WEBSITE_WIDTH};
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: flex-end;
-  line-height: 2;
-  font-size: 1.2em;
-`;
-
-export const FooterLink = styled.a`
-  color: ${FOOTER_FONT_COLOR};
+export const FooterLink = styled(Link)`
   text-decoration: none;
   font-family: futura-pt, sans-serif;
   font-weight: 500;
   font-style: normal;
+  color: ${FOOTER_FONT_COLOR};
 `;
 
 export const FooterSocialLink = styled.a`

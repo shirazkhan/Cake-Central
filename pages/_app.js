@@ -1,12 +1,9 @@
-import React, { useReducer, useEffect, useState} from 'react';
+import React, { useReducer, useEffect } from 'react';
 import '../src/index.css';
-import { lightTheme, darkTheme, GlobalStyle, MainGrid,
-         SocialFooter, FooterSocialLink, FooterSocialTitle,
-         FooterColumn1, FooterColumn2, NewsLetterFooter, NewsLetterInput, NewsLetterButton,
-         FooterLink, Footer, Content, FooterContent, HeroVideo } from '../src/styled/App';
+import { lightTheme, darkTheme, GlobalStyle, MainGrid, FooterLink,
+         FooterColumn, Footer, Content, FooterContent } from '../src/styled/App';
 import Link from 'next/link';
 import { ThemeProvider } from 'styled-components';
-import Navbar from '../components/navbar/Navbar';
 import ProgressBar from "@badrap/bar-of-progress";
 import Router from "next/router";
 import '../styles.css';
@@ -229,55 +226,23 @@ export default function MyApp({ Component, pageProps }) {
               <Component {...pageProps} />
               {/* ///////////////// */}
           </Content>
+        </MainGrid>
           <Footer>
-          <NewsLetterFooter>
-              <div>Get the latest tips, designs and offers</div>
-              <div>
-                <NewsLetterInput placeholder = 'Your email address' />
-                <NewsLetterButton>Sign Up!</NewsLetterButton>
-              </div>
-            </NewsLetterFooter>
-            <SocialFooter>
-              <FooterSocialTitle>Follow us on social media</FooterSocialTitle>
-                <div>
-                  <FooterSocialLink>1</FooterSocialLink>
-                  <FooterSocialLink>2</FooterSocialLink>
-                  <FooterSocialLink>3</FooterSocialLink>
-                  <FooterSocialLink>4</FooterSocialLink>
-                </div>
-            </SocialFooter>
-          <FooterContent>
-              <FooterColumn1>
-                <Link href = '/' passHref style={{textDecoration:"none", color:"white", textShadow: "2px 2px 10px grey"}}>
-                  FAQ
-                </Link>
-                <Link href = '/' passHref style={{textDecoration:"none", color:"white", textShadow: "2px 2px 10px grey"}}>
-                  Privacy Policy
-                </Link>
-                <Link href = '/' passHref style={{textDecoration:"none", color:"white", textShadow: "2px 2px 10px grey"}}>
-                  Billing and Shipping
-                </Link>
-                <Link href = '/' passHref style={{textDecoration:"none", color:"white", textShadow: "2px 2px 10px grey"}}>
-                  Terms and Conditions
-                </Link>
-              </FooterColumn1>
-              <FooterColumn2>
-                <Link href = '/' passHref style={{textDecoration:"none", color:"white", textShadow: "2px 2px 10px grey"}}>
-                  About Henna Central
-                </Link>
-                <Link href = '/' passHref style={{textDecoration:"none", color:"white", textShadow: "2px 2px 10px grey"}}>
-                About Sidra Khan
-                </Link>
-                <Link href = '/' passHref style={{textDecoration:"none", color:"white", textShadow: "2px 2px 10px grey"}}>
-                  Work With Us
-                </Link>
-                <Link href = '/' passHref style={{textDecoration:"none", color:"white", textShadow: "2px 2px 10px grey"}}>
-                  Contact Us
-                </Link>
-              </FooterColumn2>
+            <FooterContent>
+              <FooterColumn>
+                <FooterLink href = '/' passHref>FAQ</FooterLink>
+                <FooterLink href = '/privacy-policy' passHref>Privacy Policy</FooterLink>
+                <FooterLink href = '/' passHref>Billing and Shipping</FooterLink>
+                <FooterLink href = '/terms-and-conditions' passHref>Terms and Conditions</FooterLink>
+              </FooterColumn>
+              <FooterColumn>
+                <FooterLink href = '/' passHref>About Henna Central</FooterLink>
+                <FooterLink href = '/' passHref>About Sidra Khan</FooterLink>
+                <FooterLink href = '/' passHref>Work With Us</FooterLink>
+                <FooterLink href = '/' passHref>Contact Us</FooterLink>
+              </FooterColumn>
             </FooterContent>
           </Footer>
-        </MainGrid>
       </ThemeProvider>
     </GlobalStateContext.Provider>
     </ApolloProvider>
