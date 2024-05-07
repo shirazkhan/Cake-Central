@@ -18,12 +18,14 @@ const Container = styled(motion.div)`
     z-index: 3;
     background: ${PRIMARY_THEME_COLOR};
     bottom: 0;
-    box-shadow: 0px 5px 5px -4px #000000;
+    box-shadow: ${props => props.inView ? '0px 5px 5px -4px #000000' : 'rgba(0, 0, 0, 0.25) 0px 54px 55px, rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px, rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px'};
+    left: 0;
 
     ${DESKTOP_VIEW}{
         width: 100%;
         position: static;
         border-radius: 30px;
+        box-shadow: 0px 5px 5px -4px #000000;
     }
 `;
 
