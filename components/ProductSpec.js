@@ -2,6 +2,7 @@ import React from 'react';
 import styled from 'styled-components';
 import { motion } from 'framer-motion';
 import ProductVariant from './ProductVariant';
+import Link from 'next/link';
 
 const Container = styled.div`
     width: calc(100% - 20px);
@@ -21,7 +22,7 @@ const Icon = styled.img`
     height: 20px;
 `;
 
-const ProductType = styled.div`
+const ProductType = styled(Link)`
     width: 100%;
     height: 25px;
     font-size: 0.8rem;
@@ -46,11 +47,11 @@ const Credit = styled.p`
     font-weight: 400;
 `;
 
-export default function ProductSpec({title, price, variants, selectedVariant, setSelectedVariant}) {
+export default function ProductSpec({title, price, variants, selectedVariant, setSelectedVariant, collection}) {
     return (
         <>
             <Container>
-                <ProductType>Celebration Cakes</ProductType>
+                <ProductType href={`/shop/${collection.handle}`}>{collection.title}</ProductType>
                 <ProductTitle>{title}</ProductTitle>
                 <Price>£{price}</Price>
                 <Credit>Buy now, pay in 3 instalments with <span>Klarna</span></Credit>
