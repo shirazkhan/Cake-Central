@@ -14,6 +14,7 @@ import { gql } from '@apollo/client';
 import { GET_PRODUCT_BY_HANDLE, GET_SLUGS_BY_COLLECTION_HANDLE, GET_RECOMMENDED_PRODUCTS_BY_ID, GET_PRODUCT_AND_COLLECTION_HANDLES } from "../../../graphql/Queries";
 import ProductAccordion from '../../../components/ProductAccordion';
 import FavouriteButton from '../../../components/FavouriteButton';
+import parse from 'html-react-parser';
 
 const MainContainer = styled.div`
   ${DESKTOP_VIEW}{
@@ -36,16 +37,6 @@ const SpecContainer = styled.div`
 const AccordionContainer = styled.div`
     width: 90%;
     margin: 0 auto;
-
-  > :first-child {
-    border-bottom: 1px solid ${PRIMARY_THEME_COLOR}90;
-    border-top: 1px solid ${PRIMARY_THEME_COLOR}90;
-  }
-
-  > :last-child {
-    border-bottom: 1px solid ${PRIMARY_THEME_COLOR}90;
-    border-top: 1px solid ${PRIMARY_THEME_COLOR}90;
-  }
 `;
 
 const ButtonsContainer = styled.div`
@@ -97,9 +88,9 @@ export default function Product({id,title,description,images,price,variants,prod
           />
         </ButtonsContainer>
         <AccordionContainer>
-          <ProductAccordion title = 'Description' content = {description} initial = {true} />
-          <ProductAccordion title = 'Ingredients & Allergens' content = {description} />
-          <ProductAccordion title = 'Delivery & Collection' content = {description} />
+          <ProductAccordion title = 'Description' content = {parse(description)} initial = {true} />
+          <ProductAccordion title = 'Ingredients & Allergens' content = {parse(description)} />
+          <ProductAccordion title = 'Delivery & Collection' content = {parse(description)} />
         </AccordionContainer>
       </SpecContainer>
     </MainContainer>
@@ -148,7 +139,7 @@ export async function getStaticProps({params}) {
       props: {
         id: data.productByHandle.id,
         title: data.productByHandle.title,
-        description: data.productByHandle.description,
+        description: data.productByHandle.descriptionHtml,
         price: data.productByHandle.priceRange.minVariantPrice.amount,
         images,
         variants,

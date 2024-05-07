@@ -4,8 +4,8 @@ export const DOMAIN = "https://www.redmondpie.com/";
 export const WEBSITE_NAME = "Grantham Cakes";
 
 // STYLING
-export const PRIMARY_THEME_COLOR = "#FFC0CB";
-export const SECONDARY_THEME_COLOR = "skyblue";
+export const PRIMARY_THEME_COLOR = "#FFABBB";
+export const SECONDARY_THEME_COLOR = "#88CBEB";
 export const WEBSITE_WIDTH = "1400px";
 //export const TABLET = "1050px";
 export const MOBILE = "992px";
@@ -14,14 +14,14 @@ export const MOBILE_NAV_HEIGHT = "50px";
 export const DESKTOP_NAV_HEIGHT = "120px";
 export const DESKTOP_LINK_HEIGHT = "50px";
 export const DESKTOP_LINK_COLOR = 'white';
-export const DESKTOP_NAV_BACKGROUND_COLOR = 'skyblue';
+export const DESKTOP_NAV_BACKGROUND_COLOR = SECONDARY_THEME_COLOR;
 export const DESKTOP_NAV_FIXED = true;
 export const DESKTOP_SCROLLED_NAV_HEIGHT = "60px";
 export const FOOTER_HEIGHT = "200px";
 export const LOADING_BAR_COLOR = SECONDARY_THEME_COLOR;
 export const NAV_MENU_WIDTH = "250px";
 export const NAV_GAP = "50px";
-export const NAV_MENU_COLOR = "pink";
+export const NAV_MENU_COLOR = PRIMARY_THEME_COLOR;
 export const NAV_LINK_COLOR = "white"
 export const NAV_LINKS_ALIGNMENT = "flex-end";
 export const CONTENT_H_MARGIN = "50px";

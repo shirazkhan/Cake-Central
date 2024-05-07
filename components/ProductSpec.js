@@ -4,8 +4,7 @@ import { motion } from 'framer-motion';
 import ProductVariant from './ProductVariant';
 
 const Container = styled.div`
-    width: 100%;
-    padding: 0 10px;
+    width: calc(100% - 20px);
     display: flex;
     margin: 0 auto;
     flex-direction: column;
@@ -35,7 +34,7 @@ const Price = styled.div`
     height: 25px;
     width: 100%;
     font-size: 1em;
-    font-weight: 400;
+    font-weight: 500;
 `;
 
 const Credit = styled.p`

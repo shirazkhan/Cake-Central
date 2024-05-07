@@ -23,7 +23,7 @@ const Title = styled.h3`
     margin: 0px 15px;
     padding: 0;
     font-size: 1.5em;
-    color: pink;
+    color: ${PRIMARY_THEME_COLOR};
     text-shadow: 1px 1px 1px lightgrey;
 `;
 

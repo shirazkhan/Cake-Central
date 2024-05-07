@@ -20,7 +20,7 @@ const Bar = styled.div`
     background: ${NAV_BAR_COLOR};
     height: 100%;
     max-width: ${WEBSITE_WIDTH};
-    z-index: 2499;
+    z-index: 1;
 
     ${DESKTOP_VIEW}{
         width: 100%;

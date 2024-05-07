@@ -21,7 +21,7 @@ const Menu = styled(motion.div)`
     top: 50px;
     position: fixed;
     background: rgba(255,255,255,1);
-    z-index: 1000;
+    z-index: 9;
     display: flex;
     flex-direction: column;
     flex-stretch: 1;
@@ -52,6 +52,9 @@ const MenuWrapper = styled(motion.div)`
     scroll-snap-type: x mandatory;
     white-space: nowrap;
     flex-wrap: nowrap;
+    ${DESKTOP_VIEW}{
+        position: static;
+    }
 `;
 
 const NavLink = styled(motion.div)`
@@ -215,6 +218,18 @@ const Taxes = styled.div`
     margin: 0 auto;
 `;
 
+const Background = styled.div`
+      ${DESKTOP_VIEW}{
+        position: absolute;
+        left: 0;
+        width: 100vw;
+        height: 100vh;
+        background: rgba(0,0,0,0.5);
+        z-index: 10;
+        transition: 0.5s;
+      }
+`;
+
 const handleRemoveProduct = async (lineId, cartId, dispatch) => {
     const { data } = await client.mutate(CART_LINES_REMOVE(cartId, lineId))
     dispatch({type: 'UPDATE_CART', value: data.cartLinesRemove})
@@ -286,16 +301,19 @@ export default function CartMenu() {
     return (
         <AnimatePresence>
             {globalState.cartMenuOpen && ( 
+                <>
                 <Menu
                     key = 'menu'
                     initial = {{ opacity: 0, y: -75 }}
                     animate = {{ opacity: 1, y: 0 }}
                     exit={{ opacity: 0 }}
                 >
-                    <Title shoppingBagQuantity = {globalState.cartData.lines.reduce((acc,l) => acc += l.quantity, 0)}
-                           favouritesQuantity = {globalState.wishList.length}
-                           isWishList = {globalState.isWishList}
-                           dispatch = {dispatch} />
+                    <Title 
+                        shoppingBagQuantity = {globalState.cartData.lines.reduce((acc,l) => acc += l.quantity, 0)}
+                        favouritesQuantity = {globalState.wishList.length}
+                        isWishList = {globalState.isWishList}
+                        dispatch = {dispatch} 
+                    />
                         <MenuWrapper>
                         <ScrollIntoViewIfNeeded active = {!globalState.isWishList}>
                             <CartContainer ref = {ref} id = 'cart'>
@@ -309,6 +327,8 @@ export default function CartMenu() {
                         </MenuWrapper>
                         
                 </Menu>
+                <Background onClick={() => dispatch({type: 'CART_MENU_OFF'})} />
+                </>
             )}
             </AnimatePresence>
     )

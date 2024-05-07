@@ -17,6 +17,7 @@ import { useMediaQuery } from 'react-responsive';
 import Header from '../components/navbar/Header';
 import { useScroll, useMotionValueEvent } from "framer-motion";
 import { SpeedInsights } from '@vercel/speed-insights/next';
+import AnnouncementBanner from '../components/index/AnnouncementBanner';
 
 const extractFragmentHandle = (router, variants) => { // Check if router has href fragment. If it does, then use this as initial state.
   const fragment = router.asPath.slice(router.asPath.indexOf('#')+1)
@@ -216,10 +217,10 @@ export default function MyApp({ Component, pageProps }) {
     <GlobalStateContext.Provider value = {{globalState, dispatch}}>
       <ThemeProvider theme = {globalState.nightMode ? darkTheme : lightTheme}>
         <GlobalStyle />
-        <MainGrid>
         <SpeedInsights />
-
           <Header />
+          <AnnouncementBanner />
+        <MainGrid>
             <NavMenu />
           <Content>
               {/* Content Goes Here */}

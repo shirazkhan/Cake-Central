@@ -1,5 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
+import { PRIMARY_THEME_COLOR } from '../../GlobalVariables';
 
 const Container = styled.div`
     width: 100%;
@@ -14,7 +15,7 @@ const PageNumber = styled.button`
     font-size: 0.75em;
     font-weight: 700;
     border-radius: 5px;
-    color: pink;
+    color: ${PRIMARY_THEME_COLOR};
     width: 40px;
     height: 100%;
     background: white;

@@ -29,7 +29,7 @@ export const MainGrid = styled.div`
 
 MainGrid.defaultProps = {
   theme: {
-    main: "pink"
+    main: PRIMARY_THEME_COLOR
   }
 }
 

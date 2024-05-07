@@ -6,6 +6,19 @@ import { DESKTOP_VIEW, PRIMARY_THEME_COLOR } from '../GlobalVariables';
 const Container = styled.div`
     width: 100%;
     margin: 0 auto;
+
+    &:first-child {
+        border-top: 1px solid ${PRIMARY_THEME_COLOR}80;
+      }
+    
+    &:not(:first-child):not(:last-child) {
+        border-top: 1px solid ${PRIMARY_THEME_COLOR}80;
+        border-bottom: 1px solid ${PRIMARY_THEME_COLOR}80;
+    }
+    
+    &:last-child {
+        border-bottom: 1px solid ${PRIMARY_THEME_COLOR}80;
+    }
 `;
 
 const Accordion = styled(motion.button)`

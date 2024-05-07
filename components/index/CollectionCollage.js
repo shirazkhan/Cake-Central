@@ -1,6 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
-import { WEBSITE_WIDTH } from '../../GlobalVariables';
+import { PRIMARY_THEME_COLOR, WEBSITE_WIDTH } from '../../GlobalVariables';
 
 const Container = styled.div`
     display: flex;
@@ -15,7 +15,7 @@ const Container = styled.div`
 const Hero = styled.div`
     height: 500px;
     width: 100%;
-    background: pink;
+    background: ${PRIMARY_THEME_COLOR};
 `;
 
 const Row = styled.div`
@@ -28,7 +28,7 @@ const Row = styled.div`
 `;
 
 const Collection = styled.div`
-    background: pink;
+    background: ${PRIMARY_THEME_COLOR};
     height: 100%;
     width: 100%;
 `;

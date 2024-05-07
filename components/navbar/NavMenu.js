@@ -13,7 +13,7 @@ const Menu = styled(motion.div)`
     position: fixed;
     left: -275px;
     top: ${MOBILE_NAV_HEIGHT};
-    z-index: 100;
+    z-index: 8;
     display: flex;
     flex-direction: column;
     padding-top: 25px;

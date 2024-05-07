@@ -1,11 +1,11 @@
-import React, {useContext, useEffect} from 'react';
+import React, {useContext} from 'react';
 import styled from 'styled-components';
 import { DESKTOP_VIEW, NAV_FONT_COLOR, MOBILE_NAV_HEIGHT, PRIMARY_THEME_COLOR, MOBILE, DESKTOP_NAV_HEIGHT, DESKTOP_NAV_FIXED, DESKTOP_SCROLLED_NAV_HEIGHT } from '../../GlobalVariables';
 import NavBar from './Navbar';
 import { GlobalStateContext } from '../../pages/_app';
 import { motion } from 'framer-motion';
-import { useScroll } from 'framer-motion';
 import dynamic from 'next/dynamic'
+import AnnouncementBanner from '../index/AnnouncementBanner';
 const MediaQuery = dynamic(() => import('react-responsive'), {
   ssr: false
 })
@@ -18,7 +18,7 @@ const Container = styled(motion.div)`
     position: fixed;
     top: 0;
     left: 0;
-    z-index: 99999999;
+    z-index: 111;
     background: ${PRIMARY_THEME_COLOR};
     box-shadow: 0px 0px 14px -6px rgba(0,0,0,0.8);
     display: flex;
