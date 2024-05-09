@@ -3,7 +3,6 @@ import { GoogleAnalytics } from "nextjs-google-analytics";
 import '../src/index.css';
 import { lightTheme, darkTheme, GlobalStyle, MainGrid, FooterLink,
          FooterColumn, Footer, Content, FooterContent } from '../src/styled/App';
-import Link from 'next/link';
 import { ThemeProvider } from 'styled-components';
 import ProgressBar from "@badrap/bar-of-progress";
 import Router from "next/router";
@@ -12,7 +11,7 @@ import client from '../apollo-client';
 import { ApolloProvider } from '@apollo/client';
 import useLocalStorageState from 'use-local-storage-state';
 import { GET_CART } from '../graphql/Queries';
-import { DESKTOP_VIEW, LOADING_BAR_COLOR, MOBILE } from '../GlobalVariables';
+import { LOADING_BAR_COLOR, MOBILE } from '../GlobalVariables';
 import NavMenu from '../components/navbar/NavMenu';
 import { useMediaQuery } from 'react-responsive';
 import Header from '../components/navbar/Header';
