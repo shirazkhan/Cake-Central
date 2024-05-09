@@ -1,5 +1,5 @@
 import React, { useReducer, useEffect } from 'react';
-import { GoogleTagManager } from '@next/third-parties/google'
+import { GoogleTagManager, GoogleAnalytics } from '@next/third-parties/google'
 import '../src/index.css';
 import { lightTheme, darkTheme, GlobalStyle, MainGrid, FooterLink,
          FooterColumn, Footer, Content, FooterContent } from '../src/styled/App';
@@ -224,6 +224,7 @@ export default function MyApp({ Component, pageProps }) {
 
   return <>
   <GoogleTagManager gtmId="GTM-PZ7XW3FT" />
+  <GoogleAnalytics gaId="G-6L7QDGSRHY" />
   <ApolloProvider client={client}>
     <GlobalStateContext.Provider value = {{globalState, dispatch}}>
       <ThemeProvider theme = {globalState.nightMode ? darkTheme : lightTheme}>
