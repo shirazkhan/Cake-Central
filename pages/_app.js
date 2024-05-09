@@ -1,4 +1,5 @@
 import React, { useReducer, useEffect } from 'react';
+import { GoogleAnalytics } from "nextjs-google-analytics";
 import '../src/index.css';
 import { lightTheme, darkTheme, GlobalStyle, MainGrid, FooterLink,
          FooterColumn, Footer, Content, FooterContent } from '../src/styled/App';
@@ -222,7 +223,9 @@ export default function MyApp({ Component, pageProps }) {
   },[])
 
 
-  return <ApolloProvider client={client}>
+  return <>
+  <GoogleAnalytics trackPageViews />
+  <ApolloProvider client={client}>
     <GlobalStateContext.Provider value = {{globalState, dispatch}}>
       <ThemeProvider theme = {globalState.nightMode ? darkTheme : lightTheme}>
         <GlobalStyle />
@@ -256,4 +259,5 @@ export default function MyApp({ Component, pageProps }) {
       </ThemeProvider>
     </GlobalStateContext.Provider>
     </ApolloProvider>
+    </>
   }
