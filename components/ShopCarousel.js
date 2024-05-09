@@ -5,8 +5,8 @@ import Image from 'next/image';
 import { DESKTOP_VIEW, PRIMARY_THEME_COLOR } from '../GlobalVariables';
 import { inView, motion, useScroll, useAnimate } from "framer-motion";
 
-const cardWidth = 315;
-const cardHeight = 350;
+const cardWidth = 250;
+const cardHeight = 290;
 
 //margin-top should be 25px
 const Container = styled.div`
@@ -158,9 +158,10 @@ const LeftButton = styled(motion.div)`
     top: 0;
     height: 100%;
     width: 70px;
-    z-index: 9999999;
+    z-index: 122332;
     background: linear-gradient(90deg, rgba(255,255,255,1) 0%, rgba(255,255,255,1) 5%, rgba(255,255,255,0) 100%);
     align-items: center;
+    padding-left: 20px;
 `;
 
 const RightButton = styled(motion.div)`
@@ -170,19 +171,19 @@ const RightButton = styled(motion.div)`
     top: 0;
     height: 100%;
     width: 50px;
-    z-index: 9999999;
-    background: white;
+    z-index: 1122332;
     background: linear-gradient(270deg, rgba(255,255,255,1) 0%, rgba(255,255,255,1) 5%, rgba(255,255,255,0) 100%);
     align-items: center;
+    padding-right: 20px;
 `;
 
-const Button = styled.button`
+const Button = styled(motion.button)`
     height: 50px;
     width: 50px;
     border-radius: 50px;
     background: ${PRIMARY_THEME_COLOR};
-    border: 0.5px solid grey;
-    box-shadow: rgba(0, 0, 0, 0.16) 0px 3px 6px, rgba(0, 0, 0, 0.23) 0px 3px 6px;
+    border: 2px solid white;
+    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
 `;
 
 export default function ShopCarousel({data, title, subtitle, handle, cardType, endCard}) {
@@ -263,12 +264,20 @@ export default function ShopCarousel({data, title, subtitle, handle, cardType, e
                         <LeftButton
                             ref={scopeL}
                         >
-                            <Button onClick={handleScrollLeft}>{'<'}</Button>
+                            <Button
+                                onClick={handleScrollLeft}
+                                whileHover={{scale: 1.2}}
+                                whileTap={{scale: 1}}
+                            >{'<'}</Button>
                         </LeftButton>
                         <RightButton
                             ref={scopeR}
                         >
-                            <Button onClick={handleScrollRight}>{'>'}</Button>
+                            <Button
+                                onClick={handleScrollRight}
+                                whileHover={{scale: 1.2}}
+                                whileTap={{scale: 1}}
+                            >{'>'}</Button>
                         </RightButton>
                     <Cards onScroll={() => handleScroll()} ref={cardsContainerRef}>    
                         {renderCards()}

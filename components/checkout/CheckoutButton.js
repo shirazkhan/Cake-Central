@@ -2,7 +2,7 @@ import React, {useState, useEffect} from 'react';
 import styled from 'styled-components';
 import client from '../../apollo-client';
 import { GET_CHECKOUT_URL } from '../../graphql/Queries';
-import { PRIMARY_THEME_COLOR } from '../../GlobalVariables';
+import { DESKTOP_VIEW, PRIMARY_THEME_COLOR } from '../../GlobalVariables';
 
 const Button = styled.button`
     height: 50px;
@@ -16,6 +16,10 @@ const Button = styled.button`
     font-weight: 600;
     font-size: 1em;
     cursor: pointer;
+
+    ${DESKTOP_VIEW}{
+        
+    }
 `;
 
 export default function CheckoutButton({cartId}) {

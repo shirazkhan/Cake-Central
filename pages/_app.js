@@ -11,7 +11,7 @@ import client from '../apollo-client';
 import { ApolloProvider } from '@apollo/client';
 import useLocalStorageState from 'use-local-storage-state';
 import { GET_CART } from '../graphql/Queries';
-import { LOADING_BAR_COLOR, MOBILE } from '../GlobalVariables';
+import { DESKTOP_VIEW, LOADING_BAR_COLOR, MOBILE } from '../GlobalVariables';
 import NavMenu from '../components/navbar/NavMenu';
 import { useMediaQuery } from 'react-responsive';
 import Header from '../components/navbar/Header';
@@ -58,9 +58,15 @@ export default function MyApp({ Component, pageProps }) {
 
   const { scrollYProgress } = useScroll();
 
+  const isDesktop = useMediaQuery({ query: `(min-width:${MOBILE})` });
+
   useMotionValueEvent(scrollYProgress, "change", (latest) => {
-    dispatch({type: 'UPDATE_SCROLL_POSITION', value: latest})
+    dispatch({type: 'UPDATE_SCROLL_POSITION', value: latest});
   })
+
+  useEffect(() => {
+    dispatch({type: 'UPDATE_ISDESKTOP', value: isDesktop});
+  },[isDesktop])
 
 
     // Reducer Config //////////
@@ -77,13 +83,16 @@ export default function MyApp({ Component, pageProps }) {
       total: '0.00'
     },
     wishList: wishList,
-    scrollYProgress: 0
+    scrollYProgress: 0,
+    isDesktop: isDesktop
   };
 
   const reducer = (prevState, action) => {
     switch(action.type){
       case 'UPDATE_SCROLL_POSITION':
         return {... prevState, scrollYProgress: action.value}
+      case 'UPDATE_ISDESKTOP':
+        return {... prevState, isDesktop: action.value}
       case 'TOGGLE_NIGHT_MODE':
         return {...prevState, nightMode: !prevState.nightMode};
       case 'TOGGLE_NAV_MENU':

@@ -11,7 +11,7 @@ const Container = styled(motion.div)`
     width: ${props => props.inView ? '80%' : '100%'};
     min-width: 376px;
     border-radius: ${props => props.inView ? '30px' : '0px'};
-    margin: 0 auto;
+    margin: 20px auto;
     height: 63px;
     display: flex;
     position: ${props => props.inView ? 'relative' : 'fixed'};

@@ -2,7 +2,7 @@ import React, { useContext } from 'react';
 import styled from 'styled-components';
 import { motion } from 'framer-motion';
 import { GlobalStateContext } from '../pages/_app';
-import { PRIMARY_THEME_COLOR } from '../GlobalVariables';
+import { IS_WISHLIST, PRIMARY_THEME_COLOR } from '../GlobalVariables';
 
 const Container = styled(motion.div)`
     width: 376px;
@@ -47,13 +47,13 @@ export default function FavouriteButton(props) {
     const { globalState, dispatch } = useContext(GlobalStateContext);
     let isAlreadyInFavourites = globalState.wishList ? !!globalState.wishList.find(f => f.variantId === props.variantId) : false;
     return (
-        <>
+        <> { IS_WISHLIST &&
             <Container whileTap = {{scale: 1.1}}>
                 <Button
                     onClick = {isAlreadyInFavourites ? () => handleRemoveFromFavourites(globalState, dispatch, props.variantId) : () => handleAddToFavourites(props, dispatch) }>
                         {isAlreadyInFavourites ? 'Remove From Favourites' : 'Add To Favourites'}
                 </Button>
-            </Container>
+            </Container> }
         </>
     )
 }

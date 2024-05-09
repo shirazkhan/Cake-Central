@@ -96,7 +96,7 @@ const Background = styled(motion.div)`
 export default function NavMenu() {
 
     const {globalState, dispatch} = useContext(GlobalStateContext);
-    const isDesktop = useMediaQuery({ query: `(min-width:${MOBILE})` });
+    const isDesktop = globalState.isDesktop;
 
     useEffect(() => {
         if (isDesktop) {

@@ -10,7 +10,7 @@ import WishList from './WishList';
 import Title from './Title';
 import ScrollIntoViewIfNeeded from 'react-scroll-into-view-if-needed';
 import { useInView } from 'react-intersection-observer';
-import { PRIMARY_THEME_COLOR, DESKTOP_VIEW, DESKTOP_NAV_HEIGHT } from '../../GlobalVariables';
+import { PRIMARY_THEME_COLOR, DESKTOP_VIEW, DESKTOP_NAV_HEIGHT, IS_WISHLIST } from '../../GlobalVariables';
 import CheckoutButton from '../checkout/CheckoutButton';
 import useDetectScroll from '@smakss/react-scroll-direction';
 
@@ -53,7 +53,7 @@ const MenuWrapper = styled(motion.div)`
     white-space: nowrap;
     flex-wrap: nowrap;
     ${DESKTOP_VIEW}{
-        position: static;
+        
     }
 `;
 
@@ -79,6 +79,10 @@ const CartContainer = styled(motion.div)`
     overflow: auto;
     overscroll-behavior: contain;
     scroll-snap-align: start;
+    ${DESKTOP_VIEW}{
+        width: 100%;
+        min-width: 100%;
+    }
 `;
 
 const CheckoutContainer = styled(motion.div)`
@@ -115,6 +119,7 @@ const ProductContainer = styled(motion.div)`
     margin: 20px auto;
     position: relative;
     flex-shrink: 0;
+    gap: 20px;
 `;
 
 const ProductImageContainer = styled(Link)`
@@ -140,6 +145,7 @@ const ProductImage = styled.img`
     max-height: 125px;
     object-fit: contain;
     cursor: pointer;
+    border-radius: 5px;
 `;
 
 const ProductSpecContainer = styled.div`
@@ -188,6 +194,9 @@ const SummaryContainer = styled.div`
     flex-direction: column;
     margin: 10px 0 25px 10px;
     flex-shrink: 0;
+    ${DESKTOP_VIEW}{
+        position: relative;
+    }
 `;
 
 const SummaryTitle = styled.div`
@@ -273,7 +282,7 @@ const renderSummary = cartData => (
             </SummarySubTitle>
         <SummaryDelivery>
             <span>Delivery</span>
-            <span>£4.99</span>
+            <span>Calculated at Checkout</span>
         </SummaryDelivery>
         <Taxes>Taxes Included</Taxes>
         {cartData.lines.length ?
@@ -285,8 +294,6 @@ const renderSummary = cartData => (
 export default function CartMenu() {
 
     const {globalState, dispatch} = useContext(GlobalStateContext);
-
-    const isDesktop = globalState.isDesktop;
 
     const { ref, inView } = useInView({threshold: 0.2});
 
@@ -308,12 +315,13 @@ export default function CartMenu() {
                     animate = {{ opacity: 1, y: 0 }}
                     exit={{ opacity: 0 }}
                 >
-                    <Title 
+                    { IS_WISHLIST &&
+                        <Title 
                         shoppingBagQuantity = {globalState.cartData.lines.reduce((acc,l) => acc += l.quantity, 0)}
                         favouritesQuantity = {globalState.wishList.length}
                         isWishList = {globalState.isWishList}
                         dispatch = {dispatch} 
-                    />
+                    /> }
                         <MenuWrapper>
                         <ScrollIntoViewIfNeeded active = {!globalState.isWishList}>
                             <CartContainer ref = {ref} id = 'cart'>
@@ -321,9 +329,10 @@ export default function CartMenu() {
                                 {renderSummary(globalState.cartData)}
                             </CartContainer>
                         </ScrollIntoViewIfNeeded>
+                        { IS_WISHLIST && 
                             <CartContainer>
                                 <WishList isWishList = {globalState.isWishList} />
-                            </CartContainer>
+                            </CartContainer> }
                         </MenuWrapper>
                         
                 </Menu>
