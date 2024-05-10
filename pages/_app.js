@@ -18,6 +18,7 @@ import Header from '../components/navbar/Header';
 import { useScroll, useMotionValueEvent } from "framer-motion";
 import { SpeedInsights } from '@vercel/speed-insights/next';
 import AnnouncementBanner from '../components/index/AnnouncementBanner';
+import Cookies from '../components/general/Cookies';
 
 const extractFragmentHandle = (router, variants) => { // Check if router has href fragment. If it does, then use this as initial state.
   const fragment = router.asPath.slice(router.asPath.indexOf('#')+1)
@@ -224,8 +225,8 @@ export default function MyApp({ Component, pageProps }) {
 
   return <>
   <GoogleTagManager gtmId="GTM-PZ7XW3FT" />
-  <GoogleAnalytics gaId="G-6L7QDGSRHY" />
   <ApolloProvider client={client}>
+    <Cookies />
     <GlobalStateContext.Provider value = {{globalState, dispatch}}>
       <ThemeProvider theme = {globalState.nightMode ? darkTheme : lightTheme}>
         <GlobalStyle />
