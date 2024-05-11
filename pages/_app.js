@@ -226,7 +226,6 @@ export default function MyApp({ Component, pageProps }) {
   return <>
   <GoogleTagManager gtmId="GTM-PZ7XW3FT" />
   <ApolloProvider client={client}>
-    <Cookies />
     <GlobalStateContext.Provider value = {{globalState, dispatch}}>
       <ThemeProvider theme = {globalState.nightMode ? darkTheme : lightTheme}>
         <GlobalStyle />
