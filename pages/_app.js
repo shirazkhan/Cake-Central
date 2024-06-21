@@ -2,7 +2,7 @@ import React, { useReducer, useEffect } from 'react';
 import { GoogleTagManager, GoogleAnalytics } from '@next/third-parties/google'
 import '../src/index.css';
 import { lightTheme, darkTheme, GlobalStyle, MainGrid, FooterLink,
-         FooterColumn, Footer, Content, FooterContent } from '../src/styled/App';
+         FooterColumn, Content, FooterContent } from '../src/styled/App';
 import { ThemeProvider } from 'styled-components';
 import ProgressBar from "@badrap/bar-of-progress";
 import Router from "next/router";
@@ -11,7 +11,7 @@ import client from '../apollo-client';
 import { ApolloProvider } from '@apollo/client';
 import useLocalStorageState from 'use-local-storage-state';
 import { GET_CART } from '../graphql/Queries';
-import { LOADING_BAR_COLOR, MOBILE } from '../GlobalVariables';
+import { DEV_MODE, LOADING_BAR_COLOR, MOBILE } from '../GlobalVariables';
 import NavMenu from '../components/navbar/NavMenu';
 import { useMediaQuery } from 'react-responsive';
 import Header from '../components/navbar/Header';
@@ -19,6 +19,7 @@ import { useScroll, useMotionValueEvent } from "framer-motion";
 import { SpeedInsights } from '@vercel/speed-insights/next';
 import AnnouncementBanner from '../components/index/AnnouncementBanner';
 import Cookies from '../components/general/Cookies';
+import Footer from '../components/general/Footer';
 
 const extractFragmentHandle = (router, variants) => { // Check if router has href fragment. If it does, then use this as initial state.
   const fragment = router.asPath.slice(router.asPath.indexOf('#')+1)
@@ -223,7 +224,7 @@ export default function MyApp({ Component, pageProps }) {
   },[])
 
 
-  return <>
+  return !DEV_MODE ? <>
   <GoogleTagManager gtmId="GTM-PZ7XW3FT" />
   <ApolloProvider client={client}>
     <GlobalStateContext.Provider value = {{globalState, dispatch}}>
@@ -240,7 +241,8 @@ export default function MyApp({ Component, pageProps }) {
               {/* ///////////////// */}
           </Content>
         </MainGrid>
-          <Footer>
+        <Footer />
+          {/* {<Footer>
             <FooterContent>
               <FooterColumn>
                 <FooterLink href = '/' passHref>FAQ</FooterLink>
@@ -255,9 +257,9 @@ export default function MyApp({ Component, pageProps }) {
                 <FooterLink href = '/' passHref>Contact Us</FooterLink>
               </FooterColumn>
             </FooterContent>
-          </Footer>
+          </Footer>} */}
       </ThemeProvider>
     </GlobalStateContext.Provider>
     </ApolloProvider>
-    </>
+    </> : 'CAKE CENTRAL IS COMING SOON'
   }

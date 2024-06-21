@@ -2,6 +2,7 @@
 
 export const DOMAIN = "https://www.redmondpie.com/";
 export const WEBSITE_NAME = "Grantham Cakes";
+export const DEV_MODE = true;
 
 // STYLING
 export const PRIMARY_THEME_COLOR = "#FFABBB";

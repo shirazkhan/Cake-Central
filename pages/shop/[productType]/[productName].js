@@ -96,8 +96,8 @@ export default function Product({id,title,collection,description,images,price,va
         </ButtonsContainer>
         <AccordionContainer>
           <ProductAccordion title = 'Description' content = {parse(description)} initial = {true} />
-          <ProductAccordion title = 'Ingredients & Allergens' content = {parse(description)} />
-          <ProductAccordion title = 'Delivery & Collection' content = {parse(description)} />
+          <ProductAccordion title = 'Ingredients & Allergens' content = {parse(description)} initial = {true} />
+          <ProductAccordion title = 'Delivery & Collection' content = {parse(description)} initial = {true} />
         </AccordionContainer>
       </SpecContainer>
     </MainContainer>

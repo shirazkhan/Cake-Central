@@ -1,9 +1,10 @@
-import React, {useState, useEffect, useRef} from 'react';
+import React, {useState, useEffect, useRef, useContext} from 'react';
 import styled from 'styled-components';
 import Link from 'next/link';
 import Image from 'next/image';
 import { DESKTOP_VIEW, PRIMARY_THEME_COLOR } from '../GlobalVariables';
 import { inView, motion, useScroll, useAnimate } from "framer-motion";
+import { GlobalStateContext } from '../pages/_app';
 
 const cardWidth = 250;
 const cardHeight = 290;
@@ -187,6 +188,8 @@ const Button = styled(motion.button)`
 `;
 
 export default function ShopCarousel({data, title, subtitle, handle, cardType, endCard}) {
+
+    const { dispatch, globalState } = useContext(GlobalStateContext);
 
     const cardsContainerRef = useRef(null);
 
