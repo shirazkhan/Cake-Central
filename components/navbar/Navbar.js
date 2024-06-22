@@ -48,7 +48,6 @@ const Logo = styled(motion.img)`
     
     ${DESKTOP_VIEW}{
         width: 100%;
-        height: 100%;
     }
 `;
 
@@ -127,19 +126,19 @@ export default function NavBar() {
                         { globalState.scrollYProgress < 0.1
                         ?   <Logo
                                 key = "BigLogo"
-                                src = '/CakeCentral-Logo-Short.svg'
+                                src = '/logos/svg/CakeCentral-Logo-White-Semi.svg'
                                 initial = {{ opacity: 0 }}
                                 animate={{ opacity: 1 }}
-                                transition={{ duration: 1.3, scale: { duration: 0.1 } }}
+                                transition={{ duration: 1.3 }}
                                 exit={{ opacity: 0 }}
                                 whileTap = {{scale: 0.96}}
                             />
                         :   <Logo
                                 key = "SmallLogo"
-                                src = '/CakeCentral-mini.svg'
+                                src = '/logos/svg/CakeCentral-Logo-White-Small.svg'
                                 initial = {{ opacity: 0 }}
-                                animate={{ opacity: 1 }}
-                                transition={{ duration: 1.3, scale: { duration: 0.1 } }}
+                                animate={{ opacity: 1, scale: 0.9 }}
+                                transition={{ duration: 1.3, scale: { duration: 1 } }}
                                 exit={{ opacity: 0 }}
                                 whileTap = {{scale: 0.96}}
                             />}
@@ -147,9 +146,9 @@ export default function NavBar() {
                     <MediaQuery maxWidth={parseInt(MOBILE.replace('px',''))}>
                         <Logo
                                 key = "SmallLogoMobile"
-                                src = '/CakeCentral-mini.svg'
+                                src = '/logos/svg/CakeCentral-Logo-White-Small.svg'
                                 initial = {{ opacity: 0 }}
-                                animate={{ opacity: 1 }}
+                                animate={{ opacity: 1, scale: 0.85 }}
                                 transition={{ duration: 1.5, scale: { duration: 0.1 } }}
                                 exit={{ opacity: 0 }}
                                 whileTap = {{scale: 0.96}}

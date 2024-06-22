@@ -22,7 +22,6 @@ const InnerContainer = styled.div`
 `;
 
 const SocialAndPaymentContainer = styled.div`
-    border: 1px solid red;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -50,29 +49,38 @@ const PaymentIcons = styled.div`
 `;
 
 const LinksContainer = styled.div`
-    border: 1px solid blue;
     display: flex;
     justify-content: center;
     align-items: center;
+    flex-direction: column;
+    font-size: 1.1em;
+    line-height: 1.6em;
+    font-weight: 600;
 `;
 
 const SubscribeContainer = styled.div`
-    border: 1px solid green;
     display: flex;
     justify-content: center;
     align-items: center;
 `;
 
 const LogoContainer = styled.div`
-    border: 1px solid grey;
     display: flex;
     justify-content: center;
     align-items: center;
     flex-direction: column;
+    gap: 10px;
+    padding: 0 20px;
 `
 
-const HygieneContainer = styled.img`
-    max-width: 50%;
+const HygieneRating = styled.img`
+    max-width: 140px;
+    filter: drop-shadow( 4px 4px 14px rgba(0, 0, 0, 0.7));
+`;
+
+const CompanyLogo = styled.img`
+    max-width: 140px;
+    filter: drop-shadow( 1px 1px 2px rgba(255, 255, 255, 0.2));
 `;
 
 const BottomContainer = styled.div`
@@ -84,7 +92,6 @@ const BottomContainer = styled.div`
     justify-content: center;
     align-items: center;
 `;
-
 
 const BottomContent = styled.div`
     width: calc(100% - 50px);
@@ -113,23 +120,31 @@ export default function Footer(props) {
             <Container>
                 <InnerContainer>
                     <LogoContainer>
-                        <div>Logo Here</div>
-                        <HygieneContainer src='hygiene.png' />
+                        <CompanyLogo src='/logos/svg/CakeCentral-Logo-Black-Full.svg' />
+                        <HygieneRating src='hygiene.svg' />
                     </LogoContainer>
                     <LinksContainer>
-                    
+                        <span>Our Story</span>
+                        <span>Serving Guide</span>
+                        <span>Returns / Refunds</span>
+                        <span>Delivery</span>
+                        <span>FAQ's</span>
                     </LinksContainer>
-                    <SubscribeContainer>
-
-                    </SubscribeContainer>
+                    <LinksContainer>
+                        <span>Wholesale</span>
+                        <span>Corportate</span>
+                        <span>Press Enquiries</span>
+                        <span>Terms & Conditions</span>
+                        <span>Privacy Policy</span>
+                    </LinksContainer>
                     <SocialAndPaymentContainer>
                         <SocialAndPaymentTitle>Follow us</SocialAndPaymentTitle>
                         <SocialIcons>
-                            <FaFacebook size='35' color='white' />
-                            <FaSquareInstagram size='35' color='white' />
-                            <FaTiktok size='35' color='white' />
-                            <FaSquareXTwitter size='35' color='white' />
-                            <FaYoutube size='35' color='white' />
+                            <FaFacebook size='35' color='black' />
+                            <FaSquareInstagram size='35' color='black' />
+                            <FaTiktok size='35' color='black' />
+                            <FaSquareXTwitter size='35' color='black' />
+                            <FaYoutube size='35' color='black' />
                         </SocialIcons>
                         <SocialAndPaymentTitle>Accepted payment methods</SocialAndPaymentTitle>
                         <PaymentIcons>
