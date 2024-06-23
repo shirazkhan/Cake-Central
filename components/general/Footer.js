@@ -6,9 +6,9 @@ import { FaFacebook, FaSquareInstagram, FaSquareXTwitter, FaTiktok, FaYoutube } 
 
 const Container = styled.div`
     width: 100%;
-    padding: 25px 0;
     background: ${PRIMARY_THEME_COLOR};
     color: black;
+    padding-bottom: 50px;
 `;
 
 const InnerContainer = styled.div`
