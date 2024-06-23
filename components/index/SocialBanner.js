@@ -1,6 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 import { PRIMARY_THEME_COLOR, SECONDARY_THEME_COLOR } from '../../GlobalVariables';
+import { InstagramEmbed } from 'react-social-media-embed';
 
 const Container = styled.div`
     width: 100%;
@@ -55,6 +56,9 @@ export default function SocialBanner(props) {
 
     return (
         <>
+            <div style={{ display: 'flex', justifyContent: 'center' }}>
+                <InstagramEmbed url="https://www.instagram.com/p/CUbHfhpswxt/" width={328} />
+            </div>
             <Container>
                 <SocialName>@GranthamCakes</SocialName>
                 <SocialQuote>Follow us for all the goings at HQ, new product launches and behind the scenes action.</SocialQuote>

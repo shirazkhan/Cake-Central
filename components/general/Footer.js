@@ -12,13 +12,18 @@ const Container = styled.div`
 `;
 
 const InnerContainer = styled.div`
-    width: calc(100% - 50px);
+    width: 100%;
     max-width: calc(${WEBSITE_WIDTH} - 50px);
     margin: 0 auto;
-    height: 200px;
-    max-width: calc(${WEBSITE_WIDTH} - 50px);
     display: grid;
-    grid-template-columns: repeat(4, 1fr);
+    grid-template-rows: repeat(2, 2fr);
+    ${DESKTOP_VIEW}{
+        grid-template-columns: repeat(5, 1fr);
+        grid-template-rows: none;
+        width: calc(100% - 50px);
+        grid-column-gap: 0;
+
+    }
 `;
 
 const SocialAndPaymentContainer = styled.div`
@@ -26,6 +31,13 @@ const SocialAndPaymentContainer = styled.div`
     justify-content: center;
     align-items: center;
     flex-direction: column;
+    grid-column: span 2;
+    margin-top: 20px;
+    ${DESKTOP_VIEW}{
+        flex-direction: column;
+        grid-column: auto;
+        margin-top: none;
+    }
 `;
 
 const SocialAndPaymentTitle = styled.h4`
@@ -33,18 +45,23 @@ const SocialAndPaymentTitle = styled.h4`
 `;
 
 const SocialIcons = styled.div`
+    display: flex;
+    flex-direction: row;
     svg {
         padding: 0 3px;
     }
 `;
 
 const PaymentIcons = styled.div`
+    display: flex;
+    flex-direction: row;
     svg {
         width: 52px;
         height: 36px;
         padding: 0 3px;
         fill: none;
         border-radius: 5px;
+        filter: drop-shadow( 4px 4px 5px rgba(0, 0, 0, 0.4));
     }
 `;
 
@@ -53,15 +70,37 @@ const LinksContainer = styled.div`
     justify-content: center;
     align-items: center;
     flex-direction: column;
-    font-size: 1.1em;
+    font-size: 1em;
     line-height: 1.6em;
     font-weight: 600;
+    grid-row: 1;
+    ${DESKTOP_VIEW}{
+        grid-row: auto;
+    }
 `;
 
-const SubscribeContainer = styled.div`
+const ContactContainer = styled.div`
     display: flex;
     justify-content: center;
-    align-items: center;
+    align-items: flex-start;
+    flex-direction: column;
+    font-size: 0.9em;
+    line-height: 1.6em;
+    font-weight: 500;
+    text-align: center;
+    & span {
+        width: 100%;
+        text-align: center;
+    }
+`;
+
+const ContactTitle = styled.h4`
+    font-size: 1.2em;
+    line-height: 2em;
+    font-weight: 600;
+    margin: 0;
+    width: 100%;
+    text-align: center;
 `;
 
 const LogoContainer = styled.div`
@@ -69,8 +108,13 @@ const LogoContainer = styled.div`
     justify-content: center;
     align-items: center;
     flex-direction: column;
-    gap: 10px;
-    padding: 0 20px;
+    gap: 20px;
+    ${DESKTOP_VIEW}{
+        flex-direction: column;
+        padding: 0 20px;
+        gap: 20px;
+    }
+
 `
 
 const HygieneRating = styled.img`
@@ -123,6 +167,14 @@ export default function Footer(props) {
                         <CompanyLogo src='/logos/svg/CakeCentral-Logo-Black-Full.svg' />
                         <HygieneRating src='hygiene.svg' />
                     </LogoContainer>
+                    <ContactContainer>
+                        <span>Cake Central Ltd,</span>
+                        <span>Uplands Drive,</span>
+                        <span>Grantham,</span>
+                        <span>NG31 9NZ</span>
+                        <span>info@cakecentral.co.uk</span>
+                        <span>Tel: 07908821919</span>
+                    </ContactContainer>
                     <LinksContainer>
                         <span>Our Story</span>
                         <span>Serving Guide</span>
@@ -140,11 +192,11 @@ export default function Footer(props) {
                     <SocialAndPaymentContainer>
                         <SocialAndPaymentTitle>Follow us</SocialAndPaymentTitle>
                         <SocialIcons>
-                            <FaFacebook size='35' color='black' />
-                            <FaSquareInstagram size='35' color='black' />
-                            <FaTiktok size='35' color='black' />
-                            <FaSquareXTwitter size='35' color='black' />
-                            <FaYoutube size='35' color='black' />
+                            <FaFacebook size='31' color='black' />
+                            <FaSquareInstagram size='31' color='black' />
+                            <FaTiktok size='31' color='black' />
+                            <FaSquareXTwitter size='31' color='black' />
+                            <FaYoutube size='31' color='black' />
                         </SocialIcons>
                         <SocialAndPaymentTitle>Accepted payment methods</SocialAndPaymentTitle>
                         <PaymentIcons>
