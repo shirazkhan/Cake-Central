@@ -8,7 +8,10 @@ const Container = styled.div`
     width: 100%;
     background: ${PRIMARY_THEME_COLOR};
     color: black;
-    padding-bottom: 50px;
+    padding: 0 0 50px 0;
+    ${DESKTOP_VIEW}{
+        padding: 25px 0;
+    }
 `;
 
 const InnerContainer = styled.div`
