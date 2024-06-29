@@ -174,7 +174,7 @@ export default function Footer(props) {
                     <LogoContainer>
                         <CompanyLogo src='/logos/svg/CakeCentral-Logo-Black-Full.svg' />
                         <HygieneLink target="_blank" href='https://ratings.food.gov.uk/business/1726795/cake-central-ltd'>
-                            <HygieneRating src='hygiene.svg' />
+                            <HygieneRating src='/hygiene.svg' />
                         </HygieneLink>
                     </LogoContainer>
                     <ContactContainer>
@@ -186,18 +186,18 @@ export default function Footer(props) {
                         <span>Tel: 07908821919</span>
                     </ContactContainer>
                     <LinksContainer>
-                        <Link href='our-story'>Our Story</Link>
-                        <Link href='serving-guide'>Serving Guide</Link>
-                        <Link href='return-policy'>Returns / Refunds</Link>
-                        <Link href='delivery-policy'>Delivery</Link>
-                        <Link href='faqs'>FAQ's</Link>
+                        <Link href='/our-story'>Our Story</Link>
+                        <Link href='/serving-guide'>Serving Guide</Link>
+                        <Link href='/return-policy'>Returns / Refunds</Link>
+                        <Link href='/delivery-policy'>Delivery</Link>
+                        <Link href='/faqs'>FAQ's</Link>
                     </LinksContainer>
                     <LinksContainer>
-                        <Link href='wholesale'>Wholesale</Link>
-                        <Link href='corporate'>Corporate</Link>
-                        <Link href='press'>Press Enquiries</Link>
-                        <Link href='terms-and-conditions'>Terms & Conditions</Link>
-                        <Link href='privacy-policy'>Privacy Policy</Link>
+                        <Link href='/wholesale'>Wholesale</Link>
+                        <Link href='/corporate'>Corporate</Link>
+                        <Link href='/press'>Press Enquiries</Link>
+                        <Link href='/terms-and-conditions'>Terms & Conditions</Link>
+                        <Link href='/privacy-policy'>Privacy Policy</Link>
                     </LinksContainer>
                     <SocialAndPaymentContainer>
                         <SocialAndPaymentTitle>Follow us</SocialAndPaymentTitle>

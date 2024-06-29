@@ -196,28 +196,28 @@ export const HeroContent = styled.div`
 
 `;
 
-export const Primary = styled.div`
-  max-width: ${WEBSITE_WIDTH};
-  margin: 100px 150px;
+// export const Primary = styled.div`
+//   max-width: ${WEBSITE_WIDTH};
+//   margin: 100px 150px;
 
-    img{
-        max-width: 100%;
-        display: block;
-        object-fit: contain;
-        margin: 0 auto;
-    }
+//     img{
+//         max-width: 100%;
+//         display: block;
+//         object-fit: contain;
+//         margin: 0 auto;
+//     }
 
-  @media (max-width:${MOBILE}){
-    padding: 0;
-    margin: 0;
-      img{
-        max-width: none;
-        display: block;
-        object-fit: cover;
-        margin: 0 auto;
-      }
-  }
-`;
+//   @media (max-width:${MOBILE}){
+//     padding: 0;
+//     margin: 0;
+//       img{
+//         max-width: none;
+//         display: block;
+//         object-fit: cover;
+//         margin: 0 auto;
+//       }
+//   }
+// `;
 
 export const Secondary = styled.div`
   width: 30%;
@@ -230,6 +230,11 @@ export const Secondary = styled.div`
     top: ${MOBILE_NAV_HEIGHT};
   }
 
+`;
+
+export const Primary = styled.div`
+  max-width: ${WEBSITE_WIDTH};
+  margin: 50px auto;
 `;
 
 export const Footer = styled.div`

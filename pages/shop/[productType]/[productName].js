@@ -19,7 +19,6 @@ import parse from 'html-react-parser';
 const MainContainer = styled.div`
   ${DESKTOP_VIEW}{
     display: flex;
-    margin: 50px 25px 25px 25px;
     gap: 20px;
   }
 `;
@@ -70,37 +69,39 @@ export default function Product({id,title,collection,description,images,price,va
         <title>{`${title} | ${WEBSITE_NAME}`}</title>
         <meta name="viewport" content="initial-scale=1.0, width=device-width" />
     </Head>
-    <MainContainer>
-      <ProductImages images = {images} variants = {variants}/>
-      <SpecContainer>
-        <ProductSpec
-          title = {title}
-          collection = {collection}
-          price = {price}
-          variants = {variants}
-          selectedVariant = {selectedVariant}
-          setSelectedVariant = {setSelectedVariant}
-        />
-        <ButtonsContainer>
-          <BuyButton selectedVariant = {selectedVariant} variants = {variants} />
-          <FavouriteButton
-            variantId = {variants.find(v => v.handle === selectedVariant).id}
-            productTitle = {title}
-            imgSrc = {variants.find(v => v.handle === selectedVariant).image}
+    <Primary>
+      <MainContainer>
+        <ProductImages images = {images} variants = {variants}/>
+        <SpecContainer>
+          <ProductSpec
+            title = {title}
+            collection = {collection}
             price = {price}
-            variantHandle = {selectedVariant}
-            variantTitle = {variants.find(v => v.handle === selectedVariant).title}
-            productType = {productType}
-            productHandle = {productName}
+            variants = {variants}
+            selectedVariant = {selectedVariant}
+            setSelectedVariant = {setSelectedVariant}
           />
-        </ButtonsContainer>
-        <AccordionContainer>
-          <ProductAccordion title = 'Description' content = {parse(description)} initial = {true} />
-          <ProductAccordion title = 'Ingredients & Allergens' content = {parse(description)} initial = {true} />
-          <ProductAccordion title = 'Delivery & Collection' content = {parse(description)} initial = {true} />
-        </AccordionContainer>
-      </SpecContainer>
-    </MainContainer>
+          <ButtonsContainer>
+            <BuyButton selectedVariant = {selectedVariant} variants = {variants} />
+            <FavouriteButton
+              variantId = {variants.find(v => v.handle === selectedVariant).id}
+              productTitle = {title}
+              imgSrc = {variants.find(v => v.handle === selectedVariant).image}
+              price = {price}
+              variantHandle = {selectedVariant}
+              variantTitle = {variants.find(v => v.handle === selectedVariant).title}
+              productType = {productType}
+              productHandle = {productName}
+            />
+          </ButtonsContainer>
+          <AccordionContainer>
+            <ProductAccordion title = 'Description' content = {parse(description)} initial = {true} />
+            <ProductAccordion title = 'Ingredients & Allergens' content = {parse(description)} initial = {true} />
+            <ProductAccordion title = 'Delivery & Collection' content = {parse(description)} initial = {true} />
+          </AccordionContainer>
+        </SpecContainer>
+      </MainContainer>
+    </Primary>
   </>
 }
 

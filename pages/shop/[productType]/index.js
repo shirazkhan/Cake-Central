@@ -5,6 +5,8 @@ import styled from 'styled-components';
 import { Primary } from '../../../src/styled/App';
 import ProductGrid from '../../../components/productType Page/ProductGrid';
 import { GET_COLLECTIONS, GET_PRODUCTS_BY_COLLECTION_HANDLE} from '../../../graphql/Queries';
+import Head from 'next/head';
+import { WEBSITE_NAME } from '../../../GlobalVariables';
 
 const Container = styled.div`
     display: flex;
@@ -25,7 +27,10 @@ export default function ProductType({handle, title, description, products}) {
     const router = useRouter();
     const { productType } = router.query;
 
-    return (
+    return ( <>
+        <Head>
+            <title>{`${title} | ${WEBSITE_NAME}`}</title>
+        </Head>
         <Primary>
             <Header>
                 {title}
@@ -33,6 +38,7 @@ export default function ProductType({handle, title, description, products}) {
             <Description>{description}</Description>
             <ProductGrid reviewsOn = {false} products = {products} productType = {productType} />
         </Primary>
+    </>
     )
 }
 

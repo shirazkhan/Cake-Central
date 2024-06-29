@@ -1,7 +1,7 @@
 // SETUP
 
 export const DOMAIN = "https://www.redmondpie.com/";
-export const WEBSITE_NAME = "Grantham Cakes";
+export const WEBSITE_NAME = "Cake Central";
 export const DEV_MODE = false;
 
 // STYLING

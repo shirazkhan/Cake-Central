@@ -13,7 +13,6 @@ const Container = styled.div`
 
 const ProductTitle = styled.h1`
     font-size: 1.2em;
-    width: 100%;
     margin: 0;
 `;
 
@@ -23,7 +22,7 @@ const Icon = styled.img`
 `;
 
 const ProductType = styled(Link)`
-    width: 100%;
+    width: 25%;
     height: 25px;
     font-size: 0.8rem;
     font-weight: 400;
