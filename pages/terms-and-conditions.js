@@ -1,12 +1,13 @@
+import Head from 'next/head';
 import React from 'react';
 import styled from 'styled-components';
+import { WEBSITE_WIDTH } from '../GlobalVariables';
 
 const Container = styled.div`
     padding: 20px;
-    text-align: center;
-    li{
-        text-align: left;
-    }
+    text-align: left;
+    max-width: ${WEBSITE_WIDTH};
+    margin: 0 auto;
 `;
 
 export default function TermsAndConditions(props) {
@@ -14,6 +15,9 @@ export default function TermsAndConditions(props) {
 
     return (
         <>
+            <Head>
+                <title>Terms & Conditions | Cake Central </title>
+            </Head>
             <Container>
                 <section>
                     <h2>Terms of Use Agreement</h2>

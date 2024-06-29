@@ -16,7 +16,6 @@ export const MainGrid = styled.div`
   grid-template-rows: ${MOBILE_NAV_HEIGHT} auto auto;
   grid-template-columns: 1fr 1fr 1fr;
   margin: 0 auto;
-  max-width: ${WEBSITE_WIDTH};
   background: ${props => props.theme.main};
   font-family: futura-pt, sans-serif;
   font-weight: 400;

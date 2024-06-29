@@ -159,6 +159,11 @@ const BottomContent = styled.div`
     }
 `;
 
+const HygieneLink = styled.a`
+    max-width: 140px;
+    width: 100%;
+`;
+
 export default function Footer(props) {
     
 
@@ -168,7 +173,9 @@ export default function Footer(props) {
                 <InnerContainer>
                     <LogoContainer>
                         <CompanyLogo src='/logos/svg/CakeCentral-Logo-Black-Full.svg' />
-                        <HygieneRating src='hygiene.svg' />
+                        <HygieneLink target="_blank" href='https://ratings.food.gov.uk/business/1726795/cake-central-ltd'>
+                            <HygieneRating src='hygiene.svg' />
+                        </HygieneLink>
                     </LogoContainer>
                     <ContactContainer>
                         <span>Cake Central Ltd,</span>
@@ -179,27 +186,27 @@ export default function Footer(props) {
                         <span>Tel: 07908821919</span>
                     </ContactContainer>
                     <LinksContainer>
-                        <span>Our Story</span>
-                        <span>Serving Guide</span>
-                        <span>Returns / Refunds</span>
-                        <span>Delivery</span>
-                        <span>FAQ's</span>
+                        <Link href='our-story'>Our Story</Link>
+                        <Link href='serving-guide'>Serving Guide</Link>
+                        <Link href='return-policy'>Returns / Refunds</Link>
+                        <Link href='delivery-policy'>Delivery</Link>
+                        <Link href='faqs'>FAQ's</Link>
                     </LinksContainer>
                     <LinksContainer>
-                        <span>Wholesale</span>
-                        <span>Corportate</span>
-                        <span>Press Enquiries</span>
-                        <span>Terms & Conditions</span>
-                        <span>Privacy Policy</span>
+                        <Link href='wholesale'>Wholesale</Link>
+                        <Link href='corporate'>Corporate</Link>
+                        <Link href='press'>Press Enquiries</Link>
+                        <Link href='terms-and-conditions'>Terms & Conditions</Link>
+                        <Link href='privacy-policy'>Privacy Policy</Link>
                     </LinksContainer>
                     <SocialAndPaymentContainer>
                         <SocialAndPaymentTitle>Follow us</SocialAndPaymentTitle>
                         <SocialIcons>
-                            <FaFacebook size='31' color='black' />
-                            <FaSquareInstagram size='31' color='black' />
-                            <FaTiktok size='31' color='black' />
-                            <FaSquareXTwitter size='31' color='black' />
-                            <FaYoutube size='31' color='black' />
+                        <a target="_blank" href='https://www.facebook.com/cakecentraluk'><FaFacebook size='31' color='black' /></a>
+                        <a target="_blank" href='https://www.instagram.com/cakecentraluk'><FaSquareInstagram size='31' color='black' /></a>
+                        <a target="_blank" href='https://www.tiktok.com/@cakecentraluk'><FaTiktok size='31' color='black' /></a>
+                        <a target="_blank" href='https://www.x.com/cakecentraluk'><FaSquareXTwitter size='31' color='black' /></a>
+                        <a target="_blank" href='https://www.youtube.com/@cakecentraluk'><FaYoutube size='31' color='black' /></a>
                         </SocialIcons>
                         <SocialAndPaymentTitle>Accepted payment methods</SocialAndPaymentTitle>
                         <PaymentIcons>
@@ -211,7 +218,7 @@ export default function Footer(props) {
                             <path fill-rule="evenodd" clip-rule="evenodd" d="M42.3113 27.1625L35.9217 44.8213L35.1663 41.0185L35.167 41.0199L32.9114 29.4749C32.9114 29.4749 32.6394 27.1625 29.7324 27.1625H19.1709L19.0476 27.5966C19.0476 27.5966 22.2782 28.2669 26.057 30.5326L31.8793 52.8375H38.8617L49.5238 27.1625H42.3113Z" fill="#182E66"/>
                             <path fill-rule="evenodd" clip-rule="evenodd" d="M34.2857 40.9875L32.1534 29.4695C32.1534 29.4695 31.8963 27.1625 29.1482 27.1625H19.1641L19.0476 27.5955C19.0476 27.5955 23.8467 28.6432 28.4504 32.5652C32.8505 36.3145 34.2857 40.9875 34.2857 40.9875Z" fill="#182E66"/>
                         </svg>
-                        <svg viewBox="0 0 120 80" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <svg viewBox="0 0 120 80" xmlns="http://www.w3.org/2000/svg">
                         <rect width="120" height="80" rx="4" fill="white"/>
                         <path fill-rule="evenodd" clip-rule="evenodd" d="M97.5288 54.6562V53.7384H97.289L97.0137 54.3698L96.7378 53.7384H96.498V54.6562H96.6675V53.9637L96.9257 54.5609H97.1011L97.36 53.9624V54.6562H97.5288ZM96.0111 54.6562V53.8947H96.318V53.7397H95.5361V53.8947H95.843V54.6562H96.0111Z" fill="#F79E1B"/>
                         <path fill-rule="evenodd" clip-rule="evenodd" d="M49.6521 58.595H70.3479V21.4044H49.6521V58.595Z" fill="#FF5F00"/>
@@ -257,7 +264,9 @@ export default function Footer(props) {
             </Container>
                 <BottomContainer>
                     <BottomContent>
-                        <span>Terms & Conditions | Privacy Policy</span>
+                        <div>
+                            <Link href='/terms-and-conditions'>Terms & Conditions</Link> | <Link href='/privacy-policy'>Privacy Policy</Link>
+                        </div>
                         <span>© 2024 Cake Central Ltd 15718529. All Rights Reserved.</span>
                     </BottomContent>
                 </BottomContainer>

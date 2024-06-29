@@ -56,11 +56,9 @@ export default function SocialBanner(props) {
 
     return (
         <>
-            <div style={{ display: 'flex', justifyContent: 'center' }}>
-                <InstagramEmbed url="https://www.instagram.com/p/CUbHfhpswxt/" width={328} />
-            </div>
+            
             <Container>
-                <SocialName>@GranthamCakes</SocialName>
+                <SocialName>@CakeCentralUK</SocialName>
                 <SocialQuote>Follow us for all the goings at HQ, new product launches and behind the scenes action.</SocialQuote>
                 <SocialContent></SocialContent>
                 <SocialIcons>

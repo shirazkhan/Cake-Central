@@ -1,9 +1,13 @@
+import Head from 'next/head';
 import React from 'react';
 import styled from 'styled-components';
+import { WEBSITE_WIDTH } from '../GlobalVariables';
 
 const Container = styled.div`
-    text-align: center;
+    text-align: left;
     padding: 20px;
+    max-width: ${WEBSITE_WIDTH};
+    margin: 0 auto;
 `;
 
 export default function PrivacyPolicy(props) {
@@ -11,6 +15,9 @@ export default function PrivacyPolicy(props) {
 
     return (
         <>
+            <Head>
+                <title>Privacy Policy | Cake Central </title>
+            </Head>
             <Container>
                 <header>
                     <h1>Introduction to Our Privacy Policy</h1>

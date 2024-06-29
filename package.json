@@ -21,6 +21,7 @@
     "next-auth": "^4.24.5",
     "next-superjson": "^0.0.4",
     "nextjs-google-analytics": "^2.3.3",
+    "nodemailer": "^6.9.14",
     "react": "^18.2.0",
     "react-background-video-player": "^1.1.7",
     "react-cookie": "^4.1.1",
