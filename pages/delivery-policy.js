@@ -82,7 +82,7 @@ const DeliveryPolicy = () => {
   return (
     <div>
       <Banner
-        backgroundImage="/sprinkles.svg"
+        backgroundImage="/patterns/sprinkles.svg"
         title="Delivery Policy"
         description="Welcome to our Delivery Policy! We're thrilled to share our delightful treats with you. Here's everything you need to know about how we deliver our cakes, cookies, brownies, and cupcakes."
       />

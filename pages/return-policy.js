@@ -95,7 +95,7 @@ const RefundPolicy = () => {
   return (
     <ParallaxContainer>
       <Banner
-        backgroundImage="/sprinkles.svg"
+        backgroundImage="/patterns/sprinkles.svg"
         title="Refund/Refund Policy"
         description="We want every moment with our cakes and treats to be joyful. Here's our refund policy to ensure you have a delightful experience with us."
       />

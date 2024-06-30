@@ -2,67 +2,22 @@ import React from 'react';
 import styled from 'styled-components';
 import { DESKTOP_VIEW, PRIMARY_THEME_COLOR, SECONDARY_THEME_COLOR, WEBSITE_WIDTH } from '../GlobalVariables';
 import Faq from '../components/Faq';
+import Banner from '../components/Banner';
 
-const PosterTitle = styled.div`
-    width: 100%;
-    height: 600px;
-    background: ${SECONDARY_THEME_COLOR};
-    display: flex;
-    flex-direction: column-reverse;
-    font-size: 1.2em;
-
-    ${DESKTOP_VIEW}{
-        width: 100%;
-        height: 500px;
-        flex-direction: row;
-        gap: 75px;
-    }
-`;
-
-const Section = styled.div`
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    width: 100%;
-    height: 100%;
-    margin: 0 auto;
-    background-attachment: fixed;
-    background-position: center;
-    background-repeat: no-repeat;
-    background-size: cover;
-    
-    ${DESKTOP_VIEW}{
-        flex-direction: column;
-        justify-content: center;
-        align-items: flex-end;
-        width: 50%;
-    }
-`;
-
-const TextWrapper = styled.div`
-    width: 75%;
-    color: white;
-    text-shadow: 1px 1px 3px grey;
-    text-align: center;
-    max-width: 600px;
-`;
-
-const Title = styled.h1`
-    margin: 0;
-    font-weight: 400;
-    text-transform: capitalize;
-    line-height: 1em;
-    font-size: 4em;
-`;
-
-const Description = styled.p`
-
+const Section = styled.section`
+  margin: 25px auto;
+  background-color: #fff;
+  border-radius: 8px;
+  box-shadow: 0px 2px 6px rgba(0, 0, 0, 0.1);
+  padding: 30px;
+  font-size: 1.2em;
+  max-width: 1000px;
+  background-color: #f9f9f9;
+  width: 80%;
 `;
 
 const CategoryTitle = styled.h2`
-    margin-bottom: 10px;
-    margin-left: 10px;
+    margin-bottom: 50px;
     max-width: 1000px;
     width: 100%;
 `;
@@ -73,29 +28,12 @@ const Container = styled.div`
     display: flex;
     flex-direction: column;
     font-size: 1.2em;
+    position: relative;
+    z-index: 2;
+    font-size: 1em;
 `;
 
-const CategoryContainer = styled.div`
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    gap: 20px;
-    flex-wrap: wrap;
-    margin: 25px;
-    border: 1px solid red;
-    width: 100%;
-`;
 
-const Category = styled.div`
-    height: 60px;
-    width: 200px;
-    border: 2px solid ${PRIMARY_THEME_COLOR}90;
-    border-radius: 15px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    font-weight: 600;
-`;
 
 const questions = {
   'Delivery and Pickup': [
@@ -203,33 +141,17 @@ const questions = {
 const Faqs = () => {
   return (
     <>
-      <PosterTitle>
-        <Section>
-          <TextWrapper>
-            <Title>FAQs</Title>
-            <Description>Got a question about your Cake Central order? Dive into our FAQs below – your answer might be waiting for you in there!</Description>
-            <Description>If you don’t spot what you’re looking for, no worries! We’re excited to help, so feel free to reach out to us anytime.</Description>
-          </TextWrapper>
-        </Section>
-        <Section style={{backgroundImage: 'url("/sprinkles.svg")',}}>
-        </Section>
-      </PosterTitle>
+    <Banner
+        backgroundImage="/patterns/sprinkles.svg"
+        title="FAQs"
+        description="Got a question about your Cake Central order? Dive into our FAQs below – your answer might be waiting for you in there!"
+      />
       <Container>
-        {/*<CategoryContainer>
-          <Category>Delivery & Pickup</Category>
-          <Category>Cake Options & Customization</Category>
-          <Category>Orders & Payment</Category>
-          <Category>Cake Care</Category>
-          <Category>Changes & Cancellations</Category>
-          <Category>Additional Services</Category>
-          </CategoryContainer> */}
-
-        {/* Render FAQAccordion for each category */}
         {Object.entries(questions).map(([category, questionsArray]) => (
-          <div style={{width: '100%', margin: '0 auto'}} key={category}>
+          <Section key={category}>
             <CategoryTitle>{category}</CategoryTitle>
             <Faq questions={questionsArray} />
-          </div>
+          </Section>
         ))}
       </Container>
     </>

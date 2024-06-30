@@ -27,6 +27,7 @@ const Title = styled.h2`
   font-size: 2.5em;
   margin-bottom: 20px;
   color: ${PRIMARY_THEME_COLOR};
+  line-height: 1em;
 `;
 
 const ContactInfo = styled.div`
@@ -56,7 +57,7 @@ const PressEnquiriesPage = () => {
   return (
     <>
       <Banner
-        backgroundImage="/sprinkles.svg"
+        backgroundImage="/patterns/sprinkles.svg"
         title="Press Enquiries"
         description="Welcome to Cake Central's Press Enquiries Page. Find information for journalists, bloggers, and media professionals here."
       />

@@ -229,7 +229,7 @@ const StoryPage = () => {
   return (
     <>
       <Banner
-        backgroundImage="/sprinkles.svg"
+        backgroundImage="/patterns/sprinkles.svg"
         title="Sweet Beginnings: Our Joyful Journey"
         description="Embark on our delightful tale—from a passion for cakes to creating a family-centered business and dreaming of a sweeter future."
       />

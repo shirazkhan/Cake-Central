@@ -110,7 +110,7 @@ export default function ServingGuide(props) {
   return (
     <>
       <Banner
-        backgroundImage="/sprinkles.svg"
+        backgroundImage="/patterns/sprinkles.svg"
         title="Serving Guide"
         description="Find out how many servings you can get from our delicious cakes! Whether you're planning a birthday party, wedding, or any celebration, we've got you covered."
       />
