@@ -172,10 +172,9 @@ export const SwitchUI = styled.label`
 
 export const Content = styled.div`
   grid-area: Content;
-  display: block;
-  flex-direction: row;
-  min-height: 1000px;
-  font-size: 1.2rem;
+  display: flex;
+  flex-direction: column;
+  font-size: 1rem;
   line-height: 30px;
   width: 100%;
 

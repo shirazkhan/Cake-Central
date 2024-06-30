@@ -232,7 +232,7 @@ export default function MyApp({ Component, pageProps }) {
         <GlobalStyle />
         <SpeedInsights />
           <Header />
-          <AnnouncementBanner />
+          { /* <AnnouncementBanner /> */ }
         <MainGrid>
             <NavMenu />
           <Content>
