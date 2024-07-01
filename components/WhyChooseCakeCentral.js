@@ -9,7 +9,7 @@ const BannerWrapper = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
-  background-color: #113544;
+  background-color: #51788F;
   padding: 40px 20px;
   text-align: center;
   color: white;
@@ -27,10 +27,7 @@ const Title = styled.h2`
 const Description = styled.p`
   max-width: 1000px;
   margin: 30px auto;
-
-  ${DESKTOP_VIEW} {
-    font-size: 1rem;
-  }
+  font-size: 1.2em;
 `;
 
 const IconsWrapper = styled.div`
@@ -38,6 +35,7 @@ const IconsWrapper = styled.div`
   flex-wrap: wrap;
   justify-content: center;
   gap: 20px;
+  max-width: 1000px;
 `;
 
 const IconContainer = styled(motion.div)`
@@ -53,7 +51,7 @@ const IconContainer = styled(motion.div)`
 `;
 
 const IconCircle = styled.div`
-  background-color: white;
+  background-color: ${PRIMARY_THEME_COLOR}90;
   border-radius: 50%;
   padding: 15px;
   width: 80px;
@@ -70,24 +68,15 @@ const IconCircle = styled.div`
 `;
 
 const IconImage = styled.img`
-  width: 40px;
-  height: 40px;
-
-  ${DESKTOP_VIEW} {
-    width: 50px;
-    height: 50px;
-  }
+  width: 150px;
+  height: 150px;
 `;
 
 const IconText = styled.span`
-  font-size: 0.7rem;
+  font-size: 1.1em;
   text-align: center;
   margin-top: 10px;
   color: white;
-
-  ${DESKTOP_VIEW} {
-    font-size: 0.8rem;
-  }
 `;
 
 // Animation Variants
@@ -100,7 +89,7 @@ const variants = {
 const Banner = () => {
   const { ref, inView } = useInView({
     triggerOnce: true,
-    threshold: 0.1,
+    threshold: 0.4,
   });
 
   return (
@@ -113,37 +102,37 @@ const Banner = () => {
         <IconsWrapper>
           <IconContainer>
             <IconCircle>
-              <IconImage src="path_to_truck_icon.png" alt="Next day delivery" />
+              <IconImage src="/icons/elevate-your-menu.svg" alt="Next day delivery" />
             </IconCircle>
             <IconText>Next day delivery as standard</IconText>
           </IconContainer>
           <IconContainer>
             <IconCircle>
-              <IconImage src="path_to_uk_icon.png" alt="UK wide delivery" />
+              <IconImage src="/icons/elevate-your-menu.svg" alt="UK wide delivery" />
             </IconCircle>
             <IconText>UK wide delivery for all our cakes and bakes</IconText>
           </IconContainer>
           <IconContainer>
             <IconCircle>
-              <IconImage src="path_to_box_icon.png" alt="Robust packaging" />
+              <IconImage src="/icons/elevate-your-menu.svg" alt="Robust packaging" />
             </IconCircle>
             <IconText>Robust, protective packaging for safe delivery</IconText>
           </IconContainer>
           <IconContainer>
             <IconCircle>
-              <IconImage src="path_to_gluten_free_icon.png" alt="Gluten Free, Dairy Free & Vegan options" />
+              <IconImage src="/icons/elevate-your-menu.svg"alt="Gluten Free, Dairy Free & Vegan options" />
             </IconCircle>
             <IconText>Gluten Free, Dairy Free & Vegan options</IconText>
           </IconContainer>
           <IconContainer>
             <IconCircle>
-              <IconImage src="path_to_cake_icon.png" alt="Expanding ranges" />
+              <IconImage src="/icons/elevate-your-menu.svg" alt="Expanding ranges" />
             </IconCircle>
             <IconText>We are always expanding our ranges</IconText>
           </IconContainer>
           <IconContainer>
             <IconCircle>
-              <IconImage src="path_to_birthday_cake_icon.png" alt="All occasions" />
+              <IconImage src="/icons/elevate-your-menu.svg" alt="All occasions" />
             </IconCircle>
             <IconText>Something to suit all occasions</IconText>
           </IconContainer>
