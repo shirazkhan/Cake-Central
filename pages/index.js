@@ -11,6 +11,7 @@ import WhatsNew from '../components/WhatsNew';
 import FreeDeliveryBanner from '../components/FreeDeliveryBanner';
 import HeroBanner from '../components/HeroBanner';
 import { PRIMARY_BANNER_COLOR } from '../GlobalVariables';
+import WhatsappHeader from '../components/WhatsappHeader';
 
 const Container = styled.div`
     background: ${PRIMARY_BANNER_COLOR};
@@ -36,6 +37,7 @@ export default function Index() {
             content="Handcrafted cakes from Lincolnshire, delivered to your doorstep across the UK. Explore our mouthwatering selection of unique cakes, perfect for any celebration or sweet craving. Order now for a taste of homemade indulgence!"
         />
     </Head>
+    <WhatsappHeader />
     <HeroBanner/>
     <Container>
         <RoundedContainer>

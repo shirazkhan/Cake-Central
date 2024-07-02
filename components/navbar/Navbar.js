@@ -1,10 +1,8 @@
 import React, {useContext} from 'react';
-import { motion, useScroll } from 'framer-motion';
+import { motion } from 'framer-motion';
 import Link from 'next/link';
-import Image from 'next/link';
 import styled from 'styled-components';
 import { GlobalStateContext } from '../../pages/_app';
-import NavMenu from './NavMenu';
 import CartMenu from './CartMenu';
 import { NAV_BAR_COLOR, DESKTOP_VIEW, MOBILE, WEBSITE_WIDTH, DESKTOP_SCROLLED_NAV_HEIGHT, SECONDARY_THEME_COLOR } from '../../GlobalVariables';
 import dynamic from 'next/dynamic';

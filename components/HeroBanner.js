@@ -32,7 +32,7 @@ const Overlay = styled.div`
   left: 0;
   width: 100%;
   height: 100%;
-  background: rgba(0, 0, 0, 0.25); /* Optional: darkens the background for better text visibility */
+  background: rgba(0, 0, 0, 0.35); /* Optional: darkens the background for better text visibility */
 `;
 
 const Content = styled.div`
@@ -56,6 +56,7 @@ const Subtitle = styled.h2`
 const Description = styled.p`
   font-size: 1.5rem;
   margin-bottom: 30px;
+  max-width: 700px;
 `;
 
 const Button = styled.button`
@@ -91,9 +92,9 @@ const HeroBanner = () => {
       <Background style={{ y }} />
       <Overlay />
       <Content>
-        <Subtitle>Celebration & Wedding Cakes Grantham</Subtitle>
+        <Subtitle>Celebration & Wedding Cakes based in Grantham</Subtitle>
         <Title>Welcome to Cake Central</Title>
-        <Description>Indulge in our wide variety of cakes made with love and the finest ingredients.</Description>
+        <Description>Indulge in our wide variety of luxury cakes. Create your own bespoke design or choose a ready made design to your liking.</Description>
         <Button onClick={() => alert('Build a cake clicked')}>Let's build a cake</Button>
         <Button onClick={() => alert('Shop Now clicked')}>Shop Now</Button>
       </Content>

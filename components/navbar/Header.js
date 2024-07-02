@@ -5,7 +5,6 @@ import NavBar from './Navbar';
 import { GlobalStateContext } from '../../pages/_app';
 import { motion } from 'framer-motion';
 import dynamic from 'next/dynamic'
-import AnnouncementBanner from '../index/AnnouncementBanner';
 const MediaQuery = dynamic(() => import('react-responsive'), {
   ssr: false
 })
