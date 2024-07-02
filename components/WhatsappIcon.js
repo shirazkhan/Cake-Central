@@ -1,10 +1,11 @@
 import { useEffect, useState, useContext } from 'react';
-import { motion } from 'framer-motion';
+import { motion, AnimatePresence } from 'framer-motion';
 import { GlobalStateContext } from '../pages/_app';
 
 const WhatsAppIcon = () => {
-  const { globalState, dispatch } = useContext(GlobalStateContext);
+  const { globalState } = useContext(GlobalStateContext);
   const [showIcon, setShowIcon] = useState(false);
+  const [showBubble, setShowBubble] = useState(true);
 
   useEffect(() => {
     if (!globalState.isDesktop && globalState.scrollYProgress > 0.1) {
@@ -13,6 +14,15 @@ const WhatsAppIcon = () => {
       setShowIcon(false);
     }
   }, [globalState.scrollYProgress, globalState.isDesktop]);
+
+  useEffect(() => {
+    if (showIcon && showBubble) {
+      const timer = setTimeout(() => {
+        setShowBubble(false);
+      }, 8000);
+      return () => clearTimeout(timer);
+    }
+  }, [showIcon, showBubble]);
 
   const handleClick = () => {
     window.location.href = 'https://wa.me/+447768672154';
@@ -28,6 +38,19 @@ const WhatsAppIcon = () => {
         onClick={handleClick}
         exit={{ opacity: 0, y: 20 }}
       >
+        <AnimatePresence>
+          {showBubble && (
+            <motion.div
+              initial={{ opacity: 0, x: -10 }}
+              animate={{ opacity: 1, x: 0 }}
+              exit={{ opacity: 0, x: 10 }}
+              transition={{ duration: 0.5 }}
+              style={styles.bubble}
+            >
+              Let's chat over WhatsApp
+            </motion.div>
+          )}
+        </AnimatePresence>
         <motion.img
           src="/icons/whatsapp.svg"
           alt="WhatsApp Icon"
@@ -50,13 +73,29 @@ const styles = {
   iconContainer: {
     position: 'fixed',
     bottom: '20px',
-    right: '20px',
+    right: '10px',
     cursor: 'pointer',
     zIndex: 8,
+    
   },
   icon: {
     width: '65px',
     height: '65px',
+        
+  },
+  bubble: {
+    position: 'absolute',
+    bottom: '13px', // Adjust as needed
+    right: '65px',  // Adjust as needed
+    backgroundColor: '#25D366',
+    color: 'white',
+    padding: '10px',
+    fontWeight: '550',
+    width: '175px',
+    borderRadius: '10px',
+    boxShadow: 'rgba(0, 0, 0, 0.25) 0px 54px 55px, rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px, rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px;',
+    fontSize: '16px',
+    zIndex: 9,
   },
 };
 
