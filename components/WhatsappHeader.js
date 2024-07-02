@@ -12,17 +12,12 @@ const Container = styled.div`
     position: relative;
     color: white;
     display: flex;
-    justify-content: center;
+    justify-content: space-around;
     align-items: center;
-    gap: 20px;
+    gap: 25px;
     font-weight: 400;
-    font-size: 1em;
+    font-size: 1.3em;
     letter-spacing: .1em;
-
-    ${DESKTOP_VIEW}{
-        font-size: 1.3em;
-        gap: 25px;
-    }
 `;
 
 const Rating = styled.h4`
@@ -46,12 +41,8 @@ const Stars = styled.div`
     display: flex;
     justify-content: center;
     align-items: center;
-    gap: 1px;
+    gap: 3px;
     margin-top: -3px;
-    
-    ${DESKTOP_VIEW}{
-        gap: 3px;
-    }
 `;
 
 const ContactContainer = styled.div`
@@ -65,6 +56,11 @@ const Phone = styled.p`
     margin: 0;
     padding: 0;
     letter-spacing: 0;
+    display: none;
+
+    ${DESKTOP_VIEW}{
+        display: inline;
+    }
 `;
 
 const WhatsApp = styled.img`
