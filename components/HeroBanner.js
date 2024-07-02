@@ -1,19 +1,17 @@
 // HeroBanner.js
-import React, { useEffect, useState } from 'react';
+import React from 'react';
 import styled from 'styled-components';
-import { motion, useViewportScroll, useTransform } from 'framer-motion';
-import { DESKTOP_VIEW, PRIMARY_BUTTON_COLOR, SECONDARY_BUTTON_COLOR } from '../GlobalVariables';
+import { motion, useTransform, useScroll } from 'framer-motion';
+import { PRIMARY_BUTTON_COLOR, SECONDARY_BUTTON_COLOR } from '../GlobalVariables';
 
 const HeroContainer = styled.div`
   position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
   width: 100%;
-  height: 70vh;
-  overflow: hidden;
+  height: 80vh;
   perspective: 1px;
-
-  ${DESKTOP_VIEW}{
-    height: 80vh;
-  }
 `;
 
 const Background = styled(motion.div)`
@@ -38,13 +36,10 @@ const Overlay = styled.div`
 `;
 
 const Content = styled.div`
-  position: relative;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
   text-align: center;
   color: #fff;
   z-index: 1;
+  text-shadow: 0px 2px 2px rgba(50, 50, 50, 0.4); 
 `;
 
 const Title = styled.h1`
@@ -53,7 +48,9 @@ const Title = styled.h1`
 `;
 
 const Subtitle = styled.h2`
-  font-size: 1rem;
+  font-size: 1em;
+  margin-bottom: -25px;
+  font-weight: 600;
 `;
 
 const Description = styled.p`
@@ -66,6 +63,7 @@ const Button = styled.button`
   padding: 10px 20px;
   margin: 10px;
   border: none;
+  text-shadow: 0px 2px 2px rgba(50, 50, 50, 0.4); 
   background-color: ${PRIMARY_BUTTON_COLOR};
   font-weight: 500;
   border-radius: 20px;
@@ -85,7 +83,7 @@ const Button = styled.button`
 `;
 
 const HeroBanner = () => {
-  const { scrollY } = useViewportScroll();
+  const { scrollY } = useScroll();
   const y = useTransform(scrollY, [0, 500], [0, 100]);
 
   return (
@@ -93,7 +91,7 @@ const HeroBanner = () => {
       <Background style={{ y }} />
       <Overlay />
       <Content>
-        <Subtitle>Lincolnshire and Grantham Based Cake Decorator</Subtitle>
+        <Subtitle>Celebration & Wedding Cakes Grantham</Subtitle>
         <Title>Welcome to Cake Central</Title>
         <Description>Indulge in our wide variety of cakes made with love and the finest ingredients.</Description>
         <Button onClick={() => alert('Build a cake clicked')}>Let's build a cake</Button>

@@ -2,9 +2,12 @@ import React, {useState, useEffect, useRef, useContext} from 'react';
 import styled from 'styled-components';
 import Link from 'next/link';
 import Image from 'next/image';
-import { DESKTOP_VIEW, PRIMARY_THEME_COLOR } from '../GlobalVariables';
+import { DESKTOP_VIEW, PRIMARY_THEME_COLOR, SECONDARY_THEME_COLOR } from '../GlobalVariables';
 import { inView, motion, useScroll, useAnimate } from "framer-motion";
 import { GlobalStateContext } from '../pages/_app';
+import { FaArrowLeft } from "react-icons/fa6";
+import { FaArrowRight } from "react-icons/fa6";
+
 
 const cardWidth = 250;
 const cardHeight = 290;
@@ -188,9 +191,12 @@ const Button = styled(motion.button)`
     height: 50px;
     width: 50px;
     border-radius: 50px;
-    background: ${PRIMARY_THEME_COLOR};
-    border: 2px solid white;
-    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+    border: none;
+    background: ${SECONDARY_THEME_COLOR};
+    box-shadow: rgba(0, 0, 0, 0.4) 0px 2px 4px, rgba(0, 0, 0, 0.3) 0px 7px 13px -3px, rgba(0, 0, 0, 0.2) 0px -3px 0px inset;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 `;
 
 export default function ShopCarousel({data, title, subtitle, handle, cardType, endCard}) {
@@ -271,14 +277,16 @@ export default function ShopCarousel({data, title, subtitle, handle, cardType, e
                 onClick={handleScrollLeft}
                 whileHover={{scale: 1.2}}
                 whileTap={{scale: 1}}
-            >{'<'}</Button>
+            ><FaArrowLeft color='white' size={20}/>
+            </Button>
         </LeftButton>
         <RightButton ref={scopeR}>
             <Button
                 onClick={handleScrollRight}
                 whileHover={{scale: 1.2}}
                 whileTap={{scale: 1}}
-            >{'>'}</Button>
+            ><FaArrowRight color={'white'} size={20}/>
+            </Button>
         </RightButton></>
     }
 

@@ -237,29 +237,11 @@ export default function MyApp({ Component, pageProps }) {
         <MainGrid>
             <NavMenu />
           <Content>
-              {/* Content Goes Here */}
               <Component {...pageProps} />
-              {/* ///////////////// */}
             <WhyChooseCakeCentral />
           </Content>
         </MainGrid>
         <Footer />
-          {/* {<Footer>
-            <FooterContent>
-              <FooterColumn>
-                <FooterLink href = '/' passHref>FAQ</FooterLink>
-                <FooterLink href = '/privacy-policy' passHref>Privacy Policy</FooterLink>
-                <FooterLink href = '/' passHref>Billing and Shipping</FooterLink>
-                <FooterLink href = '/terms-and-conditions' passHref>Terms and Conditions</FooterLink>
-              </FooterColumn>
-              <FooterColumn>
-                <FooterLink href = '/' passHref>About Henna Central</FooterLink>
-                <FooterLink href = '/' passHref>About Sidra Khan</FooterLink>
-                <FooterLink href = '/' passHref>Work With Us</FooterLink>
-                <FooterLink href = '/' passHref>Contact Us</FooterLink>
-              </FooterColumn>
-            </FooterContent>
-          </Footer>} */}
       </ThemeProvider>
     </GlobalStateContext.Provider>
     </ApolloProvider>

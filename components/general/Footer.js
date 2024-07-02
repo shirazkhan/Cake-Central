@@ -14,6 +14,13 @@ const Container = styled.div`
     }
 `;
 
+const Decoration = styled.img`
+    width: 100%;
+    position: absolute;
+    z-index: 10;
+
+`;
+
 const InnerContainer = styled.div`
     width: 100%;
     max-width: calc(${WEBSITE_WIDTH} - 50px);

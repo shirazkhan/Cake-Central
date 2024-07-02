@@ -23,6 +23,7 @@ const RoundedContainer = styled.div`
     position: relative;
     background: white;
     padding: 25px 0;
+    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
 `;
 
 export default function Index() {
