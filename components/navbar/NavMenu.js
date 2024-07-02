@@ -83,7 +83,7 @@ const Background = styled(motion.div)`
     position: fixed;
     top: 50px;
     right: 0;
-    z-index: 8;
+    z-index: 6;
     opacity: 0;
     background: rgba(0,0,0,0.8);
     backdrop-filter: blur(14px);
