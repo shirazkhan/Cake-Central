@@ -2,14 +2,14 @@ import React from 'react';
 import styled from 'styled-components';
 import { motion } from 'framer-motion';
 import { useInView } from 'react-intersection-observer';
-import { PRIMARY_THEME_COLOR, DESKTOP_VIEW } from '../GlobalVariables';
+import { PRIMARY_THEME_COLOR, DESKTOP_VIEW, PRIMARY_BANNER_COLOR, SECONDARY_BANNER_COLOR } from '../GlobalVariables';
 
 // Styled Components
 const BannerWrapper = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
-  background-color: #51788F;
+  background-color: ${SECONDARY_BANNER_COLOR};
   padding: 40px 20px;
   text-align: center;
   color: white;

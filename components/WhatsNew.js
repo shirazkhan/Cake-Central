@@ -2,7 +2,7 @@ import React from 'react';
 import styled from 'styled-components';
 import { motion } from 'framer-motion';
 import { useInView } from 'react-intersection-observer';
-import { PRIMARY_THEME_COLOR, DESKTOP_VIEW, WEBSITE_WIDTH } from '../GlobalVariables';
+import { PRIMARY_THEME_COLOR, DESKTOP_VIEW, WEBSITE_WIDTH, PRIMARY_BUTTON_COLOR } from '../GlobalVariables';
 
 // Placeholder Image
 const PlaceholderImage = styled.div`
@@ -93,7 +93,7 @@ const ProductDescription = styled.p`
 `;
 
 const ShopNowButton = styled(motion.button)`
-  background-color: #FFABBB;
+  background-color: ${PRIMARY_BUTTON_COLOR};
   color: white;
   border: none;
   border-radius: 20px;

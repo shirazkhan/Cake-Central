@@ -7,6 +7,12 @@ export const DEV_MODE = false;
 // STYLING
 export const PRIMARY_THEME_COLOR = "#FFABBB";
 export const SECONDARY_THEME_COLOR = "#88CBEB";
+export const PRIMARY_BANNER_COLOR = "#113544";
+export const SECONDARY_BANNER_COLOR = "#51788F";
+export const PRIMARY_BUTTON_COLOR = "#FF6B7B";
+export const SECONDARY_BUTTON_COLOR = "#5599CC";
+export const PRIMARY_FONT_COLOR = "#FFFFFF";
+export const SECONDARY_FONT_COLOR = "#000000";
 export const WEBSITE_WIDTH = "1400px";
 //export const TABLET = "1050px";
 export const MOBILE = "992px";

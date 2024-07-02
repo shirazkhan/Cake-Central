@@ -264,18 +264,14 @@ export default function ShopCarousel({data, title, subtitle, handle, cardType, e
                 <Title>{title}</Title>
                 <SubTitle>{subtitle}</SubTitle>
                 <CardsContainer>
-                        <LeftButton
-                            ref={scopeL}
-                        >
+                    <LeftButton ref={scopeL}>
                             <Button
                                 onClick={handleScrollLeft}
                                 whileHover={{scale: 1.2}}
                                 whileTap={{scale: 1}}
                             >{'<'}</Button>
                         </LeftButton>
-                        <RightButton
-                            ref={scopeR}
-                        >
+                        <RightButton ref={scopeR}>
                             <Button
                                 onClick={handleScrollRight}
                                 whileHover={{scale: 1.2}}
@@ -284,7 +280,6 @@ export default function ShopCarousel({data, title, subtitle, handle, cardType, e
                         </RightButton>
                     <Cards onScroll={() => handleScroll()} ref={cardsContainerRef}>    
                         {renderCards()}
-                        <EndCard>Shop More</EndCard>
                         <EndPiece />
                     </Cards>
                 </CardsContainer>

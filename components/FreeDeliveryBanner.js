@@ -2,13 +2,13 @@ import React from 'react';
 import styled from 'styled-components';
 import { motion } from 'framer-motion';
 import { useInView } from 'react-intersection-observer';
-import { PRIMARY_THEME_COLOR, DESKTOP_VIEW, WEBSITE_WIDTH } from '../GlobalVariables';
+import { PRIMARY_THEME_COLOR, DESKTOP_VIEW, WEBSITE_WIDTH, PRIMARY_BANNER_COLOR, PRIMARY_BUTTON_COLOR, SECONDARY_BUTTON_COLOR } from '../GlobalVariables';
 
 const BannerWrapper = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
-  background-color: #113544;
+  background-color: ${PRIMARY_BANNER_COLOR};
   padding: 40px 20px;
   text-align: center;
   color: #ffffff;
@@ -81,7 +81,7 @@ const Description = styled.p`
 `;
 
 const ActionButton = styled(motion.button)`
-  background-color: #FFABBB;
+  background-color: ${PRIMARY_BUTTON_COLOR};
   color: white;
   border: none;
   border-radius: 20px;
