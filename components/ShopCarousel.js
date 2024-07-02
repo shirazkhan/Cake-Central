@@ -87,7 +87,7 @@ const CardImage = styled(Image)`
 const CardInfo = styled.div`
     height: 120px;
     width: 100%;
-    z-index: 333;
+    z-index: 4;
     position: relative;
     margin-top: -120px;
     backdrop-filter: blur(10px);
@@ -162,7 +162,7 @@ const LeftButton = styled(motion.div)`
     top: 0;
     height: 100%;
     width: 70px;
-    z-index: 122332;
+    z-index: 5;
     background: linear-gradient(90deg, rgba(255,255,255,1) 0%, rgba(255,255,255,1) 5%, rgba(255,255,255,0) 100%);
     align-items: center;
     padding-left: 20px;
@@ -178,7 +178,7 @@ const RightButton = styled(motion.div)`
     top: 0;
     height: 100%;
     width: 50px;
-    z-index: 1122332;
+    z-index: 5;
     background: linear-gradient(270deg, rgba(255,255,255,1) 0%, rgba(255,255,255,1) 5%, rgba(255,255,255,0) 100%);
     align-items: center;
     padding-right: 20px;

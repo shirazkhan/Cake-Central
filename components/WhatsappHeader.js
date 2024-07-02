@@ -1,5 +1,6 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import styled from 'styled-components';
+import { GlobalStateContext } from '../pages/_app';
 import { DESKTOP_VIEW, PRIMARY_BANNER_COLOR } from '../GlobalVariables';
 import { FaStar } from "react-icons/fa";
 
@@ -12,7 +13,7 @@ const Container = styled.div`
     position: relative;
     color: white;
     display: flex;
-    justify-content: space-around;
+    justify-content: space-evenly;
     align-items: center;
     gap: 0;
     font-weight: 400;
@@ -21,6 +22,7 @@ const Container = styled.div`
 
     ${DESKTOP_VIEW}{
         gap: 25px;
+        justify-content: center;
     }
 `;
 
@@ -28,11 +30,12 @@ const Rating = styled.h4`
     margin: 0;
     padding: 0;
     font-weight: 400;
+    padding-right: 5px;
 `;
 
 const ReviewContainer = styled.div`
     display: flex;
-    gap: 10px;
+    gap: 5px;
     justify-content: center;
     align-items: center;
 `
@@ -72,7 +75,6 @@ const WhatsApp = styled.img`
 `;
 
 export default function WhatsappHeader(props) {
-    
 
     return (
         <>
@@ -90,7 +92,7 @@ export default function WhatsappHeader(props) {
                 </ReviewContainer>
                 <ContactContainer>
                     <WhatsApp src='/icons/whatsapp.svg' />
-                    <Phone>079088 211919</Phone>
+                    <Phone>07768 672154</Phone>
                 </ContactContainer>
             </Container>
         </>

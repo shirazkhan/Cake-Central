@@ -45,7 +45,7 @@ const Selected = styled(motion.div)`
     border-radius: ${props => props.selected ? '11px' : ''};
     background: ${props => props.selected ? PRIMARY_THEME_COLOR + '40' : ''};
     margin-left: ${props => props.selected ? '-110px' : ''};
-    z-index: 33;
+    z-index: 6;
 `;
 
 const renderVariants = (variants,selected,setSelected) =>

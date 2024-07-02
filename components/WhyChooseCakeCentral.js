@@ -102,15 +102,15 @@ const Banner = () => {
         <IconsWrapper>
           <IconContainer>
             <IconCircle>
-              <IconImage src="/icons/elevate-your-menu.svg" alt="Next day delivery" />
+              <IconImage src="/icons/cake-delivery.svg" alt="Next day delivery" />
             </IconCircle>
-            <IconText>Next day delivery as standard</IconText>
+            <IconText>Free local delivery in Grantham</IconText>
           </IconContainer>
           <IconContainer>
             <IconCircle>
               <IconImage src="/icons/elevate-your-menu.svg" alt="UK wide delivery" />
             </IconCircle>
-            <IconText>UK wide delivery for all our cakes and bakes</IconText>
+            <IconText>UK Nationwide delivery for all our brownies and cookies</IconText>
           </IconContainer>
           <IconContainer>
             <IconCircle>
@@ -120,9 +120,9 @@ const Banner = () => {
           </IconContainer>
           <IconContainer>
             <IconCircle>
-              <IconImage src="/icons/elevate-your-menu.svg"alt="Gluten Free, Dairy Free & Vegan options" />
+              <IconImage src="/icons/elevate-your-menu.svg"alt="Competetive pricing" />
             </IconCircle>
-            <IconText>Gluten Free, Dairy Free & Vegan options</IconText>
+            <IconText>Competitive pricing and value for money</IconText>
           </IconContainer>
           <IconContainer>
             <IconCircle>
