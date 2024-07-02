@@ -14,10 +14,14 @@ const Container = styled.div`
     display: flex;
     justify-content: space-around;
     align-items: center;
-    gap: 25px;
+    gap: 0;
     font-weight: 400;
     font-size: 1.3em;
     letter-spacing: .1em;
+
+    ${DESKTOP_VIEW}{
+        gap: 25px;
+    }
 `;
 
 const Rating = styled.h4`
