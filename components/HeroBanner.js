@@ -2,7 +2,7 @@
 import React, { useEffect, useState } from 'react';
 import styled from 'styled-components';
 import { motion, useViewportScroll, useTransform } from 'framer-motion';
-import { DESKTOP_VIEW } from '../GlobalVariables';
+import { DESKTOP_VIEW, PRIMARY_BUTTON_COLOR, SECONDARY_BUTTON_COLOR } from '../GlobalVariables';
 
 const HeroContainer = styled.div`
   position: relative;
@@ -34,7 +34,7 @@ const Overlay = styled.div`
   left: 0;
   width: 100%;
   height: 100%;
-  background: rgba(0, 0, 0, 0.0); /* Optional: darkens the background for better text visibility */
+  background: rgba(0, 0, 0, 0.25); /* Optional: darkens the background for better text visibility */
 `;
 
 const Content = styled.div`
@@ -48,13 +48,12 @@ const Content = styled.div`
 `;
 
 const Title = styled.h1`
-  font-size: 4rem;
+  font-size: 2.5em;
   margin-bottom: 20px;
 `;
 
 const Subtitle = styled.h2`
-  font-size: 2.5rem;
-  margin-bottom: 20px;
+  font-size: 1rem;
 `;
 
 const Description = styled.p`
@@ -63,17 +62,20 @@ const Description = styled.p`
 `;
 
 const Button = styled.button`
-  font-size: 1.2rem;
+  font-size: 1.1rem;
   padding: 10px 20px;
   margin: 10px;
-  background-color: #007bff;
   border: none;
+  background-color: ${PRIMARY_BUTTON_COLOR};
+  font-weight: 500;
+  border-radius: 20px;
+  box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
   color: #fff;
   cursor: pointer;
   transition: background-color 0.3s ease, transform 0.3s ease;
 
   &:hover {
-    background-color: #0056b3;
+    background-color: ${SECONDARY_BUTTON_COLOR};
     transform: scale(1.05);
   }
 
@@ -91,8 +93,8 @@ const HeroBanner = () => {
       <Background style={{ y }} />
       <Overlay />
       <Content>
-        <Title>Welcome to Cake Heaven</Title>
-        <Subtitle>Delicious Cakes for Every Occasion</Subtitle>
+        <Subtitle>Lincolnshire and Grantham Based Cake Decorator</Subtitle>
+        <Title>Welcome to Cake Central</Title>
         <Description>Indulge in our wide variety of cakes made with love and the finest ingredients.</Description>
         <Button onClick={() => alert('Build a cake clicked')}>Let's build a cake</Button>
         <Button onClick={() => alert('Shop Now clicked')}>Shop Now</Button>

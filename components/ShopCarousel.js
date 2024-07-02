@@ -21,7 +21,7 @@ const Container = styled.div`
 `;
 
 const Title = styled.h3`
-    margin: 0px 15px;
+    margin: 0px 25px;
     padding: 0;
     font-size: 1.5em;
     color: ${PRIMARY_THEME_COLOR};
@@ -29,7 +29,7 @@ const Title = styled.h3`
 `;
 
 const SubTitle = styled.h4`
-    margin: 0 15px;
+    margin: 0 25px;
     padding: 0;
     font-size: 0.9em;
 `;
