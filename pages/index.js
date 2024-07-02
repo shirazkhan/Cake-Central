@@ -10,13 +10,19 @@ import SocialBanner from '../components/index/SocialBanner';
 import WhatsNew from '../components/WhatsNew';
 import FreeDeliveryBanner from '../components/FreeDeliveryBanner';
 import HeroBanner from '../components/HeroBanner';
+import { PRIMARY_BANNER_COLOR } from '../GlobalVariables';
+
+const Container = styled.div`
+    background: ${PRIMARY_BANNER_COLOR};
+    padding-bottom: 20px;
+`;
 
 const RoundedContainer = styled.div`
     border-radius: 20px;
-    margin-top: -50px;
+    margin: -50px 0;
     position: relative;
     background: white;
-    padding-top: 25px;
+    padding: 25px 0;
 `;
 
 export default function Index() {
@@ -30,14 +36,16 @@ export default function Index() {
         />
     </Head>
     <HeroBanner/>
-    <RoundedContainer>
-        <ShopCarousel data = {cakes} title={"CELEBRATION CAKES"} subtitle={"Your celebrations into sweet memories"}/>
-        <ShopCarousel data = {weddingcakes} title={"WEDDING CAKES"} subtitle={"Baked with care, sealed with love"}/>
-        <ShopCarousel data = {cupcakes} title={"CUPCAKES"} subtitle={"Tiny cakes, huge happiness"}/>
-        <ShopCarousel data = {brownies} title={"BROWNIES"} subtitle={"Gooey goodness in every square"}/>
-    </RoundedContainer>
-    <FreeDeliveryBanner />
-    <WhatsNew />
+    <Container>
+        <RoundedContainer>
+            <ShopCarousel data = {cakes} title={"CELEBRATION CAKES"} subtitle={"Your celebrations into sweet memories"}/>
+            <ShopCarousel data = {weddingcakes} title={"WEDDING CAKES"} subtitle={"Baked with care, sealed with love"}/>
+            <ShopCarousel data = {cupcakes} title={"CUPCAKES"} subtitle={"Tiny cakes, huge happiness"}/>
+            <ShopCarousel data = {brownies} title={"BROWNIES"} subtitle={"Gooey goodness in every square"}/>
+        <FreeDeliveryBanner />
+        <WhatsNew />
+        </RoundedContainer>
+    </Container>
     {/*<SocialBanner />*/}
     </>
 }

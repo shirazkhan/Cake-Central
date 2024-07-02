@@ -154,7 +154,7 @@ const SliderMenu = styled.div`
 
 const LeftButton = styled(motion.div)`
     position: absolute;
-    display: flex;
+    display: none;
     left: 0;
     top: 0;
     height: 100%;
@@ -163,11 +163,14 @@ const LeftButton = styled(motion.div)`
     background: linear-gradient(90deg, rgba(255,255,255,1) 0%, rgba(255,255,255,1) 5%, rgba(255,255,255,0) 100%);
     align-items: center;
     padding-left: 20px;
+    ${DESKTOP_VIEW}{
+        display: flex;
+    }
 `;
 
 const RightButton = styled(motion.div)`
     position: absolute;
-    display: flex;
+    display: none;
     right: 0;
     top: 0;
     height: 100%;
@@ -176,6 +179,9 @@ const RightButton = styled(motion.div)`
     background: linear-gradient(270deg, rgba(255,255,255,1) 0%, rgba(255,255,255,1) 5%, rgba(255,255,255,0) 100%);
     align-items: center;
     padding-right: 20px;
+    ${DESKTOP_VIEW}{
+        display: flex;
+    }
 `;
 
 const Button = styled(motion.button)`
@@ -206,27 +212,6 @@ export default function ShopCarousel({data, title, subtitle, handle, cardType, e
             cardsContainerRef.current.scrollLeft += 1000; // Adjust the scroll amount as needed
         }
     };
-
-    const renderButtons = () => {
-        if(globalState.isDesktop){
-            return <>
-                <LeftButton ref={scopeL}>
-                <Button
-                    onClick={handleScrollLeft}
-                    whileHover={{scale: 1.2}}
-                    whileTap={{scale: 1}}
-                >{'<'}</Button>
-            </LeftButton>
-            <RightButton ref={scopeR}>
-                <Button
-                    onClick={handleScrollRight}
-                    whileHover={{scale: 1.2}}
-                    whileTap={{scale: 1}}
-                >{'>'}</Button>
-            </RightButton></>
-        }
-        return ''
-    }
 
     const renderCards = () =>
       data.map((node,b) =>
@@ -263,7 +248,6 @@ export default function ShopCarousel({data, title, subtitle, handle, cardType, e
   useEffect(() => {
     // This "li" selector will only select children
     // of the element that receives `scope`.
-    if(globalState.isDesktop){
         if(scrollXProgress.current >= 0.1){
             animateL("button", { opacity: 1 })
             animateL(scopeL.current, { opacity: 1 })
@@ -278,8 +262,25 @@ export default function ShopCarousel({data, title, subtitle, handle, cardType, e
             animateR("button", { opacity: 0 })
             animateR(scopeR.current, { opacity: 0 })
         }
-    }
   })
+
+    const renderButtons = () => {
+        return <>
+            <LeftButton ref={scopeL}>
+            <Button
+                onClick={handleScrollLeft}
+                whileHover={{scale: 1.2}}
+                whileTap={{scale: 1}}
+            >{'<'}</Button>
+        </LeftButton>
+        <RightButton ref={scopeR}>
+            <Button
+                onClick={handleScrollRight}
+                whileHover={{scale: 1.2}}
+                whileTap={{scale: 1}}
+            >{'>'}</Button>
+        </RightButton></>
+    }
 
     return (
         <>
