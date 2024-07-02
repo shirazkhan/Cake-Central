@@ -207,6 +207,27 @@ export default function ShopCarousel({data, title, subtitle, handle, cardType, e
         }
     };
 
+    const renderButtons = () => {
+        if(globalState.isDesktop){
+            return <>
+                <LeftButton ref={scopeL}>
+                <Button
+                    onClick={handleScrollLeft}
+                    whileHover={{scale: 1.2}}
+                    whileTap={{scale: 1}}
+                >{'<'}</Button>
+            </LeftButton>
+            <RightButton ref={scopeR}>
+                <Button
+                    onClick={handleScrollRight}
+                    whileHover={{scale: 1.2}}
+                    whileTap={{scale: 1}}
+                >{'>'}</Button>
+            </RightButton></>
+        }
+        return ''
+    }
+
     const renderCards = () =>
       data.map((node,b) =>
         <Link key={b} href={`/shop/${node.handle}/`}>
@@ -242,19 +263,21 @@ export default function ShopCarousel({data, title, subtitle, handle, cardType, e
   useEffect(() => {
     // This "li" selector will only select children
     // of the element that receives `scope`.
-    if(scrollXProgress.current >= 0.1){
-        animateL("button", { opacity: 1 })
-        animateL(scopeL.current, { opacity: 1 })
-    } else {
-        animateL("button", { opacity: 0 })
-        animateL(scopeL.current, { opacity: 0 })
-    }
-    if(scrollXProgress.current <= 0.9){
-        animateR("button", { opacity: 1 })
-        animateR(scopeR.current, { opacity: 1 })
-    } else {
-        animateR("button", { opacity: 0 })
-        animateR(scopeR.current, { opacity: 0 })
+    if(globalState.isDesktop){
+        if(scrollXProgress.current >= 0.1){
+            animateL("button", { opacity: 1 })
+            animateL(scopeL.current, { opacity: 1 })
+        } else {
+            animateL("button", { opacity: 0 })
+            animateL(scopeL.current, { opacity: 0 })
+        }
+        if(scrollXProgress.current <= 0.9){
+            animateR("button", { opacity: 1 })
+            animateR(scopeR.current, { opacity: 1 })
+        } else {
+            animateR("button", { opacity: 0 })
+            animateR(scopeR.current, { opacity: 0 })
+        }
     }
   })
 
@@ -264,20 +287,7 @@ export default function ShopCarousel({data, title, subtitle, handle, cardType, e
                 <Title>{title}</Title>
                 <SubTitle>{subtitle}</SubTitle>
                 <CardsContainer>
-                    <LeftButton ref={scopeL}>
-                            <Button
-                                onClick={handleScrollLeft}
-                                whileHover={{scale: 1.2}}
-                                whileTap={{scale: 1}}
-                            >{'<'}</Button>
-                        </LeftButton>
-                        <RightButton ref={scopeR}>
-                            <Button
-                                onClick={handleScrollRight}
-                                whileHover={{scale: 1.2}}
-                                whileTap={{scale: 1}}
-                            >{'>'}</Button>
-                        </RightButton>
+                    {renderButtons()}
                     <Cards onScroll={() => handleScroll()} ref={cardsContainerRef}>    
                         {renderCards()}
                         <EndPiece />
