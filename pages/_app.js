@@ -247,5 +247,5 @@ export default function MyApp({ Component, pageProps }) {
       </ThemeProvider>
     </GlobalStateContext.Provider>
     </ApolloProvider>
-    </> : 'CAKE CENTRAL IS COMING SOON'
+    </> : <ComingSoon />
   }

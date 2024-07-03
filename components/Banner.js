@@ -1,7 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 import { motion } from 'framer-motion';
-import { useViewportScroll, useTransform } from 'framer-motion';
+import { useScroll, useTransform } from 'framer-motion';
 
 const BannerContainer = styled.div`
   position: relative;
@@ -54,7 +54,7 @@ const Description = styled.p`
 `;
 
 const Banner = ({ backgroundImage, title, description }) => {
-  const { scrollY } = useViewportScroll();
+  const { scrollY } = useScroll();
   const y = useTransform(scrollY, [0, 500], [0, -100]);
 
   return (

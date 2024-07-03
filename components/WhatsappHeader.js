@@ -74,6 +74,10 @@ const WhatsApp = styled.img`
     height: 40px;
 `;
 
+const handleWhatsAppClick = () => {
+    window.location.href = 'https://wa.me/+447768672154';
+}
+
 export default function WhatsappHeader(props) {
 
     return (
@@ -91,7 +95,7 @@ export default function WhatsappHeader(props) {
                     </Stars>
                 </ReviewContainer>
                 <ContactContainer>
-                    <WhatsApp src='/icons/whatsapp.svg' />
+                    <WhatsApp onClick={() => handleWhatsAppClick()} src='/icons/whatsapp.svg' />
                     <Phone>07768 672154</Phone>
                 </ContactContainer>
             </Container>

@@ -2,13 +2,13 @@ import React from 'react';
 import styled from 'styled-components';
 import { motion } from 'framer-motion';
 import { useInView } from 'react-intersection-observer';
-import { PRIMARY_THEME_COLOR, DESKTOP_VIEW, WEBSITE_WIDTH, PRIMARY_BANNER_COLOR, PRIMARY_BUTTON_COLOR, SECONDARY_BUTTON_COLOR } from '../GlobalVariables';
+import { PRIMARY_THEME_COLOR, DESKTOP_VIEW, WEBSITE_WIDTH } from '../GlobalVariables';
 
 const BannerWrapper = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
-  background-color: ${PRIMARY_BANNER_COLOR};
+  background-color: #113544;
   padding: 40px 20px;
   text-align: center;
   color: #ffffff;
@@ -16,7 +16,6 @@ const BannerWrapper = styled.div`
   max-width: ${WEBSITE_WIDTH};
   margin: 25px auto;
   border-radius: 20px;
-  box-shadow: rgba(0, 0, 0, 0.16) 0px 10px 36px 0px, rgba(0, 0, 0, 0.06) 0px 0px 0px 1px;
 `;
 
 const BannerContent = styled(motion.div)`
@@ -30,14 +29,16 @@ const BannerContent = styled(motion.div)`
   }
 `;
 
-const ImageWrapper = styled.div`
+const PlaceholderImage = styled.div`
   width: 100%;
   height: 200px;
   background-color: #ccc;
-  background-image: url('path/to/your/image.jpg');
-  background-size: cover;
-  background-position: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
   border-radius: 20px;
+  color: #333;
+  font-size: 1.5rem;
 
   ${DESKTOP_VIEW} {
     width: 45%;
@@ -54,7 +55,7 @@ const TextWrapper = styled.div`
   margin-top: 20px;
 
   ${DESKTOP_VIEW} {
-    width: 100%;
+    width: 45%;
     margin-top: 0;
   }
 `;
@@ -81,7 +82,7 @@ const Description = styled.p`
 `;
 
 const ActionButton = styled(motion.button)`
-  background-color: ${PRIMARY_BUTTON_COLOR};
+  background-color: #FFABBB;
   color: white;
   border: none;
   border-radius: 20px;
@@ -109,7 +110,7 @@ const Banner = () => {
   return (
     <BannerWrapper ref={bannerRef}>
       <BannerContent initial="hidden" animate={bannerInView ? "visible" : "hidden"} variants={containerVariants}>
-        <ImageWrapper />
+        <PlaceholderImage>Placeholder</PlaceholderImage>
         <TextWrapper>
           <Title>Free Delivery with Cake Central Club!</Title>
           <Description>

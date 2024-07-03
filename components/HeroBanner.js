@@ -3,6 +3,7 @@ import React from 'react';
 import styled from 'styled-components';
 import { motion, useTransform, useScroll } from 'framer-motion';
 import { PRIMARY_BUTTON_COLOR, SECONDARY_BUTTON_COLOR } from '../GlobalVariables';
+import Link from 'next/link';
 
 const HeroContainer = styled.div`
   position: relative;
@@ -95,8 +96,8 @@ const HeroBanner = () => {
         <Subtitle>Celebration & Wedding Cakes based in Grantham</Subtitle>
         <Title>Welcome to Cake Central</Title>
         <Description>Indulge in our wide variety of luxury cakes. Create your own bespoke design or choose a ready made design to your liking.</Description>
-        <Button onClick={() => alert('Build a cake clicked')}>Let's build a cake</Button>
-        <Button onClick={() => alert('Shop Now clicked')}>Shop Now</Button>
+        <Button><Link style={{color:'white'}} href="/bespoke-cake-order" >Let's build a cake</Link></Button>
+        <Button><Link style={{color:'white'}} href="/bespoke-cake-order" >Shop Now</Link></Button>
       </Content>
     </HeroContainer>
   );
