@@ -13,8 +13,9 @@ const Container = styled.div`
 `;
 
 const Logo = styled.img`
-  width: 150px;
-  margin-bottom: 20px;
+  width: 80%;
+  max-width: 800px;
+  filter: drop-shadow( 1px 1px 4px rgba(0, 0, 0, 0.3));
 `;
 
 const Title = styled(motion.h1)`
@@ -26,6 +27,11 @@ const Title = styled(motion.h1)`
 const Description = styled.p`
   color: #333;
   font-size: 1.2em;
+  width: calc(100% - 100px);
+  margin: 20px auto;
+  color: white;
+  text-shadow: 1px 1px 1px rgba(0,0,0,0.3);
+
 `;
 
 const Subscribe = styled.div`
@@ -69,11 +75,11 @@ const Link = styled.a`
 const App = () => {
   return (
     <Container>
-      <Logo src="logo.png" alt="Cake Central Logo" />
+      <Logo src="/logos/svg/CakeCentral-Logo-White-Full.svg" alt="Cake Central Logo" />
       <Title
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
-        transition={{ duration: 1 }}
+        transition={{ duration: 2 }}
       >
         Coming Soon
       </Title>

@@ -2,7 +2,7 @@
 
 export const DOMAIN = "https://www.redmondpie.com/";
 export const WEBSITE_NAME = "Cake Central";
-export const DEV_MODE = false;
+export const DEV_MODE = true;
 
 // STYLING
 export const PRIMARY_THEME_COLOR = "#FFABBB";

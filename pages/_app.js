@@ -22,6 +22,7 @@ import Cookies from '../components/general/Cookies';
 import Footer from '../components/general/Footer';
 import WhyChooseCakeCentral from '../components/WhyChooseCakeCentral'
 import WhatsAppIcon from '../components/WhatsappIcon';
+import ComingSoon from '../components/ComingSoon';
 
 const extractFragmentHandle = (router, variants) => { // Check if router has href fragment. If it does, then use this as initial state.
   const fragment = router.asPath.slice(router.asPath.indexOf('#')+1)
