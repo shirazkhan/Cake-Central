@@ -1,5 +1,6 @@
 import React, { useContext } from 'react';
 import styled from 'styled-components';
+import { motion } from 'framer-motion';
 import { GlobalStateContext } from '../pages/_app';
 import { DESKTOP_VIEW, PRIMARY_BANNER_COLOR } from '../GlobalVariables';
 import { FaStar } from "react-icons/fa";
@@ -70,9 +71,15 @@ const Phone = styled.p`
     }
 `;
 
-const WhatsApp = styled.img`
+const WhatsApp = styled(motion.img)`
     height: 40px;
+    cursor: pointer;
 `;
+
+const hoverEffect = {
+    initial: { scale: 1 },
+    hover: { scale: 1.2 },
+  };
 
 const handleWhatsAppClick = () => {
     window.location.href = 'https://wa.me/+447768672154';
@@ -95,7 +102,12 @@ export default function WhatsappHeader(props) {
                     </Stars>
                 </ReviewContainer>
                 <ContactContainer>
-                    <WhatsApp onClick={() => handleWhatsAppClick()} src='/icons/whatsapp.svg' />
+                    <WhatsApp 
+                    alt="WhatsApp" 
+                    initial="initial" 
+                    whileHover="hover" 
+                    variants={hoverEffect} 
+                    onClick={() => handleWhatsAppClick()} src='/icons/whatsapp.svg' />
                     <Phone>07768 672154</Phone>
                 </ContactContainer>
             </Container>
