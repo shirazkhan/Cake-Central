@@ -4,7 +4,7 @@ import Link from 'next/link';
 import { motion, AnimatePresence } from "framer-motion";
 import { useMediaQuery } from 'react-responsive';
 import { GlobalStateContext } from '../../pages/_app';
-import { DESKTOP_VIEW, DESKTOP_LINK_COLOR, DESKTOP_LINK_HEIGHT, DESKTOP_NAV_BACKGROUND_COLOR, DESKTOP_NAV_FIXED, DESKTOP_NAV_HEIGHT, DESKTOP_SCROLLED_NAV_HEIGHT, MOBILE, MOBILE_NAV_HEIGHT, NAV_LINK_COLOR, NAV_MENU_COLOR, PRIMARY_THEME_COLOR, WEBSITE_WIDTH } from '../../GlobalVariables';
+import { DESKTOP_VIEW, DESKTOP_LINK_COLOR, DESKTOP_LINK_HEIGHT, DESKTOP_NAV_BACKGROUND_COLOR, DESKTOP_NAV_FIXED, DESKTOP_NAV_HEIGHT, DESKTOP_SCROLLED_NAV_HEIGHT, MOBILE, MOBILE_NAV_HEIGHT, NAV_LINK_COLOR, NAV_MENU_COLOR, PRIMARY_THEME_COLOR, WEBSITE_WIDTH, PRIMARY_BANNER_COLOR } from '../../GlobalVariables';
 
 const Menu = styled(motion.div)`
     height: calc(100vh - 50px);
@@ -70,9 +70,10 @@ const NavLink = styled.div`
             color: white;
         }
         a:hover{
-            color: black;
-            transition: 0.25s;
+            color: ${PRIMARY_BANNER_COLOR};
+            transition: 0.5s;
             text-shadow: none;
+            transform: scale(1.1);
         }
       }
 `;

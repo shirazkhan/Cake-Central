@@ -10,21 +10,22 @@ import SocialBanner from '../components/index/SocialBanner';
 import WhatsNew from '../components/WhatsNew';
 import FreeDeliveryBanner from '../components/FreeDeliveryBanner';
 import HeroBanner from '../components/HeroBanner';
-import { PRIMARY_BANNER_COLOR } from '../GlobalVariables';
+import { PRIMARY_BANNER_COLOR, WEBSITE_WIDTH } from '../GlobalVariables';
 import WhatsappHeader from '../components/WhatsappHeader';
 
 const Container = styled.div`
-    background: ${PRIMARY_BANNER_COLOR};
+    background: white;
     padding-bottom: 20px;
 `;
 
 const RoundedContainer = styled.div`
     border-radius: 20px;
-    margin: -50px 0;
+    margin: -50px auto;
     position: relative;
     background: white;
     padding: 25px 0;
     box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+    max-width: ${WEBSITE_WIDTH};
 `;
 
 export default function Index() {

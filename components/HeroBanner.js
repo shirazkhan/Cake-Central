@@ -89,7 +89,7 @@ const HeroBanner = () => {
 
   return (
     <HeroContainer>
-      <Background src={'/AdobeStock_364652589.jpeg'} fill={true} quality={1} style={{ y }} />
+      <Background priority src={'/AdobeStock_364652589.jpeg'} fill={true} quality={1} style={{ y }} />
       <Overlay />
       <Content>
         <Subtitle>Celebration & Wedding Cakes based in Grantham</Subtitle>

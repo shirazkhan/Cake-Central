@@ -6,7 +6,7 @@ import Banner from '../components/Banner';
 import { PRIMARY_THEME_COLOR, SECONDARY_THEME_COLOR, WEBSITE_WIDTH } from '../GlobalVariables';
 
 const Container = styled.div`
-  max-width: ${WEBSITE_WIDTH};
+  max-width: 1000px;
   margin: 50px auto;
   padding: 0 20px;
   margin-top: -75px;
