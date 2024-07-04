@@ -10,9 +10,11 @@ import WishList from './WishList';
 import Title from './Title';
 import ScrollIntoViewIfNeeded from 'react-scroll-into-view-if-needed';
 import { useInView } from 'react-intersection-observer';
-import { PRIMARY_THEME_COLOR, DESKTOP_VIEW, DESKTOP_NAV_HEIGHT, IS_WISHLIST } from '../../GlobalVariables';
+import { PRIMARY_THEME_COLOR, DESKTOP_VIEW, DESKTOP_NAV_HEIGHT, IS_WISHLIST, SECONDARY_THEME_COLOR } from '../../GlobalVariables';
 import CheckoutButton from '../checkout/CheckoutButton';
 import useDetectScroll from '@smakss/react-scroll-direction';
+import { FaAnglesDown } from "react-icons/fa6";
+
 
 
 const Menu = styled(motion.div)`
@@ -21,7 +23,7 @@ const Menu = styled(motion.div)`
     top: 50px;
     position: fixed;
     background: rgba(255,255,255,1);
-    z-index: 9;
+    z-index: 7;
     display: flex;
     flex-direction: column;
     flex-stretch: 1;
@@ -44,7 +46,6 @@ const MenuWrapper = styled(motion.div)`
     width: 100%;
     position: relative;
     background: rgba(255,255,255,1);
-    z-index: 1000;
     display: flex;
     flex-direction: row;
     flex-stretch: 1;
@@ -53,7 +54,34 @@ const MenuWrapper = styled(motion.div)`
     white-space: nowrap;
     flex-wrap: nowrap;
     ${DESKTOP_VIEW}{
-        
+        flex-direction: column;
+        justify-content: space-around;
+    }
+`;
+
+const DesktopOverlay = styled.div`
+    display: flex;
+
+    ${DESKTOP_VIEW}{
+        width: 100%;
+        height: 100%;
+        z-index: 10;
+        position: relative;
+        display: flex;
+    }
+`;
+
+const ScrollButton = styled(motion(FaAnglesDown))`
+    display: none;
+    height: 25px;
+    width: 25px;
+    position: absolute;
+    bottom: -15px;
+    color: ${PRIMARY_THEME_COLOR}60;
+    left: calc(50% - 12.5px);
+
+    ${DESKTOP_VIEW}{
+        display: block;
     }
 `;
 
@@ -196,6 +224,9 @@ const SummaryContainer = styled.div`
     flex-shrink: 0;
     ${DESKTOP_VIEW}{
         position: relative;
+        justify-content: flex-end;
+        align-items: space-between;
+        margin: 0 auto;
     }
 `;
 
@@ -271,7 +302,7 @@ const renderProducts = (lines, dispatch, cartId) =>
                 </PriceAndRemoveContainer>
             </ProductSpecContainer>
         </ProductContainer> ))
-        : <span style = {{marginLeft: '10px'}}>Theres nothing in your basket!</span>
+        : <span style = {{margin: '0 auto'}}>Theres nothing in your basket!</span>
 
 const renderSummary = cartData => (
     <SummaryContainer>
@@ -290,6 +321,7 @@ const renderSummary = cartData => (
         : ''}
     </SummaryContainer>
 )
+
 
 export default function CartMenu() {
 
@@ -321,7 +353,8 @@ export default function CartMenu() {
                         favouritesQuantity = {globalState.wishList.length}
                         isWishList = {globalState.isWishList}
                         dispatch = {dispatch} 
-                    /> }
+                    /> }                <DesktopOverlay>
+
                         <MenuWrapper>
                         <ScrollIntoViewIfNeeded active = {!globalState.isWishList}>
                             <CartContainer ref = {ref} id = 'cart'>
@@ -334,7 +367,8 @@ export default function CartMenu() {
                                 <WishList isWishList = {globalState.isWishList} />
                             </CartContainer> }
                         </MenuWrapper>
-                        
+                        <ScrollButton/>
+                        </DesktopOverlay>
                 </Menu>
                 <Background onClick={() => dispatch({type: 'CART_MENU_OFF'})} />
                 </>

@@ -39,7 +39,7 @@ export default function Header(props) {
                 <Container
                     animate={{ height: globalState.scrollYProgress > 0.1
                         ? parseInt(DESKTOP_SCROLLED_NAV_HEIGHT.replace('px',''))
-                        : null }}
+                        : DESKTOP_NAV_HEIGHT }}
                     $scrollYProgress = {globalState.scrollYProgress}
                     transition= {{ type: 'spring', stiffness: 75}}
                 >
