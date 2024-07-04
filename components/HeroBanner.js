@@ -4,6 +4,7 @@ import styled from 'styled-components';
 import { motion, useTransform, useScroll } from 'framer-motion';
 import { PRIMARY_BUTTON_COLOR, SECONDARY_BUTTON_COLOR } from '../GlobalVariables';
 import Link from 'next/link';
+import Image from 'next/image';
 
 const HeroContainer = styled.div`
   position: relative;
@@ -15,15 +16,13 @@ const HeroContainer = styled.div`
   perspective: 1px;
 `;
 
-const Background = styled(motion.div)`
+const Background = styled(motion(Image))`
   position: absolute;
   top: 0;
   left: 0;
   width: 100%;
   height: 100%;
-  background-image: url('/patterns/sprinkles.svg');
-  background-size: cover;
-  background-position: center;
+  object-fit: cover;
   z-index: -1;
 `;
 
@@ -90,7 +89,7 @@ const HeroBanner = () => {
 
   return (
     <HeroContainer>
-      <Background style={{ y }} />
+      <Background src={'/AdobeStock_364652589.jpeg'} fill={true} quality={1} style={{ y }} />
       <Overlay />
       <Content>
         <Subtitle>Celebration & Wedding Cakes based in Grantham</Subtitle>

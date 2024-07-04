@@ -53,11 +53,25 @@ const Description = styled.p`
   max-width: 75%;
 `;
 
-const Banner = ({ backgroundImage, title, description }) => {
+const ImageWrapper = styled(motion.div)`
+  position: absolute;
+  bottom: 10px;
+  left: -120px;
+  width: 100%;
+  height: 100px;
+  z-index: 2; /* Ensure it is above the parallax background */
+`;
+
+const FollowImage = styled.img`
+  width: 120%;
+  height: 250px;
+`;
+
+const Banner = ({ backgroundImage, title, description, followImage }) => {
   const { scrollY } = useScroll();
   const y = useTransform(scrollY, [0, 500], [0, -100]);
 
-  return (
+  return ( <>
     <BannerContainer>
       <SprinklesWrapper>
         <Sprinkles style={{ y }} backgroundImage={backgroundImage} />
@@ -67,6 +81,10 @@ const Banner = ({ backgroundImage, title, description }) => {
         <Description>{description}</Description>
       </ContentWrapper>
     </BannerContainer>
+      {/* <ImageWrapper style={{ y }}>
+        <FollowImage src={'whipped-cream1.svg'} alt="Follow Image" />
+      </ImageWrapper> */}
+    </>
   );
 };
 
