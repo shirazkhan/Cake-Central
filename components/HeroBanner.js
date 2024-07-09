@@ -92,11 +92,10 @@ const HeroBanner = () => {
       <Background priority src={'/AdobeStock_364652589.jpeg'} fill={true} quality={10} style={{ y }} />
       <Overlay />
       <Content>
-        <Subtitle>Celebration & Wedding Cakes based in Grantham</Subtitle>
+        <Subtitle>Celebration & Wedding Cakes based in Grantham, Lincolnshire</Subtitle>
         <Title>Welcome to Cake Central</Title>
         <Description>Indulge in our wide variety of luxury cakes. Create your own bespoke design or choose a ready made design to your liking.</Description>
-        <Button><Link style={{color:'white'}} href="/bespoke-cake-order" >Let's build a cake</Link></Button>
-        <Button><Link style={{color:'white'}} href="/bespoke-cake-order" >Shop Now</Link></Button>
+        <Button><Link style={{color:'white'}} href="/build-a-cake" >Let's build a cake</Link></Button>
       </Content>
     </HeroContainer>
   );

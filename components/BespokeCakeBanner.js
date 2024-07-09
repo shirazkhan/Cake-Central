@@ -3,9 +3,6 @@ import styled from 'styled-components';
 import { motion } from 'framer-motion';
 import { DESKTOP_VIEW, PRIMARY_BANNER_COLOR, SECONDARY_BANNER_COLOR } from '../GlobalVariables';
 
-// Assuming DESKTOP_VIEW is a media query string you will import
-// For example: @media (min-width: 768px)
-
 const BannerContainer = styled.div`
   display: flex;
   flex-direction: column;

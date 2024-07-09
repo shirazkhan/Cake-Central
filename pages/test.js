@@ -3,6 +3,7 @@ import styled from 'styled-components';
 import { motion } from 'framer-motion';
 import { useInView } from 'react-intersection-observer';
 import { PRIMARY_THEME_COLOR, DESKTOP_VIEW } from '../GlobalVariables';
+import LocallityHeroBanner from '../components/LocallityHeroBanner'
 
 // Styled Components
 const BannerWrapper = styled.div`
@@ -104,52 +105,7 @@ const Banner = () => {
   });
 
   return (
-    <BannerWrapper ref={ref}>
-      <motion.div initial="hidden" animate={inView ? "visible" : "hidden"} variants={variants}>
-        <Title>Why Choose Cake Central?</Title>
-        <Description>
-          From our robust packaging to our ever expanding range, here at Cake Central we do everything we can to ensure we are providing great quality products and services, so you don’t have to worry! All you have to do is order your <a href="/cakes-and-bakes" style={{ color: 'white', textDecoration: 'underline' }}>cakes & bakes</a> online through our website and we will do the rest...
-        </Description>
-        <IconsWrapper>
-          <IconContainer>
-            <IconCircle>
-              <IconImage src="path_to_truck_icon.png" alt="Next day delivery" />
-            </IconCircle>
-            <IconText>Next day delivery as standard</IconText>
-          </IconContainer>
-          <IconContainer>
-            <IconCircle>
-              <IconImage src="path_to_uk_icon.png" alt="UK wide delivery" />
-            </IconCircle>
-            <IconText>UK wide delivery for all our cakes and bakes</IconText>
-          </IconContainer>
-          <IconContainer>
-            <IconCircle>
-              <IconImage src="path_to_box_icon.png" alt="Robust packaging" />
-            </IconCircle>
-            <IconText>Robust, protective packaging for safe delivery</IconText>
-          </IconContainer>
-          <IconContainer>
-            <IconCircle>
-              <IconImage src="path_to_gluten_free_icon.png" alt="Gluten Free, Dairy Free & Vegan options" />
-            </IconCircle>
-            <IconText>Gluten Free, Dairy Free & Vegan options</IconText>
-          </IconContainer>
-          <IconContainer>
-            <IconCircle>
-              <IconImage src="path_to_cake_icon.png" alt="Expanding ranges" />
-            </IconCircle>
-            <IconText>We are always expanding our ranges</IconText>
-          </IconContainer>
-          <IconContainer>
-            <IconCircle>
-              <IconImage src="path_to_birthday_cake_icon.png" alt="All occasions" />
-            </IconCircle>
-            <IconText>Something to suit all occasions</IconText>
-          </IconContainer>
-        </IconsWrapper>
-      </motion.div>
-    </BannerWrapper>
+    <LocallityHeroBanner />
   );
 };
 

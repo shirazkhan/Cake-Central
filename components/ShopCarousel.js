@@ -197,6 +197,7 @@ const Button = styled(motion.button)`
     display: flex;
     justify-content: center;
     align-items: center;
+    cursor: pointer;
 `;
 
 export default function ShopCarousel({data, title, subtitle, handle, cardType, endCard}) {

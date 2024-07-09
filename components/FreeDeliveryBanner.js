@@ -75,6 +75,7 @@ const Description = styled.p`
   margin-bottom: 30px;
   color: #ffffff;
   max-width: 1000px;
+  font-weight: 500;
 
   ${DESKTOP_VIEW} {
     font-size: 1rem;
@@ -112,10 +113,9 @@ const Banner = () => {
       <BannerContent initial="hidden" animate={bannerInView ? "visible" : "hidden"} variants={containerVariants}>
         <PlaceholderImage>Placeholder</PlaceholderImage>
         <TextWrapper>
-          <Title>Free Delivery with Cake Central Club!</Title>
+          <Title>Free Delivery for Grantham Customers</Title>
           <Description>
-            Join the Cake Central Club for free standard delivery for a whole year, along with exclusive perks, offers, and more at an affordable price.
-          </Description>
+          We're thrilled to offer free delivery for all our wonderful Grantham customers! Whether you're surprising a loved one or indulging in a treat for yourself, we'll bring your handcrafted cake right to your doorstep with a smile.          </Description>
           <ActionButton whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
             FIND OUT MORE
           </ActionButton>

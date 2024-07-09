@@ -12,6 +12,8 @@ import FreeDeliveryBanner from '../components/FreeDeliveryBanner';
 import HeroBanner from '../components/HeroBanner';
 import { PRIMARY_BANNER_COLOR, WEBSITE_WIDTH } from '../GlobalVariables';
 import WhatsappHeader from '../components/WhatsappHeader';
+import CategorySection from '../components/CategorySection';
+import AboutUsBanner from '../components/AboutUsBanner';
 
 const Container = styled.div`
     background: white;
@@ -42,10 +44,12 @@ export default function Index() {
     <HeroBanner/>
     <Container>
         <RoundedContainer>
-            <ShopCarousel data = {cakes} title={"CELEBRATION CAKES"} subtitle={"Your celebrations into sweet memories"}/>
+            <AboutUsBanner />
+            <CategorySection />
+            {/* <ShopCarousel data = {cakes} title={"CELEBRATION CAKES"} subtitle={"Your celebrations into sweet memories"}/>
             <ShopCarousel data = {weddingcakes} title={"WEDDING CAKES"} subtitle={"Baked with care, sealed with love"}/>
             <ShopCarousel data = {cupcakes} title={"CUPCAKES"} subtitle={"Tiny cakes, huge happiness"}/>
-            <ShopCarousel data = {brownies} title={"BROWNIES"} subtitle={"Gooey goodness in every square"}/>
+            <ShopCarousel data = {brownies} title={"BROWNIES"} subtitle={"Gooey goodness in every square"}/> */}
         <FreeDeliveryBanner />
         <WhatsNew />
         </RoundedContainer>

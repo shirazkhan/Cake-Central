@@ -97,7 +97,7 @@ const Banner = () => {
       <motion.div initial="hidden" animate={inView ? "visible" : "hidden"} variants={variants}>
         <Title>Why Choose Cake Central?</Title>
         <Description>
-          From our robust packaging to our ever expanding range, here at Cake Central we do everything we can to ensure we are providing great quality products and services, so you don’t have to worry! All you have to do is order your <a href="/cakes-and-bakes" style={{ color: 'white', textDecoration: 'underline' }}>cakes & bakes</a> online through our website and we will do the rest...
+          From our robust packaging to our ever expanding range, here at Cake Central we do everything we can to ensure we are providing great quality products and services, so you don’t have to worry! All you have to do is order your lovely bakes online through our website or contact us directly, and we'll do the rest...
         </Description>
         <IconsWrapper>
           <IconContainer>

@@ -42,7 +42,8 @@ const Title = styled.h1`
   line-height: 1.2;
   color: white;
   text-align: center;
-  text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.3);
+  text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.5);
+  width: calc(100% - 40px);
 `;
 
 const Description = styled.p`
@@ -50,7 +51,9 @@ const Description = styled.p`
   font-size: 1.2em;
   color: white;
   text-align: center;
+  text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.5);
   max-width: 75%;
+  font-weight: 500;
 `;
 
 const ImageWrapper = styled(motion.div)`

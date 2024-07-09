@@ -4,8 +4,10 @@ import Link from 'next/link';
 import styled from 'styled-components';
 import { GlobalStateContext } from '../../pages/_app';
 import CartMenu from './CartMenu';
-import { NAV_BAR_COLOR, DESKTOP_VIEW, MOBILE, WEBSITE_WIDTH, DESKTOP_SCROLLED_NAV_HEIGHT, SECONDARY_THEME_COLOR } from '../../GlobalVariables';
+import { NAV_BAR_COLOR, DESKTOP_VIEW, MOBILE, WEBSITE_WIDTH, DESKTOP_SCROLLED_NAV_HEIGHT, SECONDARY_THEME_COLOR, PRIMARY_BANNER_COLOR, SECONDARY_BANNER_COLOR } from '../../GlobalVariables';
 import dynamic from 'next/dynamic';
+import { FaInstagram } from "react-icons/fa6";
+
 const MediaQuery = dynamic(() => import('react-responsive'), {
     ssr: false
   })
@@ -18,10 +20,11 @@ const Bar = styled.div`
     background: ${NAV_BAR_COLOR};
     height: 100%;
     max-width: ${WEBSITE_WIDTH};
-    z-index: 1;
+    z-index: 10;
 
     ${DESKTOP_VIEW}{
         width: 100%;
+        justify-content: space-around
       }
 `;
 
@@ -49,22 +52,28 @@ const Logo = styled(motion.img)`
     }
 `;
 
-const Search = styled.div`
-    min-width: 40px;
-    width: 100%;
-    max-width: 150px;
-    height: 38px;
-    border-radius: 30px;
-    filter: drop-shadow( 1px 1px 2px rgba(0, 0, 0, 0.2));
-    background: white;
-`;
-
-const Links = styled.div`
-    width: 70%;
-    height: 100%;
-    display: flex;
+const WhatsAppButton = styled.div`
+    width: 150px;
+    height: 30px;
+    padding: 5px;
+    background: ${SECONDARY_BANNER_COLOR};
     justify-content: center;
     align-items: center;
+    border-radius: 10px;
+    display: none;
+    color: white;
+    filter: drop-shadow( 1px 1px 2px rgba(0, 0, 0, 0.4));
+    font-weight: 500;
+    justify-self: flex-end;
+    ${DESKTOP_VIEW}{
+        display: flex;
+    }
+`;
+
+const WhatsAppIcon = styled.img`
+    height: 50px;
+    margin-left: -30px;
+    filter: drop-shadow( 1px 1px 2px rgba(0, 0, 0, 0.2));
 `;
 
 const LeftButton = styled.div`
@@ -75,10 +84,7 @@ const LeftButton = styled.div`
     align-items: center;
 
     ${DESKTOP_VIEW}{
-        height: 50%;
-        justify-content: center;
-        margin-left: 100px;
-        visibility: hidden;
+        display: none;
     }
 `;
 
@@ -90,7 +96,7 @@ const HamBurger = styled(motion.img)`
 
 const RightButton = styled.div`
     width: 50px;
-    height: 50%;
+    height: 30px;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -98,7 +104,18 @@ const RightButton = styled.div`
     
     ${DESKTOP_VIEW}{
         height: 38px;
-        margin-right: 100px;
+    }
+`;
+
+const ButtonContainer = styled.div`
+    display: flex;
+    gap: 25px;
+    justify-content: space-evenly;
+    align-items: center;
+    ${DESKTOP_VIEW}{
+        width: calc(${WEBSITE_WIDTH} / 4);
+        height: calc(${DESKTOP_SCROLLED_NAV_HEIGHT} - 20px);
+        justify-content: space-around;
     }
 `;
 
@@ -108,6 +125,21 @@ const Cart = styled(motion.img)`
     filter: drop-shadow( 1px 1px 2px rgba(0, 0, 0, 0.2));
 `;
 
+const hoverEffect = {
+    initial: {
+        scale: 1,
+        filter: 'drop-shadow(1px 1px 2px rgba(0, 0, 0, 0.2))',
+      },
+      hover: {
+        scale: 1.2,
+        filter: 'drop-shadow(2px 2px 4px rgba(0, 0, 0, 0.4))',
+      },
+      tap: {
+        scale: 0.7,
+        filter: 'drop-shadow(1px 1px 2px rgba(0, 0, 0, 0.2))',
+      },
+  };
+
 export default function NavBar() {
 
     const { globalState, dispatch } = useContext(GlobalStateContext);
@@ -115,9 +147,11 @@ export default function NavBar() {
     return (
     <>
         <Bar>
-            <LeftButton onClick = {() => dispatch({type: 'TOGGLE_NAV_MENU'})}>
-                <HamBurger src = {globalState.navMenuOpen ? '/menu-cross.svg' : '/menu.svg'} />
-            </LeftButton>
+            <ButtonContainer>
+                <LeftButton onClick = {() => dispatch({type: 'TOGGLE_NAV_MENU'})}>
+                    <HamBurger src = {globalState.navMenuOpen ? '/menu-cross.svg' : '/menu.svg'} />
+                </LeftButton>
+            </ButtonContainer>
             <LogoBox>
                 <Link href = '/' passHref>
                     <MediaQuery minWidth={parseInt(MOBILE.replace('px',''))}>
@@ -154,9 +188,16 @@ export default function NavBar() {
                     </MediaQuery>
                 </Link>
             </LogoBox>
+            <ButtonContainer>
             <RightButton onClick = {() => dispatch({type: 'DESKTOP_CART_MENU_ON'})}>
-                <Cart src = '/cart-icon.svg' />
+                <Cart src = '/cart-icon.svg'
+                    alt="Cart"
+                    initial="initial"
+                    whileHover="hover"
+                    whileTap="tap"
+                    variants={hoverEffect} />
             </RightButton>
+            </ButtonContainer>
         </Bar>
         <CartMenu />
     </>

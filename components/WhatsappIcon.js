@@ -8,12 +8,12 @@ const WhatsAppIcon = () => {
   const [showBubble, setShowBubble] = useState(true);
 
   useEffect(() => {
-    if (!globalState.isDesktop && globalState.scrollYProgress > 0.1) {
+    if (globalState.scrollYProgress > 0.02) {
       setShowIcon(true);
     } else {
       setShowIcon(false);
     }
-  }, [globalState.scrollYProgress, globalState.isDesktop]);
+  }, [globalState.scrollYProgress]);
 
   useEffect(() => {
     if (showIcon && showBubble) {
@@ -25,7 +25,7 @@ const WhatsAppIcon = () => {
   }, [showIcon, showBubble]);
 
   const handleClick = () => {
-    window.location.href = 'https://wa.me/+447768672154';
+    window.open('https://wa.me/+447768672154', '_blank');
   };
 
   return (
