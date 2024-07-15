@@ -76,7 +76,7 @@ export default function Product({id,title,collection,description,images,price,va
           <ProductSpec
             title = {title}
             collection = {collection}
-            price = {price}
+            price = {parseFloat(price).toFixed(2)}
             variants = {variants}
             selectedVariant = {selectedVariant}
             setSelectedVariant = {setSelectedVariant}

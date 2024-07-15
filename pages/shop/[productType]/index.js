@@ -21,7 +21,8 @@ const Header = styled.h1`
 
 const Description = styled.p`
     max-width: 1000px;
-    margin: auto 20px;
+    margin: 0 20px;
+    font-size: 1.2em;
 `;
 
 export default function ProductType({handle, title, description, products}) {

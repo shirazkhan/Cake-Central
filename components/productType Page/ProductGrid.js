@@ -21,6 +21,7 @@ const Grid = styled.div`
 
     ${DESKTOP_VIEW}{
         grid-template-columns: 1fr 1fr 1fr;
+        width: calc(100% - 30px);
     }
 `;
 
@@ -98,7 +99,7 @@ const renderProducts = (products, productType, reviewsOn) =>
             <CardTitle>{p.title}</CardTitle>
             <PriceAndReviewContainer>
                 {reviewsOn ? <ReviewContainer>1 2 3 4 5</ReviewContainer> : ''}
-                <CardPrice>From £{p.price}</CardPrice>
+                <CardPrice>From £{parseFloat(p.price).toFixed(2)}</CardPrice>
             </PriceAndReviewContainer>
         </Link> 
             {/* <AddToCart>Add To Cart</AddToCart> */}
@@ -109,7 +110,7 @@ const renderProducts = (products, productType, reviewsOn) =>
 export default function ProductGrid({products, productType, reviewsOn}) {
     return (
         <Container>
-            {/* <Filter products = {products}/> */}
+            <Filter products = {products}/>
             <Grid>
                 {renderProducts(products, productType, reviewsOn)}
             </Grid>
