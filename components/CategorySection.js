@@ -1,8 +1,9 @@
 import React from 'react';
 import styled from 'styled-components';
 import { motion } from 'framer-motion';
+import Link from 'next/link';
 import Image from 'next/image';
-import { DESKTOP_VIEW, PRIMARY_THEME_COLOR } from '../GlobalVariables';
+import { DESKTOP_VIEW, PRIMARY_BANNER_COLOR, PRIMARY_BUTTON_COLOR, PRIMARY_THEME_COLOR } from '../GlobalVariables';
 
 const Container = styled.div`
   width: 100%;
@@ -28,7 +29,7 @@ const ItemsWrapper = styled.div`
   }
 `;
 
-const CategoryItem = styled(motion.div)`
+const CategoryItem = styled(motion(Link))`
   position: relative;
   color: white;
   width: 100%;
@@ -37,7 +38,9 @@ const CategoryItem = styled(motion.div)`
   display: flex;
   justify-content: center;
   align-items: center;
-  font-size: 1.6em;
+  font-size: 2em;
+  font-weight: 600;
+  color: white
   text-align: center;
   border-radius: 10px;
   cursor: pointer;
@@ -61,7 +64,7 @@ const ImageOverlay = styled.div`
   left: 0;
   width: 100%;
   height: 100%;
-  background: rgba(0, 0, 0, 0.2); /* Semi-transparent overlay */
+  background: rgba(0, 0, 0, 0.4); /* Semi-transparent overlay */
   display: flex;
   justify-content: center;
   align-items: center;
@@ -70,12 +73,12 @@ const ImageOverlay = styled.div`
 
 const TextOverlay = styled.div`
   z-index: 1;
+  color: white;
 `;
 
 const categories = [
-  { name: 'Brownies', imageUrl: '/temp/brownies.jpeg' },
-  { name: 'Blondies', imageUrl: '/temp/blondies.jpeg' },
-  { name: 'Cookies', imageUrl: '/temp/cookies.jpeg' },
+  { name: 'Brownies & Blondies', imageUrl: '/temp/brownies.jpeg', link: '/shop/brownies-and-blondies' },
+  { name: 'Cookies', imageUrl: '/temp/cookies.jpeg', link: '/shop/cookies' },
 ];
 
 const springTransition = {
@@ -92,6 +95,7 @@ const CategorySection = () => {
         {categories.map((category, index) => (
           <CategoryItem
             key={index}
+            href={category.link}
             whileHover={{ scale: 1.05 }}
             transition={springTransition}
           >

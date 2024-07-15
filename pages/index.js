@@ -13,7 +13,7 @@ import HeroBanner from '../components/HeroBanner';
 import { PRIMARY_BANNER_COLOR, WEBSITE_WIDTH } from '../GlobalVariables';
 import WhatsappHeader from '../components/WhatsappHeader';
 import CategorySection from '../components/CategorySection';
-import AboutUsBanner from '../components/AboutUsBanner';
+import DesignACakeWithUs from '../components/DesignACakeWithUs';
 
 const Container = styled.div`
     background: white;
@@ -44,7 +44,7 @@ export default function Index() {
     <HeroBanner/>
     <Container>
         <RoundedContainer>
-            <AboutUsBanner />
+            <DesignACakeWithUs />
             <CategorySection />
             {/* <ShopCarousel data = {cakes} title={"CELEBRATION CAKES"} subtitle={"Your celebrations into sweet memories"}/>
             <ShopCarousel data = {weddingcakes} title={"WEDDING CAKES"} subtitle={"Baked with care, sealed with love"}/>

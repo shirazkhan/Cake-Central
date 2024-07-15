@@ -2,7 +2,8 @@ import React from 'react';
 import styled from 'styled-components';
 import { motion } from 'framer-motion';
 import { useInView } from 'react-intersection-observer';
-import { PRIMARY_THEME_COLOR, DESKTOP_VIEW, WEBSITE_WIDTH } from '../GlobalVariables';
+import Image from 'next/image';
+import { PRIMARY_THEME_COLOR, DESKTOP_VIEW, WEBSITE_WIDTH, PRIMARY_BUTTON_COLOR } from '../GlobalVariables';
 
 const BannerWrapper = styled.div`
   display: flex;
@@ -22,27 +23,25 @@ const BannerContent = styled(motion.div)`
   display: flex;
   flex-direction: column;
   align-items: center;
+  justify-content: center;
 
   ${DESKTOP_VIEW} {
     flex-direction: row;
-    justify-content: space-between;
+    justify-content: center;
+    gap: 60px;
   }
 `;
 
-const PlaceholderImage = styled.div`
+const ImageWrapper = styled.div`
   width: 100%;
-  height: 200px;
-  background-color: #ccc;
-  display: flex;
-  align-items: center;
-  justify-content: center;
+  height: 250px;
+  position: relative;
   border-radius: 20px;
-  color: #333;
-  font-size: 1.5rem;
+  overflow: hidden;
 
   ${DESKTOP_VIEW} {
     width: 45%;
-    height: auto;
+    height: 300px;
   }
 `;
 
@@ -83,9 +82,10 @@ const Description = styled.p`
 `;
 
 const ActionButton = styled(motion.button)`
-  background-color: #FFABBB;
+  background-color: ${PRIMARY_BUTTON_COLOR};
   color: white;
   border: none;
+  font-weight: 550;
   border-radius: 20px;
   padding: 10px 20px;
   cursor: pointer;
@@ -111,11 +111,20 @@ const Banner = () => {
   return (
     <BannerWrapper ref={bannerRef}>
       <BannerContent initial="hidden" animate={bannerInView ? "visible" : "hidden"} variants={containerVariants}>
-        <PlaceholderImage>Placeholder</PlaceholderImage>
+        <ImageWrapper>
+          <Image
+            src="/temp/cake-delivery.jpeg"
+            alt="Placeholder"
+            layout="fill"
+            quality={1}
+            objectFit="cover"
+          />
+        </ImageWrapper>
         <TextWrapper>
           <Title>Free Delivery for Grantham Customers</Title>
           <Description>
-          We're thrilled to offer free delivery for all our wonderful Grantham customers! Whether you're surprising a loved one or indulging in a treat for yourself, we'll bring your handcrafted cake right to your doorstep with a smile.          </Description>
+            We're thrilled to offer free delivery for all our wonderful Grantham customers! Whether you're surprising a loved one or indulging in a treat for yourself, we'll bring your handcrafted cake right to your doorstep with a smile.
+          </Description>
           <ActionButton whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
             FIND OUT MORE
           </ActionButton>

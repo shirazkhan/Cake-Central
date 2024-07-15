@@ -5,6 +5,7 @@ import Banner from '../components/Banner';
 import FreeDeliveryBanner from '../components/FreeDeliveryBanner';
 import BespokeCakeBanner from '../components/BespokeCakeBanner';
 import { PRIMARY_THEME_COLOR, DESKTOP_VIEW, WEBSITE_WIDTH, PRIMARY_BUTTON_COLOR, SECONDARY_BUTTON_COLOR } from '../GlobalVariables';
+import WhatsappHeader from '../components/WhatsappHeader';
 
 const OrderFormContainer = styled.div`
   max-width: 750px;
@@ -201,6 +202,7 @@ const CakeOrderForm = () => {
 
   return (
     <>
+      <WhatsappHeader />
       <Banner backgroundImage={'/patterns/sprinkles.svg'} title={'Build a Cake With Us!'} description={'Let us build the perfect cake, designed by you!'} />
       <BespokeCakeBanner />
       <OrderFormContainer>

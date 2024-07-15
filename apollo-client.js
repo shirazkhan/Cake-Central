@@ -1,16 +1,16 @@
 import { ApolloClient, HttpLink, InMemoryCache } from "@apollo/client";
 
+const STOREFRONT_API_KEY = process.env.STOREFRONT_API_KEY;
+
 export const client = new ApolloClient({
     cache: new InMemoryCache(),
     link: new HttpLink({
-      uri: 'https://grantham-cakes.myshopify.com/api/2024-01/graphql.json',
+      uri: 'https://cakecentraluk.myshopify.com/api/2024-04/graphql.json',
       headers: {
         'Content-Type': 'application/json',
-        'X-Shopify-Storefront-Access-Token': "e0a61a822fedf8800941a6b832f49f80"
+        'X-Shopify-Storefront-Access-Token': STOREFRONT_API_KEY
       }
     })
-    // uri: 'https://ecdc7f91ed0970e733268535c828fbbe@graphql.myshopify.com/api/2021-07/graphql.json'
-    //uri: "https://api.spacex.land/graphql/"
   });
 
 export default client;

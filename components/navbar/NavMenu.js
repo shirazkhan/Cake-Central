@@ -68,6 +68,7 @@ const NavLink = styled.div`
         background: none;
         a:link, a:visited {
             color: white;
+            transition: 0.5s;
         }
         a:hover{
             color: ${PRIMARY_BANNER_COLOR};
@@ -126,8 +127,7 @@ export default function NavMenu() {
                             <Link
                                 
                                 onClick = {isDesktop ? null : () => dispatch({type: 'TOGGLE_NAV_MENU'})}
-                                href = '/cakes'
-                                as = '/cakes' >
+                                href = '/build-a-cake' >
                                     Cakes
                             </Link>
                         </NavLink>
