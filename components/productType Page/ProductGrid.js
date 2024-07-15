@@ -4,28 +4,28 @@ import Pagination from './Pagination';
 import Filter from './Filter';
 import Image from 'next/image';
 import Link from 'next/link';
-import { PRIMARY_THEME_COLOR } from '../../GlobalVariables';
+import { DESKTOP_VIEW, PRIMARY_THEME_COLOR } from '../../GlobalVariables';
 
 const Container = styled.div`
-
+    margin-top: 50px;
 `;
 
 const Grid = styled.div`
     height: 100%;
-    width: calc(100% - 20px);
+    width: calc(100% - 10px);
     display: grid;
-    grid-template-columns: 1fr 1fr 1fr 1fr;
-    row-gap: 10px;
+    grid-template-columns: 1fr 1fr;
+    gap: 10px;
     place-items: center;
-    margin: 10px auto;
+    margin: 20px auto;
 
-    @media (max-width: 768px) {
-        grid-template-columns: 1fr 1fr;
+    ${DESKTOP_VIEW}{
+        grid-template-columns: 1fr 1fr 1fr;
     }
 `;
 
 const ProductCard = styled.div`
-    width: calc(100% - 5px);
+    width: 100%;
     height: 100%;
     box-shadow: rgba(0, 0, 0, 0.02) 0px 1px 3px 0px, rgba(27, 31, 35, 0.15) 0px 0px 0px 1px;
     border-radius: 5px;
@@ -36,23 +36,29 @@ const ProductCard = styled.div`
 `;
 
 const ProductImage = styled.div`
-    height: 200px;
+    height: 250px;
     width: 100%;
     border-radius: 5px 5px 0 0;
     position: relative;
     overflow: hidden;
+
+    ${DESKTOP_VIEW}{
+        height: 300px;
+    }
 `;
 
 const CardTitle = styled.div`
     padding: 5px 10px;
     line-height: 1.2em;
-    height: 50px;
+    font-weight: 600;
+    text-align: center;
+    font-size: 1.2em;
 `;
 
 const PriceAndReviewContainer = styled.div`
     display: flex;
-    justify-content: space-between;
-    width: 100%;
+    justify-content: center;
+    width: calc(100% - 20px);
     flex-direction: column;
     align-items: center;
     margin-bottom: 10px;
@@ -92,10 +98,10 @@ const renderProducts = (products, productType, reviewsOn) =>
             <CardTitle>{p.title}</CardTitle>
             <PriceAndReviewContainer>
                 {reviewsOn ? <ReviewContainer>1 2 3 4 5</ReviewContainer> : ''}
-                <CardPrice>£{p.price}</CardPrice>
+                <CardPrice>From £{p.price}</CardPrice>
             </PriceAndReviewContainer>
         </Link> 
-            <AddToCart>Add To Cart</AddToCart>
+            {/* <AddToCart>Add To Cart</AddToCart> */}
         </ProductCard>
         )
     })
@@ -103,7 +109,7 @@ const renderProducts = (products, productType, reviewsOn) =>
 export default function ProductGrid({products, productType, reviewsOn}) {
     return (
         <Container>
-            <Filter products = {products}/>
+            {/* <Filter products = {products}/> */}
             <Grid>
                 {renderProducts(products, productType, reviewsOn)}
             </Grid>

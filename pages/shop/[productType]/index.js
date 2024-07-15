@@ -6,10 +6,12 @@ import { Primary } from '../../../src/styled/App';
 import ProductGrid from '../../../components/productType Page/ProductGrid';
 import { GET_COLLECTIONS, GET_PRODUCTS_BY_COLLECTION_HANDLE} from '../../../graphql/Queries';
 import Head from 'next/head';
-import { WEBSITE_NAME } from '../../../GlobalVariables';
+import { WEBSITE_NAME, WEBSITE_WIDTH } from '../../../GlobalVariables';
+import Banner from '../../../components/Banner';
 
 const Container = styled.div`
-    display: flex;
+    max-width: ${WEBSITE_WIDTH};
+    margin: 0 auto;
 `;
 
 const Header = styled.h1`
@@ -18,8 +20,8 @@ const Header = styled.h1`
 `;
 
 const Description = styled.p`
-    width: calc(100% - 40px);
-    margin: 0 auto;
+    max-width: 1000px;
+    margin: auto 20px;
 `;
 
 export default function ProductType({handle, title, description, products}) {
@@ -32,9 +34,7 @@ export default function ProductType({handle, title, description, products}) {
             <title>{`${title} | ${WEBSITE_NAME}`}</title>
         </Head>
         <Primary>
-            <Header>
-                {title}
-            </Header>
+            <Header>{title}</Header>
             <Description>{description}</Description>
             <ProductGrid reviewsOn = {false} products = {products} productType = {productType} />
         </Primary>
