@@ -17,9 +17,13 @@ import FavouriteButton from '../../../components/FavouriteButton';
 import parse from 'html-react-parser';
 
 const MainContainer = styled.div`
+    margin: -50px 0 0 0;
+
   ${DESKTOP_VIEW}{
     display: flex;
     gap: 20px;
+    width: calc(100% - 20px);
+    margin: 0 auto;
   }
 `;
 

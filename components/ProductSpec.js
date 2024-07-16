@@ -53,7 +53,6 @@ export default function ProductSpec({title, price, variants, selectedVariant, se
                 <ProductType href={`/shop/${collection.handle}`}>{collection.title}</ProductType>
                 <ProductTitle>{title}</ProductTitle>
                 <Price>£{price}</Price>
-                <Credit>Buy now, pay in 3 instalments with <span>Klarna</span></Credit>
             </Container>
             <ProductVariant variants = {variants} selectedVariant = {selectedVariant} setSelectedVariant = {setSelectedVariant}/>
         </>

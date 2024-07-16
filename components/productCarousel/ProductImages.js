@@ -6,12 +6,24 @@ import Indicator from './Indicator';
 import { InView } from 'react-intersection-observer';
 import { PRIMARY_THEME_COLOR, DESKTOP_VIEW } from '../../GlobalVariables';
 
-const Container = styled.div`
-    width: 100%;
+const MainContainer = styled.div`
+    width: 100vw;
     height: 100%;
     position: relative;
+
+    ${DESKTOP_VIEW}{
+        width: 50%;
+        border-radius: 10px;
+        position: sticky;
+        top: 150px;
+    }
+    `;
+
+const Container = styled.div`
+    height: 400px;
     white-space: nowrap;
     overflow-x: auto;
+    overflow-y: hidden;
     scroll-snap-type: x mandatory;
     scroll-behavior: smooth;
     -webkit-overflow-scrolling: touch;
@@ -19,25 +31,31 @@ const Container = styled.div`
     scrollbar-width: none;
     &::-webkit-scrollbar {
         display: none;
-      };
-    
-      ${DESKTOP_VIEW}{
-        width: 50%;
+    };
+
+    @media only screen and (min-width: 600px) {
+        height: 500px;
+    }
+
+
+    ${DESKTOP_VIEW}{
         border-radius: 10px;
-        position: sticky;
-        top: 130px;
+        height: 500px;
     }
 `;
 
 const ImageContainer = styled.div`
-    width: 100vw;
+    width: 100%;
     height: 400px;
     position: relative;
     display: inline-block;
     scroll-snap-align: start;
 
+    @media only screen and (min-width: 600px) {
+        height: 500px;
+    }
+
     ${DESKTOP_VIEW}{
-        width: 100%;
         height: 500px;
     }
 `;
@@ -63,9 +81,7 @@ const toBase64 = (str) =>
     : window.btoa(str);
 
 const renderImages = (images, variants, setImageIdx, myRef) => {
-
     return images.map((img,i) => {
-
             return <InView key = {img.id} ref = {myRef} onChange = {(inView) => inView ? setImageIdx(i) : null} threshold = {0.5} initialInView ={false}>
                     {({ inView, ref, entry }) => (
                         <ImageContainer id = {variants.length <= 1 ? null : variants[i].handle} entry = {entry} ref = {ref} idx = {i} active = {inView}>
@@ -89,10 +105,12 @@ export default function ProductImages({images, variants}) {
     const myRef = useRef();
     return (
         <>
-            <Container vertical = {false} className = 'scroll-container'>
-                {renderImages(images, variants, setImageIdx,myRef)}
+            <MainContainer vertical = {false} className = 'scroll-container'>
+                <Container>
+                    {renderImages(images, variants, setImageIdx,myRef)}
+                </Container>
                 <Indicator quantity = {images.length} idx = {imageIdx} />
-            </Container>
+            </MainContainer>
         </>
     )
 }
