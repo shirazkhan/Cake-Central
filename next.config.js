@@ -5,6 +5,9 @@ module.exports = {
     compiler: {
       styledComponents: true,
     },
+    env: {
+      STOREFRONT_API_KEY: process.env.STOREFRONT_API_KEY,
+    },
   }
 
   

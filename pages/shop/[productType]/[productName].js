@@ -60,7 +60,7 @@ const extractFragmentHandle = (router, variants) => { // Check if router has hre
   return fragment === router.asPath ? variants[0].handle : fragment
 }
 
-export default function Product({id,title,collection,description,images,price,variants,productRecommendations}){
+export default function Product({id,title,collection,description,images,price,variants}){
 
   const router = useRouter();
 
@@ -135,19 +135,6 @@ export async function getStaticProps({params}) {
   const collection = data.productByHandle.collections.nodes[0];
 
   const { data:data2 } = await client.query(GET_RECOMMENDED_PRODUCTS_BY_ID(data.productByHandle.id));
-  
-  const productRecommendations = data2.productRecommendations ? data2.productRecommendations.map(r => {
-    return {
-      id: r.id,
-      price: r.priceRange.minVariantPrice.amount,
-      title: r.title,
-      handle: r.handle,
-      productType: r.productType.toLowerCase(),
-      imageSrc: r.images.edges[0].node.src,
-      imageId: r.images.edges[0].node.src,
-      imageAltText: r.images.edges[0].node.altText
-    }
-  }) : ''
 
   return {
       props: {
@@ -157,7 +144,6 @@ export async function getStaticProps({params}) {
         price: data.productByHandle.priceRange.minVariantPrice.amount,
         images,
         variants,
-        productRecommendations,
         collection,
         key: data.productByHandle.id
       },

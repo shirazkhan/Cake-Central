@@ -17,7 +17,7 @@ const Dot = styled.div`
     width: 15px;   
     height: 15px;
     border-radius: 10px;
-    background: ${props => props.active ? '' : PRIMARY_THEME_COLOR};
+    background: ${props => props.$active ? '' : PRIMARY_THEME_COLOR};
     border: 3px solid ${PRIMARY_THEME_COLOR};
     display: inline-block;
     margin: 5px;
@@ -25,11 +25,11 @@ const Dot = styled.div`
     box-shadow: rgba(50, 50, 93, 0.6) 0px 6px 12px -2px, rgba(0, 0, 0, 0.9) 0px 3px 7px -3px;
 `;
 
-const renderDots = (quantity, active) =>
+const renderDots = (quantity, $active) =>
     [...Array(quantity)].map((na,i) =>
-        i === active
+        i === $active
         ? <Dot key = {i.toString()} />
-        : <Dot key = {i.toString()} active = {true} />
+        : <Dot key = {i.toString()} $active = {true} />
     )
 
 export default function Indicator({quantity, idx}) {

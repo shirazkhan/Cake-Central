@@ -81,15 +81,18 @@ const toBase64 = (str) =>
     : window.btoa(str);
 
 const renderImages = (images, variants, setImageIdx, myRef) => {
+
     return images.map((img,i) => {
             return <InView key = {img.id} ref = {myRef} onChange = {(inView) => inView ? setImageIdx(i) : null} threshold = {0.5} initialInView ={false}>
                     {({ inView, ref, entry }) => (
-                        <ImageContainer id = {variants.length <= 1 ? null : variants[i].handle} entry = {entry} ref = {ref} idx = {i} active = {inView}>
+                        <ImageContainer id = {variants[0].handle}  $entry = {entry} ref = {ref} > {/* id = {variants.length <= 1 ? null : variants[i].handle} */}
                             <Image
                                 placeholder = {'blur'}
                                 blurDataURL={`data:image/svg+xml;base64,${toBase64(shimmer(700, 475))}`}
-                                layout = 'fill'
+                                fill={true}
                                 src = {img.src}
+                                alt={img.altText}
+                                quality={1}
                                 style={{objectFit: "cover"}}
                             />
                         </ImageContainer>
@@ -105,7 +108,7 @@ export default function ProductImages({images, variants}) {
     const myRef = useRef();
     return (
         <>
-            <MainContainer vertical = {false} className = 'scroll-container'>
+            <MainContainer className = 'scroll-container'>
                 <Container>
                     {renderImages(images, variants, setImageIdx,myRef)}
                 </Container>

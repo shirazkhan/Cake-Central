@@ -21,6 +21,7 @@ const Variants = styled(motion.div)`
     padding-left: 10px;
     white-space: nowrap;
     overflow-x: scroll;
+    overflow-y: hidden;
     display: flex;
     scroll-behavior: smooth;
     -ms-overflow-style: none;
@@ -83,7 +84,7 @@ export default function ProductVariant({variants, selectedVariant, setSelectedVa
     const router = useRouter(); 
     
     return <>{ variants.length > 1 ?
-            <Container key = {Math.random()}>
+            <Container>
                 <Title animate = {{ opacity: 1}}>
                     {variants.find(v => v.handle === selectedVariant).title}
                 </Title>

@@ -30,7 +30,7 @@ const Menu = styled(motion.div)`
         max-width: none;
         padding-top: 0;
         flex-direction: row;
-        overflow: none;
+        overflow: hidden;
         align-items: center;
         justify-content: center;
         height: ${DESKTOP_LINK_HEIGHT};

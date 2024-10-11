@@ -8,17 +8,17 @@ import client from '../apollo-client';
 import { CREATE_CART, CART_LINES_ADD } from '../graphql/Mutations';
 
 const Container = styled(motion.div)`
-    width: ${props => props.inView ? '80%' : '100%'};
+    width: ${props => props.$inView ? '80%' : '100%'};
     min-width: 376px;
-    border-radius: ${props => props.inView ? '30px' : '0px'};
+    border-radius: ${props => props.$inView ? '30px' : '0px'};
     margin: 20px auto;
     height: 63px;
     display: flex;
-    position: ${props => props.inView ? 'relative' : 'fixed'};
+    position: ${props => props.$inView ? 'relative' : 'fixed'};
     z-index: 3;
     background: ${PRIMARY_THEME_COLOR};
     bottom: 0;
-    box-shadow: ${props => props.inView ? '0px 5px 5px -4px #000000' : 'rgba(0, 0, 0, 0.25) 0px 54px 55px, rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px, rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px'};
+    box-shadow: ${props => props.$inView ? '0px 5px 5px -4px #000000' : 'rgba(0, 0, 0, 0.25) 0px 54px 55px, rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px, rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px'};
     left: 0;
 
     ${DESKTOP_VIEW}{
@@ -71,7 +71,7 @@ export default function BuyButton({selectedVariant, variants}) {
     return (
         <>
             <Ref ref = {ref}>
-                <Container inView = {inView} animate={{width: inView ? '80%' : '100%'}} whileTap = {{scale: 1.1}}>
+                <Container $inView = {inView} animate={{width: inView ? '80%' : '100%'}} whileTap = {{scale: 1.1}}>
                     <Button onClick = {() => handleAddToBag(selectedVariant, variants, dispatch, globalState)} >Add to Bag</Button>
                 </Container>
             </Ref>
