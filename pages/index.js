@@ -51,7 +51,7 @@ export default function Index() {
             <ShopCarousel data = {cupcakes} title={"CUPCAKES"} subtitle={"Tiny cakes, huge happiness"}/>
             <ShopCarousel data = {brownies} title={"BROWNIES"} subtitle={"Gooey goodness in every square"}/> */}
         <FreeDeliveryBanner />
-        <WhatsNew />
+        {/* <WhatsNew /> */}
         </RoundedContainer>
     </Container>
     {/*<SocialBanner />*/}

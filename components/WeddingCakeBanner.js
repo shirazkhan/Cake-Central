@@ -2,6 +2,7 @@ import React from 'react';
 import styled from 'styled-components';
 import { motion } from 'framer-motion';
 import { DESKTOP_VIEW, PRIMARY_BANNER_COLOR, SECONDARY_BANNER_COLOR } from '../GlobalVariables';
+import Image from 'next/image';
 
 const BannerContainer = styled.div`
   display: flex;
@@ -34,7 +35,7 @@ const TextContent = styled(motion.div)`
   }
 `;
 
-const ImagePlaceholder = styled.div`
+const ImagePlaceholder = styled(Image)`
   width: 100%;
   height: 400px;
   background-color: #e0e0e0;
@@ -74,7 +75,11 @@ const BannerComponent = () => {
         Because we pride ourselves on creating high-quality, custom wedding cakes, your details help us make magic happen. Share all the specifics so we can get back to you swiftly and accurately.
         </BannerText>
       </TextContent>
-      <ImagePlaceholder />
+      <ImagePlaceholder
+        src="/Wedding-Cake2.jpeg"
+        alt="Wedding Cake"
+        layout="fill"
+        quality={1} />
     </BannerContainer>
   );
 };

@@ -200,7 +200,7 @@ const WeddingCakeOrderForm = () => {
   
     return (
       <>
-        <Banner backgroundImage={'/temp/brownies.jpeg'} title={'Bespoke Wedding Cakes'} description={'Let us create a stunning wedding cake for your special day!'} />
+        <Banner backgroundImage={'/Wedding_Banner.jpeg'} title={'Bespoke Wedding Cakes'} description={'Let us create a stunning wedding cake for your special day!'} />
         <WeddingCakeBanner />
         <OrderFormContainer>
           <OrderHeader>Order Your Custom Wedding Cake</OrderHeader>

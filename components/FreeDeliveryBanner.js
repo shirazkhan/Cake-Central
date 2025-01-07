@@ -2,6 +2,7 @@ import React from 'react';
 import styled from 'styled-components';
 import { motion } from 'framer-motion';
 import { useInView } from 'react-intersection-observer';
+import Link from 'next/link';
 import Image from 'next/image';
 import { PRIMARY_THEME_COLOR, DESKTOP_VIEW, WEBSITE_WIDTH, PRIMARY_BUTTON_COLOR } from '../GlobalVariables';
 
@@ -81,16 +82,21 @@ const Description = styled.p`
   }
 `;
 
-const ActionButton = styled(motion.button)`
+const ActionButton = styled(motion(Link))`
   background-color: ${PRIMARY_BUTTON_COLOR};
   color: white;
   border: none;
-  font-weight: 550;
-  border-radius: 20px;
+  font-weight: 500;
+  border-radius: 50px;
   padding: 10px 20px;
   cursor: pointer;
   font-size: 0.9rem;
   transition: background-color 0.3s ease;
+  width: 30%;
+
+  &:visited {
+    color: white;
+  }
 
   &:hover {
     background-color: #ff8fa3;
@@ -114,7 +120,7 @@ const Banner = () => {
         <ImageWrapper>
           <Image
             src="/temp/cake-delivery.jpeg"
-            alt="Placeholder"
+            alt="Cake Delivery"
             layout="fill"
             quality={1}
             objectFit="cover"
@@ -125,8 +131,8 @@ const Banner = () => {
           <Description>
             We're thrilled to offer free delivery for all our wonderful Grantham customers! Whether you're surprising a loved one or indulging in a treat for yourself, we'll bring your handcrafted cake right to your doorstep with a smile.
           </Description>
-          <ActionButton whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
-            FIND OUT MORE
+          <ActionButton href={'/delivery-policy'} whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
+            Find Out More
           </ActionButton>
         </TextWrapper>
       </BannerContent>
