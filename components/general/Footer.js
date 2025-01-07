@@ -190,7 +190,7 @@ export default function Footer(props) {
                         <span>Grantham,</span>
                         <span>NG31 9NZ</span>
                         <span>info@cakecentral.co.uk</span>
-                        <span>Tel: 07908821919</span>
+                        <span>Tel: 07768 672154</span>
                     </ContactContainer>
                     <LinksContainer>
                         <Link href='/our-story'>Our Story</Link>
