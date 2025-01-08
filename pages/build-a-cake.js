@@ -206,8 +206,8 @@ const CakeOrderForm = () => {
       <Banner backgroundImage={'/patterns/sprinkles.svg'} title={'Build a Cake With Us!'} description={'Let us build the perfect cake, designed by you!'} />
       <BespokeCakeBanner />
       <OrderFormContainer>
-        <OrderHeader>Order Your Custom Cake</OrderHeader>
-        <OrderDescription>Help us whip up your perfect cake by filling out this form with all the delicious details. The more you fill in, the merrier!</OrderDescription>
+        <OrderHeader>Cake Enquiry</OrderHeader>
+        <OrderDescription>Help us whip up your perfect cake by filling out this form with all the delicious details.</OrderDescription>
         <OrderDescription>Once you’ve sent it over, we’ll get back to you quicker than a cupcake in the oven!</OrderDescription>
         <OrderDescription>...Or if you’re in a hurry, feel free to chat with us on WhatsApp by clicking here! </OrderDescription>
         <OrderForm initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0, transition: { duration: 0.5 } }} onSubmit={handleSubmit}>
@@ -223,16 +223,16 @@ const CakeOrderForm = () => {
             <Input placeholder='Post Code*' id="postcode" name="postCode" value={formData.postCode} onChange={handleInputChange} />
             <Input placeholder='Budget (£)' id="budget" name="budget" value={formData.budget} onChange={handleInputChange} />
           </FormGroup>
-          <FormGroup style={{justifyContent: 'center'}}>
+          {/*<FormGroup style={{justifyContent: 'center'}}>
             <CheckboxLabel>
               <Checkbox id="deliveryNeeded" name="deliveryNeeded" checked={formData.deliveryNeeded} onChange={handleCheckboxChange} />
               Does this order need delivering?
             </CheckboxLabel>
-          </FormGroup>
+            </FormGroup>*/}
           <FormGroup style={{flexDirection: 'row'}}>
             <Label htmlFor="dateNeeded">Date needed:</Label>
             <Input style={{width: '500px'}} type="date" id="dateNeeded" name="dateNeeded" value={formData.dateNeeded} onChange={handleInputChange} />
-            <Input placeholder='Time' type="input" id="timeNeeded" name="timeNeeded" value={formData.timeNeeded} onChange={handleInputChange} />
+            {/*<Input placeholder='Time' type="input" id="timeNeeded" name="timeNeeded" value={formData.timeNeeded} onChange={handleInputChange} />*/}
           </FormGroup>
           <FormGroup style={{flexDirection: 'row'}}>
             <Select id="cakeSize" name="cakeSize" value={formData.cakeSize} onChange={handleInputChange}>
@@ -258,21 +258,21 @@ const CakeOrderForm = () => {
               <option value="Vanilla">Vanilla</option>
               <option value="Chocolate">Chocolate</option>
               <option value="Red Velvet">Red Velvet</option>
-              <option value="Not Sure">Not Sure</option>
+              <option value="Not Sure">Not Sure / Other</option>
             </Select>
             <Select id="icingFlavour" name="icingFlavour" value={formData.icingFlavour} onChange={handleInputChange}>
               <option value="">Icing Flavour</option>
               <option value="Vanilla Icing">Vanilla Icing</option>
               <option value="Chocolate Icing">Chocolate Icing</option>
               <option value="Strawberry Icing">Strawberry Icing</option>
-              <option value="Not Sure">Not Sure</option>
+              <option value="Not Sure">Not Sure / Other</option>
             </Select>
           </FormGroup>
           <FormGroup>
             <Textarea placeholder='Any Extra Details?' id="notes" name="notes" value={formData.notes} onChange={handleInputChange} />
           </FormGroup>
           <SubmitButton whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }} type="submit">
-            Submit Order
+            Submit Enquiry
           </SubmitButton>
         </OrderForm>
         {status && <StatusMessage>{status}</StatusMessage>}

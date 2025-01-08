@@ -131,7 +131,7 @@ export default function NavMenu() {
                                     Cakes
                             </Link>
                         </NavLink>
-                        <NavLink>
+                        {/* <NavLink>
                             <Link
                                 
                                 onClick = {isDesktop ? null : () => dispatch({type: 'TOGGLE_NAV_MENU'})}
@@ -148,7 +148,7 @@ export default function NavMenu() {
                                 as = '/shop/cookies' >
                                     Cookies
                             </Link>
-                        </NavLink>
+                        </NavLink> */}
                         <NavLink>
                             <Link
                                 
