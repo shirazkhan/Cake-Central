@@ -36,10 +36,9 @@ const TextContent = styled(motion.div)`
 `;
 
 const ImagePlaceholder = styled(Image)`
-  width: 100%;
-  height: 400px;
   background-color: #e0e0e0;
   border-radius: 10px;
+  position: relative;
 
   ${DESKTOP_VIEW} {
     width: 50%;
@@ -75,11 +74,11 @@ const BannerComponent = () => {
         Because we pride ourselves on creating high-quality, custom wedding cakes, your details help us make magic happen. Share all the specifics so we can get back to you swiftly and accurately.
         </BannerText>
       </TextContent>
-      <ImagePlaceholder
+      {/* <ImagePlaceholder
         src="/Wedding-Cake2.jpeg"
         alt="Wedding Cake"
-        layout="fill"
-        quality={1} />
+        fill
+        quality={1} /> */}
     </BannerContainer>
   );
 };

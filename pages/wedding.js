@@ -229,7 +229,7 @@ const WeddingCakeOrderForm = () => {
             <FormGroup style={{ flexDirection: 'row' }}>
               <Label htmlFor="dateNeeded">Wedding Date:</Label>
               <Input style={{ width: '500px' }} type="date" id="dateNeeded" name="dateNeeded" value={formData.dateNeeded} onChange={handleInputChange} />
-              <Input placeholder='Time' type="time" id="timeNeeded" name="timeNeeded" value={formData.timeNeeded} onChange={handleInputChange} />
+              {/* <Input placeholder='Time' type="time" id="timeNeeded" name="timeNeeded" value={formData.timeNeeded} onChange={handleInputChange} /> */}
             </FormGroup>
             <FormGroup style={{ flexDirection: 'row' }}>
               <Select id="cakeSize" name="cakeSize" value={formData.cakeSize} onChange={handleInputChange}>

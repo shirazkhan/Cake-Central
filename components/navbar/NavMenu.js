@@ -171,6 +171,15 @@ export default function NavMenu() {
                             <Link
                                 
                                 onClick = {isDesktop ? null : () => dispatch({type: 'TOGGLE_NAV_MENU'})}
+                                href = '/portfolio'
+                                as = '/portfolio' >
+                                    Portfolio
+                            </Link>
+                        </NavLink>
+                        <NavLink>
+                            <Link
+                                
+                                onClick = {isDesktop ? null : () => dispatch({type: 'TOGGLE_NAV_MENU'})}
                                 href = '/contact'
                                 as = '/contact'>
                                     Contact Us
