@@ -180,6 +180,15 @@ export default function NavMenu() {
                             <Link
                                 
                                 onClick = {isDesktop ? null : () => dispatch({type: 'TOGGLE_NAV_MENU'})}
+                                href = '/faq'
+                                as = '/faq'>
+                                    FAQ
+                            </Link>
+                        </NavLink>
+                        <NavLink>
+                            <Link
+                                
+                                onClick = {isDesktop ? null : () => dispatch({type: 'TOGGLE_NAV_MENU'})}
                                 href = '/contact'
                                 as = '/contact'>
                                     Contact Us
