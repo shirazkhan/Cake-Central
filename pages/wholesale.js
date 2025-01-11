@@ -1,7 +1,8 @@
 import React from 'react';
+import Head from 'next/head';
 import styled from 'styled-components';
 import Banner from '../components/Banner';
-import { WEBSITE_WIDTH, PRIMARY_THEME_COLOR } from '../GlobalVariables';
+import { WEBSITE_WIDTH, PRIMARY_THEME_COLOR, WEBSITE_NAME } from '../GlobalVariables';
 
 const Container = styled.div`
   max-width: ${WEBSITE_WIDTH};
@@ -59,6 +60,11 @@ const Description = styled.p`
 const WholesalePage = () => {
   return (
     <>
+    <Head>
+        <title>Wholesale | ${WEBSITE_NAME}</title>
+        <meta name="description" content="Wholesale enquiries" />
+        <meta name="keywords" content="wholesale cakes" />
+    </Head>
       <Banner
         backgroundImage="/patterns/sprinkles.svg"
         title="Wholesale Enquiries"
