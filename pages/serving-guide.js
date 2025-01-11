@@ -1,9 +1,10 @@
 import React from 'react';
+import Head from 'next/head';
 import styled from 'styled-components';
 import { motion } from 'framer-motion';
 import { useInView } from 'react-intersection-observer';
 import Banner from '../components/Banner';
-import { PRIMARY_THEME_COLOR, SECONDARY_THEME_COLOR, WEBSITE_WIDTH } from '../GlobalVariables';
+import { PRIMARY_THEME_COLOR, SECONDARY_THEME_COLOR, WEBSITE_WIDTH, WEBSITE_NAME } from '../GlobalVariables';
 
 const Container = styled.div`
   max-width: ${WEBSITE_WIDTH};
@@ -109,6 +110,11 @@ export default function ServingGuide(props) {
 
   return (
     <>
+    <Head>
+  <title>Serving Guide | {WEBSITE_NAME}</title>
+  <meta name="description" content="Use our serving guide to determine the right size cake for your event. Tips for cutting and serving included." />
+  <meta name="keywords" content="cake serving guide, cake portions, cake size tips" />
+</Head>
       <Banner
         backgroundImage="/patterns/sprinkles.svg"
         title="Serving Guide"

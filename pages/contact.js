@@ -1,6 +1,7 @@
 import { useState } from 'react';
+import Head from 'next/head';
 import styled from 'styled-components';
-import { WEBSITE_WIDTH } from '../GlobalVariables';
+import { WEBSITE_WIDTH, WEBSITE_NAME } from '../GlobalVariables';
 
 const Contact = () => {
   const [formData, setFormData] = useState({
@@ -42,6 +43,12 @@ const Contact = () => {
   };
 
   return (
+    <>
+      <Head>
+        <title>Contact Us | {WEBSITE_NAME}</title>
+        <meta name="description" content="Get in touch with us for inquiries, orders, or collaborations. We're here to help!" />
+        <meta name="keywords" content="contact us, cake inquiries, cake orders, customer support" />
+      </Head>
     <ContactContainer>
       <Header>Contact Us</Header>
       <Description>
@@ -97,6 +104,7 @@ const Contact = () => {
       </Form>
       {status && <Status>{status}</Status>}
     </ContactContainer>
+    </>
   );
 };
 

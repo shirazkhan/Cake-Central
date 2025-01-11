@@ -1,7 +1,7 @@
 import Head from 'next/head';
 import React from 'react';
 import styled from 'styled-components';
-import { WEBSITE_WIDTH, PRIMARY_THEME_COLOR } from '../GlobalVariables';
+import { WEBSITE_WIDTH, PRIMARY_THEME_COLOR, WEBSITE_NAME } from '../GlobalVariables';
 
 const Container = styled.div`
   text-align: left;
@@ -52,8 +52,10 @@ export default function PrivacyPolicy(props) {
   return (
     <>
       <Head>
-        <title>Privacy Policy | Cake Central</title>
-      </Head>
+  <title>Privacy Policy | {WEBSITE_NAME}</title>
+  <meta name="description" content="Understand how we collect, use, and protect your data through our privacy policy." />
+  <meta name="keywords" content="privacy policy, data protection, customer privacy" />
+</Head>
       <Container>
 
         <Main>

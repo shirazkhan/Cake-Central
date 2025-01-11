@@ -1,8 +1,9 @@
 import React, { useEffect } from 'react';
+import Head from 'next/head';
 import styled from 'styled-components';
 import { motion, useAnimation } from 'framer-motion';
 import Banner from '../components/Banner';
-import { PRIMARY_THEME_COLOR, WEBSITE_WIDTH } from '../GlobalVariables';
+import { PRIMARY_THEME_COLOR, WEBSITE_WIDTH, WEBSITE_NAME } from '../GlobalVariables';
 import { useInView } from 'react-intersection-observer';
 
 const Container = styled.div`
@@ -228,6 +229,11 @@ const StoryPage = () => {
 
   return (
     <>
+      <Head>
+        <title>Our Story | {WEBSITE_NAME}</title>
+        <meta name="description" content="Learn about our journey and passion for creating exceptional cakes. Meet the team behind the magic." />
+        <meta name="keywords" content="our story, about us, cake business, bakery journey" />
+      </Head>
       <Banner
         backgroundImage="/patterns/sprinkles.svg"
         title="Sweet Beginnings: Our Joyful Journey"

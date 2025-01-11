@@ -1,7 +1,7 @@
 import Head from 'next/head';
 import React from 'react';
 import styled from 'styled-components';
-import { WEBSITE_WIDTH, PRIMARY_THEME_COLOR } from '../GlobalVariables';
+import { WEBSITE_WIDTH, PRIMARY_THEME_COLOR, WEBSITE_NAME } from '../GlobalVariables';
 
 const Container = styled.div`
   padding: 20px;
@@ -45,8 +45,10 @@ export default function TermsAndConditions(props) {
   return (
     <>
       <Head>
-        <title>Terms & Conditions | Cake Central</title>
-      </Head>
+  <title>Terms and Conditions | {WEBSITE_NAME}</title>
+  <meta name="description" content="Review our terms and conditions for using our website, placing orders, and other policies." />
+  <meta name="keywords" content="terms and conditions, website policies, cake business terms" />
+</Head>
       <Container>
         <Section>
           <Title>Terms of Use Agreement</Title>

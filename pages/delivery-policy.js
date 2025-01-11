@@ -1,7 +1,8 @@
 import React from 'react';
+import Head from 'next/head';
 import styled from 'styled-components';
 import Banner from '../components/Banner';
-import { SECONDARY_THEME_COLOR } from '../GlobalVariables';
+import { SECONDARY_THEME_COLOR, WEBSITE_NAME } from '../GlobalVariables';
 
 const Container = styled.div`
   max-width: 800px;
@@ -80,7 +81,12 @@ const DeliveryPolicy = () => {
   ];
 
   return (
-    <div>
+    <>
+      <Head>
+  <title>Delivery Information | {WEBSITE_NAME}</title>
+  <meta name="description" content="Learn about our cake delivery options, areas we serve, and estimated delivery times. Freshly baked cakes delivered to your door." />
+  <meta name="keywords" content="cake delivery, delivery information, cake delivery times, delivery areas" />
+</Head>
       <Banner
         backgroundImage="/patterns/sprinkles.svg"
         title="Delivery Policy"
@@ -118,7 +124,7 @@ const DeliveryPolicy = () => {
         <Subtitle>Contact Us</Subtitle>
         <Paragraph>If you have any questions or need further assistance, feel free to <a href="mailto:contact@cakecentral.com">contact us</a>. We're here to help and make your experience delightful!</Paragraph>
       </Container>
-    </div>
+    </>
   );
 }
 

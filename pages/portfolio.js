@@ -1,8 +1,9 @@
 import Image from "next/image";
+import Head from "next/head";
 import styled from "styled-components";
 import { MasonryPhotoAlbum } from "react-photo-album";
 import "react-photo-album/masonry.css";
-import { DESKTOP_VIEW } from "../GlobalVariables";
+import { DESKTOP_VIEW, WEBSITE_NAME } from "../GlobalVariables";
 import Banner from "../components/Banner";
 
 const Container = styled.div`
@@ -73,6 +74,11 @@ const photos = [
 export default function PhotoGallery() {
   return (
     <>
+        <Head>
+            <title>Portfolio | {WEBSITE_NAME}</title>
+            <meta name="description" content="Browse our portfolio to see examples of our stunning custom cakes, wedding cakes, and more." />
+            <meta name="keywords" content="cake portfolio, cake designs, custom cake gallery, cake ideas" />
+        </Head>
           <Banner backgroundImage={'/patterns/sprinkles.svg'} title={'Portfolio'} description={'Explore some of our creations.'} />
 
         <Container>

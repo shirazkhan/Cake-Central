@@ -1,7 +1,8 @@
 import React from 'react';
+import Head from 'next/head';
 import styled from 'styled-components';
 import Banner from '../components/Banner';
-import { WEBSITE_WIDTH, PRIMARY_THEME_COLOR } from '../GlobalVariables';
+import { WEBSITE_WIDTH, PRIMARY_THEME_COLOR, WEBSITE_NAME } from '../GlobalVariables';
 
 const Container = styled.div`
   max-width: ${WEBSITE_WIDTH};
@@ -73,6 +74,11 @@ const ContactLink = styled.a`
 const CorporatePage = () => {
   return (
     <>
+    <Head>
+  <title>Corporate Orders | {WEBSITE_NAME}</title>
+  <meta name="description" content="Explore our corporate cake options for events, team celebrations, and branded treats." />
+  <meta name="keywords" content="corporate cakes, business cakes, branded cakes, corporate events" />
+</Head>
       <Banner
         backgroundImage="/patterns/sprinkles.svg"
         title="Corporate Cakes for Your Occasions"

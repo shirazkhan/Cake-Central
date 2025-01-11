@@ -1,6 +1,7 @@
 import React from 'react';
+import Head from 'next/head';
 import styled from 'styled-components';
-import { DESKTOP_VIEW, PRIMARY_THEME_COLOR, SECONDARY_THEME_COLOR, WEBSITE_WIDTH } from '../GlobalVariables';
+import { DESKTOP_VIEW, PRIMARY_THEME_COLOR, SECONDARY_THEME_COLOR, WEBSITE_WIDTH, WEBSITE_NAME } from '../GlobalVariables';
 import Faq from '../components/Faq';
 import Banner from '../components/Banner';
 
@@ -141,6 +142,11 @@ const questions = {
 const Faqs = () => {
   return (
     <>
+    <Head>
+  <title>FAQs | {WEBSITE_NAME}</title>
+  <meta name="description" content="Find answers to frequently asked questions about our cakes, ordering process, delivery, and more." />
+  <meta name="keywords" content="FAQs, cake delivery questions, cake ordering, cake policy" />
+</Head>
     <Banner
         backgroundImage="/patterns/sprinkles.svg"
         title="FAQs"

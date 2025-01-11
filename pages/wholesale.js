@@ -61,9 +61,9 @@ const WholesalePage = () => {
   return (
     <>
     <Head>
-        <title>Wholesale | ${WEBSITE_NAME}</title>
-        <meta name="description" content="Wholesale enquiries" />
-        <meta name="keywords" content="wholesale cakes" />
+      <title>Wholesale | {WEBSITE_NAME}</title>
+      <meta name="description" content="Explore our wholesale cake options for businesses, cafes, and retailers. Delicious, handcrafted cakes to suit your needs." />
+      <meta name="keywords" content="wholesale cakes, bulk cakes, cake supplier, handcrafted cakes" />
     </Head>
       <Banner
         backgroundImage="/patterns/sprinkles.svg"

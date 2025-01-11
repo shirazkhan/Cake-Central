@@ -1,10 +1,11 @@
 import React, { useState } from 'react';
+import Head from 'next/head';
 import styled from 'styled-components';
 import { motion } from 'framer-motion';
 import Banner from '../components/Banner';
 import FreeDeliveryBanner from '../components/FreeDeliveryBanner';
 import WeddingCakeBanner from '../components/WeddingCakeBanner';
-import { PRIMARY_THEME_COLOR, DESKTOP_VIEW, WEBSITE_WIDTH, PRIMARY_BUTTON_COLOR, SECONDARY_BUTTON_COLOR } from '../GlobalVariables';
+import { PRIMARY_THEME_COLOR, DESKTOP_VIEW, WEBSITE_WIDTH, PRIMARY_BUTTON_COLOR, SECONDARY_BUTTON_COLOR, WEBSITE_NAME } from '../GlobalVariables';
 
 const OrderFormContainer = styled.div`
   max-width: 750px;
@@ -200,6 +201,12 @@ const WeddingCakeOrderForm = () => {
   
     return (
       <>
+        <Head>
+          <title>Wedding Cakes | {WEBSITE_NAME}</title>
+          <meta name="description" content="Discover our stunning range of wedding cakes. Elegant designs and delicious flavors for your special day." />
+          <meta name="keywords" content="wedding cakes, custom wedding cakes, wedding cake design" />
+        </Head>
+
         <Banner backgroundImage={'/Wedding_Banner.jpeg'} title={'Bespoke Wedding Cakes'} description={'Let us create a stunning wedding cake for your special day!'} />
         <WeddingCakeBanner />
         <OrderFormContainer>

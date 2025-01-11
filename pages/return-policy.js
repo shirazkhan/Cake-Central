@@ -1,9 +1,10 @@
 import React from 'react';
+import Head from 'next/head';
 import styled from 'styled-components';
 import { motion } from 'framer-motion';
 import { useInView } from 'react-intersection-observer';
 import Banner from '../components/Banner';
-import { PRIMARY_THEME_COLOR, SECONDARY_THEME_COLOR, WEBSITE_WIDTH } from '../GlobalVariables';
+import { PRIMARY_THEME_COLOR, SECONDARY_THEME_COLOR, WEBSITE_WIDTH, WEBSITE_NAME } from '../GlobalVariables';
 
 const Container = styled.div`
   max-width: 1000px;
@@ -93,6 +94,12 @@ const RefundPolicy = () => {
   });
 
   return (
+    <>
+    <Head>
+  <title>Returns and Refunds | {WEBSITE_NAME}</title>
+  <meta name="description" content="Read our policy on returns and refunds for cake orders. We’re here to assist you." />
+  <meta name="keywords" content="returns policy, refund policy, cake orders, customer care" />
+</Head>
     <ParallaxContainer>
       <Banner
         backgroundImage="/patterns/sprinkles.svg"
@@ -137,7 +144,7 @@ const RefundPolicy = () => {
           </Section>
         </ParallaxLayer>
       </Container>
-    </ParallaxContainer>
+    </ParallaxContainer></>
   );
 };
 

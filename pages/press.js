@@ -1,7 +1,8 @@
 import React from 'react';
+import Head from 'next/head';
 import styled from 'styled-components';
 import Banner from '../components/Banner';
-import { WEBSITE_WIDTH, PRIMARY_THEME_COLOR } from '../GlobalVariables';
+import { WEBSITE_WIDTH, PRIMARY_THEME_COLOR, WEBSITE_NAME } from '../GlobalVariables';
 
 const Container = styled.div`
   max-width: 1000px;
@@ -56,6 +57,11 @@ const ContactLink = styled.a`
 const PressEnquiriesPage = () => {
   return (
     <>
+    <Head>
+  <title>Press Enquiries | {WEBSITE_NAME}</title>
+  <meta name="description" content="Contact us for press enquiries and media-related questions. We’d love to share our story." />
+  <meta name="keywords" content="press enquiries, media enquiries, cake business press" />
+</Head>
       <Banner
         backgroundImage="/patterns/sprinkles.svg"
         title="Press Enquiries"

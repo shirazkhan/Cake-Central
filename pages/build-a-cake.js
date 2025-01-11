@@ -1,10 +1,11 @@
 import React, { useState } from 'react';
+import Head from 'next/head';
 import styled from 'styled-components';
 import { motion } from 'framer-motion';
 import Banner from '../components/Banner';
 import FreeDeliveryBanner from '../components/FreeDeliveryBanner';
 import BespokeCakeBanner from '../components/BespokeCakeBanner';
-import { PRIMARY_THEME_COLOR, DESKTOP_VIEW, WEBSITE_WIDTH, PRIMARY_BUTTON_COLOR, SECONDARY_BUTTON_COLOR } from '../GlobalVariables';
+import { PRIMARY_THEME_COLOR, DESKTOP_VIEW, WEBSITE_WIDTH, PRIMARY_BUTTON_COLOR, SECONDARY_BUTTON_COLOR, WEBSITE_NAME } from '../GlobalVariables';
 import WhatsappHeader from '../components/WhatsappHeader';
 
 const OrderFormContainer = styled.div`
@@ -202,6 +203,11 @@ const CakeOrderForm = () => {
 
   return (
     <>
+    <Head>
+  <title>Build a Cake | {WEBSITE_NAME}</title>
+  <meta name="description" content="Create your custom cake with our easy build-a-cake tool. Choose flavors, designs, and extras for your perfect cake." />
+  <meta name="keywords" content="custom cake, build a cake, personalized cakes, cake design tool" />
+</Head>
       <WhatsappHeader />
       <Banner backgroundImage={'/patterns/sprinkles.svg'} title={'Build a Cake With Us!'} description={'Let us build the perfect cake, designed by you!'} />
       <BespokeCakeBanner />
