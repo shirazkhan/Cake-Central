@@ -128,7 +128,7 @@ export default function NavMenu() {
                                 
                                 onClick = {isDesktop ? null : () => dispatch({type: 'TOGGLE_NAV_MENU'})}
                                 href = '/build-a-cake' >
-                                    Cakes
+                                    Build A Cake
                             </Link>
                         </NavLink>
                         {/* <NavLink>
@@ -162,6 +162,15 @@ export default function NavMenu() {
                             <Link
                                 
                                 onClick = {isDesktop ? null : () => dispatch({type: 'TOGGLE_NAV_MENU'})}
+                                href = '/valentines-menu'
+                                as = '/valentines-menu' >
+                                    Valentines Menu
+                            </Link>
+                        </NavLink>
+                        <NavLink>
+                            <Link
+                                
+                                onClick = {isDesktop ? null : () => dispatch({type: 'TOGGLE_NAV_MENU'})}
                                 href = '/our-story'
                                 as = '/our-story' >
                                     Our Story
@@ -180,8 +189,8 @@ export default function NavMenu() {
                             <Link
                                 
                                 onClick = {isDesktop ? null : () => dispatch({type: 'TOGGLE_NAV_MENU'})}
-                                href = '/faq'
-                                as = '/faq'>
+                                href = '/faqs'
+                                as = '/faqs'>
                                     FAQ
                             </Link>
                         </NavLink>

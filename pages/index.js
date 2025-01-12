@@ -10,7 +10,7 @@ import SocialBanner from '../components/index/SocialBanner';
 import WhatsNew from '../components/WhatsNew';
 import FreeDeliveryBanner from '../components/FreeDeliveryBanner';
 import HeroBanner from '../components/HeroBanner';
-import { PRIMARY_BANNER_COLOR, WEBSITE_WIDTH } from '../GlobalVariables';
+import { PRIMARY_BANNER_COLOR, WEBSITE_WIDTH, WEBSITE_NAME } from '../GlobalVariables';
 import WhatsappHeader from '../components/WhatsappHeader';
 import CategorySection from '../components/CategorySection';
 import DesignACakeWithUs from '../components/DesignACakeWithUs';
@@ -34,12 +34,20 @@ export default function Index() {
 
     return <>
     <Head>
-        <title>Order Cakes Online for UK Delivery | CakeCentral </title>
-        <meta
-            name="description"
-            content="Handcrafted cakes from Lincolnshire, delivered to your doorstep across the UK. Explore our mouthwatering selection of unique cakes, perfect for any celebration or sweet craving. Order now for a taste of homemade indulgence!"
-        />
-    </Head>
+  <title>{WEBSITE_NAME} | Grantham's favourite cake maker</title>
+  <meta name="description" content="Discover the finest handcrafted cakes for all occasions at Cake Central. From weddings to birthdays, our cakes are baked to perfection and designed with love." />
+  <meta name="keywords" content="cakes, handcrafted cakes, birthday cakes, wedding cakes, Cake Central, custom cakes, dessert bakery" />
+  <meta name="author" content="Cake Central" />
+  <meta name="robots" content="index, follow" />
+  <meta property="og:title" content="Cake Central | Grantham's favourite cake maker" />
+  <meta property="og:description" content="Explore our range of handcrafted cakes for weddings, birthdays, and more. Made with love and baked to perfection at Cake Central." />
+  <meta property="og:image" content="/images/cake-central-home.jpg" />
+  <meta property="og:url" content="https://cakecentral.co.uk" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Cake Central | Grantham's favourite cake maker" />
+  <meta name="twitter:description" content="Discover the finest handcrafted cakes for all occasions at Cake Central. Order yours today!" />
+  <meta name="twitter:image" content="/images/cake-central-home.jpg" />
+</Head>
     <WhatsappHeader />
     <HeroBanner/>
     <Container>
