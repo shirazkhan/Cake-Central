@@ -28,6 +28,7 @@ const MainContainer = styled.div`
 `;
 
 const SpecContainer = styled.div`
+  width: 100vw;
   ${DESKTOP_VIEW}{
       display: flex;
       flex-direction: column;
