@@ -1,17 +1,14 @@
 import React, { useState } from 'react';
 import styled from 'styled-components';
 import { useRouter } from "next/router";
-import {Primary, Secondary} from '../../../src/styled/App';
+import {Primary} from '../../../src/styled/App';
 import ProductImages from '../../../components/productCarousel/ProductImages';
 import ProductSpec from '../../../components/ProductSpec';
 import BuyButton from '../../../components/BuyButton';
-import Quantity from '../../../components/Quantity';
-import RecommendedCarousel from '../../../components/RecommendedCarousel';
 import Head from 'next/head';
-import {DOMAIN, WEBSITE_NAME, MOBILE, DESKTOP_VIEW, PRIMARY_THEME_COLOR} from '../../../GlobalVariables';
+import {WEBSITE_NAME, DESKTOP_VIEW} from '../../../GlobalVariables';
 import { client } from '../../../apollo-client';
-import { gql } from '@apollo/client';
-import { GET_PRODUCT_BY_HANDLE, GET_SLUGS_BY_COLLECTION_HANDLE, GET_RECOMMENDED_PRODUCTS_BY_ID, GET_PRODUCT_AND_COLLECTION_HANDLES } from "../../../graphql/Queries";
+import { GET_PRODUCT_BY_HANDLE, GET_RECOMMENDED_PRODUCTS_BY_ID, GET_PRODUCT_AND_COLLECTION_HANDLES } from "../../../graphql/Queries";
 import ProductAccordion from '../../../components/ProductAccordion';
 import FavouriteButton from '../../../components/FavouriteButton';
 import parse from 'html-react-parser';
@@ -61,14 +58,28 @@ const extractFragmentHandle = (router, variants) => { // Check if router has hre
   return fragment === router.asPath ? variants[0].handle : fragment
 }
 
-export default function Product({id,title,collection,description,images,price,variants}){
+export default function Product({id,title,collection,description,images,price,variants,options,handle}){
 
   const router = useRouter();
 
   const { productType, productName } = router.query;
 
   const [selectedVariant, setSelectedVariant] = useState(extractFragmentHandle(router, variants));
+
+  // const [selectedOptions, setSelectedOptions] = useState(
+  //   options.reduce((acc, option, i) => {
+  //     acc[option.name] = options[i].values[0]; // Initialize each option with an empty value
+  //     return acc;
+  //   }, {})
+  // );
   
+  const [selectedOptions, setSelectedOptions] = useState(
+    options.reduce((acc, option) => {
+      acc.push({name: option.name, value: option.values[0]})
+      return acc;
+    }, [])
+  );
+
   return <>
     <Head>
         <title>{`${title} | ${WEBSITE_NAME}`}</title>
@@ -85,9 +96,12 @@ export default function Product({id,title,collection,description,images,price,va
             variants = {variants}
             selectedVariant = {selectedVariant}
             setSelectedVariant = {setSelectedVariant}
+            options = {options}
+            selectedOption = {selectedOptions}
+            setSelectedOptions = {setSelectedOptions}
           />
           <ButtonsContainer>
-            <BuyButton selectedVariant = {selectedVariant} variants = {variants} />
+            <BuyButton handle={handle} selectedOptions={selectedOptions} selectedVariant = {selectedVariant} variants = {variants} />
             <FavouriteButton
               variantId = {variants.find(v => v.handle === selectedVariant).id}
               productTitle = {title}
@@ -133,6 +147,24 @@ export async function getStaticProps({params}) {
     }
   })
 
+  // Get selectable options function
+  function getSelectableOptions(data) {
+    const variants = data?.productByHandle?.variants?.edges || [];
+    return variants.reduce((acc, { node }) => {
+      node.selectedOptions.forEach(({ name, value }) => {
+        const option = acc.find(opt => opt.name === name);
+        if (option) {
+          if (!option.values.includes(value)) option.values.push(value);
+        } else {
+          acc.push({ name, values: [value] });
+        }
+      });
+      return acc;
+    }, []);
+  }
+
+  const options = getSelectableOptions(data);
+
   const collection = data.productByHandle.collections.nodes[0];
 
   const { data:data2 } = await client.query(GET_RECOMMENDED_PRODUCTS_BY_ID(data.productByHandle.id));
@@ -145,7 +177,9 @@ export async function getStaticProps({params}) {
         price: data.productByHandle.priceRange.minVariantPrice.amount,
         images,
         variants,
+        handle: productName,
         collection,
+        options,
         key: data.productByHandle.id
       },
     }

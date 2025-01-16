@@ -58,6 +58,10 @@ export const GET_PRODUCT_BY_HANDLE = handle => {
                 id
               }
               sku
+              selectedOptions {
+                name
+                value
+              }
             }
           }
         }
@@ -71,6 +75,29 @@ export const GET_PRODUCT_BY_HANDLE = handle => {
     }
     `
   }
+};
+
+export const GET_PRODUCT_WITH_OPTIONS_BY_HANDLE = (handle, options) => {
+
+  // Convert the options array into a GraphQL-friendly string
+  const formattedOptions = options.map(({ name, value }) => `{name: "${name}", value: "${value}"}`)
+    .join(", ");
+
+  return {
+    query: gql`
+    query {
+      productByHandle(handle: "${handle}") {
+        selectedOrFirstAvailableVariant(
+          selectedOptions: [${formattedOptions}]
+        ) {
+          id
+          title
+        }
+        id
+      }
+    }
+    `,
+  };
 };
 
 export const GET_RECOMMENDED_PRODUCTS_BY_ID = handle => (

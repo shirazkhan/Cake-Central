@@ -1,8 +1,9 @@
-import React from 'react';
+import React, { useState } from 'react';
 import styled from 'styled-components';
 import { motion } from 'framer-motion';
 import ProductVariant from './ProductVariant';
 import Link from 'next/link';
+import ProductOption from './ProductOption';
 
 const Container = styled.div`
     width: calc(100% - 20px);
@@ -46,7 +47,8 @@ const Credit = styled.p`
     font-weight: 400;
 `;
 
-export default function ProductSpec({title, price, variants, selectedVariant, setSelectedVariant, collection}) {
+export default function ProductSpec({title, price, variants, selectedOptions, setSelectedOptions, collection, options,}) {
+
     return (
         <>
             <Container>
@@ -54,7 +56,21 @@ export default function ProductSpec({title, price, variants, selectedVariant, se
                 <ProductTitle>{title}</ProductTitle>
                 <Price>£{price}</Price>
             </Container>
-            <ProductVariant variants = {variants} selectedVariant = {selectedVariant} setSelectedVariant = {setSelectedVariant}/>
+            {/* <ProductVariant variants = {variants} selectedVariant = {selectedVariant} setSelectedVariant = {setSelectedVariant}/> */}
+            {options[0].values[0] === "Default Title" ? null : options.map(o => (
+  <ProductOption
+    key={o.name}
+    name={o.name}
+    values={o.values}
+    selectedOptions={selectedOptions}
+    setSelectedOptions={(value) => setSelectedOptions((prev) => 
+      prev.map((option) =>
+        option.name === o.name ? { ...option, value } : option
+      )
+    )}
+  />
+))}
+
         </>
     )
 }

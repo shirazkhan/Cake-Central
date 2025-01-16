@@ -6,7 +6,6 @@ import { DESKTOP_VIEW, PRIMARY_THEME_COLOR } from '../GlobalVariables';
 import { GlobalStateContext } from '../pages/_app';
 import client from '../apollo-client';
 import { CREATE_CART, CART_LINES_ADD } from '../graphql/Mutations';
-import { GET_PRODUCT_WITH_OPTIONS_BY_HANDLE } from '../graphql/Queries';
 
 const Container = styled(motion.div)`
     width: ${props => props.$inView ? '80%' : '100%'};
@@ -49,28 +48,21 @@ const Ref = styled.div`
     width: 376px;
 `;
 
-async function handleAddToBag(selectedOptions, selectedVariant, variants, dispatch, globalState, handle){
-
-    const { data } = await client.query(GET_PRODUCT_WITH_OPTIONS_BY_HANDLE(handle, selectedOptions));
-    const productId = data.productByHandle.selectedOrFirstAvailableVariant.id;
-    console.log(productId)
-
+async function handleAddToBag(selectedVariant, variants, dispatch, globalState){
     if(!globalState.cartData.id){
-        // const { data } = await client.mutate(CREATE_CART(variants.find(v => v.handle === selectedVariant).id))
-        const { data } = await client.mutate(CREATE_CART(productId))
+        const { data } = await client.mutate(CREATE_CART(variants.find(v => v.handle === selectedVariant).id))
         dispatch({type: 'UPDATE_CART', value: data.cartCreate})
         dispatch({type: 'TOGGLE_CART_MENU'})
         setTimeout(() => { dispatch({type: 'TOGGLE_CART_MENU'}) }, 2000);
     } else {
-        // const { data } = await client.mutate(CART_LINES_ADD(globalState.cartData.id,variants.find(v => v.handle === selectedVariant).id));
-        const { data } = await client.mutate(CART_LINES_ADD(globalState.cartData.id,productId));
+        const { data } = await client.mutate(CART_LINES_ADD(globalState.cartData.id,variants.find(v => v.handle === selectedVariant).id));
         dispatch({type: 'UPDATE_CART', value: data.cartLinesAdd})
         dispatch({type: 'TOGGLE_CART_MENU'})
         setTimeout(() => { dispatch({type: 'TOGGLE_CART_MENU'}) }, 2000);
     }
 }
 
-export default function BuyButton({selectedVariant, variants, selectedOptions, handle}) {
+export default function BuyButton({selectedVariant, variants}) {
 
     const { globalState, dispatch } = useContext(GlobalStateContext);
 
@@ -80,7 +72,7 @@ export default function BuyButton({selectedVariant, variants, selectedOptions, h
         <>
             <Ref ref = {ref}>
                 <Container $inView = {inView} animate={{width: inView ? '80%' : '100%'}} whileTap = {{scale: 1.1}}>
-                    <Button onClick = {() => handleAddToBag(selectedOptions, selectedVariant, variants, dispatch, globalState, handle)} >Add to Bag</Button>
+                    <Button onClick = {() => handleAddToBag(selectedVariant, variants, dispatch, globalState)} >Add to Bag</Button>
                 </Container>
             </Ref>
         </>

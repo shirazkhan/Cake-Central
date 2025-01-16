@@ -5,7 +5,7 @@ const apiKey = process.env.STOREFRONT_API_KEY;
 export const client = new ApolloClient({
     cache: new InMemoryCache(),
     link: new HttpLink({
-      uri: 'https://cakecentraluk.myshopify.com/api/2024-04/graphql.json',
+      uri: 'https://cakecentraluk.myshopify.com/api/2025-01/graphql.json',
       headers: {
         'X-Shopify-Storefront-Access-Token': apiKey,
         'Content-Type': 'application/json'
