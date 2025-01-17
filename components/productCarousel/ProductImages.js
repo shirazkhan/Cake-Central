@@ -1,7 +1,6 @@
 import React, {useState, useRef, useEffect} from 'react';
 import Image from 'next/image';
 import styled from 'styled-components';
-import { motion } from 'framer-motion';
 import Indicator from './Indicator';
 import { InView } from 'react-intersection-observer';
 import { PRIMARY_THEME_COLOR, DESKTOP_VIEW } from '../../GlobalVariables';
@@ -12,7 +11,7 @@ const MainContainer = styled.div`
     position: relative;
 
     ${DESKTOP_VIEW}{
-        width: 50%;
+        width: 50vw;
         border-radius: 10px;
         position: sticky;
         top: 150px;

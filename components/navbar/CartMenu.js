@@ -201,7 +201,7 @@ const renderProducts = (lines, dispatch, cartId) =>
                             <ProductTitle>{l.productTitle}</ProductTitle>
                         </Link>
                         <Link href = {`/shop/${l.productType.replaceAll('%20','-').toLowerCase()}/${l.productHandle}#${l.variantHandle}`}>
-                            <ProductVariant>{l.variantTitle}</ProductVariant>
+                            <ProductVariant>{l.variantTitle === "Default Title" ? "" : l.variantTitle}</ProductVariant>
                         </Link>
                     </div>
                     <Quantity quantity = {l.quantity} variantId = {l.variantId} lineId = {l.id} />
