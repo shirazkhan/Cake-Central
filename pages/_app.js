@@ -107,7 +107,7 @@ export default function MyApp({ Component, pageProps }) {
       case 'NAV_MENU_OFF':
         return {... prevState, navMenuOpen: false};
       case 'TOGGLE_CART_MENU':
-        return {... prevState, navMenuOpen: false, cartMenuOpen: !prevState.cartMenuOpen, isWishList: false};
+        return {... prevState, cartMenuOpen: !prevState.cartMenuOpen, isWishList: false};
       case 'CART_MENU_OFF':
         return {... prevState, cartMenuOpen: false};
       case 'DESKTOP_CART_MENU_ON':

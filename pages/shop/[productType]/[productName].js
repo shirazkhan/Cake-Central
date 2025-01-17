@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import styled from 'styled-components';
 import { useRouter } from "next/router";
 import {Primary} from '../../../src/styled/App';
@@ -8,7 +8,7 @@ import BuyButton from '../../../components/BuyButton';
 import Head from 'next/head';
 import {WEBSITE_NAME, DESKTOP_VIEW} from '../../../GlobalVariables';
 import { client } from '../../../apollo-client';
-import { GET_PRODUCT_BY_HANDLE, GET_RECOMMENDED_PRODUCTS_BY_ID, GET_PRODUCT_AND_COLLECTION_HANDLES } from "../../../graphql/Queries";
+import { GET_PRODUCT_AND_COLLECTION_HANDLES, GET_VARIANTS } from "../../../graphql/Queries";
 import ProductAccordion from '../../../components/ProductAccordion';
 import FavouriteButton from '../../../components/FavouriteButton';
 import parse from 'html-react-parser';
@@ -65,13 +65,6 @@ export default function Product({id,title,collection,description,images,price,va
   const { productType, productName } = router.query;
 
   const [selectedVariant, setSelectedVariant] = useState(extractFragmentHandle(router, variants));
-
-  // const [selectedOptions, setSelectedOptions] = useState(
-  //   options.reduce((acc, option, i) => {
-  //     acc[option.name] = options[i].values[0]; // Initialize each option with an empty value
-  //     return acc;
-  //   }, {})
-  // );
   
   const [selectedOptions, setSelectedOptions] = useState(
     options.reduce((acc, option) => {
@@ -79,6 +72,15 @@ export default function Product({id,title,collection,description,images,price,va
       return acc;
     }, [])
   );
+
+  useEffect(() => {
+    const matchedVariant = variants.find(variant =>
+      variant.selectedOptions.every(opt =>
+        selectedOptions.some(sel => sel.name === opt.name && sel.value === opt.value)
+      )
+    );
+    setSelectedVariant(matchedVariant ? matchedVariant.handle : variants[0].handle);
+  }, [selectedOptions, variants]);
 
   return <>
     <Head>
@@ -90,16 +92,16 @@ export default function Product({id,title,collection,description,images,price,va
         <ProductImages images = {images} variants = {variants}/>
         <SpecContainer>
           <ProductSpec
-            title = {title}
-            collection = {collection}
-            price = {parseFloat(price).toFixed(2)}
-            variants = {variants}
-            selectedVariant = {selectedVariant}
-            setSelectedVariant = {setSelectedVariant}
-            options = {options}
-            selectedOption = {selectedOptions}
-            setSelectedOptions = {setSelectedOptions}
-          />
+                title={title}
+                collection={collection}
+                price={parseFloat(variants.find(v => v.handle === selectedVariant)?.price || price).toFixed(2)}
+                variants={variants}
+                selectedVariant={selectedVariant}
+                setSelectedVariant={setSelectedVariant}
+                options={options}
+                selectedOptions={selectedOptions}
+                setSelectedOptions={setSelectedOptions}
+            />
           <ButtonsContainer>
             <BuyButton handle={handle} selectedOptions={selectedOptions} selectedVariant = {selectedVariant} variants = {variants} />
             <FavouriteButton
@@ -127,8 +129,18 @@ export default function Product({id,title,collection,description,images,price,va
 export async function getStaticProps({params}) {
 
   const { productType, productName } = params;
+  
+  const { data } = await client.query(GET_VARIANTS(productName));
 
-  const { data } = await client.query(GET_PRODUCT_BY_HANDLE(productName));
+  const variants = data.productByHandle.variants.nodes.map(v => {
+    return ({
+      id: v.id,
+      title: v.title,
+      handle: v.sku,
+      price: v.price.amount,
+      selectedOptions: v.selectedOptions
+    })
+  })
 
   const images = data.productByHandle.images.edges.map(i => {
     return {
@@ -137,37 +149,24 @@ export async function getStaticProps({params}) {
       altText: i.node.altText
     }
   })
-
-  const variants = data.productByHandle.variants.edges.map(v => {
-    return {
-      id: v.node.id,
-      title: v.node.title,
-      image: v.node.image.src,
-      handle: v.node.sku,
-    }
-  })
-
-  // Get selectable options function
-  function getSelectableOptions(data) {
-    const variants = data?.productByHandle?.variants?.edges || [];
-    return variants.reduce((acc, { node }) => {
-      node.selectedOptions.forEach(({ name, value }) => {
-        const option = acc.find(opt => opt.name === name);
-        if (option) {
-          if (!option.values.includes(value)) option.values.push(value);
-        } else {
-          acc.push({ name, values: [value] });
-        }
-      });
-      return acc;
-    }, []);
-  }
-
-  const options = getSelectableOptions(data);
-
+  
   const collection = data.productByHandle.collections.nodes[0];
+  
+  // Get selectable options function
+  const options = data.productByHandle.variants.nodes.reduce((acc, variant) => {
+    variant.selectedOptions.forEach((option) => {
+      const existingOption = acc.find((o) => o.name === option.name);
+      if (existingOption) {
+        if (!existingOption.values.includes(option.value)) {
+          existingOption.values.push(option.value);
+        }
+      } else {
+        acc.push({ name: option.name, values: [option.value] });
+      }
+    });
+    return acc;
+  }, []);
 
-  const { data:data2 } = await client.query(GET_RECOMMENDED_PRODUCTS_BY_ID(data.productByHandle.id));
 
   return {
       props: {

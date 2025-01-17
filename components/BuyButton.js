@@ -53,7 +53,6 @@ async function handleAddToBag(selectedOptions, selectedVariant, variants, dispat
 
     const { data } = await client.query(GET_PRODUCT_WITH_OPTIONS_BY_HANDLE(handle, selectedOptions));
     const productId = data.productByHandle.selectedOrFirstAvailableVariant.id;
-    console.log(productId)
 
     if(!globalState.cartData.id){
         // const { data } = await client.mutate(CREATE_CART(variants.find(v => v.handle === selectedVariant).id))

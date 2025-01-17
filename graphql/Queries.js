@@ -24,6 +24,56 @@ export const GET_COLLECTIONS = {
     `
   };
 
+  export const GET_VARIANTS = handle => {
+    return {
+      query: gql`
+      query {
+        productByHandle(handle: "${handle}") {
+          id
+          title
+          descriptionHtml
+          description
+          productType
+          images(first: 10) {
+                edges {
+                  node {
+                    id
+                    src
+                    altText
+                  }
+                }
+              }
+          priceRange {
+            minVariantPrice {
+              amount
+            }
+          }
+          variants(first: 250) {
+            nodes {
+              id
+              title
+              sku
+              price {
+                amount
+              }
+              selectedOptions {
+                name
+                value
+              }
+            }
+          }
+  collections(first: 10) {
+        nodes {
+          handle
+          title
+        }
+  }
+}
+}
+      `
+    }
+  };
+
 export const GET_PRODUCT_BY_HANDLE = handle => {
   return {
     query: gql`
