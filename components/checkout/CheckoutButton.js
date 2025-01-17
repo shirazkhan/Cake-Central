@@ -9,7 +9,8 @@ const Button = styled.button`
     width: 100%;
     background: ${PRIMARY_THEME_COLOR};
     border-radius: 30px;
-    margin-top: 10px;
+    margin: 10px 0;
+    box-shadow: 0 3px 4px 0 rgba(0,0,0,0.2);
     text-align: center;
     border: none;
     color: white;

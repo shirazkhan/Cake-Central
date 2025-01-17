@@ -6,92 +6,49 @@ import { GlobalStateContext } from '../../pages/_app';
 import Quantity from '../Quantity';
 import client from '../../apollo-client';
 import { CART_LINES_REMOVE } from '../../graphql/Mutations';
-import WishList from './WishList';
-import Title from './Title';
-import ScrollIntoViewIfNeeded from 'react-scroll-into-view-if-needed';
 import { useInView } from 'react-intersection-observer';
 import { PRIMARY_THEME_COLOR, DESKTOP_VIEW, DESKTOP_NAV_HEIGHT, IS_WISHLIST, SECONDARY_THEME_COLOR } from '../../GlobalVariables';
 import CheckoutButton from '../checkout/CheckoutButton';
 import useDetectScroll from '@smakss/react-scroll-direction';
 import { FaAnglesDown } from "react-icons/fa6";
 
-
-
 const Menu = styled(motion.div)`
-    height: 100%;
+    height: calc(100% - 50px);
     width: 100%;
     top: 50px;
     position: fixed;
     background: rgba(255,255,255,1);
     z-index: 7;
     display: flex;
+    justify-content: center;
     flex-direction: column;
     flex-stretch: 1;
+    overflow: scroll;
     flex-wrap: nowrap;
-    padding: 20px;
 
     ${DESKTOP_VIEW}{
-        width: 30%;
-        height: 50%;
+        width: 500px;
+        height: auto;
+        max-height: 75%;
         border-radius: 20px;
         margin-top: 50px;
         right: 50px;
+        padding: 25px 0 25px 0;
         z-index: 10000;
         box-shadow: rgba(0, 0, 0, 0.25) 0px 54px 55px, rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px, rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px;
       }
 `;
 
-const MenuWrapper = styled(motion.div)`
-    height: 100%;
-    width: 100%;
-    position: relative;
-    background: rgba(255,255,255,1);
-    display: flex;
-    flex-direction: row;
-    flex-stretch: 1;
-    overflow: auto;
-    scroll-snap-type: x mandatory;
-    white-space: nowrap;
-    flex-wrap: nowrap;
-    ${DESKTOP_VIEW}{
-        flex-direction: column;
-        justify-content: space-around;
-    }
+const CartHeader = styled.div`
+      margin: 0px auto 20px auto;
 `;
 
-const DesktopOverlay = styled.div`
-    display: flex;
-
-    ${DESKTOP_VIEW}{
-        width: 100%;
-        height: 100%;
-        z-index: 10;
-        position: relative;
-        display: flex;
-    }
+const HeaderTitle = styled.h3`
+      margin: 0;
 `;
 
-const ScrollButton = styled(motion(FaAnglesDown))`
-    display: none;
-    height: 25px;
-    width: 25px;
-    position: absolute;
-    bottom: -15px;
-    color: ${PRIMARY_THEME_COLOR}60;
-    left: calc(50% - 12.5px);
-
-    ${DESKTOP_VIEW}{
-        display: block;
-    }
-`;
-
-const NavLink = styled(motion.div)`
-    width: 90%;
-    height: 50px;
-    display: flex;
-    padding-left: 10%;
-    justify-content: flex-start;
-    align-items: center;
+const HeaderSummary = styled.p`
+    margin: 0;
 `;
 
 const CartContainer = styled(motion.div)`
@@ -113,34 +70,6 @@ const CartContainer = styled(motion.div)`
     }
 `;
 
-const CheckoutContainer = styled(motion.div)`
-    height: 125px;
-    padding: 10px 0 10px 0;
-    width: 100%;
-    background: ${PRIMARY_THEME_COLOR};
-    position: relative;
-    bottom: 0;
-    left: 0;
-    z-index: 3000;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: flex-start;
-`;
-
-const CheckoutButtonk = styled(motion.button)`
-    height: 50px;
-    width: 100%;
-    background: ${PRIMARY_THEME_COLOR};
-    border-radius: 30px;
-    margin-top: 10px;
-    text-align: center;
-    border: none;
-    color: white;
-    font-weight: 600;
-    font-size: 1em;
-`;
-
 const ProductContainer = styled(motion.div)`
     width: 95%;
     display: flex;
@@ -157,14 +86,6 @@ const ProductImageContainer = styled(Link)`
     align-items: center;
     justify-content: center;
 
-`;
-
-const CheckoutLink = styled(Link)`
-    align-self: center;
-    width: 50%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
 `;
 
 const ProductImage = styled.img`
@@ -217,7 +138,7 @@ const ProductPrice = styled.div`
 
 const SummaryContainer = styled.div`
     width: 95%;
-    height: 300px;
+    height: auto;
     display: flex;
     flex-direction: column;
     margin: 10px 0 25px 10px;
@@ -247,15 +168,7 @@ const SummaryDelivery = styled.div`
     justify-content: space-between;
     font-size: 0.9em;
     padding-top: 5px;
-`;
-
-const Taxes = styled.div`
-    width: 95%;
-    height: 25px;
-    text-align: center;
-    font-size: 0.9em;
-    padding-top: 25px;
-    margin: 0 auto;
+    margin-bottom: 10px;
 `;
 
 const Background = styled.div`
@@ -274,9 +187,6 @@ const handleRemoveProduct = async (lineId, cartId, dispatch) => {
     const { data } = await client.mutate(CART_LINES_REMOVE(cartId, lineId))
     dispatch({type: 'UPDATE_CART', value: data.cartLinesRemove})
 }
-
-const renderTitle = lines =>
-    <Title>Shopping Bag ({lines.reduce((acc,l) => acc += l.quantity, 0)})</Title>
 
 const renderProducts = (lines, dispatch, cartId) => 
     lines.length > 0 ? lines.map(l => (
@@ -297,7 +207,7 @@ const renderProducts = (lines, dispatch, cartId) =>
                     <Quantity quantity = {l.quantity} variantId = {l.variantId} lineId = {l.id} />
                 </ProductSpecDiv>
                 <PriceAndRemoveContainer>
-                    <ProductPrice>£{l.price}</ProductPrice>
+                    <ProductPrice>£{parseFloat(l.price).toFixed(2)}</ProductPrice>
                     <span onClick = {() => handleRemoveProduct(l.id, cartId, dispatch)} style = {{fontSize: '0.9em', textAlign: 'right', cursor: 'pointer'}}>Remove</span>
                 </PriceAndRemoveContainer>
             </ProductSpecContainer>
@@ -309,13 +219,12 @@ const renderSummary = cartData => (
         <SummaryTitle>Summary</SummaryTitle>
         <SummarySubTitle>
             <span>Subtotal</span>
-            <span>£{cartData.subtotal}</span>
+            <span>£{parseFloat(cartData.subtotal).toFixed(2)}</span>
             </SummarySubTitle>
         <SummaryDelivery>
             <span>Delivery</span>
             <span>Calculated at Checkout</span>
         </SummaryDelivery>
-        <Taxes>Taxes Included</Taxes>
         {cartData.lines.length ?
             <CheckoutButton cartId={cartData.id} />
         : ''}
@@ -336,41 +245,33 @@ export default function CartMenu() {
             dispatch({type: 'SET_WISHLIST_TRUE'})
         }
     },[inView])
+
+    const totalQuantity = globalState.cartData.lines.reduce((acc,l) => acc+=l.quantity,0);
+    const totalPrice = globalState.cartData.lines.reduce((acc,l) => acc += parseFloat(l.price),0).toFixed(2);
     
     return (
         <AnimatePresence>
             {globalState.cartMenuOpen && ( 
                 <>
-                <Menu
-                    key = 'menu'
-                    initial = {{ opacity: 0, y: -75 }}
-                    animate = {{ opacity: 1, y: 0 }}
-                    exit={{ opacity: 0 }}
-                >
-                    { IS_WISHLIST &&
-                        <Title 
-                        shoppingBagQuantity = {globalState.cartData.lines.reduce((acc,l) => acc += l.quantity, 0)}
-                        favouritesQuantity = {globalState.wishList.length}
-                        isWishList = {globalState.isWishList}
-                        dispatch = {dispatch} 
-                    /> }                <DesktopOverlay>
-
-                        <MenuWrapper>
-                        <ScrollIntoViewIfNeeded active = {!globalState.isWishList}>
-                            <CartContainer ref = {ref} id = 'cart'>
-                                {renderProducts(globalState.cartData.lines, dispatch, globalState.cartData.id)}
-                                {renderSummary(globalState.cartData)}
-                            </CartContainer>
-                        </ScrollIntoViewIfNeeded>
-                        { IS_WISHLIST && 
-                            <CartContainer>
-                                <WishList isWishList = {globalState.isWishList} />
-                            </CartContainer> }
-                        </MenuWrapper>
-                        <ScrollButton/>
-                        </DesktopOverlay>
-                </Menu>
-                <Background onClick={() => dispatch({type: 'CART_MENU_OFF'})} />
+                    <Menu
+                        key = 'menu'
+                        initial = {{ opacity: 0, y: -75 }}
+                        animate = {{ opacity: 1, y: 0 }}
+                        exit={{ opacity: 0 }}
+                    >
+                        <CartHeader>
+                            <HeaderTitle>Shopping Bag</HeaderTitle>
+                            <HeaderSummary>{totalQuantity} Items - £{totalPrice}</HeaderSummary>
+                        </CartHeader>
+                        <CartContainer ref = {ref} id = 'cart'>
+                            {renderProducts(globalState.cartData.lines, dispatch, globalState.cartData.id)}
+                            {renderSummary(globalState.cartData)}
+                        </CartContainer>
+                    </Menu>
+                    <Background key = 'background'
+                        initial = {{ opacity: 0 }}
+                        animate = {{ opacity: 1 }}
+                        exit={{ opacity: 0 }} onClick={() => dispatch({type: 'CART_MENU_OFF'})} />
                 </>
             )}
             </AnimatePresence>
