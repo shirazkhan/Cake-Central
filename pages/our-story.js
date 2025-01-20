@@ -268,7 +268,7 @@ const StoryPage = () => {
               src="/images/pink-off-white-drip-flower-cake.jpeg"
               layout="fill"
               objectFit="cover"
-              alt="Picture of the author"
+              alt="Pink and off-white drip flower cake"
               style={{borderRadius: '8px'}}
             />
             </motion.div>
@@ -310,7 +310,7 @@ const StoryPage = () => {
                 src="/images/chocolate-fruit-cream-cupcakes.jpeg"
                 layout="fill"
                 objectFit="cover"
-                alt="Picture of the author"
+                alt="Chocolate cupcakes with fruit and cream on top"
                 style={{borderRadius: '8px'}}
               />
             </motion.div>
@@ -351,7 +351,7 @@ const StoryPage = () => {
                 src="/images/sugar-petals-wedding-cake.jpeg"
                 layout="fill"
                 objectFit="cover"
-                alt="Picture of the author"
+                alt="Wedding cake with sugar petals on top"
                 style={{borderRadius: '8px'}}
               />
             </motion.div>

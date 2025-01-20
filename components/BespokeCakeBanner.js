@@ -79,7 +79,7 @@ const BannerComponent = () => {
           src="/images/laylas-cake-3.jpg"
           layout="fill"
           objectFit="cover"
-          alt="Picture of the author"
+          alt="Cute baby girls birthday cake for a girl named Layla"
           style={{borderRadius: '8px'}}
         />
       </ImagePlaceholder>
