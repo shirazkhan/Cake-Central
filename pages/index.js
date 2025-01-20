@@ -53,7 +53,7 @@ export default function Index() {
     <Container>
         <RoundedContainer>
             <DesignACakeWithUs />
-            <CategorySection />
+            {/* <CategorySection /> */}
             {/* <ShopCarousel data = {cakes} title={"CELEBRATION CAKES"} subtitle={"Your celebrations into sweet memories"}/>
             <ShopCarousel data = {weddingcakes} title={"WEDDING CAKES"} subtitle={"Baked with care, sealed with love"}/>
             <ShopCarousel data = {cupcakes} title={"CUPCAKES"} subtitle={"Tiny cakes, huge happiness"}/>
