@@ -5,6 +5,8 @@ import { MasonryPhotoAlbum } from "react-photo-album";
 import "react-photo-album/masonry.css";
 import { DESKTOP_VIEW, WEBSITE_NAME } from "../GlobalVariables";
 import Banner from "../components/Banner";
+import client from "../apollo-client";
+import { GET_PORTFOLIO_IMAGES } from "../graphql/Queries";
 
 const Container = styled.div`
     margin: -100px auto 10px auto;
@@ -71,7 +73,7 @@ const photos = [
     );
   }
 
-export default function PhotoGallery() {
+export default function Portfolio({images}) {
   return (
     <>
         <Head>
@@ -90,4 +92,29 @@ export default function PhotoGallery() {
         </Container>
     </>
   );
+}
+
+export async function getStaticProps() {
+
+  const { data } = await client.query(GET_PORTFOLIO_IMAGES);
+
+  // Restructure the data so it's more manageable.
+  const images = (data.metaobjects.nodes || []).map((metaobject) => {
+    const structuredObject = { id: metaobject.id };
+  
+    metaobject.fields.forEach((field) => {
+      structuredObject[field.key] = field.value;
+    });
+  
+    return structuredObject;
+  });
+
+  console.log(images)
+  
+  return {
+    props: {
+      images
+    }
+  }
+
 }

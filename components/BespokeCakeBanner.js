@@ -1,5 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
+import Image from 'next/image';
 import { motion } from 'framer-motion';
 import { DESKTOP_VIEW, PRIMARY_BANNER_COLOR, SECONDARY_BANNER_COLOR } from '../GlobalVariables';
 
@@ -37,8 +38,7 @@ const TextContent = styled(motion.div)`
 const ImagePlaceholder = styled.div`
   width: 100%;
   height: 400px;
-  background-color: #e0e0e0;
-  border-radius: 10px;
+  position: relative;
 
   ${DESKTOP_VIEW} {
     width: 50%;
@@ -74,7 +74,15 @@ const BannerComponent = () => {
           Your specific information helps us serve you better, enabling us to provide quick, accurate responses to all inquiries.
         </BannerText>
       </TextContent>
-      <ImagePlaceholder />
+      <ImagePlaceholder>
+        <Image
+          src="/images/laylas-cake-3.jpg"
+          layout="fill"
+          objectFit="cover"
+          alt="Picture of the author"
+          style={{borderRadius: '8px'}}
+        />
+      </ImagePlaceholder>
     </BannerContainer>
   );
 };

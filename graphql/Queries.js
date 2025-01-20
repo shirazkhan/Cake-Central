@@ -24,6 +24,22 @@ export const GET_COLLECTIONS = {
     `
   };
 
+  export const GET_PORTFOLIO_IMAGES = {
+    query: gql`
+      query {
+        metaobjects(type: "portfolio_images", first: 250) {
+          nodes {
+            id
+            fields {
+              value
+              key
+            }
+          }
+        }
+      }
+    `
+  };
+
   export const GET_VARIANTS = handle => {
     return {
       query: gql`
@@ -47,6 +63,14 @@ export const GET_COLLECTIONS = {
             minVariantPrice {
               amount
             }
+          }
+          DeliveryCollection: metafield(key: "delivery_collection", namespace: "custom") {
+            type
+            value
+          }
+          IngredientsAllergens: metafield(key: "ingredients_allergens", namespace: "custom") {
+            type
+            value
           }
           variants(first: 250) {
             nodes {

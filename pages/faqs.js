@@ -40,7 +40,7 @@ const questions = {
   'Delivery and Pickup': [
     {
       question: 'Do You Deliver?',
-      answer: 'Yes, we offer delivery services. Please contact us for more details on delivery options and fees.'
+      answer: `Yes, we offer delivery services. Please contact us for more details on delivery options and fees.`
     },
     {
       question: 'Can I Collect Later Than My Time Slot?',
@@ -54,7 +54,7 @@ const questions = {
   'Cake Options and Customization': [
     {
       question: 'What Flavours Do You Offer?',
-      answer: 'We offer a wide variety of flavors. Please visit our website or contact us for a full list of available flavors.'
+      answer: 'We offer a wide variety of flavors. Please contact us for a full list of available flavors.'
     },
     {
       question: 'Do You Cater For Allergies?',
@@ -135,7 +135,40 @@ const questions = {
     {
       question: 'Can I Return My Cake If I Don’t Want It Anymore?',
       answer: 'Unfortunately, we do not accept returns on cakes. Please contact us if there are any issues with your order.'
+    },
+    {
+      question: 'Can I Collect Later Than My Time Slot?',
+      answer: 'We try to be flexible with pickup times. Please let us know in advance if you need to adjust your pickup time.'
+    },
+    {
+      question: 'Can I Add Extra Items To My Order?',
+      answer: 'Yes, you can add items to your order if requested at least 5 days prior the delivery or collection date. Additional items are subject to availability and may require extra payment.'
+    },
+    {
+      question: 'What If I Need To Change The Design Or Flavor Of My Cake?',
+      answer: 'Design and flavor changes can be requested up to 5 days before the delivery or collection date. However, changes may incur an additional charge depending on the complexity or ingredients.'
+    },
+    {
+      question: 'Do You Charge A Fee For Cancellations?',
+      answer: 'No fee is charged for cancellations made at least 7 days before the delivery or collection date. Cancellations made within 7 days are non-refundable.'
+    },
+    {
+      question: 'Can I Cancel My Order If I’ve Already Paid A Deposit?',
+      answer: 'Deposits are non-refundable for cancellations made within 7 days of the scheduled delivery or collection date. For cancellations made before this period, your deposit will be refunded in full.'
+    },
+    {
+      question: 'What Happens If I Need To Cancel Due To Unforeseen Circumstances?',
+      answer: 'We understand that situations may arise unexpectedly. Please contact us as soon as possible, and we’ll do our best to accommodate you. Refunds or rescheduling options will depend on the timing of your request.'
+    },
+    {
+      question: 'Can Someone Else Collect My Order On My Behalf?',
+      answer: 'Yes, someone else can collect your order. Please provide us with their name and contact information in advance to ensure a smooth handover.'
+    },
+    {
+      question: 'What If I Need To Change The Delivery Address?',
+      answer: 'Delivery address changes must be made at least 72 hours before the delivery date. If the new address is outside our delivery range, we may need to charge a delivery fee.'
     }
+    
   ]
 };
 

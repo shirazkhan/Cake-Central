@@ -58,7 +58,21 @@ const extractFragmentHandle = (router, variants) => { // Check if router has hre
   return fragment === router.asPath ? variants[0].handle : fragment
 }
 
-export default function Product({id,title,collection,description,images,price,variants,options,handle}){
+const defaultIngredientsAllergens = `<p>Our Floral Cupcake Bouquets are made with the finest ingredients to ensure a delectable experience. Each cupcake is lovingly crafted using:</p>
+<ul>
+  <li><strong>Ingredients:</strong> Flour, sugar, butter, eggs, milk, natural flavorings, and food coloring.</li>
+  <li><strong>Buttercream flowers:</strong> Made with high-quality butter, powdered sugar, and food-safe edible colors.</li>
+</ul>
+<p><strong>Allergens:</strong> Contains gluten, dairy, eggs, and may contain traces of nuts due to being prepared in a facility that handles nut products. If you have any specific dietary requirements or allergen concerns, please contact us before placing your order.</p>`
+
+const defaultDeliveryCollection = `<p>We offer flexible delivery and collection options to suit your needs:</p>
+<ul>
+  <li><strong>Delivery:</strong> Available across Grantham and nearby areas. Orders are carefully packaged to ensure your item arrives in perfect condition. Delivery times may vary based on location and demand.</li>
+  <li><strong>Collection:</strong> You can pick up your order from our location situated in Grantham.</li>
+</ul>
+<p>To ensure the freshest and most beautiful presentation, we recommend enjoying your bakes within 24 hours of delivery or collection.</p>`
+
+export default function Product({id,title,collection,descriptions,images,price,variants,options,handle}){
 
   const router = useRouter();
 
@@ -116,9 +130,9 @@ export default function Product({id,title,collection,description,images,price,va
             />
           </ButtonsContainer>
           <AccordionContainer>
-            <ProductAccordion title = 'Description' content = {parse(description)} initial = {true} />
-            <ProductAccordion title = 'Ingredients & Allergens' content = {parse(description)} initial = {true} />
-            <ProductAccordion title = 'Delivery & Collection' content = {parse(description)} initial = {true} />
+            <ProductAccordion title = 'Description' content = {parse(descriptions.main)} initial = {true} />
+            <ProductAccordion title = 'Ingredients & Allergens' content = {parse(descriptions.IngredientsAllergens)} initial = {true} />
+            <ProductAccordion title = 'Delivery & Collection' content = {parse(descriptions.DeliveryCollection)} initial = {true} />
           </AccordionContainer>
         </SpecContainer>
       </MainContainer>
@@ -172,7 +186,11 @@ export async function getStaticProps({params}) {
       props: {
         id: data.productByHandle.id,
         title: data.productByHandle.title,
-        description: data.productByHandle.descriptionHtml,
+        descriptions: {
+          main: data.productByHandle.descriptionHtml,
+          IngredientsAllergens: data.productByHandle.IngredientsAllergens ? data.productByHandle.IngredientsAllergens.value : defaultIngredientsAllergens,
+          DeliveryCollection: data.productByHandle.DeliveryCollection ? data.productByHandle.DeliveryCollection.value : defaultDeliveryCollection
+        },
         price: data.productByHandle.priceRange.minVariantPrice.amount,
         images,
         variants,

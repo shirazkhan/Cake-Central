@@ -91,7 +91,7 @@ const renderImages = (images, variants, setImageIdx, myRef) => {
                                 fill={true}
                                 src = {img.src}
                                 alt={img.altText}
-                                quality={1}
+                                quality={10}
                                 style={{objectFit: "cover"}}
                             />
                         </ImageContainer>

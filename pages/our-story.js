@@ -1,5 +1,6 @@
 import React, { useEffect } from 'react';
 import Head from 'next/head';
+import Image from 'next/image';
 import styled from 'styled-components';
 import { motion, useAnimation } from 'framer-motion';
 import Banner from '../components/Banner';
@@ -69,7 +70,6 @@ const ImageContainer = styled.div`
   width: 100%;
   max-width: 600px;
   height: 300px; /* Adjust height as needed */
-  background-color: #ddd; /* Placeholder background color */
   border-radius: 8px;
   margin: 20px auto;
 
@@ -77,6 +77,7 @@ const ImageContainer = styled.div`
     margin: 0;
   }
 `;
+
 
 const QuoteSection = styled(motion.section)`
   display: flex;
@@ -261,8 +262,17 @@ const StoryPage = () => {
               initial="hidden"
               animate={controlsImage1}
               variants={imageVariants}
-              style={{ width: '100%', height: '100%', backgroundColor: '#ddd', borderRadius: '8px' }}
+              style={{ position: 'relative', width: '100%', height: '100%' }}
+            >
+            <Image
+              src="/images/pink-off-white-drip-flower-cake.jpeg"
+              layout="fill"
+              objectFit="cover"
+              alt="Picture of the author"
+              style={{borderRadius: '8px'}}
             />
+            </motion.div>
+            
           </ImageContainer>
         </Section>
         <QuoteSection
@@ -294,8 +304,16 @@ const StoryPage = () => {
               initial="hidden"
               animate={controlsImage2}
               variants={imageVariants}
-              style={{ width: '100%', height: '100%', backgroundColor: '#ddd', borderRadius: '8px' }}
-            />
+              style={{ width: '100%', height: '100%', position: 'relative' }}
+            >
+              <Image
+                src="/images/chocolate-fruit-cream-cupcakes.jpeg"
+                layout="fill"
+                objectFit="cover"
+                alt="Picture of the author"
+                style={{borderRadius: '8px'}}
+              />
+            </motion.div>
           </ImageContainer>
         </Section>
         <QuoteSection
@@ -323,12 +341,20 @@ const StoryPage = () => {
             </Paragraph>
           </TextWrapper>
           <ImageContainer ref={refImage3}>
-            <motion.div
+          <motion.div
               initial="hidden"
               animate={controlsImage3}
               variants={imageVariants}
-              style={{ width: '100%', height: '100%', backgroundColor: '#ddd', borderRadius: '8px' }}
-            />
+              style={{ width: '100%', height: '100%', position: 'relative' }}
+            >
+              <Image
+                src="/images/sugar-petals-wedding-cake.jpeg"
+                layout="fill"
+                objectFit="cover"
+                alt="Picture of the author"
+                style={{borderRadius: '8px'}}
+              />
+            </motion.div>
           </ImageContainer>
         </Section>
       </Container>
