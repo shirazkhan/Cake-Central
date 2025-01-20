@@ -125,11 +125,7 @@ const Button = styled(motion(Link))`
 
 const Banner = () => {
   return (
-    <BannerContainer
-      initial={{ opacity: 0 }}
-      animate={{ opacity: 1 }}
-      transition={{ duration: 1 }}
-    >
+    <BannerContainer>
       <BannerImageContainer>
         <Image
           src="/temp/red-cherry-cake.jpeg"
@@ -140,23 +136,12 @@ const Banner = () => {
         />
       </BannerImageContainer>
       <BannerContent>
-        <Title
-          initial={{ x: -100, opacity: 0 }}
-          animate={{ x: 0, opacity: 1 }}
-          transition={{ duration: 1 }}
-        >
+        <Title>
           Design a Cake With Us!
         </Title>
-        <Description
-          initial={{ x: 100, opacity: 0 }}
-          animate={{ x: 0, opacity: 1 }}
-          transition={{ duration: 1 }}
-        >
+        <Description>
             We specialize in artisan, handmade fondant and buttercream cakes, going above and beyond with our realistic creations.</Description>
-        <Description
-            initial={{ x: 100, opacity: 0 }}
-            animate={{ x: 0, opacity: 1 }}
-            transition={{ duration: 1 }}>
+        <Description>
             Whether it's a grand wedding or an intimate gathering, no cake is too big and no occasion is too small! We proudly deliver within a 30-mile radius of Grantham, ensuring your perfect cake arrives fresh and on time.</Description>
         <ButtonContainer>
           <Button

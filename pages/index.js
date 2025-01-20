@@ -34,17 +34,17 @@ export default function Index() {
 
     return <>
     <Head>
-  <title>{WEBSITE_NAME} | Grantham's favourite cake maker</title>
+  <title>Grantham’s Birthday & Wedding Cake Specialists – Custom Cakes for Every Occasion | Cake Central</title>
   <meta name="description" content="Discover the finest handcrafted cakes for all occasions at Cake Central. From weddings to birthdays, our cakes are baked to perfection and designed with love." />
   <meta name="keywords" content="cakes, handcrafted cakes, birthday cakes, wedding cakes, Cake Central, custom cakes, dessert bakery" />
   <meta name="author" content="Cake Central" />
   <meta name="robots" content="index, follow" />
-  <meta property="og:title" content="Cake Central | Grantham's favourite cake maker" />
+  <meta property="og:title" content="Grantham’s Birthday & Wedding Cake Specialists – Custom Cakes for Every Occasion" />
   <meta property="og:description" content="Explore our range of handcrafted cakes for weddings, birthdays, and more. Made with love and baked to perfection at Cake Central." />
   <meta property="og:image" content="/images/cake-central-home.jpg" />
   <meta property="og:url" content="https://cakecentral.co.uk" />
   <meta name="twitter:card" content="summary_large_image" />
-  <meta name="twitter:title" content="Cake Central | Grantham's favourite cake maker" />
+  <meta name="twitter:title" content="Grantham’s Birthday & Wedding Cake Specialists – Custom Cakes for Every Occasion" />
   <meta name="twitter:description" content="Discover the finest handcrafted cakes for all occasions at Cake Central. Order yours today!" />
   <meta name="twitter:image" content="/images/cake-central-home.jpg" />
 </Head>
