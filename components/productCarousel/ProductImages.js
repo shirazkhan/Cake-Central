@@ -88,7 +88,8 @@ const renderImages = (images, variants, setImageIdx, myRef) => {
                             <Image
                                 placeholder = {'blur'}
                                 blurDataURL={`data:image/svg+xml;base64,${toBase64(shimmer(700, 475))}`}
-                                fill={true}
+                                width={1080}
+                                height={1080}
                                 loading={i ? 'lazy' : 'eager'}
                                 priority={i ? false : true}
                                 src = {img.src}
