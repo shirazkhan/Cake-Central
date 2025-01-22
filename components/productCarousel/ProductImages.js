@@ -89,6 +89,8 @@ const renderImages = (images, variants, setImageIdx, myRef) => {
                                 placeholder = {'blur'}
                                 blurDataURL={`data:image/svg+xml;base64,${toBase64(shimmer(700, 475))}`}
                                 fill={true}
+                                loading={i ? 'lazy' : 'eager'}
+                                priority={i ? false : true}
                                 src = {img.src}
                                 alt={img.altText}
                                 quality={10}
