@@ -19,7 +19,7 @@ const Section = styled.section`
   padding: 30px;
 `;
 
-const Title = styled.h2`
+const Title = styled.h1`
   font-size: 1.5em;
   margin-bottom: 20px;
   text-align: left;

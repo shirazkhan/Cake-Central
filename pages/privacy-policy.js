@@ -27,7 +27,7 @@ const Section = styled.section`
   margin-bottom: 30px;
 `;
 
-const Title = styled.h2`
+const Title = styled.h1`
   font-size: 1.5em;
   margin-bottom: 20px;
   color: ${PRIMARY_THEME_COLOR};
@@ -60,7 +60,7 @@ export default function PrivacyPolicy(props) {
 
         <Main>
           <Section>
-            <Title>Introduction to Privacy</Title>
+            <Title>Privacy Policy</Title>
             <Paragraph>
               At Cake Central, we value your privacy. This policy outlines our privacy practices for the Cake Central services and explains how we collect and utilize your personal information. We are committed to keeping your information safe and secure. If you have any concerns or wish to have your details removed, please contact us via email at{' '}
               <Link href="mailto:info@cakecentral.co.uk">info@cakecentral.co.uk</Link>.
