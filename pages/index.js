@@ -34,7 +34,7 @@ export default function Index() {
 
     return <>
     <Head>
-  <title>Grantham’s Birthday & Wedding Cake Specialists – Custom Cakes for Every Occasion | Cake Central</title>
+  <title>Grantham's Best Custom Birthday & Wedding Cakes | Cake Central</title>
   <meta name="description" content="Discover the finest handcrafted cakes for all occasions at Cake Central. From weddings to birthdays, our cakes are baked to perfection and designed with love." />
   <meta name="keywords" content="cakes, handcrafted cakes, birthday cakes, wedding cakes, Cake Central, custom cakes, dessert bakery" />
   <meta name="author" content="Cake Central" />
