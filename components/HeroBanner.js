@@ -89,7 +89,13 @@ const HeroBanner = () => {
 
   return (
     <HeroContainer>
-      <Background priority src={'/images/white-pink-drip-cake-with-strawberries-chocolate.jpeg'} fill={true} quality={10} style={{ y }} />
+      <Background
+        priority
+        src={'/images/white-pink-drip-cake-with-strawberries-chocolate.jpeg'}
+        fill={true}
+        quality={10}
+        style={{ y }}
+        alt='White Birthday Cake with Pink Drip, Strawberries and Chocolate on top.' />
       <Overlay />
       <Content>
         <Subtitle>Celebration & Wedding Cakes based in Grantham, Lincolnshire</Subtitle>

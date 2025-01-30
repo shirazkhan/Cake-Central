@@ -179,9 +179,9 @@ export default function Footer(props) {
             <Container>
                 <InnerContainer>
                     <LogoContainer>
-                        <CompanyLogo src='/logos/svg/CakeCentral-Logo-Black-Full.svg' />
+                        <CompanyLogo src='/logos/svg/CakeCentral-Logo-Black-Full.svg' alt='Cake Central – Online Cake Shop in Grantham, Lincolnshire.'/>
                         <HygieneLink target="_blank" href='https://ratings.food.gov.uk/business/1726795/cake-central-ltd'>
-                            <HygieneRating src='/hygiene.svg' />
+                            <HygieneRating src='/hygiene.svg' alt='Cake Central 5-star food hygiene rating awarded by the Food Standards Agency.' />
                         </HygieneLink>
                     </LogoContainer>
                     <ContactContainer>

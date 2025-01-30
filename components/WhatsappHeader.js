@@ -92,7 +92,7 @@ export default function WhatsappHeader(props) {
             <Container>
                 <ReviewContainer>
                     <Rating>EXCELLENT</Rating>
-                    <Google src='/logos/svg/google-logo.svg' />
+                    <Google src='/logos/svg/google-logo.svg' alt='Google Logo' />
                     <Stars>
                         <FaStar size={23} color='gold' />
                         <FaStar size={23} color='gold' />
