@@ -14,6 +14,7 @@ import { PRIMARY_BANNER_COLOR, WEBSITE_WIDTH, WEBSITE_NAME } from '../GlobalVari
 import WhatsappHeader from '../components/WhatsappHeader';
 import CategorySection from '../components/CategorySection';
 import DesignACakeWithUs from '../components/DesignACakeWithUs';
+import GoogleReviews from '../components/core/GoogleReviews';
 
 const Container = styled.div`
     background: white;
@@ -29,6 +30,7 @@ const RoundedContainer = styled.div`
     box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
     max-width: ${WEBSITE_WIDTH};
 `;
+
 
 export default function Index() {
 
@@ -62,6 +64,7 @@ export default function Index() {
         {/* <WhatsNew /> */}
         </RoundedContainer>
     </Container>
+    <GoogleReviews />
     {/*<SocialBanner />*/}
     </>
 }

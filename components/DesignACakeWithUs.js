@@ -2,8 +2,8 @@ import React from 'react';
 import styled from 'styled-components';
 import { motion } from 'framer-motion';
 import Image from 'next/image';
-import { PRIMARY_THEME_COLOR, DESKTOP_VIEW, PRIMARY_BANNER_COLOR, PRIMARY_BUTTON_COLOR } from '../GlobalVariables';
-import Link from 'next/link';
+import { DESKTOP_VIEW, PRIMARY_BANNER_COLOR } from '../GlobalVariables';
+import Button from './core/Button';
 
 const BannerContainer = styled(motion.div)`
   display: flex;
@@ -97,32 +97,6 @@ const ButtonContainer = styled.div`
   }
 `;
 
-const Button = styled(motion(Link))`
-  background-color: ${PRIMARY_BUTTON_COLOR};
-  color: white;
-  padding: 20px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  font-weight: 500;
-  border-radius: 30px;
-  border: none;
-  width: 50%;
-  height: 15px;
-  cursor: pointer;
-  font-size: 0.9em;
-  text-decoration: none;
-  margin: 0 auto;
-
-  &:visited {
-    color: white;
-  }
-
-  ${DESKTOP_VIEW} {
-    font-size: 1em;
-  }
-`;
-
 const Banner = () => {
   return (
     <BannerContainer>
@@ -144,13 +118,7 @@ const Banner = () => {
         <Description>
             Whether it's a grand wedding or an intimate gathering, no cake is too big and no occasion is too small! We proudly deliver within a 30-mile radius of Grantham, ensuring your perfect cake arrives fresh and on time.</Description>
         <ButtonContainer>
-          <Button
-            whileHover={{ scale: 1.1 }}
-            whileTap={{ scale: 0.9 }}
-            href="/our-story"
-          >
-            Our Story
-          </Button>
+          <Button href="/our-story">Our Story</Button>
         </ButtonContainer>
       </BannerContent>
     </BannerContainer>

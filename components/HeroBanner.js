@@ -3,8 +3,8 @@ import React from 'react';
 import styled from 'styled-components';
 import { motion, useTransform, useScroll } from 'framer-motion';
 import { PRIMARY_BUTTON_COLOR, SECONDARY_BUTTON_COLOR } from '../GlobalVariables';
-import Link from 'next/link';
 import Image from 'next/image';
+import Button from './core/Button';
 
 const HeroContainer = styled.div`
   position: relative;
@@ -40,6 +40,7 @@ const Content = styled.div`
   color: #fff;
   z-index: 1;
   text-shadow: 0px 2px 2px rgba(50, 50, 50, 0.4); 
+  
 `;
 
 const Title = styled.h1`
@@ -57,30 +58,6 @@ const Description = styled.p`
   font-size: 1.5rem;
   margin-bottom: 30px;
   max-width: 700px;
-`;
-
-const Button = styled.button`
-  font-size: 1.1rem;
-  padding: 10px 20px;
-  margin: 10px;
-  border: none;
-  text-shadow: 0px 2px 2px rgba(50, 50, 50, 0.4); 
-  background-color: ${PRIMARY_BUTTON_COLOR};
-  font-weight: 500;
-  border-radius: 20px;
-  box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
-  color: #fff;
-  cursor: pointer;
-  transition: background-color 0.3s ease, transform 0.3s ease;
-
-  &:hover {
-    background-color: ${SECONDARY_BUTTON_COLOR};
-    transform: scale(1.05);
-  }
-
-  &:active {
-    transform: scale(0.95);
-  }
 `;
 
 const HeroBanner = () => {
@@ -101,7 +78,7 @@ const HeroBanner = () => {
         <Subtitle>Celebration & Wedding Cakes based in Grantham, Lincolnshire</Subtitle>
         <Title>Welcome to Cake Central</Title>
         <Description>Indulge in our wide variety of luxury cakes. Create your own bespoke design or choose a ready made design to your liking.</Description>
-        <Button><Link style={{color:'white'}} href="/build-a-cake" >Let's build a cake</Link></Button>
+        <Button href="/build-a-cake">Let's Build A Cake</Button>
       </Content>
     </HeroContainer>
   );

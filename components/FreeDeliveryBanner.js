@@ -2,9 +2,9 @@ import React from 'react';
 import styled from 'styled-components';
 import { motion } from 'framer-motion';
 import { useInView } from 'react-intersection-observer';
-import Link from 'next/link';
 import Image from 'next/image';
-import { PRIMARY_THEME_COLOR, DESKTOP_VIEW, WEBSITE_WIDTH, PRIMARY_BUTTON_COLOR } from '../GlobalVariables';
+import { DESKTOP_VIEW, WEBSITE_WIDTH } from '../GlobalVariables';
+import Button from './core/Button';
 
 const BannerWrapper = styled.div`
   display: flex;
@@ -13,7 +13,6 @@ const BannerWrapper = styled.div`
   background-color: #113544;
   padding: 40px 20px;
   text-align: center;
-  color: #ffffff;
   width: 85%;
   max-width: ${WEBSITE_WIDTH};
   margin: 25px auto;
@@ -82,27 +81,6 @@ const Description = styled.p`
   }
 `;
 
-const ActionButton = styled(motion(Link))`
-  background-color: ${PRIMARY_BUTTON_COLOR};
-  color: white;
-  border: none;
-  font-weight: 500;
-  border-radius: 50px;
-  padding: 10px 20px;
-  cursor: pointer;
-  font-size: 0.9rem;
-  transition: background-color 0.3s ease;
-  width: 30%;
-
-  &:visited {
-    color: white;
-  }
-
-  &:hover {
-    background-color: #ff8fa3;
-  }
-`;
-
 const containerVariants = {
   hidden: { opacity: 0, y: 20 },
   visible: { opacity: 1, y: 0, transition: { duration: 0.5 } },
@@ -131,9 +109,7 @@ const Banner = () => {
           <Description>
             We're thrilled to offer free delivery for all our wonderful Grantham customers! Whether you're surprising a loved one or indulging in a treat for yourself, we'll bring your handcrafted cake right to your doorstep with a smile.
           </Description>
-          <ActionButton href={'/delivery-policy'} whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
-            Find Out More
-          </ActionButton>
+          <Button href={'/delivery-policy'}>Find Out More</Button>
         </TextWrapper>
       </BannerContent>
     </BannerWrapper>
