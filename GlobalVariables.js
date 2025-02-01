@@ -1,6 +1,6 @@
 // SETUP
 
-export const DOMAIN = "https://www.redmondpie.com/";
+export const DOMAIN = "https://www.cakecentral.co.uk";
 export const WEBSITE_NAME = "Cake Central";
 export const DEV_MODE = false;
 

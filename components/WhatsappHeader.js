@@ -102,7 +102,7 @@ export default function WhatsappHeader(props) {
                     </Stars>
                 </ReviewContainer>
                 <ContactContainer>
-                    <WhatsApp 
+                    <WhatsApp
                     alt="WhatsApp" 
                     initial="initial" 
                     whileHover="hover" 

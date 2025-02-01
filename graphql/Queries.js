@@ -43,7 +43,7 @@ export const GET_COLLECTIONS = {
   export const GET_VARIANTS = handle => {
     return {
       query: gql`
-      query {
+      {
         productByHandle(handle: "${handle}") {
           id
           title
@@ -51,14 +51,14 @@ export const GET_COLLECTIONS = {
           description
           productType
           images(first: 10) {
-                edges {
-                  node {
-                    id
-                    src
-                    altText
-                  }
-                }
+            edges {
+              node {
+                id
+                src
+                altText
               }
+            }
+          }
           priceRange {
             minVariantPrice {
               amount
@@ -68,9 +68,21 @@ export const GET_COLLECTIONS = {
             type
             value
           }
-          IngredientsAllergens: metafield(key: "ingredients_allergens", namespace: "custom") {
+          IngredientsAllergens: metafield(
+            key: "ingredients_allergens"
+            namespace: "custom"
+          ) {
             type
             value
+          }
+          PrimaryCollection: metafield(key: "primary_collection", namespace: "custom") {
+            type
+            value
+            reference {
+              ... on Collection {
+                handle
+              }
+            }
           }
           variants(first: 250) {
             nodes {
@@ -86,14 +98,14 @@ export const GET_COLLECTIONS = {
               }
             }
           }
-  collections(first: 10) {
-        nodes {
-          handle
-          title
+          collections(first: 10) {
+            nodes {
+              handle
+              title
+            }
+          }
         }
-  }
-}
-}
+      }
       `
     }
   };

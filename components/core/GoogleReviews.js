@@ -2,11 +2,16 @@ import React from 'react';
 import { styled } from 'styled-components';
 import { ReactGoogleReviews } from "react-google-reviews";
 import "react-google-reviews/dist/index.css";
+import { DESKTOP_VIEW } from '../../GlobalVariables';
 
 const ReviewContainer = styled.div`
-    width: 80%;
     margin: 0 auto;
     padding: 50px 0;
+    width: 95%;
+
+    ${DESKTOP_VIEW}{
+        width: 80%;
+    }
 `;
 
 const featurableWidgetId = "3977e744-0eaa-4b1e-b932-5ae91e8273f0";

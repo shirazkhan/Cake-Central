@@ -6,7 +6,7 @@ import ProductImages from '../../../components/productCarousel/ProductImages';
 import ProductSpec from '../../../components/ProductSpec';
 import BuyButton from '../../../components/BuyButton';
 import Head from 'next/head';
-import {WEBSITE_NAME, DESKTOP_VIEW} from '../../../GlobalVariables';
+import {WEBSITE_NAME, DESKTOP_VIEW, DOMAIN} from '../../../GlobalVariables';
 import { client } from '../../../apollo-client';
 import { GET_PRODUCT_AND_COLLECTION_HANDLES, GET_VARIANTS } from "../../../graphql/Queries";
 import ProductAccordion from '../../../components/ProductAccordion';
@@ -72,7 +72,7 @@ const defaultDeliveryCollection = `<p>We offer flexible delivery and collection 
 </ul>
 <p>To ensure the freshest and most beautiful presentation, we recommend enjoying your bakes within 24 hours of delivery or collection.</p>`
 
-export default function Product({id,title,collection,descriptions,images,price,variants,options,handle}){
+export default function Product({id,title,collection,descriptions,images,price,variants,options,handle,canonicalHandle}){
 
   const router = useRouter();
 
@@ -99,6 +99,7 @@ export default function Product({id,title,collection,descriptions,images,price,v
   return <>
     <Head>
         <title>{`${title} | ${WEBSITE_NAME}`}</title>
+        <link rel="canonical" href={`${DOMAIN}/shop/${canonicalHandle}/pink-heart-rosette-cake`} />
         <meta name="viewport" content="initial-scale=1.0, width=device-width" />
     </Head>
     <Primary>
@@ -195,6 +196,7 @@ export async function getStaticProps({params}) {
         images,
         variants,
         handle: productName,
+        canonicalHandle: data.productByHandle.PrimaryCollection.reference.handle,
         collection,
         options,
         key: data.productByHandle.id

@@ -15,6 +15,7 @@ import WhatsappHeader from '../components/WhatsappHeader';
 import CategorySection from '../components/CategorySection';
 import DesignACakeWithUs from '../components/DesignACakeWithUs';
 import GoogleReviews from '../components/core/GoogleReviews';
+import SlimBanner from '../components/core/SlimBanner';
 
 const Container = styled.div`
     background: white;
@@ -29,6 +30,11 @@ const RoundedContainer = styled.div`
     padding: 25px 0;
     box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
     max-width: ${WEBSITE_WIDTH};
+`;
+
+const WhatsApp = styled.img`
+    height: 50px;
+    cursor: pointer;
 `;
 
 
@@ -65,6 +71,10 @@ export default function Index() {
         </RoundedContainer>
     </Container>
     <GoogleReviews />
+    {/* <SlimBanner>
+        <span>Need a Hand? Chat Over WhatsApp</span>
+        <span><WhatsApp src='/icons/whatsapp.svg' />07768 672154</span>
+    </SlimBanner> */}
     {/*<SocialBanner />*/}
     </>
 }
