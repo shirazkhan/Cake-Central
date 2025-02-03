@@ -93,13 +93,13 @@ export default function Product({id,title,collection,descriptions,images,price,v
         selectedOptions.some(sel => sel.name === opt.name && sel.value === opt.value)
       )
     );
-    setSelectedVariant(matchedVariant ? matchedVariant.handle : variants[0].handle);
+    setSelectedVariant(matchedVariant ? matchedVariant.id : variants[0].id);
   }, [selectedOptions, variants]);
 
   return <>
     <Head>
         <title>{`${title} | ${WEBSITE_NAME}`}</title>
-        <link rel="canonical" href={`${DOMAIN}/shop/${canonicalHandle}/pink-heart-rosette-cake`} />
+        <link rel="canonical" href={`${DOMAIN}/shop/${canonicalHandle}/${handle}`} />
         <meta name="viewport" content="initial-scale=1.0, width=device-width" />
     </Head>
     <Primary>
@@ -109,7 +109,7 @@ export default function Product({id,title,collection,descriptions,images,price,v
           <ProductSpec
                 title={title}
                 collection={collection}
-                price={parseFloat(variants.find(v => v.handle === selectedVariant)?.price || price).toFixed(2)}
+                price={parseFloat(variants.find(v => v.id === selectedVariant)?.price || price).toFixed(2)}
                 variants={variants}
                 selectedVariant={selectedVariant}
                 setSelectedVariant={setSelectedVariant}
@@ -119,16 +119,6 @@ export default function Product({id,title,collection,descriptions,images,price,v
             />
           <ButtonsContainer>
             <BuyButton handle={handle} selectedOptions={selectedOptions} selectedVariant = {selectedVariant} variants = {variants} />
-            <FavouriteButton
-              variantId = {variants.find(v => v.handle === selectedVariant).id}
-              productTitle = {title}
-              imgSrc = {variants.find(v => v.handle === selectedVariant).image}
-              price = {price}
-              variantHandle = {selectedVariant}
-              variantTitle = {variants.find(v => v.handle === selectedVariant).title}
-              productType = {productType}
-              productHandle = {productName}
-            />
           </ButtonsContainer>
           <AccordionContainer>
             <ProductAccordion title = 'Description' content = {parse(descriptions.main)} initial = {true} />
@@ -196,7 +186,9 @@ export async function getStaticProps({params}) {
         images,
         variants,
         handle: productName,
-        canonicalHandle: data.productByHandle.PrimaryCollection.reference.handle,
+        canonicalHandle: data.productByHandle.PrimaryCollection?.reference?.handle
+          ? data.productByHandle.PrimaryCollection.reference.handle
+          : collection.handle,
         collection,
         options,
         key: data.productByHandle.id
