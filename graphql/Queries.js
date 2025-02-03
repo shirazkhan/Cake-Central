@@ -268,7 +268,7 @@ export const GET_PRODUCTS_BY_COLLECTION_HANDLE = handle =>  {
       handle
       title
       description
-      products(first: 10) {
+      products(first: 100) {
         nodes {
           title
           id
