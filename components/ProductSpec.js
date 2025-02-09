@@ -30,6 +30,8 @@ const OptionName = styled.h3`
 
 const OptionButton = styled.button`
   background-color: white;
+  color: black;
+  font-size: 1em;
   border: 1px solid ${PRIMARY_BUTTON_COLOR}50;
   padding: 8px 16px;
   border-radius: 20px;
