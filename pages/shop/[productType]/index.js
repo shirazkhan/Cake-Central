@@ -8,24 +8,16 @@ import { GET_COLLECTIONS, GET_PRODUCTS_BY_COLLECTION_HANDLE} from '../../../grap
 import Head from 'next/head';
 import { WEBSITE_NAME, WEBSITE_WIDTH } from '../../../GlobalVariables';
 import Banner from '../../../components/Banner';
+import HeroBanner from '../../../components/core/HeroBanner';
+import Breadcrumbs from '../../../components/core/Breadcrumbs';
 
 const Container = styled.div`
     max-width: ${WEBSITE_WIDTH};
     margin: 0 auto;
 `;
 
-const Header = styled.h1`
-    width: 100%;
-    text-align: center;
-`;
-
-const Description = styled.p`
-    max-width: 1000px;
-    margin: 0 20px;
-    font-size: 1.2em;
-`;
-
-export default function ProductType({handle, title, description, products}) {
+export default function ProductType({handle, title, description, products, image}) {
+    console.log(handle, title)
 
     const router = useRouter();
     const { productType } = router.query;
@@ -34,9 +26,8 @@ export default function ProductType({handle, title, description, products}) {
         <Head>
             <title>{`${title} | ${WEBSITE_NAME}`}</title>
         </Head>
+        <HeroBanner title={title} description={description} image={image}  />
         <Primary>
-            <Header>{title}</Header>
-            <Description>{description}</Description>
             <ProductGrid reviewsOn = {false} products = {products} productType = {productType} />
         </Primary>
     </>
@@ -53,6 +44,7 @@ export async function getStaticProps({params}) {
         handle: data.handle,
         title: data.title,
         description: data.description,
+        image: data.image,
         products: data.products.nodes.map(p => {
             return {
                 title: p.title,

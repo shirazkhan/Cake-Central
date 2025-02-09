@@ -3,25 +3,30 @@ import styled from 'styled-components';
 import Pagination from './Pagination';
 import Filter from './Filter';
 import Image from 'next/image';
+import { motion } from 'framer-motion';
 import Link from 'next/link';
-import { DESKTOP_VIEW, PRIMARY_THEME_COLOR } from '../../GlobalVariables';
+import { DESKTOP_VIEW, PRIMARY_BANNER_COLOR, PRIMARY_BUTTON_COLOR, PRIMARY_THEME_COLOR, SECONDARY_BANNER_COLOR, SECONDARY_BUTTON_COLOR } from '../../GlobalVariables';
+import Button from '../core/Button';
+import Breadcrumbs from '../core/Breadcrumbs';
 
 const Container = styled.div`
-    margin-top: 50px;
+    margin: 20px auto;
+    width: calc(100% - 10px);
+
+${DESKTOP_VIEW}{
+    width: calc(100% - 30px);
+}
 `;
 
 const Grid = styled.div`
     height: 100%;
-    width: calc(100% - 10px);
     display: grid;
     grid-template-columns: 1fr 1fr;
     gap: 10px;
     place-items: center;
-    margin: 20px auto;
 
     ${DESKTOP_VIEW}{
         grid-template-columns: 1fr 1fr 1fr;
-        width: calc(100% - 30px);
     }
 `;
 
@@ -36,15 +41,55 @@ const ProductCard = styled.div`
     justify-content: space-between;
 `;
 
-const ProductImage = styled.div`
+const ProductImage = styled(motion.div)`
     height: 250px;
     width: 100%;
     border-radius: 5px 5px 0 0;
     position: relative;
     overflow: hidden;
 
-    ${DESKTOP_VIEW}{
+    ${DESKTOP_VIEW} {
         height: 300px;
+    }
+`;
+
+const Ad = styled.div`
+    height: 100%;
+    width: 100%;
+    border-radius: 5px;
+    position: relative;
+    overflow: hidden;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    color: white;
+    background: ${SECONDARY_BANNER_COLOR};
+
+    &::after {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: rgba(0, 0, 0, 0.5); /* Dark overlay */
+    }
+
+    ${DESKTOP_VIEW}{
+        height: 100%;
+    }
+`;
+
+const AdText = styled.h3`
+    width: calc(100% - 50px);
+    margin: 50px auto;
+    font-size: 2em;
+    line-height: 1em;
+    position: relative;
+    z-index: 2;
+    ${DESKTOP_VIEW}{
+        font-size: 2em;
     }
 `;
 
@@ -91,18 +136,17 @@ const renderProducts = (products, productType, reviewsOn) =>
         return (
             <ProductCard>
             <Link href = {`/shop/${productType}/${p.handle}`}>
-            <ProductImage>
-                <Image
-                    style = {{objectFit: "cover"}}
-                    fill src={p.images} />
-            </ProductImage>
+                <ProductImage>
+                    <Image
+                        style = {{objectFit: "cover"}}
+                        fill src={p.images} />
+                </ProductImage>
             <CardTitle>{p.title}</CardTitle>
             <PriceAndReviewContainer>
                 {reviewsOn ? <ReviewContainer>1 2 3 4 5</ReviewContainer> : ''}
                 <CardPrice>From £{parseFloat(p.price).toFixed(2)}</CardPrice>
             </PriceAndReviewContainer>
         </Link> 
-            {/* <AddToCart>Add To Cart</AddToCart> */}
         </ProductCard>
         )
     })
@@ -110,8 +154,23 @@ const renderProducts = (products, productType, reviewsOn) =>
 export default function ProductGrid({products, productType, reviewsOn}) {
     return (
         <Container>
+            <Breadcrumbs />
             <Filter products = {products}/>
             <Grid>
+                {productType === 'cakes'
+                    ? <ProductCard>
+                        <Ad>
+                            <AdText>Prefer Something Unique? Create Your Own</AdText>
+                            <Image
+                                style = {{objectFit: "cover"}}
+                                fill
+                                src={"/AdobeStock_364652589.webp"}
+                            />
+                            <Button style={{zIndex: 30, position: 'relative', marginTop: '-20px'}} href={'/build-a-cake'}>Build Your Cake</Button>
+                        </Ad>
+                    </ProductCard>
+                    : ''
+                }
                 {renderProducts(products, productType, reviewsOn)}
             </Grid>
         </Container>

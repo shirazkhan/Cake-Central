@@ -1,6 +1,8 @@
 import React from 'react';
 import styled from 'styled-components';
 import ProductOption from './ProductOption';
+import Breadcrumbs from './core/Breadcrumbs';
+import { DESKTOP_VIEW } from '../GlobalVariables';
 
 const Container = styled.div`
     width: calc(100% - 20px);
@@ -25,6 +27,7 @@ export default function ProductSpec({ title, price, collection, options, selecte
   return (
     <>
       <Container>
+        <Breadcrumbs />
         <ProductTitle>{title}</ProductTitle>
         <Price>£{price}</Price>
       </Container>

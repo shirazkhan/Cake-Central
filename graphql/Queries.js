@@ -262,7 +262,7 @@ export const GET_SLUGS_BY_COLLECTION_HANDLE = handle => (
 
 export const GET_PRODUCTS_BY_COLLECTION_HANDLE = handle =>  {
   return { query: gql`
-  query {
+  {
     collectionByHandle(handle: "${handle}") {
       id
       handle
@@ -287,6 +287,11 @@ export const GET_PRODUCTS_BY_COLLECTION_HANDLE = handle =>  {
             }
           }
         }
+      }
+      image {
+        id
+        src
+        altText
       }
     }
   }

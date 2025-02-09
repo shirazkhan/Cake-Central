@@ -6,15 +6,16 @@ import ProductImages from '../../../components/productCarousel/ProductImages';
 import ProductSpec from '../../../components/ProductSpec';
 import BuyButton from '../../../components/BuyButton';
 import Head from 'next/head';
-import {WEBSITE_NAME, DESKTOP_VIEW, DOMAIN} from '../../../GlobalVariables';
+import {WEBSITE_NAME, DESKTOP_VIEW, DOMAIN, MOBILE_NAV_HEIGHT} from '../../../GlobalVariables';
 import { client } from '../../../apollo-client';
 import { GET_PRODUCT_AND_COLLECTION_HANDLES, GET_VARIANTS } from "../../../graphql/Queries";
 import ProductAccordion from '../../../components/ProductAccordion';
 import FavouriteButton from '../../../components/FavouriteButton';
 import parse from 'html-react-parser';
+import Breadcrumbs from '../../../components/core/Breadcrumbs';
 
 const MainContainer = styled.div`
-    margin: -50px 0 0 0;
+    margin: -${MOBILE_NAV_HEIGHT} 0 0 0;
 
   ${DESKTOP_VIEW}{
     display: flex;
