@@ -12,7 +12,6 @@ import { GET_PRODUCT_AND_COLLECTION_HANDLES, GET_VARIANTS } from "../../../graph
 import ProductAccordion from '../../../components/ProductAccordion';
 import FavouriteButton from '../../../components/FavouriteButton';
 import parse from 'html-react-parser';
-import Breadcrumbs from '../../../components/core/Breadcrumbs';
 
 const MainContainer = styled.div`
     margin: -${MOBILE_NAV_HEIGHT} 0 0 0;
