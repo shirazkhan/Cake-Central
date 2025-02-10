@@ -3,6 +3,7 @@ import styled from 'styled-components';
 import ProductOption from './ProductOption'; // You may not need this anymore, as buttons will replace it.
 import Breadcrumbs from './core/Breadcrumbs';
 import { DESKTOP_VIEW, PRIMARY_BUTTON_COLOR, SECONDARY_BUTTON_COLOR } from '../GlobalVariables';
+import MessageInput from './core/MessageInput';
 
 const Container = styled.div`
   width: calc(100% - 20px);
@@ -23,9 +24,10 @@ const Price = styled.div`
   font-weight: 500;
 `;
 
-const OptionName = styled.h3`
+const OptionName = styled.label`
   margin-left: 10px;
-  font-size: 1em;
+  font-size: 1.1em;
+  font-weight: 500;
 `;
 
 const OptionButton = styled.button`
@@ -60,6 +62,8 @@ export default function ProductSpec({
   options,
   selectedOptions,
   setSelectedOptions,
+  customMessage,
+  setCustomMessage
 }) {
   // Handle the click of a button to select a variant option
   const handleOptionSelect = (optionName, optionValue) => {
@@ -101,7 +105,8 @@ export default function ProductSpec({
             </div>
           </div>
         ))
-      )}
+        )}
+        <MessageInput customMessage={customMessage} setCustomMessage={setCustomMessage} />
     </>
   );
 }

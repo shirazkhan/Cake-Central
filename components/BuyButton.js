@@ -49,7 +49,7 @@ const Ref = styled.div`
     width: 376px;
 `;
 
-async function handleAddToBag(selectedOptions, selectedVariant, variants, dispatch, globalState, handle){
+async function handleAddToBag(selectedOptions, selectedVariant, variants, dispatch, globalState, handle, customMessage){
 
     const { data } = await client.query(GET_PRODUCT_WITH_OPTIONS_BY_HANDLE(handle, selectedOptions));
     const productId = data.productByHandle.selectedOrFirstAvailableVariant.id;
@@ -62,14 +62,14 @@ async function handleAddToBag(selectedOptions, selectedVariant, variants, dispat
         setTimeout(() => { dispatch({type: 'TOGGLE_CART_MENU'}) }, 2000);
     } else {
         // const { data } = await client.mutate(CART_LINES_ADD(globalState.cartData.id,variants.find(v => v.handle === selectedVariant).id));
-        const { data } = await client.mutate(CART_LINES_ADD(globalState.cartData.id,productId));
+        const { data } = await client.mutate(CART_LINES_ADD(globalState.cartData.id,productId,customMessage));
         dispatch({type: 'UPDATE_CART', value: data.cartLinesAdd})
         dispatch({type: 'TOGGLE_CART_MENU'})
         setTimeout(() => { dispatch({type: 'TOGGLE_CART_MENU'}) }, 2000);
     }
 }
 
-export default function BuyButton({selectedVariant, variants, selectedOptions, handle}) {
+export default function BuyButton({selectedVariant, variants, selectedOptions, handle, customMessage}) {
 
     const { globalState, dispatch } = useContext(GlobalStateContext);
 
@@ -79,7 +79,7 @@ export default function BuyButton({selectedVariant, variants, selectedOptions, h
         <>
             <Ref ref = {ref}>
                 <Container $inView = {inView} animate={{width: inView ? '80%' : '100%'}} whileTap = {{scale: 1.1}}>
-                    <Button onClick = {() => handleAddToBag(selectedOptions, selectedVariant, variants, dispatch, globalState, handle)} >Add to Bag</Button>
+                    <Button onClick = {() => handleAddToBag(selectedOptions, selectedVariant, variants, dispatch, globalState, handle, customMessage)} >Add to Bag</Button>
                 </Container>
             </Ref>
         </>

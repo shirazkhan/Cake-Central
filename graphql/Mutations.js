@@ -51,12 +51,17 @@ export const CREATE_CART = id => ({
   `
 })
 
-export const CART_LINES_ADD = (cartId, variantId) => ({
+export const CART_LINES_ADD = (cartId, variantId, customMessage) => ({
   mutation: gql`
   mutation {
     cartLinesAdd(
       cartId: "${cartId}"
-      lines: {merchandiseId: "${variantId}"}
+      lines: {
+        merchandiseId: "${variantId}"
+        ${customMessage ? `attributes: [
+          { key: "Details", value: "${customMessage}" }
+        ]`: ''}
+      }
     ) {
       cart {
         id
@@ -65,6 +70,10 @@ export const CART_LINES_ADD = (cartId, variantId) => ({
             node {
               id
               quantity
+              attributes {
+                key
+                value
+              }
               estimatedCost {
                 totalAmount {
                   amount
@@ -101,7 +110,8 @@ export const CART_LINES_ADD = (cartId, variantId) => ({
     }
   }
   `
-})
+});
+
 
 export const CART_LINES_UPDATE = (cartId, lineId, quantity) => ({
   mutation: gql`

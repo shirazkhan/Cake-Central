@@ -87,6 +87,8 @@ export default function Product({id,title,collection,descriptions,images,price,v
     }, [])
   );
 
+  const [customMessage, setCustomMessage] = useState('');
+
   useEffect(() => {
     const matchedVariant = variants.find(variant =>
       variant.selectedOptions.every(opt =>
@@ -116,14 +118,22 @@ export default function Product({id,title,collection,descriptions,images,price,v
                 options={options}
                 selectedOptions={selectedOptions}
                 setSelectedOptions={setSelectedOptions}
+                customMessage={customMessage}
+                setCustomMessage={setCustomMessage}
             />
           <ButtonsContainer>
-            <BuyButton handle={handle} selectedOptions={selectedOptions} selectedVariant = {selectedVariant} variants = {variants} />
+            <BuyButton
+              handle={handle}
+              selectedOptions={selectedOptions}
+              selectedVariant = {selectedVariant}
+              variants = {variants}
+              customMessage = {customMessage} 
+            />
           </ButtonsContainer>
           <AccordionContainer>
             <ProductAccordion title = 'Description' content = {parse(descriptions.main)} initial = {true} />
-            <ProductAccordion title = 'Ingredients & Allergens' content = {parse(descriptions.IngredientsAllergens)} initial = {true} />
-            <ProductAccordion title = 'Delivery & Collection' content = {parse(descriptions.DeliveryCollection)} initial = {true} />
+            <ProductAccordion title = 'Ingredients & Allergens' content = {parse(descriptions.IngredientsAllergens)} initial = {false} />
+            <ProductAccordion title = 'Delivery & Collection' content = {parse(descriptions.DeliveryCollection)} initial = {false} />
           </AccordionContainer>
         </SpecContainer>
       </MainContainer>
