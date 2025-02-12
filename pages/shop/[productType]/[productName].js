@@ -10,7 +10,6 @@ import {WEBSITE_NAME, DESKTOP_VIEW, DOMAIN, MOBILE_NAV_HEIGHT} from '../../../Gl
 import { client } from '../../../apollo-client';
 import { GET_PRODUCT_AND_COLLECTION_HANDLES, GET_VARIANTS } from "../../../graphql/Queries";
 import ProductAccordion from '../../../components/ProductAccordion';
-import FavouriteButton from '../../../components/FavouriteButton';
 import parse from 'html-react-parser';
 
 const MainContainer = styled.div`
@@ -72,7 +71,7 @@ const defaultDeliveryCollection = `<p>We offer flexible delivery and collection 
 </ul>
 <p>To ensure the freshest and most beautiful presentation, we recommend enjoying your bakes within 24 hours of delivery or collection.</p>`
 
-export default function Product({id,title,collection,descriptions,images,price,variants,options,handle,canonicalHandle}){
+export default function Product({id,title,collection,descriptions,images,price,variants,options,handle,canonicalHandle,allowDate,allowMessage,advancedNotice}){
 
   const router = useRouter();
 
@@ -88,6 +87,7 @@ export default function Product({id,title,collection,descriptions,images,price,v
   );
 
   const [customMessage, setCustomMessage] = useState('');
+  const [date, setDate] = useState(null);
 
   useEffect(() => {
     const matchedVariant = variants.find(variant =>
@@ -120,6 +120,11 @@ export default function Product({id,title,collection,descriptions,images,price,v
                 setSelectedOptions={setSelectedOptions}
                 customMessage={customMessage}
                 setCustomMessage={setCustomMessage}
+                date = {date}
+                setDate = {setDate}
+                allowDate = {allowDate}
+                allowMessage = {allowMessage}
+                advancedNotice = {advancedNotice}
             />
           <ButtonsContainer>
             <BuyButton
@@ -128,6 +133,7 @@ export default function Product({id,title,collection,descriptions,images,price,v
               selectedVariant = {selectedVariant}
               variants = {variants}
               customMessage = {customMessage} 
+              date = {date}
             />
           </ButtonsContainer>
           <AccordionContainer>
@@ -201,6 +207,9 @@ export async function getStaticProps({params}) {
           : collection.handle,
         collection,
         options,
+        advancedNotice: data.productByHandle.AdvancedNotice?.value ?? 0,
+        allowMessage: data.productByHandle.Message?.value ?? false,
+        allowDate: data.productByHandle.CollectionDeliveryDate?.value ?? false,
         key: data.productByHandle.id
       },
     }

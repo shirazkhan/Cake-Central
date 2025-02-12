@@ -64,12 +64,36 @@ export const GET_COLLECTIONS = {
               amount
             }
           }
-          DeliveryCollection: metafield(key: "delivery_collection", namespace: "custom") {
+          DeliveryCollection: metafield(
+            key: "delivery_collection"
+            namespace: "custom"
+          ) {
             type
             value
           }
           IngredientsAllergens: metafield(
             key: "ingredients_allergens"
+            namespace: "custom"
+          ) {
+            type
+            value
+          }
+          CollectionDeliveryDate: metafield(
+            key: "collection_delivery_date"
+            namespace: "custom"
+          ) {
+            type
+            value
+          }
+          Message: metafield(
+            key: "message"
+            namespace: "custom"
+          ) {
+            type
+            value
+          }
+          AdvancedNotice: metafield(
+            key: "advanced_notice"
             namespace: "custom"
           ) {
             type

@@ -49,27 +49,49 @@ const Ref = styled.div`
     width: 376px;
 `;
 
-async function handleAddToBag(selectedOptions, selectedVariant, variants, dispatch, globalState, handle, customMessage){
+async function handleAddToBag(selectedOptions, dispatch, globalState, handle, customMessage, date){
 
     const { data } = await client.query(GET_PRODUCT_WITH_OPTIONS_BY_HANDLE(handle, selectedOptions));
     const productId = data.productByHandle.selectedOrFirstAvailableVariant.id;
 
+    const formatDateForMutation = (date) => {
+        if (!date || isNaN(date.getTime())) return ""; // Ensure date is valid
+      
+        const day = date.getDate();
+        const month = date.toLocaleString("en-GB", { month: "long" });
+        const year = date.getFullYear();
+      
+        const getDaySuffix = (day) => {
+          if (day > 3 && day < 21) return "th";
+          switch (day % 10) {
+            case 1: return "st";
+            case 2: return "nd";
+            case 3: return "rd";
+            default: return "th";
+          }
+        };
+      
+        return `${day}${getDaySuffix(day)} ${month} ${year}`;
+      };
+
+      const formatedDate = formatDateForMutation(date)
+
     if(!globalState.cartData.id){
         // const { data } = await client.mutate(CREATE_CART(variants.find(v => v.handle === selectedVariant).id))
-        const { data } = await client.mutate(CREATE_CART(productId))
+        const { data } = await client.mutate(CREATE_CART(productId, customMessage, formatedDate))
         dispatch({type: 'UPDATE_CART', value: data.cartCreate})
         dispatch({type: 'TOGGLE_CART_MENU'})
         setTimeout(() => { dispatch({type: 'TOGGLE_CART_MENU'}) }, 2000);
     } else {
         // const { data } = await client.mutate(CART_LINES_ADD(globalState.cartData.id,variants.find(v => v.handle === selectedVariant).id));
-        const { data } = await client.mutate(CART_LINES_ADD(globalState.cartData.id,productId,customMessage));
+        const { data } = await client.mutate(CART_LINES_ADD(globalState.cartData.id, productId, customMessage, formatedDate));
         dispatch({type: 'UPDATE_CART', value: data.cartLinesAdd})
         dispatch({type: 'TOGGLE_CART_MENU'})
         setTimeout(() => { dispatch({type: 'TOGGLE_CART_MENU'}) }, 2000);
     }
 }
 
-export default function BuyButton({selectedVariant, variants, selectedOptions, handle, customMessage}) {
+export default function BuyButton({selectedVariant, variants, selectedOptions, handle, customMessage, date}) {
 
     const { globalState, dispatch } = useContext(GlobalStateContext);
 
@@ -79,7 +101,7 @@ export default function BuyButton({selectedVariant, variants, selectedOptions, h
         <>
             <Ref ref = {ref}>
                 <Container $inView = {inView} animate={{width: inView ? '80%' : '100%'}} whileTap = {{scale: 1.1}}>
-                    <Button onClick = {() => handleAddToBag(selectedOptions, selectedVariant, variants, dispatch, globalState, handle, customMessage)} >Add to Bag</Button>
+                    <Button onClick = {() => handleAddToBag(selectedOptions, dispatch, globalState, handle, customMessage, date)} >Add to Bag</Button>
                 </Container>
             </Ref>
         </>

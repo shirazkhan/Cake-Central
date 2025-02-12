@@ -4,6 +4,7 @@ import ProductOption from './ProductOption'; // You may not need this anymore, a
 import Breadcrumbs from './core/Breadcrumbs';
 import { DESKTOP_VIEW, PRIMARY_BUTTON_COLOR, SECONDARY_BUTTON_COLOR } from '../GlobalVariables';
 import MessageInput from './core/MessageInput';
+import DatePicker from './core/DatePicker';
 
 const Container = styled.div`
   width: calc(100% - 20px);
@@ -63,7 +64,12 @@ export default function ProductSpec({
   selectedOptions,
   setSelectedOptions,
   customMessage,
-  setCustomMessage
+  setCustomMessage,
+  date,
+  setDate,
+  allowDate,
+  allowMessage,
+  advancedNotice
 }) {
   // Handle the click of a button to select a variant option
   const handleOptionSelect = (optionName, optionValue) => {
@@ -74,6 +80,7 @@ export default function ProductSpec({
     );
   };
 
+  console.log(allowMessage + allowDate)
   return (
     <>
       <Container>
@@ -106,7 +113,8 @@ export default function ProductSpec({
           </div>
         ))
         )}
-        <MessageInput customMessage={customMessage} setCustomMessage={setCustomMessage} />
+        {JSON.parse(allowDate) ? <DatePicker date = {date} setDate = {setDate} advancedNotice={advancedNotice} /> : ''}
+        {JSON.parse(allowMessage) ? <MessageInput customMessage={customMessage} setCustomMessage={setCustomMessage} /> : ''}
     </>
   );
 }
