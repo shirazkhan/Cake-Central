@@ -1,6 +1,5 @@
 import React from 'react';
 import styled from 'styled-components';
-import ProductOption from './ProductOption'; // You may not need this anymore, as buttons will replace it.
 import Breadcrumbs from './core/Breadcrumbs';
 import { DESKTOP_VIEW, PRIMARY_BUTTON_COLOR, SECONDARY_BUTTON_COLOR } from '../GlobalVariables';
 import MessageInput from './core/MessageInput';
@@ -25,8 +24,11 @@ const Price = styled.div`
   font-weight: 500;
 `;
 
+const OptionContainer = styled.div`
+  margin: 20px 10px;
+`;
+
 const OptionName = styled.label`
-  margin-left: 10px;
   font-size: 1.1em;
   font-weight: 500;
 `;
@@ -79,8 +81,6 @@ export default function ProductSpec({
       )
     );
   };
-
-  console.log(allowMessage + allowDate)
   return (
     <>
       <Container>
@@ -91,7 +91,7 @@ export default function ProductSpec({
       {/* Loop through options and create a button for each value */}
       {options[0].values[0] === 'Default Title' ? null : (
         options.map((option) => (
-          <div key={option.name}>
+          <OptionContainer key={option.name}>
             <OptionName>{option.name}:</OptionName>
             <div>
               {option.values.map((value) => (
@@ -110,7 +110,7 @@ export default function ProductSpec({
                 </OptionButton>
               ))}
             </div>
-          </div>
+          </OptionContainer>
         ))
         )}
         {JSON.parse(allowDate) ? <DatePicker date = {date} setDate = {setDate} advancedNotice={advancedNotice} /> : ''}

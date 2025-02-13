@@ -4,7 +4,7 @@ import { PRIMARY_BUTTON_COLOR } from '../../GlobalVariables';
 
 const Container = styled.div`
     width: calc(100% - 20px);
-    margin: 0 auto;
+    margin: 20px 10px;
 `;
 
 const MessageLabel = styled.label`
@@ -12,6 +12,7 @@ const MessageLabel = styled.label`
     display: block;
     font-size: 1.1em;
     font-weight: 500;
+    margin-bottom: 5px;
 `;
 
 const Input = styled.textarea`

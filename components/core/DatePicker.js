@@ -6,14 +6,14 @@ import { PRIMARY_BUTTON_COLOR } from "../../GlobalVariables";
 
 const Container = styled.div`
   width: calc(100% - 20px);
-  margin: 0 auto;
+  margin: 20px 10px;
 `;
 
 const Label = styled.label`
   display: block;
   font-size: 1.1em;
   font-weight: 500;
-  margin-bottom: 5px;
+  margin-bottom: 10px;
 `;
 
 const CustomDatePicker = styled(DatePicker)`
@@ -27,7 +27,6 @@ const CustomDatePicker = styled(DatePicker)`
     border-radius: 20px;
     cursor: pointer;
     transition: background-color 0.3s;
-    margin-left: -5px;
 
     &:hover {
     background-color: ${PRIMARY_BUTTON_COLOR}20;
@@ -93,7 +92,6 @@ const DatePickerWrapper = styled.div`
 `;
 
 const DateSelector = ({ date, setDate, advancedNotice }) => {
-    console.log(advancedNotice)
     // Helper function to get the minimum selectable date (2 days from today)
     const getMinDate = () => {
         const today = new Date();

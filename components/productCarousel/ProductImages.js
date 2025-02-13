@@ -18,7 +18,7 @@ const MainContainer = styled.div`
     width: 50vw;
     border-radius: 10px;
     position: sticky;
-    top: 150px;
+    top: 175px;
   }
 `;
 

@@ -19,18 +19,20 @@ const MainContainer = styled.div`
     display: flex;
     gap: 20px;
     width: calc(100% - 20px);
-    margin: 0 auto;
+    margin: -25px auto 0 auto;
   }
 `;
 
 const SpecContainer = styled.div`
   width: 100vw;
+  margin-top: -40px;
   ${DESKTOP_VIEW}{
       display: flex;
       flex-direction: column;
       justify-content: flex-start;
       gap: 20px;
       width: 50%;
+      margin-top: -20px;
     }
 `;
 
