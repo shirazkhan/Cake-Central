@@ -235,6 +235,7 @@ export const Primary = styled.div`
   max-width: ${WEBSITE_WIDTH};
   margin: 50px auto;
   width: 100%;
+  font-family: futura-pt, sans-serif;
 `;
 
 export const Footer = styled.div`

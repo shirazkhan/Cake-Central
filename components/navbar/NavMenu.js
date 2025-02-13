@@ -153,18 +153,18 @@ export default function NavMenu() {
                             <Link
                                 
                                 onClick = {isDesktop ? null : () => dispatch({type: 'TOGGLE_NAV_MENU'})}
-                                href = '/wedding'
-                                as = '/wedding' >
-                                    Wedding
+                                href = '/shop/cakes'
+                                as = '/shop/cakes' >
+                                    Cakes
                             </Link>
                         </NavLink>
                         <NavLink>
                             <Link
                                 
                                 onClick = {isDesktop ? null : () => dispatch({type: 'TOGGLE_NAV_MENU'})}
-                                href = '/shop/valentines-menu'
-                                as = '/shop/valentines-menu' >
-                                    Valentines Menu
+                                href = '/wedding'
+                                as = '/wedding' >
+                                    Wedding
                             </Link>
                         </NavLink>
                         <NavLink>
