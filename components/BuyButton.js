@@ -15,7 +15,7 @@ const Container = styled(motion.div)`
     margin: 20px auto;
     height: 63px;
     display: flex;
-    position: ${props => props.$inView ? 'relative' : 'fixed'};
+    position: ${props => props.$inView ? 'relative' : 'relative'/* Change this to fixed for the button to follow */};
     z-index: 3;
     background: ${PRIMARY_THEME_COLOR};
     bottom: 0;
