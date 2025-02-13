@@ -38,7 +38,6 @@ const Button = styled(motion.button)`
     background: rgba(0,0,0,0);
     border: none;
     outline: none;
-    font-family: futura-pt, sans-serif;
     font-weight: 500;
     font-style: normal;
     cursor: pointer;

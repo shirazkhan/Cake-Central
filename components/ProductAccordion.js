@@ -4,7 +4,7 @@ import { motion } from 'framer-motion';
 import { DESKTOP_VIEW, PRIMARY_THEME_COLOR } from '../GlobalVariables';
 import { FaCircleArrowDown } from 'react-icons/fa6';
 
-const Container = styled.div`
+const Container = styled.section`
     width: 100%;
     margin: 0 auto;
 
@@ -49,13 +49,14 @@ const Panel = styled(motion.div)`
     overflow: hidden;
 `
 
-const Content = styled.div`
+const Content = styled.p`
     padding-bottom: 40px;
 `;
 
-const Title = styled.p`
+const Title = styled.h2`
     margin: 0;
     padding: 0;
+    font-size: 1em;
 `;
 
 const Arrow = styled(motion.img)`

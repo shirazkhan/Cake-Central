@@ -76,6 +76,33 @@ const defaultDeliveryCollection = `<p>We offer flexible delivery and collection 
 </ul>
 <p>To ensure the freshest and most beautiful presentation, we recommend enjoying your bakes within 24 hours of delivery or collection.</p>`
 
+const defaultTravelStorage = `<p>When you're on the move with your cake, make sure it's stored flat and secure—no cake disasters, please! If it's a warm day, keep the aircon running to help keep your cake cool and happy.</p>
+
+<p>Your cake should hang out in an odour-free fridge. But before you dig in, take it out about 3 hours ahead of time so it can reach room temperature and taste its best.</p>
+
+<p>For the freshest experience, cakes are best enjoyed right after being cut. The sponge will start to dry out once exposed to air, so go ahead and enjoy it sooner rather than later!</p>
+
+<p>We recommend eating your cake within 3 days of delivery for optimal deliciousness.</p>
+
+<p>Once you've sliced your cake, pop it in an air-tight container to lock in all that freshness and keep the quality top-notch.</p>`
+
+const defaultCakeSizesServings = `<ul>
+<li>A 6” cake serves 12 Party slices and 24 Finger slices.</li>
+<li>An 8” cake serves 24 Party slices and 48 Finger slices.</li>
+<li>A 10” cake serves 32 Party slices and 74 Finger slices.</li>
+<li>A 2-tier 8” & 6” cake serves 32 Party slices and 74 Finger slices.</li>
+<li>A 3-tier 8” & 6” & 4” cake serves 42 Party slices and 84 Finger slices.</li>
+<li>A 3-tier 10” & 8” & 6” cake serves 74 Party slices and 148 Finger slices.</li>
+</ul>
+
+<h3>Slice Sizes:</h3>
+<ul>
+<li>Party slices are 1x2 inches.</li>
+<li>Finger slices are 1x1 inch.</li>
+</ul>
+
+<p>Most of our cakes come with 3 layers of delicious sponge, typically 5-7 inches tall, so feel free to request smaller slices if that’s what you prefer!</p>`;
+
 export default function Product({id,title,collection,descriptions,images,price,variants,options,handle,canonicalHandle,allowDate,allowMessage,advancedNotice}){
 
   const router = useRouter();
@@ -140,6 +167,8 @@ export default function Product({id,title,collection,descriptions,images,price,v
             <ProductAccordion title = 'Description' content = {parse(descriptions.main)} initial = {true} />
             <ProductAccordion title = 'Ingredients & Allergens' content = {parse(descriptions.IngredientsAllergens)} initial = {false} />
             <ProductAccordion title = 'Delivery & Collection' content = {parse(descriptions.DeliveryCollection)} initial = {false} />
+            <ProductAccordion title = 'Travel & Storage Tips' content = {parse(defaultTravelStorage)} initial = {false} />
+            <ProductAccordion title = 'Cake Sizes & Servings' content = {parse(defaultCakeSizesServings)} initial = {false} />
           </AccordionContainer>
         </SpecContainer>
       </MainContainer>
