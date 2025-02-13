@@ -91,7 +91,7 @@ async function handleAddToBag(selectedOptions, dispatch, globalState, handle, cu
     }
 }
 
-export default function BuyButton({selectedVariant, variants, selectedOptions, handle, customMessage, date}) {
+export default function BuyButton({selectedOptions, handle, customMessage, date}) {
 
     const { globalState, dispatch } = useContext(GlobalStateContext);
 

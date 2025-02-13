@@ -52,10 +52,13 @@ const ButtonsContainer = styled.div`
     }
 `;
 
-const extractFragmentHandle = (router, variants) => { // Check if router has href fragment. If it does, then use this as initial state.
-  const fragment = router.asPath.slice(router.asPath.indexOf('#')+1)
-  return fragment === router.asPath ? variants[0].handle : fragment
-}
+const extractFragmentHandle = (router, variants) => { 
+  const fragmentIndex = router.asPath.indexOf('#');
+  if (fragmentIndex === -1 || !variants.some(v => v.handle === router.asPath.slice(fragmentIndex + 1))) {
+    return variants[0]?.handle || '';
+  }
+  return router.asPath.slice(fragmentIndex + 1);
+};
 
 const defaultIngredientsAllergens = `<p>Our Floral Cupcake Bouquets are made with the finest ingredients to ensure a delectable experience. Each cupcake is lovingly crafted using:</p>
 <ul>
@@ -80,10 +83,7 @@ export default function Product({id,title,collection,descriptions,images,price,v
   const [selectedVariant, setSelectedVariant] = useState(extractFragmentHandle(router, variants));
   
   const [selectedOptions, setSelectedOptions] = useState(
-    options.reduce((acc, option) => {
-      acc.push({name: option.name, value: option.values[0]})
-      return acc;
-    }, [])
+    options.map(option => ({ name: option.name, value: option.values[0] }))
   );
 
   const [customMessage, setCustomMessage] = useState('');
@@ -91,11 +91,11 @@ export default function Product({id,title,collection,descriptions,images,price,v
 
   useEffect(() => {
     const matchedVariant = variants.find(variant =>
-      variant.selectedOptions.every(opt =>
-        selectedOptions.some(sel => sel.name === opt.name && sel.value === opt.value)
+      selectedOptions.some(sel =>
+        variant.selectedOptions.some(opt => sel.name === opt.name && sel.value === opt.value)
       )
     );
-    setSelectedVariant(matchedVariant ? matchedVariant.id : variants[0].id);
+    setSelectedVariant(matchedVariant ? matchedVariant.id : variants[0]?.id);
   }, [selectedOptions, variants]);
 
   return <>
@@ -130,8 +130,6 @@ export default function Product({id,title,collection,descriptions,images,price,v
             <BuyButton
               handle={handle}
               selectedOptions={selectedOptions}
-              selectedVariant = {selectedVariant}
-              variants = {variants}
               customMessage = {customMessage} 
               date = {date}
             />
@@ -147,73 +145,72 @@ export default function Product({id,title,collection,descriptions,images,price,v
   </>
 }
 
-export async function getStaticProps({params}) {
-
+export async function getStaticProps({ params }) {
   const { productType, productName } = params;
   
   const { data } = await client.query(GET_VARIANTS(productName));
 
-  const variants = data.productByHandle.variants.nodes.map(v => {
-    return ({
-      id: v.id,
-      title: v.title,
-      handle: v.sku,
-      price: v.price.amount,
-      selectedOptions: v.selectedOptions
-    })
-  })
-
-  const images = data.productByHandle.images.edges.map(i => {
+  if (!data.productByHandle) {
     return {
-      id: i.node.id,
-      src: i.node.src,
-      altText: i.node.altText
-    }
-  })
-  
-  const collection = data.productByHandle.collections.nodes[0];
-  
-  // Get selectable options function
-  const options = data.productByHandle.variants.nodes.reduce((acc, variant) => {
-    variant.selectedOptions.forEach((option) => {
-      const existingOption = acc.find((o) => o.name === option.name);
-      if (existingOption) {
-        if (!existingOption.values.includes(option.value)) {
-          existingOption.values.push(option.value);
-        }
-      } else {
-        acc.push({ name: option.name, values: [option.value] });
-      }
-    });
-    return acc;
-  }, []);
+      notFound: true, // Return a 404 page if product does not exist
+    };
+  }
 
+  const variants = data.productByHandle.variants.nodes.map(v => ({
+    id: v.id,
+    title: v.title,
+    handle: v.sku,
+    price: v.price.amount,
+    selectedOptions: v.selectedOptions,
+  }));
+
+  const images = data.productByHandle.images.edges.map(i => ({
+    id: i.node.id,
+    src: i.node.src,
+    altText: i.node.altText,
+  }));
+
+  const collection = data.productByHandle.collections.nodes[0];
+
+  const optionsMap = new Map();
+  data.productByHandle.variants.nodes.forEach((variant) => {
+    variant.selectedOptions.forEach((option) => {
+      if (!optionsMap.has(option.name)) {
+        optionsMap.set(option.name, new Set());
+      }
+      optionsMap.get(option.name).add(option.value);
+    });
+  });
+
+  const options = [...optionsMap.entries()].map(([name, values]) => ({
+    name,
+    values: [...values],
+  }));
 
   return {
-      props: {
-        id: data.productByHandle.id,
-        title: data.productByHandle.title,
-        descriptions: {
-          main: data.productByHandle.descriptionHtml,
-          IngredientsAllergens: data.productByHandle.IngredientsAllergens ? data.productByHandle.IngredientsAllergens.value : defaultIngredientsAllergens,
-          DeliveryCollection: data.productByHandle.DeliveryCollection ? data.productByHandle.DeliveryCollection.value : defaultDeliveryCollection
-        },
-        price: data.productByHandle.priceRange.minVariantPrice.amount,
-        images,
-        variants,
-        handle: productName,
-        canonicalHandle: data.productByHandle.PrimaryCollection?.reference?.handle
-          ? data.productByHandle.PrimaryCollection.reference.handle
-          : collection.handle,
-        collection,
-        options,
-        advancedNotice: data.productByHandle.AdvancedNotice?.value ?? 0,
-        allowMessage: data.productByHandle.Message?.value ?? false,
-        allowDate: data.productByHandle.CollectionDeliveryDate?.value ?? false,
-        key: data.productByHandle.id
+    props: {
+      id: data.productByHandle.id,
+      title: data.productByHandle.title,
+      descriptions: {
+        main: data.productByHandle.descriptionHtml,
+        IngredientsAllergens: data.productByHandle.IngredientsAllergens?.value || defaultIngredientsAllergens,
+        DeliveryCollection: data.productByHandle.DeliveryCollection?.value || defaultDeliveryCollection,
       },
-    }
+      price: data.productByHandle.priceRange.minVariantPrice.amount,
+      images,
+      variants,
+      handle: productName,
+      canonicalHandle: data.productByHandle.PrimaryCollection?.reference?.handle || collection.handle,
+      collection,
+      options,
+      advancedNotice: data.productByHandle.AdvancedNotice?.value ?? 0,
+      allowMessage: data.productByHandle.Message?.value ?? false,
+      allowDate: data.productByHandle.CollectionDeliveryDate?.value ?? false,
+      key: data.productByHandle.id,
+    },
+  };
 }
+
 
 export async function getStaticPaths() {
   
@@ -232,6 +229,6 @@ export async function getStaticPaths() {
 
   return {
     paths,
-    fallback: false
+    fallback: "blocking"
   };
 }
