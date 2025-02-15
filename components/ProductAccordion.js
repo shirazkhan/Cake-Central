@@ -49,7 +49,7 @@ const Panel = styled(motion.div)`
     overflow: hidden;
 `
 
-const Content = styled.p`
+const Content = styled.div`
     padding-bottom: 40px;
 `;
 
