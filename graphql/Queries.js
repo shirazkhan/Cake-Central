@@ -324,8 +324,10 @@ export const GET_PRODUCTS_BY_COLLECTION_HANDLE = handle =>  {
 
 export const GET_CART = id =>  {
   return { query: gql`
-  query {
-    cart(id: "${id}") {
+  {
+    cart(
+      id: "${id}"
+    ) {
       lines(first: 100) {
         edges {
           node {
@@ -335,7 +337,7 @@ export const GET_CART = id =>  {
               ... on ProductVariant {
                 id
                 sku
-                price{
+                price {
                   amount
                 }
                 title
@@ -353,6 +355,14 @@ export const GET_CART = id =>  {
                     }
                   }
                   productType
+                  metafield(key: "primary_collection", namespace: "custom") {
+                    value
+                    reference {
+                      ... on Collection {
+                        handle
+                      }
+                    }
+                  }
                 }
               }
             }

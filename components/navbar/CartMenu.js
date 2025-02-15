@@ -130,6 +130,7 @@ const ProductTitle = styled.a`
 
 const ProductVariant = styled.a`
     cursor: pointer;
+    display: block;
 `;
 
 const ProductPrice = styled.div`
@@ -191,16 +192,14 @@ const handleRemoveProduct = async (lineId, cartId, dispatch) => {
 const renderProducts = (lines, dispatch, cartId) => 
     lines.length > 0 ? lines.map(l => (
         <ProductContainer>
-            <ProductImageContainer href = {`/shop/${l.productType.toLowerCase()}/${l.productHandle}#${l.variantHandle}`}>
+            <ProductImageContainer href = {`/shop/${l.productPrimaryCollection}/${l.productHandle}`}>
                 <ProductImage onClick = {() => dispatch({type: 'TOGGLE_CART_MENU'})} src = {l.variantImageSrc} ></ProductImage>
             </ProductImageContainer>
             <ProductSpecContainer>
                 <ProductSpecDiv>
                     <div style = {{display: 'flex', flexDirection: 'column'}} onClick = {() => dispatch({type: 'TOGGLE_CART_MENU'})}>
-                        <Link href = {`/shop/${l.productType.replaceAll('%20','-').toLowerCase()}/${l.productHandle}#${l.variantHandle}`}>
+                        <Link href = {`/shop/${l.productPrimaryCollection}/${l.productHandle}`}>
                             <ProductTitle>{l.productTitle}</ProductTitle>
-                        </Link>
-                        <Link href = {`/shop/${l.productType.replaceAll('%20','-').toLowerCase()}/${l.productHandle}#${l.variantHandle}`}>
                             <ProductVariant>{l.variantTitle === "Default Title" ? "" : l.variantTitle}</ProductVariant>
                         </Link>
                     </div>
