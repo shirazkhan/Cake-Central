@@ -11,6 +11,7 @@ import { client } from '../../../apollo-client';
 import { GET_PRODUCT_AND_COLLECTION_HANDLES, GET_VARIANTS } from "../../../graphql/Queries";
 import ProductAccordion from '../../../components/ProductAccordion';
 import parse from 'html-react-parser';
+import { NextSeo } from 'next-seo';
 
 const MainContainer = styled.div`
     margin: -${MOBILE_NAV_HEIGHT} 0 0 0;
@@ -128,11 +129,31 @@ export default function Product({id,title,collection,descriptions,images,price,v
   }, [selectedOptions, variants]);
 
   return <>
-    <Head>
-        <title>{`${title} | ${WEBSITE_NAME}`}</title>
-        <link rel="canonical" href={`${DOMAIN}/shop/${canonicalHandle}/${handle}`} />
-        <meta name="viewport" content="initial-scale=1.0, width=device-width" />
-    </Head>
+    <NextSeo
+        title={`${title} | ${WEBSITE_NAME}`}
+        description={descriptions.main}
+        canonical={`${DOMAIN}/shop/${canonicalHandle}/${handle}`}
+        openGraph={{
+          title: `${title} | ${WEBSITE_NAME}`,
+          description: descriptions.main,
+          url: `${DOMAIN}/shop/${title}`,
+          images: [
+            {
+              url: images[0].src,
+              width: 800,
+              height: 600,
+              alt: title,
+            },
+          ],
+        }}
+        twitter={{
+          cardType: 'summary_large_image',
+          site: '@cakecentraluk',
+          title: title,
+          description: descriptions.main,
+          image: images[0].src,
+        }}
+      />
     <Primary>
       <MainContainer>
         <ProductImages images = {images} variants = {variants}/>
