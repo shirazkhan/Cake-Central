@@ -11,6 +11,8 @@ import client from '../apollo-client';
 import { ApolloProvider } from '@apollo/client';
 import useLocalStorageState from 'use-local-storage-state';
 import { GET_CART } from '../graphql/Queries';
+import { DefaultSeo } from 'next-seo';
+import SEO from '../next-seo.config';
 import { DEV_MODE, LOADING_BAR_COLOR, MOBILE } from '../GlobalVariables';
 import NavMenu from '../components/navbar/NavMenu';
 import { useMediaQuery } from 'react-responsive';
@@ -234,6 +236,7 @@ export default function MyApp({ Component, pageProps }) {
       <ThemeProvider theme = {globalState.nightMode ? darkTheme : lightTheme}>
         <GlobalStyle />
         <SpeedInsights />
+        <DefaultSeo {...SEO} />
           <Header />
           { /* <AnnouncementBanner /> */ }
         <MainGrid>

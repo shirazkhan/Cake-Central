@@ -148,7 +148,7 @@ export default function NavMenu() {
                                 as = '/shop/cookies' >
                                     Cookies
                             </Link>
-                        </NavLink> 
+                        </NavLink> */}
                         <NavLink>
                             <Link
                                 
@@ -157,7 +157,7 @@ export default function NavMenu() {
                                 as = '/shop/cakes' >
                                     Cakes
                             </Link>
-                        </NavLink>*/}
+                        </NavLink>
                         <NavLink>
                             <Link
                                 
