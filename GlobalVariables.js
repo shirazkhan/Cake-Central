@@ -4,6 +4,7 @@ export const DOMAIN = "https://www.cakecentral.co.uk";
 export const WEBSITE_NAME = "Cake Central";
 export const DEV_MODE = false;
 
+
 // STYLING
 export const PRIMARY_THEME_COLOR = "#FFABBB";
 export const SECONDARY_THEME_COLOR = "#88CBEB";
