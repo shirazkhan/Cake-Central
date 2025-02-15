@@ -60,8 +60,8 @@ const OptionButton = styled.button`
 
 export default function ProductSpec({
   title,
-  price,
   collection,
+  variants,  // Add this
   options,
   selectedOptions,
   setSelectedOptions,
@@ -73,6 +73,7 @@ export default function ProductSpec({
   allowMessage,
   advancedNotice
 }) {
+
   // Handle the click of a button to select a variant option
   const handleOptionSelect = (optionName, optionValue) => {
     setSelectedOptions((prev) =>
@@ -81,14 +82,21 @@ export default function ProductSpec({
       )
     );
   };
+
+  // Find the selected variant based on the selected options
+  const selectedVariant = variants.find(variant =>
+    selectedOptions.every(sel =>
+      variant.selectedOptions.some(opt => sel.name === opt.name && sel.value === opt.value)
+    )
+  );
+
   return (
     <>
       <Container>
         <Breadcrumbs />
         <ProductTitle>{title}</ProductTitle>
-        <Price>£{price}</Price>
+        <Price>£{selectedVariant ? selectedVariant.price : 'N/A'}</Price> {/* Use dynamically computed price */}
       </Container>
-      {/* Loop through options and create a button for each value */}
       {options[0].values[0] === 'Default Title' ? null : (
         options.map((option) => (
           <OptionContainer key={option.name}>
@@ -112,9 +120,9 @@ export default function ProductSpec({
             </div>
           </OptionContainer>
         ))
-        )}
-        {JSON.parse(allowDate) ? <DatePicker date = {date} setDate = {setDate} advancedNotice={advancedNotice} /> : ''}
-        {JSON.parse(allowMessage) ? <MessageInput customMessage={customMessage} setCustomMessage={setCustomMessage} /> : ''}
+      )}
+      {JSON.parse(allowDate) ? <DatePicker date={date} setDate={setDate} advancedNotice={advancedNotice} /> : ''}
+      {JSON.parse(allowMessage) ? <MessageInput customMessage={customMessage} setCustomMessage={setCustomMessage} /> : ''}
     </>
   );
 }

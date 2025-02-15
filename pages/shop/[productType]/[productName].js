@@ -158,24 +158,21 @@ export default function Product({id,title,collection,descriptions,images,price,v
       <MainContainer>
         <ProductImages images = {images} variants = {variants}/>
         <SpecContainer>
-          <ProductSpec
-                title={title}
-                collection={collection}
-                price={parseFloat(variants.find(v => v.id === selectedVariant)?.price || price).toFixed(2)}
-                variants={variants}
-                selectedVariant={selectedVariant}
-                setSelectedVariant={setSelectedVariant}
-                options={options}
-                selectedOptions={selectedOptions}
-                setSelectedOptions={setSelectedOptions}
-                customMessage={customMessage}
-                setCustomMessage={setCustomMessage}
-                date = {date}
-                setDate = {setDate}
-                allowDate = {allowDate}
-                allowMessage = {allowMessage}
-                advancedNotice = {advancedNotice}
-            />
+        <ProductSpec
+  title={title}
+  collection={collection}
+  variants={variants} // Pass variants
+  options={options}
+  selectedOptions={selectedOptions}
+  setSelectedOptions={setSelectedOptions}
+  customMessage={customMessage}
+  setCustomMessage={setCustomMessage}
+  date={date}
+  setDate={setDate}
+  allowDate={allowDate}
+  allowMessage={allowMessage}
+  advancedNotice={advancedNotice}
+/>
           <ButtonsContainer>
             <BuyButton
               handle={handle}
