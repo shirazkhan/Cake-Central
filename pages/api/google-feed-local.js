@@ -14,6 +14,12 @@ function cleanText(str) {
     .replace(/'/g, "&apos;");
 }
 
+function cleanId(shopifyId) {
+    if (!shopifyId) return "";
+    const match = shopifyId.match(/(\d+)$/); // Extracts the numeric part at the end
+    return match ? match[1] : ""; // Returns only the variant ID
+  }
+
 export default async function handler(req, res) {
   try {
     let allEntries = [];
@@ -57,7 +63,7 @@ export default async function handler(req, res) {
       // Build local inventory entries for each variant
       const entries = data.products.edges.flatMap(({ node: product }) =>
         product.variants.edges.map(({ node: variant }) => ({
-            "g:id": cleanId(cleanText(variant.id)),
+            "g:id": cleanText(variant.id),
             "g:store_code": "home-based",
             "g:quantity": "1",
             "g:availability": variant.availableForSale ? "in_stock" : "out_of_stock",

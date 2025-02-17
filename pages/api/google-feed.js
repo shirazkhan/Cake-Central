@@ -75,7 +75,7 @@ export default async function handler(req, res) {
         ...allProducts,
         ...data.products.edges.flatMap(({ node }) =>
           node.variants.edges.map(({ node: variant }) => ({
-            "g:id": cleanId(cleanText(variant.id)),
+            "g:id": cleanText(variant.id),
             "g:title": cleanText(`${node.title} - ${variant.selectedOptions.map(opt => opt.value).join(", ")}`),
             "g:description": cleanText(node.description),
             "g:link": `https://www.cakecentral.co.uk/shop/${node.metafields[0]?.reference?.handle}/${node.handle}`,
