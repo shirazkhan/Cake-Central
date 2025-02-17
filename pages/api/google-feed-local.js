@@ -63,7 +63,8 @@ export default async function handler(req, res) {
             "g:availability": variant.availableForSale ? "in_stock" : "out_of_stock",
             "g:price": `${variant.priceV2.amount} ${variant.priceV2.currencyCode}`,
             "g:pickup_method": "buy",  // ✅ FIXED: "pickup_in_store" → "store_pickup"
-            "g:pickup_sla": "next_day"  // ✅ FIXED: "P2D" → "2_day"
+            "g:pickup_sla": "next_day",  // ✅ FIXED: "P2D" → "2_day"
+            "g:store_code": "15209260741894551027"
         }))
         );
 
