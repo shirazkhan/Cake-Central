@@ -40,6 +40,9 @@ export const CREATE_CART = (id, customMessage, date) => ({
                     title
                     handle
                     productType
+                    metafield(key: "primary_collection", namespace: "custom") {
+                      value
+                    }
                   }
                   image {
                     src
@@ -102,6 +105,9 @@ export const CART_LINES_ADD = (cartId, variantId, customMessage, date) => ({
                     title
                     handle
                     productType
+                    metafield(key: "primary_collection", namespace: "custom") {
+                      value
+                    }
                   }
                   image {
                     src

@@ -137,7 +137,7 @@ export default function MyApp({ Component, pageProps }) {
                 productTitle: l.node.merchandise.product.title,
                 productId: l.node.merchandise.product.id,
                 productType: l.node.merchandise.product.productType,
-                productPrimaryCollection: 'cakes',
+                productPrimaryCollection: l.node.merchandise.product.metafield.reference.handle,
                 variantHandle: l.node.merchandise.sku,
                 variantTitle: l.node.merchandise.title,
                 variantId: l.node.merchandise.id,
@@ -149,6 +149,7 @@ export default function MyApp({ Component, pageProps }) {
             total: action.value.cart.estimatedCost.totalAmount.amount
         }};
       case 'UPDATE_CART':
+        console.log(action.value)
         const newCart = {
           id: action.value.cart.id,
             lines: action.value.cart.lines.edges.map(l => (
@@ -158,7 +159,7 @@ export default function MyApp({ Component, pageProps }) {
                 productTitle: l.node.merchandise.product.title,
                 productId: l.node.merchandise.product.id,
                 productType: l.node.merchandise.product.productType,
-                productPrimaryCollection: 'cakes',
+                productPrimaryCollection: l.node.merchandise.product.metafield?.reference?.handle,
                 variantHandle: l.node.merchandise.sku,
                 variantTitle: l.node.merchandise.title,
                 variantId: l.node.merchandise.id,
