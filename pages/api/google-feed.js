@@ -14,6 +14,12 @@ function cleanText(str) {
     .replace(/'/g, "&apos;");
 }
 
+function cleanId(shopifyId) {
+    if (!shopifyId) return "";
+    const match = shopifyId.match(/(\d+)$/); // Extracts the numeric part at the end
+    return match ? match[1] : ""; // Returns only the variant ID
+  }
+
 export default async function handler(req, res) {
   try {
     let allProducts = [];
@@ -75,7 +81,7 @@ export default async function handler(req, res) {
         ...allProducts,
         ...data.products.edges.flatMap(({ node }) =>
           node.variants.edges.map(({ node: variant }) => ({
-            "g:id": cleanText(variant.id),
+            "g:id": cleanId(cleanText(variant.id)),
             "g:title": cleanText(`${node.title} - ${variant.selectedOptions.map(opt => opt.value).join(", ")}`),
             "g:description": cleanText(node.description),
             "g:link": `https://www.cakecentral.co.uk/shop/${node.metafields[0]?.reference?.handle}/${node.handle}`,
