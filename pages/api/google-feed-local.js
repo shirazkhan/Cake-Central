@@ -57,20 +57,15 @@ export default async function handler(req, res) {
       // Build local inventory entries for each variant
       const entries = data.products.edges.flatMap(({ node: product }) =>
         product.variants.edges.map(({ node: variant }) => ({
-          "g:id": cleanText(variant.id),
-          "g:store_code": "home-based", // Identifier for your home-based operation
-          "g:quantity": "1", // Dummy quantity since cakes are made-to-order
-          "g:availability": "in_stock",
-          "g:price": `${variant.priceV2.amount} ${variant.priceV2.currencyCode}`,
-          "g:pickup_method": "pickup_in_store", // Customers can pick up the order
-          "g:pickup_sla": "P2D", // ISO 8601 duration for 2 days (pickup available in 2 days)
-          "g:shipping": {
-            "g:country": "GB",
-            "g:service": "Local Delivery",
-            "g:price": "0.00 GBP" // Free delivery within 25 miles
-          }
+            "g:id": cleanText(variant.id),
+            "g:store_code": "home-based",
+            "g:quantity": "1",
+            "g:availability": variant.availableForSale ? "in_stock" : "out_of_stock",
+            "g:price": `${variant.priceV2.amount} ${variant.priceV2.currencyCode}`,
+            "g:pickup_method": "store_pickup",  // ✅ FIXED: "pickup_in_store" → "store_pickup"
+            "g:pickup_sla": "2_day"  // ✅ FIXED: "P2D" → "2_day"
         }))
-      );
+        );
 
       allEntries.push(...entries);
       hasNextPage = data.products.pageInfo.hasNextPage;
