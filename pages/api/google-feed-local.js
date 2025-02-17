@@ -14,12 +14,6 @@ function cleanText(str) {
     .replace(/'/g, "&apos;");
 }
 
-function cleanId(shopifyId) {
-    if (!shopifyId) return "";
-    const match = shopifyId.match(/(\d+)$/); // Extracts the numeric part at the end
-    return match ? match[1] : ""; // Returns only the variant ID
-  }
-
 export default async function handler(req, res) {
   try {
     let allEntries = [];
