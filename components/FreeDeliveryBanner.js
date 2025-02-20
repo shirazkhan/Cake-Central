@@ -99,9 +99,10 @@ const Banner = () => {
           <Image
             src="/temp/cake-delivery.jpeg"
             alt="Cake Delivery"
-            layout="fill"
+            fill
+            style={{objectFit: "cover"}}
             quality={1}
-            objectFit="cover"
+            sizes="(max-width: 768px) 100vw, 45vw"
           />
         </ImageWrapper>
         <TextWrapper>

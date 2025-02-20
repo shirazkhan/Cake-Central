@@ -134,11 +134,13 @@ const AddToCart = styled.button`
 const renderProducts = (products, productType, reviewsOn) =>
     products.map(p => {
         return (
-            <ProductCard>
+            <ProductCard key={p.handle}>
             <Link href = {`/shop/${productType}/${p.handle}`}>
                 <ProductImage>
                     <Image
                         style = {{objectFit: "cover"}}
+                        priority
+                        sizes="(max-width: 768px) 100vw, 45vw"
                         fill src={p.images} />
                 </ProductImage>
             <CardTitle>{p.title}</CardTitle>
@@ -148,8 +150,8 @@ const renderProducts = (products, productType, reviewsOn) =>
             </PriceAndReviewContainer>
         </Link> 
         </ProductCard>
-        )
-    })
+        )}
+    )
 
 export default function ProductGrid({products, productType, reviewsOn}) {
     return (
@@ -164,7 +166,9 @@ export default function ProductGrid({products, productType, reviewsOn}) {
                             <Image
                                 style = {{objectFit: "cover"}}
                                 fill
+                                priority
                                 src={"/AdobeStock_364652589.webp"}
+                                sizes="(max-width: 768px) 100vw, 45vw"
                             />
                             <Button style={{zIndex: 30, position: 'relative', marginTop: '-20px'}} href={'/build-a-cake'}>Build Your Cake</Button>
                         </Ad>

@@ -56,6 +56,7 @@ export default function HeroBanner({title,description,inverse,image}) {
                 <Image
                     src={image?.src}
                     fill
+                    priority
                     quality={1}
                     alt={image?.altText}
                     style={{objectFit: "cover"}}

@@ -17,7 +17,6 @@ const Container = styled.div`
 `;
 
 export default function ProductType({handle, title, description, products, image}) {
-    console.log(handle, title)
 
     const router = useRouter();
     const { productType } = router.query;

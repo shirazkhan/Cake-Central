@@ -30,7 +30,7 @@ export default function CheckoutButton({cartId}) {
     useEffect(() => {
         const handleFetchUrl = async (cartId) => {
             const { data } = await client.query(GET_CHECKOUT_URL(cartId));
-            console.log(data);
+            
             setUrl(data.cart.checkoutUrl);
         }
         handleFetchUrl(cartId);
