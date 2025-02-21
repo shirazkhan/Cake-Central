@@ -159,19 +159,19 @@ export default function Product({id,title,collection,descriptions,images,price,v
         <ProductImages images = {images} variants = {variants}/>
         <SpecContainer>
         <ProductSpec
-  title={title}
-  collection={collection}
-  variants={variants} // Pass variants
-  options={options}
-  selectedOptions={selectedOptions}
-  setSelectedOptions={setSelectedOptions}
-  customMessage={customMessage}
-  setCustomMessage={setCustomMessage}
-  date={date}
-  setDate={setDate}
-  allowDate={allowDate}
-  allowMessage={allowMessage}
-  advancedNotice={advancedNotice}
+          title={title}
+          collection={collection}
+          variants={variants} // Pass variants
+          options={options}
+          selectedOptions={selectedOptions}
+          setSelectedOptions={setSelectedOptions}
+          customMessage={customMessage}
+          setCustomMessage={setCustomMessage}
+          date={date}
+          setDate={setDate}
+          allowDate={allowDate}
+          allowMessage={allowMessage}
+          advancedNotice={advancedNotice}
 />
           <ButtonsContainer>
             <BuyButton

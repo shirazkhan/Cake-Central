@@ -1,8 +1,10 @@
 import { useRouter } from 'next/router';
 import Link from 'next/link';
 import styled from 'styled-components';
+import React from 'react';
 
 const BreadcrumbNav = styled.nav`
+  font-size: 0.9em;
 `;
 
 const BreadcrumbList = styled.ul`
@@ -10,7 +12,7 @@ const BreadcrumbList = styled.ul`
   list-style: none;
   padding: 0;
   gap: 8px;
-  font-size: 0.9em;
+  align-items: center;
 `;
 
 const BreadcrumbItem = styled.li`
@@ -26,27 +28,38 @@ const BreadcrumbItem = styled.li`
       text-decoration: underline;
     }
   }
+`;
 
-  &:not(:last-child)::after {
-    content: '>';
-    margin: 0 8px;
-    color: #666;
-  }
+const Separator = styled.span`
+  margin: 0 8px;
+  color: #666;
 `;
 
 const Breadcrumbs = () => {
   const router = useRouter();
-  const pathSegments = router.asPath.split('/').filter(segment => segment);
 
-  // Function to capitalize each word
-  const capitalize = (text) => {
-    return text
-      .split('-') // Handle kebab-case (e.g., "custom-cakes")
-      .map(word => word.charAt(0).toUpperCase() + word.slice(1)) // Capitalize first letter
-      .join(' '); // Join words back together
+  // Remove query parameters and hash fragments
+  const pathSegments = router.asPath
+    .split('?')[0]
+    .split('#')[0]
+    .split('/')
+    .filter(segment => segment);
+
+  // Special cases for capitalization
+  const specialCases = {
+    faq: "FAQ",
+    "our-story": "Our Story",
   };
 
-  // Build the correct hrefs for the segments
+  // Capitalization function
+  const capitalize = (text) => {
+    return specialCases[text.toLowerCase()] || 
+      text.split('-')
+          .map(word => word.charAt(0).toUpperCase() + word.slice(1))
+          .join(' ');
+  };
+
+  // Build correct hrefs for the segments
   const buildHref = (segments, index) => {
     return '/' + segments.slice(0, index + 1).join('/');
   };
@@ -58,22 +71,23 @@ const Breadcrumbs = () => {
           <Link href="/">Home</Link>
         </BreadcrumbItem>
         {pathSegments.map((segment, index) => {
-          // Skip "shop" in the breadcrumbs
-          if (segment.toLowerCase() === 'shop') {
-            return null;
-          }
+          if (segment.toLowerCase() === 'shop') return null; // Skip "shop"
 
           const href = buildHref(pathSegments, index);
           const formattedText = capitalize(segment);
+          const isLast = index === pathSegments.length - 1;
 
           return (
-            <BreadcrumbItem key={href}>
-              {index !== pathSegments.length - 1 ? (
-                <Link href={href}>{formattedText}</Link>
-              ) : (
-                <span>{formattedText}</span>
-              )}
-            </BreadcrumbItem>
+            <React.Fragment key={href}>
+              <Separator>›</Separator>
+              <BreadcrumbItem>
+                {isLast ? (
+                  <span aria-current="page">{formattedText}</span>
+                ) : (
+                  <Link href={href}>{formattedText}</Link>
+                )}
+              </BreadcrumbItem>
+            </React.Fragment>
           );
         })}
       </BreadcrumbList>
