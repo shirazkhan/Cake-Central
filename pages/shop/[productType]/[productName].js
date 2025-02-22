@@ -63,12 +63,19 @@ const extractFragmentHandle = (router, variants) => {
   return router.asPath.slice(fragmentIndex + 1);
 };
 
-const defaultIngredientsAllergens = `<p>Our Floral Cupcake Bouquets are made with the finest ingredients to ensure a delectable experience. Each cupcake is lovingly crafted using:</p>
-<ul>
-  <li><strong>Ingredients:</strong> Flour, sugar, butter, eggs, milk, natural flavorings, and food coloring.</li>
-  <li><strong>Buttercream flowers:</strong> Made with high-quality butter, powdered sugar, and food-safe edible colors.</li>
-</ul>
-<p><strong>Allergens:</strong> Contains gluten, dairy, eggs, and may contain traces of nuts due to being prepared in a facility that handles nut products. If you have any specific dietary requirements or allergen concerns, please contact us before placing your order.</p>`
+const defaultIngredientsAllergens = `
+<p>Our cakes are made with the finest ingredients to ensure a delectable experience. Each cake is lovingly crafted using:</p>
+
+<h3>Ingredients</h3>
+<p>Flour, sugar, butter, eggs, milk, natural flavorings, and food coloring. (Specific ingredients may vary depending on the cake type.)</p>
+
+<h3>Decorations</h3>
+<p>Our cakes may feature buttercream flowers, fondant details, or other edible embellishments, all made with high-quality ingredients and food-safe edible colors. 
+Some designs may also include non-edible elements such as faux or dried florals, decorative butterflies, and personalized toppers. These should be removed before consumption.</p>
+
+<h3>Allergens</h3>
+<p>Contains gluten, dairy, eggs, and may contain traces of nuts due to being prepared in a facility that handles nut products. 
+If you have any specific dietary requirements or allergen concerns, please contact us before placing your order.</p>`;
 
 const defaultDeliveryCollection = `<p>We offer flexible delivery and collection options to suit your needs:</p>
 <ul>
