@@ -1,7 +1,7 @@
 export default {
     title: "Cake Central - Order Cakes Online",
     description: "Delicious, freshly baked cakes, cupcakes, and brownies. Order online for local delivery in Grantham, Lincolnshire!",
-    canonical: "https://www.cakecentral.co.uk/",
+    canonical: "Cake Central",
     openGraph: {
       type: "website",
       locale: "en_GB",
