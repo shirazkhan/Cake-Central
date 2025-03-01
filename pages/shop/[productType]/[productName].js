@@ -152,6 +152,7 @@ export default function Product({id,title,collection,descriptions,images,price,v
               alt: title,
             },
           ],
+          site_name: WEBSITE_NAME,
         }}
         twitter={{
           cardType: 'summary_large_image',
