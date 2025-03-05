@@ -2,7 +2,7 @@
 import React from 'react';
 import styled from 'styled-components';
 import { motion, useTransform, useScroll } from 'framer-motion';
-import { PRIMARY_BUTTON_COLOR, SECONDARY_BUTTON_COLOR } from '../GlobalVariables';
+import { DESKTOP_VIEW, PRIMARY_BUTTON_COLOR, SECONDARY_BUTTON_COLOR } from '../GlobalVariables';
 import Image from 'next/image';
 import Button from './core/Button';
 
@@ -60,6 +60,13 @@ const Description = styled.p`
   max-width: 700px;
 `;
 
+const ButtonContainer = styled.div`
+  display: flex;
+  gap: 20px;
+  justify-content: center;
+  align-items: center;
+`;
+
 const HeroBanner = () => {
   const { scrollY } = useScroll();
   const y = useTransform(scrollY, [0, 500], [0, 100]);
@@ -78,7 +85,10 @@ const HeroBanner = () => {
         <Subtitle>Celebration & Wedding Cakes based in Grantham, Lincolnshire</Subtitle>
         <Title>Welcome to Cake Central</Title>
         <Description>Indulge in our wide variety of luxury cakes. Create your own bespoke design or choose a ready made design to your liking.</Description>
-        <Button href="/build-a-cake">Let's Build A Cake</Button>
+        <ButtonContainer>
+          <Button href="/build-a-cake">Let's Build A Cake</Button>
+          <Button href="/shop/cakes">Browse Our Cakes</Button>
+        </ButtonContainer>
       </Content>
     </HeroContainer>
   );
