@@ -137,7 +137,7 @@ export default function MyApp({ Component, pageProps }) {
                 productTitle: l.node.merchandise.product.title,
                 productId: l.node.merchandise.product.id,
                 productType: l.node.merchandise.product.productType,
-                productPrimaryCollection: l.node.merchandise.product.metafield.reference.handle,
+                productPrimaryCollection: l.node.merchandise.product.metafield?.reference?.handle || '',
                 variantHandle: l.node.merchandise.sku,
                 variantTitle: l.node.merchandise.title,
                 variantId: l.node.merchandise.id,
