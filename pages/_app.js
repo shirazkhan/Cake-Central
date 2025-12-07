@@ -1,4 +1,5 @@
 import React, { useReducer, useEffect } from 'react';
+import '../global.css'
 import { GoogleTagManager, GoogleAnalytics } from '@next/third-parties/google'
 import '../src/index.css';
 import { lightTheme, darkTheme, GlobalStyle, MainGrid, FooterLink,

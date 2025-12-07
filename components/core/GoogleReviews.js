@@ -1,4 +1,3 @@
-import React from 'react';
 import { styled } from 'styled-components';
 import { ReactGoogleReviews } from "react-google-reviews";
 import "react-google-reviews/dist/index.css";
@@ -23,7 +22,7 @@ export default function GoogleReviews(props) {
     return (
         <ReviewContainer>
             <h2>See What People Are Saying</h2>
-            <ReactGoogleReviews structuredData brandName='Cake Central' layout="carousel" featurableId={featurableWidgetId} />
+            <ReactGoogleReviews structuredData brandName='Cake Central' layout="carousel"  featurableId={featurableWidgetId} />
         </ReviewContainer>
     )
 }
