@@ -8,7 +8,6 @@ export default {
       type: "website",
       locale: "en_GB",
       url: "https://www.cakecentral.co.uk/",
-      site_name: "Cake Central",
       title: "Cake Central - Freshly Baked Cakes & Treats",
       description: "Order handcrafted cakes, cupcakes, and brownies online. Local delivery in Grantham!",
       images: [
